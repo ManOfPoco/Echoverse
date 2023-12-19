@@ -4,7 +4,7 @@ function Dropdown({
     title = null,
     svgTitle = null,
     imageTitle = null,
-    width = "w-36",
+    dropdownWidth = "w-36",
     children,
 }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,8 +36,8 @@ function Dropdown({
                     <>
                         <span>{title}</span>
                         <img
-                            width="12"
-                            height="10"
+                            draggable='false'
+                            className="w-4 h-5"
                             src={svgTitle}
                             alt="arrowDown"
                         />
@@ -45,9 +45,7 @@ function Dropdown({
                 ) : (
                     <img
                         draggable="false"
-                        className="aspect-square rounded-full object-cover"
-                        width="48"
-                        height="48"
+                        className="aspect-square rounded-full object-cover w-12 h-12"
                         src={imageTitle}
                         alt="arrowDown"
                     />
@@ -56,7 +54,7 @@ function Dropdown({
 
             {isOpen && (
                 <div
-                    className={`absolute right-0 z-50 mt-3 w-36 origin-top-right rounded-lg bg-gray-dark px-4 py-2.5 shadow-xl ${width}`}
+                    className={`absolute right-0 z-50 mt-3 w-36 origin-top-right rounded-lg bg-gray-dark px-4 py-2.5 shadow-xl ${dropdownWidth}`}
                 >
                     <div className="flex flex-col gap-5">{children}</div>
                 </div>

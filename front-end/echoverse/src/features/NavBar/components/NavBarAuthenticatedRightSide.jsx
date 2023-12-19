@@ -5,10 +5,12 @@ import arrowRight from "../../../assets/svg/arrowRight.svg";
 import bell from "../../../assets/svg/bell.svg";
 import message from "../../../assets/svg/message.svg";
 import profile from "../../../assets/img/profile.jpg";
-import { Link } from "react-router-dom";
+
+import NavLink from "./NavLink";
+
 
 function NavBarAuthenticatedRightSide() {
-    const isAuthenticated = false;
+    const isAuthenticated = true;
 
     return (
         <>
@@ -16,53 +18,51 @@ function NavBarAuthenticatedRightSide() {
                 <>
                     <img
                         draggable="false"
-                        className="cursor-pointer"
-                        width="22"
-                        height="22"
+                        className="h-5.5 w-5.5 cursor-pointer"
                         src={bell}
                         alt="arrowDown"
                     />
-                    <div className="flex cursor-pointer gap-2">
-                        <span>Direct</span>
-                        <img
-                            draggable="false"
-                            width="22"
-                            height="22"
-                            src={message}
-                            alt="arrowDown"
-                        />
-                    </div>
-                    <Dropdown imageTitle={profile} width="w-48">
+                    <NavLink link="/direct">
+                        <div className="flex gap-2">
+                            <span>Direct</span>
+                            <img
+                                draggable="false"
+                                className="h-5.5 w-5.5"
+                                src={message}
+                                alt="arrowDown"
+                            />
+                        </div>
+                    </NavLink>
+                    <Dropdown imageTitle={profile} dropdownWidth="w-48">
                         <DropdownItem
-                            option="Profile"
+                            isNavLink={true}
                             link="/me"
                             key="Profile"
-                        />
+                        >Profile</DropdownItem>
                         <DropdownItem
-                            option="Account Settings"
+                            isNavLink={true}
                             link="/settings"
-                            key="Account Settings"
-                        />
+                            key="Account settings"
+                        >Account settings</DropdownItem>
                         <DropdownItem
-                            option="Sign out"
+                            isNavLink={true}
                             link="/sign-out"
                             key="Sign out"
-                        />
+                        >Sign out</DropdownItem>
                     </Dropdown>
                 </>
             ) : (
-                <Link to="/login">
+                <NavLink link="/login">
                     <div className="flex cursor-pointer gap-1">
                         <span>Log in</span>
                         <img
                             draggable="false"
-                            width="14"
-                            height="10"
+                            className="h-5 w-4"
                             src={arrowRight}
                             alt="arrowDown"
                         />
                     </div>
-                </Link>
+                </NavLink>
             )}
         </>
     );

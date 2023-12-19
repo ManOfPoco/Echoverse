@@ -47,6 +47,7 @@ module.exports = {
                 12.5: "50px",
             },
             width: {
+                5.5: '22px',
                 50: "200px",
             },
             height: {
