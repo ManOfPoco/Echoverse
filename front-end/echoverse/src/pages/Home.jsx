@@ -5,7 +5,9 @@ function Home() {
     return (
         <>
             <NavBar />
-            <Main />
+            <div className={`flex h-[calc(100svh-120px)] overflow-auto items-center`}>
+                <Main />
+            </div>
         </>
     );
 }

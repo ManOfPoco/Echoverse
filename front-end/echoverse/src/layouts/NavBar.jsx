@@ -8,34 +8,81 @@ import NavBarAuthenticatedRightSide from "../features/NavBar/components/NavBarAu
 import NavLink from "../features/NavBar/components/NavLink";
 import dropdownArrowDown from "../assets/svg/dropdownArrowDown.svg";
 
+import menu from "../assets/svg/menu.svg";
+import menuOpened from "../assets/svg/menuOpened.svg";
+import { useState } from "react";
+import { Transition } from "@headlessui/react";
+import { NavBarMobileMenu } from "../features/NavBar/components/NavBarMobileMenu";
+
 function NavBar() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     return (
-        <nav className="mt-7.5 font-archivo-black sticky mx-10 text-sm tracking-wide">
-            <div className="flex justify-between">
-                <div className="flex items-center">
+        <nav
+            className={`sticky top-0 font-archivo-black text-sm transition-colors duration-500 lg:tracking-wide ${
+                isMenuOpen ? "bg-black-light" : ""
+            }`}
+        >
+            <div className="xl:mx-10 xl:mt-7.5 mx-2 flex justify-between pt-2 lg:mx-5">
+                <div className="flex items-center gap-4 lg:hidden">
+                    <img
+                        draggable="false"
+                        className={`h-5.5 w-5.5 transition-all duration-300 ${isMenuOpen ? 'rotate-180' : ''}`}
+                        src={isMenuOpen ? menuOpened : menu}
+                        alt="menu"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    />
+                    <div className="hidden md:block">
+                        <Logo />
+                    </div>
+                </div>
+                <div className="block md:hidden">
                     <Logo />
-                    <div className="ms-8 flex gap-8">
+                </div>
+                <div className="hidden lg:flex">
+                    <div className="hidden lg:block">
+                        <Logo />
+                    </div>
+
+                    <div className="xl:ms-8 xl:gap-8 flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4">
                         <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
                             <DropdownItem
-                                isNavLink='true'
+                                isNavLink="true"
                                 link="/explore"
                                 key="People"
-                            >People</DropdownItem>
+                            >
+                                People
+                            </DropdownItem>
                             <DropdownItem
-                                isNavLink='true'
+                                isNavLink="true"
                                 link="/threads"
                                 key="Threads"
-                            >Threads</DropdownItem>
+                            >
+                                Threads
+                            </DropdownItem>
                         </Dropdown>
                         <NavLink link="/games">Games</NavLink>
                         <NavLink link="/about">About</NavLink>
                     </div>
                 </div>
-                <div className="flex items-center gap-8">
-                    <SearchForm />
+                <div className="xl:gap-8 flex items-center gap-2 md:gap-4">
+                    <div className="hidden md:block">
+                        <SearchForm />
+                    </div>
                     <NavBarAuthenticatedRightSide />
                 </div>
             </div>
+            <Transition
+                show={isMenuOpen}
+                enter="transition ease-out duration-300"
+                enterFrom="opacity-0 -translate-y-1"
+                enterTo="opacity-100 translate-y-0"
+                leave="transition ease-in duration-300"
+                leaveFrom="opacity-100 translate-y-0"
+                leaveTo="opacity-0 -translate-y-1"
+            >
+                <NavBarMobileMenu />
+            </Transition>
         </nav>
     );
 }

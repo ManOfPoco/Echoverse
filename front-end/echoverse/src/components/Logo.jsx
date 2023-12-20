@@ -6,8 +6,7 @@ function Logo({ width = 271, height = 72 }) {
         <Link to="/">
             <img
                 draggable="false"
-                width={width}
-                height={height}
+                className="h-14 w-40 lg:h-16 lg:w-52 xl:h-20 xl:w-72"
                 src={logo}
                 alt="logo"
             />
