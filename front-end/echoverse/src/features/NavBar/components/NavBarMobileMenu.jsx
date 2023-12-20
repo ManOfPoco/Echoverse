@@ -8,7 +8,7 @@ import dropdownArrowDown from "../../../assets/svg/dropdownArrowDown.svg";
 
 export function NavBarMobileMenu() {
     return (
-        <div className="mx-2 flex flex-col items-center gap-4 py-2 lg:hidden">
+        <div className="mx-2 flex flex-col items-center gap-4  py-2 lg:hidden">
             <div className="md:hidden">
                 <SearchForm />
             </div>

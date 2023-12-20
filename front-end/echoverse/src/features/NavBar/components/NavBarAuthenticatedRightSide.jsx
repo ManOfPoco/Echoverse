@@ -20,13 +20,15 @@ function NavBarAuthenticatedRightSide() {
         <>
             {isAuthenticated ? (
                 <>
-                    <div className="xl:gap-8 hidden md:flex md:gap-4">
+                    <div className="hidden md:flex md:gap-4 xl:gap-8">
                         <img
                             draggable="false"
                             className="h-5.5 w-5.5 cursor-pointer"
                             src={isNotificationOpen ? bellOpened : bell}
                             alt="arrowDown"
-                            onClick={() => setIsNotificationOpen(!isNotificationOpen)}
+                            onClick={() =>
+                                setIsNotificationOpen(!isNotificationOpen)
+                            }
                         />
                         <NavLink link="/direct">
                             <div className="flex gap-2">

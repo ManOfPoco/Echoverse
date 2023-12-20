@@ -14,16 +14,16 @@ import { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { NavBarMobileMenu } from "../features/NavBar/components/NavBarMobileMenu";
 
-function NavBar() {
+function NavBar({ isNavOnTop }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
         <nav
-            className={`sticky top-0 font-archivo-black text-sm transition-colors duration-500 lg:tracking-wide ${
+            className={`sticky top-0 z-50 font-archivo-black text-sm transition-colors duration-300 lg:tracking-wide ${
                 isMenuOpen ? "bg-black-light" : ""
-            }`}
+            } ${isNavOnTop ? '' : 'bg-black-light'}`}
         >
-            <div className="mx-2 flex justify-between pt-2 lg:mx-5 xl:mx-10 xl:mt-7.5">
+            <div className="mx-2 flex justify-between py-2 lg:mx-5 xl:mx-10 xl:mt-7.5">
                 <div className="flex items-center gap-4 lg:hidden">
                     <img
                         draggable="false"
