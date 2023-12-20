@@ -6,7 +6,6 @@ import bell from "../../../assets/svg/bell.svg";
 
 import bellOpened from "../../../assets/svg/bellOpened.svg";
 import message from "../../../assets/svg/message.svg";
-import messageOpen from "../../../assets/svg/messageOpen.svg";
 import profile from "../../../assets/img/profile.jpg";
 
 import NavLink from "./NavLink";

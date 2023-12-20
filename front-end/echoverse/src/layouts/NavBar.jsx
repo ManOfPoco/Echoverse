@@ -23,11 +23,13 @@ function NavBar() {
                 isMenuOpen ? "bg-black-light" : ""
             }`}
         >
-            <div className="xl:mx-10 xl:mt-7.5 mx-2 flex justify-between pt-2 lg:mx-5">
+            <div className="mx-2 flex justify-between pt-2 lg:mx-5 xl:mx-10 xl:mt-7.5">
                 <div className="flex items-center gap-4 lg:hidden">
                     <img
                         draggable="false"
-                        className={`h-5.5 w-5.5 transition-all duration-300 ${isMenuOpen ? 'rotate-180' : ''}`}
+                        className={`h-5.5 w-5.5 transition-all duration-300 ${
+                            isMenuOpen ? "rotate-180" : ""
+                        }`}
                         src={isMenuOpen ? menuOpened : menu}
                         alt="menu"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -44,7 +46,7 @@ function NavBar() {
                         <Logo />
                     </div>
 
-                    <div className="xl:ms-8 xl:gap-8 flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4">
+                    <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
                         <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
                             <DropdownItem
                                 isNavLink="true"
@@ -65,7 +67,7 @@ function NavBar() {
                         <NavLink link="/about">About</NavLink>
                     </div>
                 </div>
-                <div className="xl:gap-8 flex items-center gap-2 md:gap-4">
+                <div className="flex items-center gap-2 md:gap-4 xl:gap-8">
                     <div className="hidden md:block">
                         <SearchForm />
                     </div>

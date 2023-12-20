@@ -22,7 +22,7 @@ function Main() {
             </div>
             <img
                 draggable="false"
-                className="l-0 r-0 absolute left-0 right-0 -z-10 mx-5 ms-auto hidden h-[86%] w-[80%] bg-contain md:block"
+                className="l-0 r-0 absolute left-0 right-0 -z-10 mx-5 ms-auto hidden h-[86%] lg:w-[70%] xl:w-[60%] bg-contain lg:block"
                 src={homePageChat}
                 alt="chatting friends"
             />
