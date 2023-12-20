@@ -1,4 +1,4 @@
-import Button from "../../../components/Button";
+import Button from "../../../components/ButtonLink";
 
 import homePageChat from "../../../assets/img/homePageChat.png";
 
