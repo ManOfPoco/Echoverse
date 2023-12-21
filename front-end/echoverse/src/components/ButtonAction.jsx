@@ -1,6 +1,6 @@
 const types = {
     orange: "bg-orange w-50",
-    purple: 'bg-purple w-full'
+    purple: 'bg-purple w-full hover:bg-indigo-400'
 };
 
 function Button({ type, action, children }) {

@@ -51,13 +51,16 @@ module.exports = {
                 12.5: "50px",
             },
             width: {
-                5.5: '22px',
+                5.5: "22px",
                 50: "200px",
             },
             height: {
                 10.5: "42px",
-                18: '72px',
+                18: "72px",
             },
+            gridTemplateColumns: {
+                '16': 'repeat(16, minmax(0, 1fr))',
+              }
         },
     },
     plugins: [],
