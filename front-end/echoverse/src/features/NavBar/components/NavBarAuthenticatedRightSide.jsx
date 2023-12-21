@@ -12,7 +12,7 @@ import NavLink from "./NavLink";
 import { useState } from "react";
 
 function NavBarAuthenticatedRightSide() {
-    const isAuthenticated = true;
+    const isAuthenticated = false;
 
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 

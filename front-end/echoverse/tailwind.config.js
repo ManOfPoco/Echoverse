@@ -36,7 +36,10 @@ module.exports = {
                 silver: "#557C93",
                 purple: "#645BF0",
                 orange: "#E3792D",
-                blue: "#4A92FE",
+                blue: {
+                    light: "#4A92FE",
+                    dark: "#0E1028",
+                },
                 red: "#CE3124",
                 turquoise: "#6EE2F5",
             },
@@ -53,6 +56,7 @@ module.exports = {
             },
             height: {
                 10.5: "42px",
+                18: '72px',
             },
         },
     },

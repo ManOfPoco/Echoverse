@@ -43,7 +43,7 @@ function NavBar({ isNavOnTop }) {
                 </div>
                 <div className="hidden lg:flex">
                     <div className="hidden lg:block">
-                        <Logo />
+                        <Logo classes={'lg:h-16 lg:w-52 xl:h-20 xl:w-72'} />
                     </div>
 
                     <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
