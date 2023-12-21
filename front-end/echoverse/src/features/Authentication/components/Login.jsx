@@ -1,3 +1,6 @@
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+
 import ButtonAction from "../../../components/ButtonAction";
 import Logo from "../../../components/Logo";
 
@@ -5,8 +8,6 @@ import emailAt from "../../../assets/svg/emailAt.svg";
 import passwordLock from "../../../assets/svg/passwordLock.svg";
 import google from "../../../assets/svg/google.svg";
 import facebook from "../../../assets/svg/facebook.svg";
-import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 function Login({ setActiveAuthentication }) {
     const {
@@ -16,8 +17,8 @@ function Login({ setActiveAuthentication }) {
     } = useForm();
 
     return (
-        <div className="relative flex h-[85dvh] min-h-[602px] items-center justify-center lg:min-h-[706px] xl:min-h-[780px] py-5">
-            <div className="flex max-w-xl grow justify-center rounded-lg bg-black-light px-2">
+        <div className="relative flex h-[85dvh] min-h-[602px] items-center justify-center py-5 lg:min-h-[706px] xl:min-h-[780px]">
+            <div className="flex max-w-xl grow justify-center rounded-lg bg-blue-dark px-2">
                 <div className="flex flex-col items-center pb-8 pt-16 xl:pt-24">
                     <div className="hidden lg:block lg:pb-8 xl:pb-10">
                         <Logo classes={"lg:w-full lg:h-18"} />
@@ -53,7 +54,7 @@ function Login({ setActiveAuthentication }) {
                                 <input
                                     placeholder="Password"
                                     className="w-full border-0 bg-gray-charcoal px-1 font-roboto outline-none"
-                                    {...register("Email", {
+                                    {...register("Password", {
                                         required: true,
                                     })}
                                 />
@@ -96,8 +97,8 @@ function Login({ setActiveAuthentication }) {
                             />
                         </div>
                     </div>
-                    <p className="mt-12 text-sm">
-                        Don't have an account? Create an{" "}
+                    <p className="mt-20 text-sm">
+                        Don't have an account? Create an&nbsp;
                         <Link to={"/sign-up"}>
                             <span
                                 className="text-blue-light"
