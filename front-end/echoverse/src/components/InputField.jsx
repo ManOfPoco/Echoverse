@@ -1,4 +1,4 @@
-function InputField({ img, type = "text", placeholder, classes, register }) {
+function InputField({ img, type = "text", placeholder, classes, autocomplete, register }) {
     return (
         <div className="flex items-center rounded-xls bg-gray-charcoal px-4 py-2">
             <img
@@ -10,7 +10,8 @@ function InputField({ img, type = "text", placeholder, classes, register }) {
             <input
                 type={type}
                 placeholder={placeholder}
-                className={`w-full border-0 bg-gray-charcoal px-1 font-roboto outline-none ${classes}`}
+                className={`border-0 bg-gray-charcoal px-1 font-roboto outline-none ${classes}`}
+                autoComplete={autocomplete}
                 {...register}
             />
         </div>

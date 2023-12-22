@@ -19,7 +19,7 @@ function Main() {
                     voices resonate, friendships flourish, and creativity knows
                     no bounds
                 </p>
-                <Button type="orange" action={() => navigate('/sign-up')}>
+                <Button type='submit' btnClass="orange" action={() => navigate('/sign-up')}>
                     Sign Up For Free
                 </Button>
             </div>

@@ -34,7 +34,7 @@ module.exports = {
                     dark: "#262A2F",
                 },
                 silver: "#557C93",
-                purple: "#645BF0",
+                "majorelle-blue": "#645BF0",
                 pumpkin: "#E3792D",
                 blue: {
                     light: "#4A92FE",
@@ -52,15 +52,15 @@ module.exports = {
             },
             width: {
                 5.5: "22px",
-                50: "200px",
+                18: "72px",
             },
             height: {
                 10.5: "42px",
                 18: "72px",
             },
             gridTemplateColumns: {
-                'authentication': 'repeat(20, minmax(0, 280px))',
-              }
+                authentication: "repeat(20, minmax(0, 280px))",
+            },
         },
     },
     plugins: [],

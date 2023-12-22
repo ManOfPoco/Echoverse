@@ -1,18 +1,7 @@
 import { Transition } from "@headlessui/react";
+
 import Login from "../features/Authentication/components/Login";
 import SignUp from "../features/Authentication/components/SignUp";
-
-{
-    /* <Transition
-    appear={true}
-    show={true}
-    enter="transition ease-in-out duration-500"
-    enterFrom="blur-sm"
-    enterTo="translate-x-0"
->
-    <Login action={action} />
-</Transition>; */
-}
 
 function Authentication({ action }) {
     return (
@@ -27,7 +16,7 @@ function Authentication({ action }) {
                         <Transition
                             appear={action === "login"}
                             show={true}
-                            enter='transition-all duration-500'
+                            enter="transition-all duration-500"
                             enterFrom="blur-sm"
                             enterTo="blur-none"
                         >

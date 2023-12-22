@@ -48,12 +48,13 @@ function SignUp({ action }) {
                     <p className="mt-5 font-roboto text-sm text-gray-light">
                         Sign up to continue
                     </p>
-                    <form onSubmit={(data) => console.log(data)}>
+                    <form onSubmit={(e) => e.preventDefault()}>
                         <div className="mb-5 mt-8 flex flex-col gap-5 transition-all duration-300 focus-within:ring-blue-light">
                             <InputField
                                 img={person}
                                 type="text"
                                 placeholder="Username"
+                                autocomplete='username'
                                 register={register("Username", {
                                     required: true,
                                 })}
@@ -62,6 +63,7 @@ function SignUp({ action }) {
                                 img={emailAt}
                                 type="email"
                                 placeholder="Email"
+                                autocomplete='username'
                                 register={register("Email", {
                                     required: true,
                                 })}
@@ -70,12 +72,17 @@ function SignUp({ action }) {
                                 img={passwordLock}
                                 type="password"
                                 placeholder="Password"
+                                autocomplete='new-password'
                                 register={register("Password", {
                                     required: true,
                                 })}
                             />
                         </div>
-                        <Button type="primary" action={handleSubmit}>
+                        <Button
+                            type="submit"
+                            btnClass="primary"
+                            action={handleSubmit}
+                        >
                             Sign Up
                         </Button>
                     </form>
