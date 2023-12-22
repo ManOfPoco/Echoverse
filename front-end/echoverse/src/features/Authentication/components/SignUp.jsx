@@ -29,8 +29,8 @@ function SignUp({ action }) {
     return (
         <div className="relative flex h-[80dvh] min-h-[602px] items-center justify-center py-5 lg:min-h-[706px] xl:min-h-[730px]">
             <div
-                className={`flex max-w-xl grow justify-center rounded-lg bg-black-dark px-2 drop-shadow-2xl ${
-                    action === "signUp" ? "" : "blur-sm"
+                className={`flex max-w-xl grow justify-center rounded-lg bg-black-dark px-2 drop-shadow-2xl  ${
+                    action === "signUp" ? "blur-none" : "blur-sm"
                 } `}
                 onClick={handleNavigate}
             >

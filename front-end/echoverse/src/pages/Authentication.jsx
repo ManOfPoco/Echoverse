@@ -1,30 +1,54 @@
+import { Transition } from "@headlessui/react";
 import Login from "../features/Authentication/components/Login";
 import SignUp from "../features/Authentication/components/SignUp";
+
+{
+    /* <Transition
+    appear={true}
+    show={true}
+    enter="transition ease-in-out duration-500"
+    enterFrom="blur-sm"
+    enterTo="translate-x-0"
+>
+    <Login action={action} />
+</Transition>; */
+}
 
 function Authentication({ action }) {
     return (
         <>
             <div className="mx-auto max-w-[1440px]">
-                <div className="xl:grid-cols-authentication xl:grid">
-                    {action === "login" ? (
-                        <>
-                            <div className="py-5 xl:z-10 xl:col-start-4 xl:col-end-12 xl:row-start-1 xl:row-end-1">
-                                <Login action={action} />
-                            </div>
-                            <div className="hidden py-5 xl:col-start-10 xl:col-end-[18] xl:row-start-1 xl:row-end-1 xl:block">
-                                <SignUp action={action} />
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <div className="hidden py-5 xl:col-start-4 xl:col-end-12 xl:row-start-1 xl:row-end-1 xl:block">
-                                <Login action={action} />
-                            </div>
-                            <div className="py-5 xl:z-10 xl:col-start-10 xl:col-end-[18] xl:row-start-1 xl:row-end-1">
-                                <SignUp action={action} />
-                            </div>
-                        </>
-                    )}
+                <div className="xl:grid xl:grid-cols-authentication">
+                    <div
+                        className={`py-5 xl:col-start-4 xl:col-end-12 xl:row-start-1 xl:row-end-1 ${
+                            action === "login" ? "xl:z-10" : "hidden xl:block"
+                        }`}
+                    >
+                        <Transition
+                            appear={action === "login"}
+                            show={true}
+                            enter='transition-all duration-500'
+                            enterFrom="blur-sm"
+                            enterTo="blur-none"
+                        >
+                            <Login action={action} />
+                        </Transition>
+                    </div>
+                    <div
+                        className={`py-5 xl:col-start-10 xl:col-end-[18] xl:row-start-1 xl:row-end-1 ${
+                            action === "signUp" ? "xl:z-10" : "hidden xl:block"
+                        }`}
+                    >
+                        <Transition
+                            appear={action === "signUp"}
+                            show={true}
+                            enter="transition-all duration-500"
+                            enterFrom="blur-sm"
+                            enterTo="blur-none"
+                        >
+                            <SignUp action={action} />
+                        </Transition>
+                    </div>
                 </div>
             </div>
         </>
