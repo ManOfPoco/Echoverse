@@ -35,7 +35,7 @@ module.exports = {
                 },
                 silver: "#557C93",
                 purple: "#645BF0",
-                orange: "#E3792D",
+                pumpkin: "#E3792D",
                 blue: {
                     light: "#4A92FE",
                     dark: "#0E1028",
@@ -59,7 +59,7 @@ module.exports = {
                 18: "72px",
             },
             gridTemplateColumns: {
-                '16': 'repeat(16, minmax(0, 1fr))',
+                'authentication': 'repeat(20, minmax(0, 280px))',
               }
         },
     },

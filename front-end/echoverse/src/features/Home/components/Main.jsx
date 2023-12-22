@@ -1,8 +1,11 @@
-import Button from "../../../components/ButtonLink";
+import Button from "../../../components/Button";
 
 import homePageChat from "../../../assets/img/homePageChat.png";
+import { useNavigate } from "react-router-dom";
 
 function Main() {
+    const navigate = useNavigate()
+
     return (
         <>
             <div className="z-10 mx-2 flex flex-col gap-5 font-archivo-black md:mx-10 xl:mx-25 xl:gap-12.5">
@@ -16,7 +19,7 @@ function Main() {
                     voices resonate, friendships flourish, and creativity knows
                     no bounds
                 </p>
-                <Button type="orange" to="/sign-up">
+                <Button type="orange" action={() => navigate('/sign-up')}>
                     Sign Up For Free
                 </Button>
             </div>

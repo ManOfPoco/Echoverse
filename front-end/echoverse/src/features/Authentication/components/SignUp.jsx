@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import ButtonAction from "../../../components/ButtonAction";
+import Button from "../../../components/Button";
 import Logo from "../../../components/Logo";
 
 import emailAt from "../../../assets/svg/emailAt.svg";
@@ -9,6 +9,7 @@ import passwordLock from "../../../assets/svg/passwordLock.svg";
 import google from "../../../assets/svg/google.svg";
 import facebook from "../../../assets/svg/facebook.svg";
 import person from "../../../assets/svg/person.svg";
+import InputField from "../../../components/InputField";
 
 function SignUp({ action }) {
     const navigate = useNavigate();
@@ -33,7 +34,11 @@ function SignUp({ action }) {
                 } `}
                 onClick={handleNavigate}
             >
-                <div className="flex flex-col items-center pb-8 pt-10 lg:pt-12">
+                <div
+                    className={`flex flex-col items-center pb-8 pt-10 lg:pt-12 ${
+                        action === "signUp" ? "" : "pointer-events-none"
+                    }`}
+                >
                     <div className="hidden pb-5 md:block lg:pb-6 xl:pb-8">
                         <Logo classes={"w-full h-18"} isLinkRequired={false} />
                     </div>
@@ -45,61 +50,40 @@ function SignUp({ action }) {
                     </p>
                     <form onSubmit={(data) => console.log(data)}>
                         <div className="mb-5 mt-8 flex flex-col gap-5 transition-all duration-300 focus-within:ring-blue-light">
-                            <div className="flex items-center rounded-xls bg-gray-charcoal px-4 py-2">
-                                <img
-                                    draggable="false"
-                                    className="h-5.5 w-5.5"
-                                    src={person}
-                                    alt="search"
-                                />
-                                <input
-                                    placeholder="Username"
-                                    className="w-full border-0 bg-gray-charcoal px-1 font-roboto outline-none"
-                                    {...register("Username", {
-                                        required: true,
-                                    })}
-                                />
-                            </div>
-                            <div className="flex items-center rounded-xls bg-gray-charcoal px-4 py-2">
-                                <img
-                                    draggable="false"
-                                    className="h-5.5 w-5.5"
-                                    src={emailAt}
-                                    alt="search"
-                                />
-                                <input
-                                    placeholder="Email"
-                                    className="w-full border-0 bg-gray-charcoal px-1 font-roboto outline-none"
-                                    {...register("Email", {
-                                        required: true,
-                                    })}
-                                />
-                            </div>
-                            <div className="flex items-center rounded-xls bg-gray-charcoal px-4 py-2">
-                                <img
-                                    draggable="false"
-                                    className="h-6 w-6"
-                                    src={passwordLock}
-                                    alt="password"
-                                />
-                                <input
-                                    placeholder="Password"
-                                    className="w-full border-0 bg-gray-charcoal px-1 font-roboto outline-none"
-                                    {...register("Password", {
-                                        required: true,
-                                    })}
-                                />
-                            </div>
+                            <InputField
+                                img={person}
+                                type="text"
+                                placeholder="Username"
+                                register={register("Username", {
+                                    required: true,
+                                })}
+                            />
+                            <InputField
+                                img={emailAt}
+                                type="email"
+                                placeholder="Email"
+                                register={register("Email", {
+                                    required: true,
+                                })}
+                            />
+                            <InputField
+                                img={passwordLock}
+                                type="password"
+                                placeholder="Password"
+                                register={register("Password", {
+                                    required: true,
+                                })}
+                            />
                         </div>
-                        <ButtonAction type="purple" action={handleSubmit}>
+                        <Button type="primary" action={handleSubmit}>
                             Sign Up
-                        </ButtonAction>
+                        </Button>
                     </form>
                     <p className="my-7 text-sm">Or sign up with</p>
                     <div className="flex w-full justify-around gap-4">
-                        <div
-                            className="rounded-full bg-gray-charcoal p-3"
-                            onClick={() => console.log("google login")}
+                        <Button
+                            customClasses="rounded-full bg-gray-charcoal p-3"
+                            action={() => console.log("google login")}
                         >
                             <img
                                 draggable="false"
@@ -107,10 +91,10 @@ function SignUp({ action }) {
                                 src={google}
                                 alt="password"
                             />
-                        </div>
-                        <div
-                            className="rounded-full bg-gray-charcoal p-3"
-                            onClick={() => console.log("facebook login")}
+                        </Button>
+                        <Button
+                            customClasses="rounded-full bg-gray-charcoal p-3"
+                            action={() => console.log("facebook login")}
                         >
                             <img
                                 draggable="false"
@@ -118,9 +102,9 @@ function SignUp({ action }) {
                                 src={facebook}
                                 alt="password"
                             />
-                        </div>
+                        </Button>
                     </div>
-                    <p className="mt-10 xl:mt-16 text-sm">
+                    <p className="mt-10 text-sm xl:mt-16">
                         Already have an account?&nbsp;
                         <Link to={"/login"}>
                             <span className="text-blue-light">Login</span>
