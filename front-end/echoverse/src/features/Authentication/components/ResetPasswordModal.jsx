@@ -1,11 +1,17 @@
 import { useForm } from "react-hook-form";
 
 import Modal from "../../../components/Modal";
-import emailAt from "../../../assets/svg/emailAt.svg";
-import resetPasswordLock from "../../../assets/svg/resetPasswordLock.svg";
 import InputField from "../../../components/InputField";
 
-function ResetPasswordModal({ isModalOpen, setIsModalOpen }) {
+import emailAt from "../../../assets/svg/emailAt.svg";
+import resetPasswordLock from "../../../assets/svg/resetPasswordLock.svg";
+import Button from "../../../components/Button";
+
+function ResetPasswordModal({
+    isResetPasswordModalOpen,
+    setIsResetPasswordModalOpen,
+    setIsEmailSendModalOpen,
+}) {
     const {
         register: passwordResetRegister,
         handleSubmit: handlePasswordReset,
@@ -14,25 +20,33 @@ function ResetPasswordModal({ isModalOpen, setIsModalOpen }) {
 
     return (
         <Modal
-            isOpen={isModalOpen}
-            setIsOpen={setIsModalOpen}
+            isOpen={isResetPasswordModalOpen}
+            setIsOpen={setIsResetPasswordModalOpen}
             img={resetPasswordLock}
             alt="lock"
             title="Reset Password"
             description="Enter your email address below and follow the instruction in it"
-            btnText="Send Reset Link"
-            btnAction={handlePasswordReset}
         >
-            <form className="pb-5" onSubmit={(e) => e.preventDefault()}>
+            <form className="flex flex-col gap-5" onSubmit={(e) => e.preventDefault()}>
                 <InputField
                     img={emailAt}
                     type="email"
                     placeholder="Email"
-                    autocomplete='username'
+                    autocomplete="username"
                     register={passwordResetRegister("Email", {
                         required: true,
                     })}
                 />
+                <Button
+                    type="button"
+                    btnClass="primary"
+                    action={() => {
+                        setIsResetPasswordModalOpen(false);
+                        setIsEmailSendModalOpen(true);
+                    }}
+                >
+                    Send Reset Link
+                </Button>
             </form>
         </Modal>
     );

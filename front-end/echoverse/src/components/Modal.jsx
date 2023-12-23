@@ -1,6 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import FormImage from "./ModalImage";
-import Button from "./Button";
+import ModalImage from "./ModalImage";
 import { Fragment } from "react";
 
 function Modal({
@@ -10,13 +9,10 @@ function Modal({
     alt,
     title,
     description,
-    children,
-    btnText,
-    btnAction,
+    children
 }) {
     return (
         <Transition
-            // as={Fragment}
             show={isOpen}
         >
             <Dialog onClose={() => setIsOpen(false)} className="relative z-50">
@@ -47,7 +43,7 @@ function Modal({
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
                         <Dialog.Panel className="mx-auto max-w-lg rounded-xl bg-indigo-950">
                             <div className="flex flex-col items-center px-20 py-14 text-center">
-                                <FormImage img={img} alt={alt} />
+                                <ModalImage img={img} alt={alt} />
                                 <div className="py-8 font-archivo-black">
                                     <Dialog.Title className="pb-4 text-3xl">
                                         {title}
@@ -58,14 +54,6 @@ function Modal({
                                 </div>
 
                                 {children}
-
-                                <Button
-                                    type="submit"
-                                    btnClass="primary"
-                                    action={btnAction}
-                                >
-                                    {btnText}
-                                </Button>
                             </div>
                         </Dialog.Panel>
                     </div>

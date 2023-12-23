@@ -5,15 +5,17 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import Logo from "../../../components/Logo";
 import InputField from "../../../components/InputField";
+import ResetPasswordModal from "./ResetPasswordModal";
+import EmailSendModal from "./EmailSendModal";
 
 import passwordLock from "../../../assets/svg/passwordLock.svg";
 import emailAt from "../../../assets/svg/emailAt.svg";
 import google from "../../../assets/svg/google.svg";
 import facebook from "../../../assets/svg/facebook.svg";
-import ResetPasswordModal from "./ResetPasswordModal";
 
 function Login({ action }) {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
+    const [isEmailSendModalOpen, setIsEmailSendModalOpen] = useState(false);
     const navigate = useNavigate();
 
     const {
@@ -31,8 +33,13 @@ function Login({ action }) {
     return (
         <>
             <ResetPasswordModal
-                isModalOpen={isModalOpen}
-                setIsModalOpen={setIsModalOpen}
+                isResetPasswordModalOpen={isResetPasswordModalOpen}
+                setIsResetPasswordModalOpen={setIsResetPasswordModalOpen}
+                setIsEmailSendModalOpen={setIsEmailSendModalOpen}
+            />
+            <EmailSendModal
+                isEmailSendModalOpen={isEmailSendModalOpen}
+                setIsEmailSendModalOpen={setIsEmailSendModalOpen}
             />
 
             <div className="relative flex h-[80dvh] min-h-[602px] items-center justify-center py-5 lg:min-h-[706px] xl:min-h-[730px]">
@@ -40,7 +47,7 @@ function Login({ action }) {
                     className={`flex max-w-xl grow justify-center rounded-lg bg-blue-dark px-2 drop-shadow-2xl transition-all duration-500 ${
                         action === "login" ? "blur-none" : "blur-sm"
                     } ${
-                        isModalOpen ? "blur-sm" : "blur-none"
+                        isResetPasswordModalOpen ? "blur-sm" : "blur-none"
                     }`}
                     onClick={handleNavigate}
                 >
@@ -85,7 +92,7 @@ function Login({ action }) {
                             <div className="flex justify-end">
                                 <Button
                                     customClasses="mb-6 mt-3 text-sm text-blue-light"
-                                    action={() => setIsModalOpen(true)}
+                                    action={() => setIsResetPasswordModalOpen(true)}
                                 >
                                     Forgot Password?
                                 </Button>

@@ -3,6 +3,8 @@ import Home from "./pages/Home";
 
 import AppLayout from "./layouts/AppLayout";
 import Authentication from "./pages/Authentication";
+import SetNewPassword from "./pages/SetNewPassword";
+import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <Authentication action='login' key='login' />,
+            },
+            {
+                path: "/set-new-password",
+                element: <SetNewPassword />
+            },
+            {
+                path: "/password-reset-success",
+                element: <PasswordResetSuccess />
             },
         ],
     },
