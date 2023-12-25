@@ -5,6 +5,7 @@ import AppLayout from "./layouts/AppLayout";
 import Authentication from "./pages/Authentication";
 import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: "/password-reset-success",
                 element: <PasswordResetSuccess />
+            },
+            {
+                path: "/:username",
+                element: <Profile />
             },
         ],
     },

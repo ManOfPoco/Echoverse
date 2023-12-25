@@ -26,6 +26,7 @@ module.exports = {
             colors: {
                 black: {
                     light: "#0E1C26",
+                    night: "#121212",
                     dark: "#000000",
                 },
                 gray: {
@@ -39,6 +40,7 @@ module.exports = {
                 blue: {
                     light: "#4A92FE",
                     dark: "#0E1028",
+                    prussian: '#1E293B'
                 },
                 red: "#CE3124",
                 turquoise: "#6EE2F5",
@@ -53,6 +55,10 @@ module.exports = {
             width: {
                 5.5: "22px",
                 18: "72px",
+                sm: "576px",
+                md: "768px",
+                lg: "1024px",
+                xl: "1440px",
             },
             height: {
                 10.5: "42px",
