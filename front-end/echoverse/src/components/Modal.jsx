@@ -4,7 +4,7 @@ import { Fragment } from "react";
 
 function Modal({
     isOpen,
-    setIsOpen,
+    onClose,
     img,
     alt,
     title,
@@ -15,7 +15,7 @@ function Modal({
         <Transition
             show={isOpen}
         >
-            <Dialog onClose={() => setIsOpen(false)} className="relative z-50">
+            <Dialog onClose={onClose} className="relative z-50">
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"

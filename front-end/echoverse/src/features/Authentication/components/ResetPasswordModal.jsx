@@ -21,7 +21,7 @@ function ResetPasswordModal({
     return (
         <Modal
             isOpen={isResetPasswordModalOpen}
-            setIsOpen={setIsResetPasswordModalOpen}
+            onClose={() => setIsResetPasswordModalOpen(false)}
             img={resetPasswordLock}
             alt="lock"
             title="Reset Password"

@@ -7,7 +7,7 @@ function EmailSendModal({ isEmailSendModalOpen, setIsEmailSendModalOpen }) {
     return (
         <Modal
             isOpen={isEmailSendModalOpen}
-            setIsOpen={setIsEmailSendModalOpen}
+            onClose={() => setIsEmailSendModalOpen(false)}
             img={checkDone}
             alt="checkDone"
             title="Email Send!"

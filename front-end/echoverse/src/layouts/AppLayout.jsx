@@ -8,7 +8,6 @@ function AppLayout() {
     useEffect(() => {
         function handleScroll() {
             if (window.scrollY > 64) {
-                console.log(window.scrollY);
                 setIsNavOnTop(false);
             } else setIsNavOnTop(true);
         }
