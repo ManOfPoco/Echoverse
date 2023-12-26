@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 
 import AppLayout from "./layouts/AppLayout";
@@ -6,6 +6,8 @@ import Authentication from "./pages/Authentication";
 import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
+import Saved from "./features/Profile/components/Saved";
+import Games from "./features/Profile/Games/components/Games";
 
 const router = createBrowserRouter([
     {
@@ -17,23 +19,33 @@ const router = createBrowserRouter([
             },
             {
                 path: "/sign-up",
-                element: <Authentication action='signUp' key='signUp' />,
+                element: <Authentication action="signUp" key="signUp" />,
             },
             {
                 path: "/login",
-                element: <Authentication action='login' key='login' />,
+                element: <Authentication action="login" key="login" />,
             },
             {
                 path: "/set-new-password",
-                element: <SetNewPassword />
+                element: <SetNewPassword />,
             },
             {
                 path: "/password-reset-success",
-                element: <PasswordResetSuccess />
+                element: <PasswordResetSuccess />,
             },
             {
                 path: "/:username",
-                element: <Profile />
+                element: <Profile action="games" />,
+                children: [
+                    {
+                        index: true,
+                        element: <Games action="games" />,
+                    },
+                    {
+                        path: "saved",
+                        element: <Saved action="saved" />,
+                    },
+                ],
             },
         ],
     },
