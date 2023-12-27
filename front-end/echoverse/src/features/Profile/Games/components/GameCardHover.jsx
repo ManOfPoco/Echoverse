@@ -7,7 +7,11 @@ import editSVG from "../../../../assets/svg/editSVG.svg";
 import deleteSVG from "../../../../assets/svg/deleteSVG.svg";
 import GameCardHoverOption from "./GameCardHoverOption";
 
-function GameCardHover({ steamLink, presentInProfile }) {
+function GameCardHover({
+    steamLink,
+    presentInProfile,
+    handleEditGamePlatforms,
+}) {
     return (
         <div className="group absolute h-40 w-72 rounded-xl hover:block hover:bg-black-dark/70 hover:backdrop-blur-sm sm:h-44 sm:w-80">
             {steamLink && (
@@ -45,6 +49,7 @@ function GameCardHover({ steamLink, presentInProfile }) {
                     img={editSVG}
                     alt="edit"
                     title="Edit platforms"
+                    onClick={handleEditGamePlatforms}
                 />
                 {presentInProfile && (
                     <GameCardHoverOption

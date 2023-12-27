@@ -4,11 +4,12 @@ function GameCardHoverOption({
     img,
     alt,
     title,
+    onClick,
     isDeletion = false,
 }) {
     return (
         <>
-            <Button customClasses="group/option">
+            <Button customClasses="group/option" action={onClick}>
                 <div className="flex max-w-[80px] flex-col items-center justify-center group-hover/option:text-blue-light">
                     <div
                         className={`max-w-[64px] rounded-xl bg-gray-charcoal p-3 ${

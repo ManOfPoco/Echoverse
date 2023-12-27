@@ -3,17 +3,35 @@ import GameCardHover from "./GameCardHover";
 import coverNotFound from "../../../../assets/img/coverNotFound.png";
 import GameCardPlatforms from "./GameCardPlatforms";
 
-function GameCard({ title, img, platforms, presentInProfile, steamLink }) {
+function GameCard({
+    title,
+    img,
+    selectedPlatforms,
+    platforms,
+    presentInProfile,
+    steamLink,
+    dispatch,
+}) {
     function handleImgNotFound(e) {
         e.currentTarget.src = coverNotFound;
     }
 
+    function handleEditGamePlatforms() {
+        dispatch({
+            type: "openEditGamePlatformsModal",
+            game: title,
+            platforms,
+            selectedPlatforms,
+        });
+    }
+
     return (
         <div className="mt-10 flex flex-col items-center">
-            <GameCardPlatforms platforms={platforms} />
+            <GameCardPlatforms selectedPlatforms={selectedPlatforms} />
             <GameCardHover
                 steamLink={steamLink}
                 presentInProfile={presentInProfile}
+                handleEditGamePlatforms={handleEditGamePlatforms}
             />
 
             <img

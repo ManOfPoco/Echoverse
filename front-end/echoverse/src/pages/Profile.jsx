@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import Avatar from "../components/Avatar";
 
@@ -9,227 +9,226 @@ import GamingCalendar from "../features/Profile/components/GamingCalendar";
 
 import profile from "../assets/img/profile.jpg";
 import cs2 from "../assets/img/cs2.png";
-import { Toaster } from "react-hot-toast";
-import SetGamingNotesModal from "../features/Profile/components/SetGamingNotesModal";
+
+const data = {
+    username: "ManOfPoco",
+    gamesQuantity: 522,
+    followers: 155,
+    following: 13,
+    firstName: "John Peterson",
+    description:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+    region: "Europe",
+    languages: ["English"],
+    platforms: ["PC", "Xbox"],
+    games: [
+        {
+            title: "Counter Strike 2",
+            img: cs2,
+            platforms: ["PC", "Xbox", "Switch"],
+            steamLink:
+                "https://store.steampowered.com/app/730/CounterStrike_2/",
+        },
+        {
+            title: "Detroit: Become Human",
+            img: "detroitBecomeHuman",
+            platforms: ["PC", "PS", "Xbox"],
+            steamLink:
+                "https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
+        },
+        {
+            title: "Satisfactory",
+            img: "satisfactory",
+            platforms: ["PC"],
+            steamLink:
+                "https://store.steampowered.com/app/526870/Satisfactory/",
+        },
+        {
+            title: "Lethal Company",
+            img: "lethalCompany",
+            platforms: ["PC", "PS", "Xbox"],
+            steamLink: "https://lethalcompany.com/",
+        },
+        {
+            title: "Valorant",
+            img: "valorant",
+            platforms: ["PC"],
+            steamLink: "https://playvalorant.com/",
+        },
+    ],
+};
+const calendarData = {
+    Monday: [
+        {
+            id: 1,
+            dayOfTheWeek: "Monday",
+            time: "Morning",
+            status: true,
+            notes: "Cool note",
+        },
+        {
+            id: 2,
+            dayOfTheWeek: "Monday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 3,
+            dayOfTheWeek: "Monday",
+            time: "Evening",
+            status: false,
+            notes: "",
+        },
+    ],
+    Tuesday: [
+        {
+            id: 4,
+            dayOfTheWeek: "Tuesday",
+            time: "Morning",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 5,
+            dayOfTheWeek: "Tuesday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 6,
+            dayOfTheWeek: "Tuesday",
+            time: "Evening",
+            status: false,
+            notes: "",
+        },
+    ],
+    Wednesday: [
+        {
+            id: 7,
+            dayOfTheWeek: "Wednesday",
+            time: "Morning",
+            status: true,
+            notes: "Cool note",
+        },
+        {
+            id: 8,
+            dayOfTheWeek: "Wednesday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 9,
+            dayOfTheWeek: "Wednesday",
+            time: "Evening",
+            status: true,
+            notes: "Cool note",
+        },
+    ],
+    Thursday: [
+        {
+            id: 10,
+            dayOfTheWeek: "Thursday",
+            time: "Morning",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 11,
+            dayOfTheWeek: "Thursday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 12,
+            dayOfTheWeek: "Thursday",
+            time: "Evening",
+            status: false,
+            notes: "",
+        },
+    ],
+    Friday: [
+        {
+            id: 13,
+            dayOfTheWeek: "Friday",
+            time: "Morning",
+            status: true,
+            notes: "Cool note",
+        },
+        {
+            id: 14,
+            dayOfTheWeek: "Friday",
+            time: "Afternoon",
+            status: true,
+            notes: "Cool note",
+        },
+        {
+            id: 15,
+            dayOfTheWeek: "Friday",
+            time: "Evening",
+            status: false,
+            notes: "",
+        },
+    ],
+    Saturday: [
+        {
+            id: 16,
+            dayOfTheWeek: "Saturday",
+            time: "Morning",
+            status: true,
+            notes: "Cool note",
+        },
+        {
+            id: 17,
+            dayOfTheWeek: "Saturday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 18,
+            dayOfTheWeek: "Saturday",
+            time: "Evening",
+            status: true,
+            notes: "Cool note",
+        },
+    ],
+    Sunday: [
+        {
+            id: 19,
+            dayOfTheWeek: "Sunday",
+            time: "Morning",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 20,
+            dayOfTheWeek: "Sunday",
+            time: "Afternoon",
+            status: false,
+            notes: "",
+        },
+        {
+            id: 21,
+            dayOfTheWeek: "Sunday",
+            time: "Evening",
+            status: true,
+            notes: "Cool note",
+        },
+    ],
+};
 
 function Profile({ action }) {
     const navigate = useNavigate();
-
     const isCurrentUser = true;
-    const data = {
-        username: "ManOfPoco",
-        gamesQuantity: 522,
-        followers: 155,
-        following: 13,
-        firstName: "John Peterson",
-        description:
-            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-        region: "Europe",
-        languages: ["English"],
-        platforms: ["PC", "Xbox"],
-        games: [
-            {
-                title: "Counter Strike 2",
-                img: cs2,
-                platforms: ["PC", "Xbox", "Switch"],
-                steamLink:
-                    "https://store.steampowered.com/app/730/CounterStrike_2/",
-            },
-            {
-                title: "Detroit: Become Human",
-                img: "detroitBecomeHuman",
-                platforms: ["PC", "PS", "Xbox"],
-                steamLink:
-                    "https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
-            },
-            {
-                title: "Satisfactory",
-                img: "satisfactory",
-                platforms: ["PC"],
-                steamLink:
-                    "https://store.steampowered.com/app/526870/Satisfactory/",
-            },
-            {
-                title: "Lethal Company",
-                img: "lethalCompany",
-                platforms: ["PC", "PS", "Xbox"],
-                steamLink: "https://lethalcompany.com/",
-            },
-            {
-                title: "Valorant",
-                img: "valorant",
-                platforms: ["PC"],
-                steamLink: "https://playvalorant.com/",
-            },
-        ],
-    };
-    const calendarData = {
-        'Monday': [
-            {
-                id: 1,
-                dayOfTheWeek: "Monday",
-                time: "Morning",
-                status: true,
-                notes: 'Cool note'
-            },
-            {
-                id: 2,
-                dayOfTheWeek: "Monday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 3,
-                dayOfTheWeek: "Monday",
-                time: "Evening",
-                status: false,
-                notes: ''
-            },
-        ],
-        'Tuesday': [
-            {
-                id: 4,
-                dayOfTheWeek: "Tuesday",
-                time: "Morning",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 5,
-                dayOfTheWeek: "Tuesday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 6,
-                dayOfTheWeek: "Tuesday",
-                time: "Evening",
-                status: false,
-                notes: ''
-            },
-        ],
-        'Wednesday': [
-            {
-                id: 7,
-                dayOfTheWeek: "Wednesday",
-                time: "Morning",
-                status: true,
-                notes: 'Cool note'
-            },
-            {
-                id: 8,
-                dayOfTheWeek: "Wednesday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 9,
-                dayOfTheWeek: "Wednesday",
-                time: "Evening",
-                status: true,
-                notes: 'Cool note'
-            },
-        ],
-        'Thursday': [
-            {
-                id: 10,
-                dayOfTheWeek: "Thursday",
-                time: "Morning",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 11,
-                dayOfTheWeek: "Thursday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 12,
-                dayOfTheWeek: "Thursday",
-                time: "Evening",
-                status: false,
-                notes: ''
-            },
-        ],
-        'Friday': [
-            {
-                id: 13,
-                dayOfTheWeek: "Friday",
-                time: "Morning",
-                status: true,
-                notes: 'Cool note'
-            },
-            {
-                id: 14,
-                dayOfTheWeek: "Friday",
-                time: "Afternoon",
-                status: true,
-                notes: 'Cool note'
-            },
-            {
-                id: 15,
-                dayOfTheWeek: "Friday",
-                time: "Evening",
-                status: false,
-                notes: ''
-            },
-        ],
-        'Saturday': [
-            {
-                id: 16,
-                dayOfTheWeek: "Saturday",
-                time: "Morning",
-                status: true,
-                notes: 'Cool note'
-            },
-            {
-                id: 17,
-                dayOfTheWeek: "Saturday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 18,
-                dayOfTheWeek: "Saturday",
-                time: "Evening",
-                status: true,
-                notes: 'Cool note'
-            },
-        ],
-        'Sunday': [
-            {
-                id: 19,
-                dayOfTheWeek: "Sunday",
-                time: "Morning",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 20,
-                dayOfTheWeek: "Sunday",
-                time: "Afternoon",
-                status: false,
-                notes: ''
-            },
-            {
-                id: 21,
-                dayOfTheWeek: "Sunday",
-                time: "Evening",
-                status: true,
-                notes: 'Cool note'
-            },
-        ]
-    }
 
     return (
         <>
             <Toaster />
+
             <div className="h-[calc(100%-72px)] max-w-full bg-black-night lg:h-[calc(100%-80px)] xl:mt-5 xl:h-[calc(100%-146px)]">
                 <div className="w-full max-w-[1080px] divide-y divide-white lg:mx-auto">
                     <div>

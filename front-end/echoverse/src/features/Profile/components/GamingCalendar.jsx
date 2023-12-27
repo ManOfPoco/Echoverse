@@ -105,10 +105,6 @@ function GamingCalendar({ isCurrentUser, data }) {
         isGamingNotesModalOpen,
     } = state;
 
-    function handleSelectingDay(day, time) {
-        dispatch({ type: "selectDate", day, time });
-    }
-
     function handleChangeMode(mode) {
         dispatch({
             type: "setActiveMode",

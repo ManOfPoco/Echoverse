@@ -10,7 +10,7 @@ function InputField({ img, type = "text", placeholder, classes, autocomplete, re
             <input
                 type={type}
                 placeholder={placeholder}
-                className={`border-0 bg-gray-charcoal max-w-[190px] px-1 font-roboto outline-none ${classes}`}
+                className={`border-0 bg-gray-charcoal max-w-[190px] px-2 font-roboto outline-none ${classes}`}
                 autoComplete={autocomplete}
                 {...register}
             />
