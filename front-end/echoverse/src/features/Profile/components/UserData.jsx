@@ -14,16 +14,11 @@ function UserData({
     region,
     languages,
     platforms,
+    children
 }) {
     return (
         <>
-            {
-                <UserStatistics
-                    gamesQuantity={gamesQuantity}
-                    followers={followers}
-                    following={following}
-                />
-            }
+            {children}
             <h3 className="font-medium">{firstName}</h3>
             <p>{description}</p>
             {region && (

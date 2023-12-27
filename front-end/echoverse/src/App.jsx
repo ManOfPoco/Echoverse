@@ -1,11 +1,13 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
 
-import AppLayout from "./layouts/AppLayout";
+import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
+
+import AppLayout from "./layouts/AppLayout";
+
 import Saved from "./features/Profile/components/Saved";
 import Games from "./features/Profile/Games/components/Games";
 

@@ -6,9 +6,12 @@ import Avatar from "../components/Avatar";
 import InteractButtons from "../features/Profile/components/InteractButtons";
 import UserData from "../features/Profile/components/UserData";
 import GamingCalendar from "../features/Profile/components/GamingCalendar";
+import FollowModal from "../features/Profile/components/FollowModal";
 
 import profile from "../assets/img/profile.jpg";
 import cs2 from "../assets/img/cs2.png";
+import { useState } from "react";
+import UserStatistics from "../features/Profile/components/UserStatistics";
 
 const data = {
     username: "ManOfPoco",
@@ -57,6 +60,46 @@ const data = {
         },
     ],
 };
+const followers = [
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: false,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+];
+const following = [
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+];
 const calendarData = {
     Monday: [
         {
@@ -222,12 +265,26 @@ const calendarData = {
 };
 
 function Profile({ action }) {
-    const navigate = useNavigate();
     const isCurrentUser = true;
+
+    const [isFollowersModalOpen, setIsFollowersModalOpen] = useState(false);
+    const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
 
     return (
         <>
             <Toaster />
+            <FollowModal
+                isOpen={isFollowersModalOpen}
+                onClose={() => setIsFollowersModalOpen(false)}
+                title="Followers"
+                follows={followers}
+            />
+            <FollowModal
+                isOpen={isFollowingModalOpen}
+                onClose={() => setIsFollowingModalOpen(false)}
+                title="Following"
+                follows={following}
+            />
 
             <div className="h-[calc(100%-72px)] max-w-full bg-black-night lg:h-[calc(100%-80px)] xl:mt-5 xl:h-[calc(100%-146px)]">
                 <div className="w-full max-w-[1080px] divide-y divide-white lg:mx-auto">
@@ -249,15 +306,26 @@ function Profile({ action }) {
                                 <div className="flex flex-wrap justify-between">
                                     <div className="hidden max-w-md flex-col gap-4 md:flex">
                                         <UserData
-                                            gamesQuantity={data.gamesQuantity}
-                                            followers={data.followers}
-                                            following={data.following}
                                             firstName={data.firstName}
                                             description={data.description}
                                             region={data.region}
                                             languages={data.languages}
                                             platforms={data.platforms}
-                                        />
+                                        >
+                                            <UserStatistics
+                                                gamesQuantity={
+                                                    data.gamesQuantity
+                                                }
+                                                followers={data.followers}
+                                                following={data.following}
+                                                setIsFollowersModalOpen={
+                                                    setIsFollowersModalOpen
+                                                }
+                                                setIsFollowingModalOpen={
+                                                    setIsFollowingModalOpen
+                                                }
+                                            />
+                                        </UserData>
                                     </div>
                                     <div className="hidden pt-2 md:flex md:flex-col lg:pt-0">
                                         <GamingCalendar
@@ -278,7 +346,13 @@ function Profile({ action }) {
                                 region={data.region}
                                 languages={data.languages}
                                 platforms={data.platforms}
-                            />
+                            >
+                                <UserStatistics
+                                    gamesQuantity={data.gamesQuantity}
+                                    followers={data.followers}
+                                    following={data.following}
+                                />
+                            </UserData>
                             <GamingCalendar
                                 isCurrentUser={isCurrentUser}
                                 data={calendarData}

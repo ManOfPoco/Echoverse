@@ -12,6 +12,8 @@ function GameCardHover({
     presentInProfile,
     handleEditGamePlatforms,
 }) {
+    const isCurrentUser = true;
+
     return (
         <div className="group absolute h-40 w-72 rounded-xl hover:block hover:bg-black-dark/70 hover:backdrop-blur-sm sm:h-44 sm:w-80">
             {steamLink && (
@@ -44,13 +46,15 @@ function GameCardHover({
                     alt="group"
                     title="Look for a group"
                 />
-                <GameCardHoverOption
-                    presentInProfile={presentInProfile}
-                    img={editSVG}
-                    alt="edit"
-                    title="Edit platforms"
-                    onClick={handleEditGamePlatforms}
-                />
+                {isCurrentUser && (
+                    <GameCardHoverOption
+                        presentInProfile={presentInProfile}
+                        img={editSVG}
+                        alt="edit"
+                        title="Edit platforms"
+                        onClick={handleEditGamePlatforms}
+                    />
+                )}
                 {presentInProfile && (
                     <GameCardHoverOption
                         presentInProfile={presentInProfile}
