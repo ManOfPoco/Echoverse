@@ -4,7 +4,7 @@ import homePageChat from "../../../assets/img/homePageChat.png";
 import { useNavigate } from "react-router-dom";
 
 function Main() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <>
@@ -19,13 +19,18 @@ function Main() {
                     voices resonate, friendships flourish, and creativity knows
                     no bounds
                 </p>
-                <Button type='submit' btnClass="orange" action={() => navigate('/sign-up')}>
+                <Button
+                    type="button"
+                    btnClass="warning"
+                    roundness='rounded-xls'
+                    action={() => navigate("/sign-up")}
+                >
                     Sign Up For Free
                 </Button>
             </div>
             <img
                 draggable="false"
-                className="l-0 r-0 absolute left-0 right-0 -z-10 mx-5 ms-auto hidden h-[86%] bg-contain lg:block lg:w-[70%] xl:w-[60%]"
+                className="l-0 r-0 max-w-[1400px] max-h-[1000px] absolute left-0 right-0 -z-10 mx-5 ms-auto hidden h-[86%] bg-contain lg:block lg:w-[70%] xl:w-[60%]"
                 src={homePageChat}
                 alt="chatting friends"
             />

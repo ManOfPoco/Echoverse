@@ -1,6 +1,6 @@
-import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 import Button from "../../../components/Button";
 import Logo from "../../../components/Logo";
@@ -14,7 +14,8 @@ import google from "../../../assets/svg/google.svg";
 import facebook from "../../../assets/svg/facebook.svg";
 
 function Login({ action }) {
-    const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
+    const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] =
+        useState(false);
     const [isEmailSendModalOpen, setIsEmailSendModalOpen] = useState(false);
     const navigate = useNavigate();
 
@@ -46,9 +47,7 @@ function Login({ action }) {
                 <div
                     className={`flex max-w-xl grow justify-center rounded-lg bg-blue-dark px-2 drop-shadow-2xl transition-all duration-500 ${
                         action === "login" ? "blur-none" : "blur-sm"
-                    } ${
-                        isResetPasswordModalOpen ? "blur-sm" : "blur-none"
-                    }`}
+                    } ${isResetPasswordModalOpen ? "blur-sm" : "blur-none"}`}
                     onClick={handleNavigate}
                 >
                     <div
@@ -74,7 +73,7 @@ function Login({ action }) {
                                     img={emailAt}
                                     type="email"
                                     placeholder="Email"
-                                    autocomplete='username'
+                                    autocomplete="username"
                                     register={loginRegister("Email", {
                                         required: true,
                                     })}
@@ -83,23 +82,26 @@ function Login({ action }) {
                                     img={passwordLock}
                                     type="password"
                                     placeholder="Password"
-                                    autocomplete='current-password'
+                                    autocomplete="current-password"
                                     register={loginRegister("Password", {
                                         required: true,
                                     })}
                                 />
                             </div>
                             <div className="flex justify-end">
-                                <Button
-                                    customClasses="mb-6 mt-3 text-sm text-blue-light"
-                                    action={() => setIsResetPasswordModalOpen(true)}
+                                <h5
+                                    className="mb-6 mt-3 text-sm text-blue-light"
+                                    onClick={() =>
+                                        setIsResetPasswordModalOpen(true)
+                                    }
                                 >
                                     Forgot Password?
-                                </Button>
+                                </h5>
                             </div>
                             <Button
                                 type="submit"
                                 btnClass="primary"
+                                roundness="rounded-xls"
                                 action={handleLoginSubmit}
                             >
                                 Login
@@ -108,7 +110,8 @@ function Login({ action }) {
                         <p className="my-7 text-sm">Or continue with</p>
                         <div className="flex w-full justify-around gap-4">
                             <Button
-                                customClasses="rounded-full bg-gray-charcoal p-3"
+                                roundness="rounded-full"
+                                customClasses="bg-gray-charcoal p-3"
                                 action={() => console.log("google login")}
                             >
                                 <img

@@ -11,7 +11,7 @@ function PasswordResetSuccess() {
     const navigate = useNavigate();
 
     return (
-        <div className="relative flex h-[80dvh] min-h-[430px] py-5 items-center justify-center">
+        <div className="relative flex h-[80dvh] min-h-[430px] items-center justify-center py-5">
             <Transition
                 as={Fragment}
                 appear={true}
@@ -37,6 +37,7 @@ function PasswordResetSuccess() {
                         <Button
                             type="button"
                             btnClass="primary"
+                            roundness="rounded-full"
                             action={() => navigate("/login")}
                         >
                             Login

@@ -17,8 +17,8 @@ module.exports = {
             none: "0",
             sm: "2px",
             md: "5px",
-            lg: "10px",
-            xl: "15px",
+            lg: "8px",
+            xl: "16px",
             xls: "20px",
             full: "9999px",
         },
@@ -42,7 +42,9 @@ module.exports = {
                     dark: "#0E1028",
                     prussian: "#1E293B",
                 },
-                red: "#CE3124",
+                red: {
+                    'fire-engine-red': '#CE3124'
+                },
                 turquoise: "#6EE2F5",
             },
             margin: {

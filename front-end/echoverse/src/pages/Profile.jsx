@@ -99,6 +99,42 @@ const following = [
         name: "Pete Peterson",
         isfollowing: true,
     },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
+    {
+        avatar: profile,
+        username: "ManOfPoco",
+        name: "Pete Peterson",
+        isfollowing: true,
+    },
 ];
 const calendarData = {
     Monday: [
@@ -264,7 +300,7 @@ const calendarData = {
     ],
 };
 
-function Profile({ action }) {
+function Profile() {
     const isCurrentUser = true;
 
     const [isFollowersModalOpen, setIsFollowersModalOpen] = useState(false);
@@ -351,6 +387,12 @@ function Profile({ action }) {
                                     gamesQuantity={data.gamesQuantity}
                                     followers={data.followers}
                                     following={data.following}
+                                    setIsFollowersModalOpen={
+                                        setIsFollowersModalOpen
+                                    }
+                                    setIsFollowingModalOpen={
+                                        setIsFollowingModalOpen
+                                    }
                                 />
                             </UserData>
                             <GamingCalendar

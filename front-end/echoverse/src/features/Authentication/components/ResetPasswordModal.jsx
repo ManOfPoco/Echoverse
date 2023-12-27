@@ -40,6 +40,7 @@ function ResetPasswordModal({
                 <Button
                     type="button"
                     btnClass="primary"
+                    roundness='rounded-xls'
                     action={() => {
                         setIsResetPasswordModalOpen(false);
                         setIsEmailSendModalOpen(true);

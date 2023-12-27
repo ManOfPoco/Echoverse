@@ -1,31 +1,40 @@
-const types = {
-    orange: "h-10.5 rounded-xls font-roboto text-sm bg-pumpkin w-52 hover:bg-orange-500",
+const btnTypes = {
     primary:
-        "h-10.5 rounded-xls font-roboto text-sm bg-majorelle-blue w-[244px] hover:bg-indigo-500 hover:ring-2 hover:ring-indigo-600",
-    secondaryRounded:
-        "px-6 md:px-7 lg:px-8 py-2 rounded-xls font-roboto text-sm bg-gray-charcoal",
+        "font-roboto text-sm bg-majorelle-blue hover:bg-indigo-500 hover:ring-2 hover:ring-indigo-600",
     secondary:
-        "px-6 md:px-8 py-2 rounded-lg font-roboto text-sm bg-gray-charcoal",
-    secondaryBlue:
-        "px-6 md:px-8 py-2 rounded-lg font-roboto text-sm bg-blue-light",
-    secondaryRoundedBlue:
-        "px-6 md:px-8 py-2 rounded-xls font-roboto text-sm bg-blue-light",
+        "font-roboto text-sm bg-gray-charcoal hover:bg-gray-600 hover:ring-2 hover:ring-gray-700",
+    warning:
+        "font-roboto text-sm bg-pumpkin hover:bg-orange-500 hover:ring-2 hover:ring-orange-600",
+    danger: "font-roboto text-sm bg-fire-engine-red hover:bg-red-600 hover:ring-2 hover:ring-red-700",
+    blue: "font-roboto text-sm bg-blue-light hover:bg-blue-500 hover:ring-2 hover:ring-blue-600",
+};
+
+const btnSizes = {
+    primary: "h-10.5 w-[244px]",
+    secondary: "h-9 w-[112px]",
+    warning: "h-10.5 w-[244px]",
+    danger: "",
+    blue: "",
 };
 
 function Button({
     type = "button",
     btnClass,
-    action,
+    size = "",
+    roundness = "",
     customClasses = "",
+    action,
     isDisabled = false,
     children,
 }) {
-    const typeClasses = types[btnClass] || "";
+    const btnType = btnTypes[btnClass] || "";
+    const btnSize = size || btnSizes[btnClass];
+
     return (
         <button
             type={type}
             disabled={isDisabled}
-            className={`${typeClasses} ${customClasses}`}
+            className={`${btnType} ${btnSize} ${roundness} ${customClasses}`}
             onClick={action}
         >
             {children}

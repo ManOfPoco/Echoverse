@@ -54,7 +54,7 @@ function SignUp({ action }) {
                                 img={person}
                                 type="text"
                                 placeholder="Username"
-                                autocomplete='username'
+                                autocomplete="username"
                                 register={register("Username", {
                                     required: true,
                                 })}
@@ -63,7 +63,7 @@ function SignUp({ action }) {
                                 img={emailAt}
                                 type="email"
                                 placeholder="Email"
-                                autocomplete='username'
+                                autocomplete="username"
                                 register={register("Email", {
                                     required: true,
                                 })}
@@ -72,7 +72,7 @@ function SignUp({ action }) {
                                 img={passwordLock}
                                 type="password"
                                 placeholder="Password"
-                                autocomplete='new-password'
+                                autocomplete="new-password"
                                 register={register("Password", {
                                     required: true,
                                 })}
@@ -81,6 +81,7 @@ function SignUp({ action }) {
                         <Button
                             type="submit"
                             btnClass="primary"
+                            roundness="rounded-xls"
                             action={handleSubmit}
                         >
                             Sign Up
@@ -89,7 +90,8 @@ function SignUp({ action }) {
                     <p className="my-7 text-sm">Or sign up with</p>
                     <div className="flex w-full justify-around gap-4">
                         <Button
-                            customClasses="rounded-full bg-gray-charcoal p-3"
+                            roundness="rounded-full"
+                            customClasses="bg-gray-charcoal p-3"
                             action={() => console.log("google login")}
                         >
                             <img
@@ -100,7 +102,8 @@ function SignUp({ action }) {
                             />
                         </Button>
                         <Button
-                            customClasses="rounded-full bg-gray-charcoal p-3"
+                            roundness="rounded-full"
+                            customClasses="bg-gray-charcoal p-3"
                             action={() => console.log("facebook login")}
                         >
                             <img

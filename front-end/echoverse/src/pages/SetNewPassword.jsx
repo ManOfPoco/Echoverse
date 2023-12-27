@@ -19,7 +19,7 @@ function SetNewPassword() {
     } = useForm();
 
     return (
-        <div className="flex h-[80dvh] min-h-[562px] py-5 items-center justify-center">
+        <div className="flex h-[80dvh] min-h-[562px] items-center justify-center py-5">
             <Transition
                 as={Fragment}
                 appear={true}
@@ -72,6 +72,7 @@ function SetNewPassword() {
                             <Button
                                 type="button"
                                 btnClass="primary"
+                                roundness="rounded-full"
                                 action={() =>
                                     navigate("/password-reset-success")
                                 }

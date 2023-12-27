@@ -16,6 +16,7 @@ function EmailSendModal({ isEmailSendModalOpen, setIsEmailSendModalOpen }) {
             <Button
                 type="button"
                 btnClass="primary"
+                roundness='rounded-xls'
                 action={() => setIsEmailSendModalOpen(false)}
             >
                 Ok

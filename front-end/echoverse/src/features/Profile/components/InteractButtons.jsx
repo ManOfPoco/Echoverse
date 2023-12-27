@@ -12,6 +12,7 @@ function InteractButtons({ isCurrentUser }) {
                 <>
                     <Button
                         btnClass="secondary"
+                        roundness="rounded-lg"
                         action={() => navigate("edit")}
                     >
                         Edit Profile
@@ -28,12 +29,14 @@ function InteractButtons({ isCurrentUser }) {
                 <>
                     <Button
                         btnClass="secondary"
+                        roundness="rounded-lg"
                         action={() => console.log("follow")}
                     >
                         Follow
                     </Button>
                     <Button
                         btnClass="secondary"
+                        roundness="rounded-lg"
                         action={() => navigate("message")}
                     >
                         Message

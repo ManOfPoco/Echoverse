@@ -37,7 +37,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/:username",
-                element: <Profile action="games" />,
+                element: <Profile />,
                 children: [
                     {
                         index: true,

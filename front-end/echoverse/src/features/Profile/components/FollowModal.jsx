@@ -1,7 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import SearchForm from "../../../components/SearchForm";
-import Follower from "./Follower";
+import Followers from "./Followers";
 
 function FollowModal({ isOpen, onClose, title, follows }) {
     return (
@@ -33,13 +33,13 @@ function FollowModal({ isOpen, onClose, title, follows }) {
                 >
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
                         <Dialog.Panel className="mx-auto max-w-lg rounded-xl bg-indigo-950">
-                            <div className="flex h-[450px] w-[420px] flex-col items-center divide-y divide-black-dark text-base">
+                            <div className="flex h-[460px] min-w-[320px] flex-col items-center divide-y divide-black-dark text-base sm:w-[420px]">
                                 <div className="flex w-full justify-center py-2 font-semibold">
                                     {title}
                                 </div>
-                                <div className="w-full px-8 pt-5">
+                                <div className="w-full px-3 pt-5 sm:px-8">
                                     <SearchForm type="full" />
-                                    <Follower follows={follows} />
+                                    <Followers follows={follows} />
                                 </div>
                             </div>
                         </Dialog.Panel>

@@ -42,6 +42,7 @@ function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
                 <Button
                     type="button"
                     btnClass="primary"
+                    roundness="rounded-xls"
                     action={handleSetGamingNotes}
                 >
                     Save

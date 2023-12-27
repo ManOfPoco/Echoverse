@@ -100,6 +100,7 @@ function EditGamePlatformsModal({
                 <Button
                     type="button"
                     btnClass="primary"
+                    roundness="rounded-xls"
                     action={handleSaveEditedPlatforms}
                 >
                     Save
