@@ -1,8 +1,10 @@
 import { useReducer } from "react";
 import { Transition } from "@headlessui/react";
+
 import Button from "../../../components/Button";
 
-import CalendarItem from "./CalendarItem";
+import SetGamingNotesModal from "./SetGamingNotesModal";
+import CalendarRow from "./CalendarRow";
 
 import deleteSVG from "../../../assets/svg/deleteSVG.svg";
 import deleteActive from "../../../assets/svg/deleteActive.svg";
@@ -10,8 +12,6 @@ import editSVG from "../../../assets/svg/editSVG.svg";
 import editActive from "../../../assets/svg/editActive.svg";
 import openSVG from "../../../assets/svg/openSVG.svg";
 import hideSVG from "../../../assets/svg/hideSVG.svg";
-import SetGamingNotesModal from "./SetGamingNotesModal";
-import CalendarRow from "./CalendarRow";
 
 /* 
 add: allows adding gaming days

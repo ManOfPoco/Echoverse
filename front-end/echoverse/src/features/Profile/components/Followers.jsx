@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
+
 import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
+
 import Follower from "./Follower";
 
 function Followers({ follows }) {

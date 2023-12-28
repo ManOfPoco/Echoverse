@@ -1,11 +1,11 @@
+import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import { Transition } from "@headlessui/react";
 
 import Button from "../components/Button";
 import ModalImage from "../components/ModalImage";
 
 import checkDone from "../assets/svg/checkDone.svg";
-import { Fragment } from "react";
-import { Transition } from "@headlessui/react";
 
 function PasswordResetSuccess() {
     const navigate = useNavigate();

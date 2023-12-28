@@ -1,7 +1,7 @@
 import GameCardHover from "./GameCardHover";
-
-import coverNotFound from "../../../../assets/img/coverNotFound.png";
 import GameCardPlatforms from "./GameCardPlatforms";
+
+import coverNotFound from "../../../assets/img/coverNotFound.png";
 
 function GameCard({ game, dispatch }) {
     const {

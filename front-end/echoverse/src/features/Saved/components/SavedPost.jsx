@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 import SavedPostCategories from "./SavedPostCategories";
-
 import SavedPostBody from "./SavedPostBody";
+
 
 function SavedPost({ savedPost, view }) {
     const {

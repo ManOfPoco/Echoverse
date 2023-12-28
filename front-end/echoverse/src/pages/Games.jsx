@@ -1,15 +1,15 @@
 import { useReducer } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import cs2 from "../../../../assets/img/cs2.png";
-import satisfactory from "../../../../assets/img/satisfactory.png";
-import lethalCompany from "../../../../assets/img/lethalCompany.png";
-import detroitBecomeHuman from "../../../../assets/img/detroitBecomeHuman.png";
-import gasStationSimulator from "../../../../assets/img/gasStationSimulator.png";
+import cs2 from "../assets/img/cs2.png";
+import satisfactory from "../assets/img/satisfactory.png";
+import lethalCompany from "../assets/img/lethalCompany.png";
+import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
+import gasStationSimulator from "../assets/img/gasStationSimulator.png";
 
-import Menu from "../../components/Menu";
-import GameCard from "./GameCard";
-import EditGamePlatformsModal from "../../components/EditGamePlatformsModal";
+import Menu from "../features/Profile/components/Menu";
+import GameCard from "../features/Games/components/GameCard";
+import EditGamePlatformsModal from "../features/Games/components/EditGamePlatformsModal";
 
 const games = [
     {

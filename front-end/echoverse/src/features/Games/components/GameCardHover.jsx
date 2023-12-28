@@ -1,11 +1,10 @@
-import Button from "../../../../components/Button";
-
-import steam from "../../../../assets/svg/steam.svg";
-import openSVG from "../../../../assets/svg/openSVG.svg";
-import group from "../../../../assets/svg/group.svg";
-import editSVG from "../../../../assets/svg/editSVG.svg";
-import deleteSVG from "../../../../assets/svg/deleteSVG.svg";
 import GameCardHoverOption from "./GameCardHoverOption";
+
+import steam from "../../../assets/svg/steam.svg";
+import openSVG from "../../../assets/svg/openSVG.svg";
+import group from "../../../assets/svg/group.svg";
+import editSVG from "../../../assets/svg/editSVG.svg";
+import deleteSVG from "../../../assets/svg/deleteSVG.svg";
 
 function GameCardHover({
     steamLink,

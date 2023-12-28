@@ -1,5 +1,4 @@
-import { useForm } from "react-hook-form";
-
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 import Button from "../../../components/Button";
@@ -7,7 +6,6 @@ import Modal from "../../../components/Modal";
 
 import controller from "../../../assets/svg/controller.svg";
 import deleteCross from "../../../assets/svg/deleteCross.svg";
-import { useEffect, useState } from "react";
 
 function EditGamePlatformsModal({
     game,

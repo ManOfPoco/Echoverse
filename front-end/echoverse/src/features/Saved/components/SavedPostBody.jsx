@@ -1,6 +1,4 @@
-import SavedPostCategories from "./SavedPostCategories";
-
-import chatMessageBubble from "../../../../assets/svg/chatMessageBubble.svg";
+import chatMessageBubble from "../../../assets/svg/chatMessageBubble.svg";
 
 export function SavedPostBody({
     username,

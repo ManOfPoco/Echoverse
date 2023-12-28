@@ -1,10 +1,11 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+
+import Button from "../../../components/Button";
 import Modal from "../../../components/Modal";
 import InputField from "../../../components/InputField";
 
 import clock from "../../../assets/svg/clock.svg";
-import Button from "../../../components/Button";
-import toast from "react-hot-toast";
 
 function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
     const {

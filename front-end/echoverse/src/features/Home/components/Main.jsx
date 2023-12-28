@@ -1,7 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 import Button from "../../../components/Button";
 
 import homePageChat from "../../../assets/img/homePageChat.png";
-import { useNavigate } from "react-router-dom";
 
 function Main() {
     const navigate = useNavigate();

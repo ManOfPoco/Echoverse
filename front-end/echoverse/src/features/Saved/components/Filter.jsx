@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
-import dropdownArrowDown from "../../../../assets/svg/dropdownArrowDown.svg";
+
+import dropdownArrowDown from "../../../assets/svg/dropdownArrowDown.svg";
 
 function Filter({
     filterImg,

@@ -1,4 +1,5 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Avatar from "../components/Avatar";
@@ -7,11 +8,10 @@ import InteractButtons from "../features/Profile/components/InteractButtons";
 import UserData from "../features/Profile/components/UserData";
 import GamingCalendar from "../features/Profile/components/GamingCalendar";
 import FollowModal from "../features/Profile/components/FollowModal";
+import UserStatistics from "../features/Profile/components/UserStatistics";
 
 import profile from "../assets/img/profile.jpg";
 import cs2 from "../assets/img/cs2.png";
-import { useState } from "react";
-import UserStatistics from "../features/Profile/components/UserStatistics";
 
 const data = {
     username: "ManOfPoco",

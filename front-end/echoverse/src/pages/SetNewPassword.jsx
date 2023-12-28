@@ -1,5 +1,7 @@
-import { useForm } from "react-hook-form";
+import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
+import { Transition } from "@headlessui/react";
+import { useForm } from "react-hook-form";
 
 import InputField from "../components/InputField";
 import ModalImage from "../components/ModalImage";
@@ -7,8 +9,6 @@ import Button from "../components/Button";
 
 import securityKey from "../assets/svg/securityKey.svg";
 import passwordLock from "../assets/svg/passwordLock.svg";
-import { Transition } from "@headlessui/react";
-import { Fragment } from "react";
 
 function SetNewPassword() {
     const navigate = useNavigate();

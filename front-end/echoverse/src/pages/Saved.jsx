@@ -1,9 +1,9 @@
+import { useReducer } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import Menu from "../../components/Menu";
-import SavedPost from "./SavedPost";
-import { useReducer } from "react";
-import Filters from "./Filters";
+import Menu from "../features/Profile/components/Menu";
+import SavedPost from "../features/Saved/components/SavedPost";
+import Filters from "../features/Saved/components/Filters";
 
 const savedPosts = [
     {

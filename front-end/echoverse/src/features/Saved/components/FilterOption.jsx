@@ -1,4 +1,4 @@
-import Switch from "../../../../components/Switch";
+import Switch from "../../../components/Switch";
 
 function FilterOption({ option, state, onChange }) {
     return (

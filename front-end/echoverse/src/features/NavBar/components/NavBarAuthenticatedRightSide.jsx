@@ -1,15 +1,15 @@
+import { useState } from "react";
+
 import Dropdown from "../../../components/Dropdown";
 import DropdownItem from "../../../components/DropdownItem";
 
-import arrowRight from "../../../assets/svg/arrowRight.svg";
-import bell from "../../../assets/svg/bell.svg";
+import NavLink from "./NavLink";
 
+import profile from "../../../assets/img/profile.jpg";
 import bellOpened from "../../../assets/svg/bellOpened.svg";
 import message from "../../../assets/svg/message.svg";
-import profile from "../../../assets/img/profile.jpg";
-
-import NavLink from "./NavLink";
-import { useState } from "react";
+import arrowRight from "../../../assets/svg/arrowRight.svg";
+import bell from "../../../assets/svg/bell.svg";
 
 function NavBarAuthenticatedRightSide() {
     const isAuthenticated = false;

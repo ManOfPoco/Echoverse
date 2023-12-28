@@ -1,6 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+
 import SearchForm from "../../../components/SearchForm";
+
 import Followers from "./Followers";
 
 function FollowModal({ isOpen, onClose, title, follows }) {

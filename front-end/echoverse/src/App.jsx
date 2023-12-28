@@ -1,15 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
+import AppLayout from "./layouts/AppLayout";
+
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
+import Saved from "./pages/Saved";
+import Games from "./pages/Games";
 
-import AppLayout from "./layouts/AppLayout";
 
-import Saved from "./features/Profile/Saved/components/Saved";
-import Games from "./features/Profile/Games/components/Games";
 
 const router = createBrowserRouter([
     {

@@ -3,9 +3,9 @@ import { useState } from "react";
 import Filter from "./Filter";
 import FilterOption from "./FilterOption";
 
-import sortFilter from "../../../../assets/svg/sortFilter.svg";
-import sortArrowsFilter from "../../../../assets/svg/sortArrowsFilter.svg";
-import tag from "../../../../assets/svg/tag.svg";
+import sortFilter from "../../../assets/svg/sortFilter.svg";
+import sortArrowsFilter from "../../../assets/svg/sortArrowsFilter.svg";
+import tag from "../../../assets/svg/tag.svg";
 
 function Filters({ state, dispatch }) {
     const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,4 @@
 import DataList from "./DataList";
-import UserStatistics from "./UserStatistics";
 
 import globe from "../../../assets/svg/globe.svg";
 import languageTranslator from "../../../assets/svg/languageTranslator.svg";
