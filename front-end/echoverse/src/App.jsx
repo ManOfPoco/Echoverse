@@ -8,7 +8,7 @@ import Profile from "./pages/Profile";
 
 import AppLayout from "./layouts/AppLayout";
 
-import Saved from "./features/Profile/components/Saved";
+import Saved from "./features/Profile/Saved/components/Saved";
 import Games from "./features/Profile/Games/components/Games";
 
 const router = createBrowserRouter([

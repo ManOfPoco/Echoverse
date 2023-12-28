@@ -11,6 +11,58 @@ import Menu from "../../components/Menu";
 import GameCard from "./GameCard";
 import EditGamePlatformsModal from "../../components/EditGamePlatformsModal";
 
+const games = [
+    {
+        title: "Counter Strike 2",
+        img: cs2,
+        selectedPlatforms: ["PC", "Xbox", "Switch"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink: "https://store.steampowered.com/app/730/CounterStrike_2/",
+        presentInProfile: false,
+    },
+    {
+        title: "Detroit: Become Human",
+        img: detroitBecomeHuman,
+        selectedPlatforms: ["PC", "PS", "Xbox"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink:
+            "https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
+        presentInProfile: true,
+    },
+    {
+        title: "Satisfactory",
+        img: satisfactory,
+        selectedPlatforms: ["PC"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink: "https://store.steampowered.com/app/526870/Satisfactory/",
+        presentInProfile: false,
+    },
+    {
+        title: "Lethal Company",
+        img: lethalCompany,
+        selectedPlatforms: ["PC", "PS", "Xbox"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink: "https://lethalcompany.com/",
+        presentInProfile: true,
+    },
+    {
+        title: "Valorant",
+        img: "valorant",
+        selectedPlatforms: ["PC"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink: "https://playvalorant.com/",
+        presentInProfile: false,
+    },
+    {
+        title: "Gas Station Simulator",
+        img: gasStationSimulator,
+        selectedPlatforms: ["PC"],
+        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        steamLink:
+            "https://store.steampowered.com/app/1149620/Gas_Station_Simulator/",
+        presentInProfile: false,
+    },
+];
 const initialState = {
     selectedGame: null,
     selectedGamePlatforms: [],
@@ -50,61 +102,6 @@ function Games({ action }) {
         isEditGamePlatformsModalOpen,
     } = state;
 
-    const games = [
-        {
-            title: "Counter Strike 2",
-            img: cs2,
-            selectedPlatforms: ["PC", "Xbox", "Switch"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink:
-                "https://store.steampowered.com/app/730/CounterStrike_2/",
-            presentInProfile: false,
-        },
-        {
-            title: "Detroit: Become Human",
-            img: detroitBecomeHuman,
-            selectedPlatforms: ["PC", "PS", "Xbox"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink:
-                "https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
-            presentInProfile: true,
-        },
-        {
-            title: "Satisfactory",
-            img: satisfactory,
-            selectedPlatforms: ["PC"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink:
-                "https://store.steampowered.com/app/526870/Satisfactory/",
-            presentInProfile: false,
-        },
-        {
-            title: "Lethal Company",
-            img: lethalCompany,
-            selectedPlatforms: ["PC", "PS", "Xbox"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink: "https://lethalcompany.com/",
-            presentInProfile: true,
-        },
-        {
-            title: "Valorant",
-            img: "valorant",
-            selectedPlatforms: ["PC"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink: "https://playvalorant.com/",
-            presentInProfile: false,
-        },
-        {
-            title: "Gas Station Simulator",
-            img: gasStationSimulator,
-            selectedPlatforms: ["PC"],
-            platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
-            steamLink:
-                "https://store.steampowered.com/app/1149620/Gas_Station_Simulator/",
-            presentInProfile: false,
-        },
-    ];
-
     return (
         <>
             <EditGamePlatformsModal
@@ -116,15 +113,10 @@ function Games({ action }) {
             />
 
             <Menu action={action} username={username} />
-            <div className="grid grid-cols-1 gap-5 px-3 pb-10 md:grid-cols-2 md:px-0 lg:grid-cols-3">
+            <div className="mt-10 grid grid-cols-1 gap-5 px-3 pb-10 md:grid-cols-2 md:px-0 lg:grid-cols-3">
                 {games.map((game) => (
                     <GameCard
-                        title={game.title}
-                        img={game.img}
-                        selectedPlatforms={game.selectedPlatforms}
-                        platforms={game.platforms}
-                        presentInProfile={game.presentInProfile}
-                        steamLink={game.steamLink}
+                        game={game}
                         dispatch={dispatch}
                         key={game.title}
                     />
