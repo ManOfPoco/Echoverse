@@ -155,14 +155,12 @@ function reducer(state, action) {
     }
 }
 
-function Saved({ action }) {
-    const [username] = useOutletContext();
+function Saved() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { view } = state;
 
     return (
         <>
-            <Menu action={action} username={username} />
             <Filters state={state} dispatch={dispatch} />
             <div
                 className={`mx-5 mt-4 gap-2 pb-10 lg:mx-0 ${

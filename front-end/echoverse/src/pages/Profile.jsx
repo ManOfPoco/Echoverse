@@ -12,6 +12,7 @@ import UserStatistics from "../features/Profile/components/UserStatistics";
 
 import profile from "../assets/img/profile.jpg";
 import cs2 from "../assets/img/cs2.png";
+import Menu from "../features/Profile/components/Menu";
 
 const data = {
     username: "ManOfPoco",
@@ -323,87 +324,84 @@ function Profile() {
             />
 
             <div className="h-[calc(100%-72px)] max-w-full bg-black-night lg:h-[calc(100%-80px)] xl:mt-5 xl:h-[calc(100%-146px)]">
-                <div className="w-full max-w-[1080px] divide-y divide-white lg:mx-auto">
-                    <div>
-                        <div className="flex h-fit w-full px-5 pt-5 md:pb-5 lg:px-0">
-                            <div className="flex w-fit px-2 md:hidden">
-                                <Avatar img={profile} type="lg" />
+                <div className="w-full max-w-[1080px] lg:mx-auto">
+                    <div className="flex h-fit w-full border-white px-5 pt-5 md:border-b md:pb-5 lg:px-0">
+                        <div className="flex w-fit px-2 md:hidden">
+                            <Avatar img={profile} type="lg" />
+                        </div>
+                        <div className="hidden w-fit pe-5 md:flex">
+                            <Avatar img={profile} type="lgx" />
+                        </div>
+                        <div className="flex w-full max-w-[calc(100%-140px)] flex-col gap-4 text-sm md:max-w-[calc(100%-200px)] lg:md:max-w-[calc(100%-180px)]">
+                            <div className="flex w-full flex-wrap items-center justify-between gap-5">
+                                <h2 className="text-xl">{data.username}</h2>
+                                <InteractButtons
+                                    isCurrentUser={isCurrentUser}
+                                />
                             </div>
-                            <div className="hidden w-fit pe-5 md:flex">
-                                <Avatar img={profile} type="lgx" />
-                            </div>
-                            <div className="flex w-full max-w-[calc(100%-140px)] flex-col gap-4 text-sm md:max-w-[calc(100%-200px)] lg:md:max-w-[calc(100%-180px)]">
-                                <div className="flex w-full flex-wrap items-center justify-between gap-5">
-                                    <h2 className="text-xl">{data.username}</h2>
-                                    <InteractButtons
-                                        isCurrentUser={isCurrentUser}
-                                    />
-                                </div>
-                                <div className="flex flex-wrap justify-between">
-                                    <div className="hidden max-w-md flex-col gap-4 md:flex">
-                                        <UserData
-                                            firstName={data.firstName}
-                                            description={data.description}
-                                            region={data.region}
-                                            languages={data.languages}
-                                            platforms={data.platforms}
-                                        >
-                                            <UserStatistics
-                                                gamesQuantity={
-                                                    data.gamesQuantity
-                                                }
-                                                followers={data.followers}
-                                                following={data.following}
-                                                setIsFollowersModalOpen={
-                                                    setIsFollowersModalOpen
-                                                }
-                                                setIsFollowingModalOpen={
-                                                    setIsFollowingModalOpen
-                                                }
-                                            />
-                                        </UserData>
-                                    </div>
-                                    <div className="hidden pt-2 md:flex md:flex-col lg:pt-0">
-                                        <GamingCalendar
-                                            isCurrentUser={isCurrentUser}
-                                            data={calendarData}
+                            <div className="flex flex-wrap justify-between">
+                                <div className="hidden max-w-md flex-col gap-4 md:flex">
+                                    <UserData
+                                        firstName={data.firstName}
+                                        description={data.description}
+                                        region={data.region}
+                                        languages={data.languages}
+                                        platforms={data.platforms}
+                                    >
+                                        <UserStatistics
+                                            gamesQuantity={data.gamesQuantity}
+                                            followers={data.followers}
+                                            following={data.following}
+                                            setIsFollowersModalOpen={
+                                                setIsFollowersModalOpen
+                                            }
+                                            setIsFollowingModalOpen={
+                                                setIsFollowingModalOpen
+                                            }
                                         />
-                                    </div>
+                                    </UserData>
+                                </div>
+                                <div className="hidden pt-2 md:flex md:flex-col lg:pt-0">
+                                    <GamingCalendar
+                                        isCurrentUser={isCurrentUser}
+                                        data={calendarData}
+                                    />
                                 </div>
                             </div>
                         </div>
-                        <div className="flex flex-col gap-4 p-5 md:hidden">
-                            <UserData
+                    </div>
+                    <div className="flex flex-col gap-4 border-b border-white p-5 md:hidden">
+                        <UserData
+                            gamesQuantity={data.gamesQuantity}
+                            followers={data.followers}
+                            following={data.following}
+                            firstName={data.firstName}
+                            description={data.description}
+                            region={data.region}
+                            languages={data.languages}
+                            platforms={data.platforms}
+                        >
+                            <UserStatistics
                                 gamesQuantity={data.gamesQuantity}
                                 followers={data.followers}
                                 following={data.following}
-                                firstName={data.firstName}
-                                description={data.description}
-                                region={data.region}
-                                languages={data.languages}
-                                platforms={data.platforms}
-                            >
-                                <UserStatistics
-                                    gamesQuantity={data.gamesQuantity}
-                                    followers={data.followers}
-                                    following={data.following}
-                                    setIsFollowersModalOpen={
-                                        setIsFollowersModalOpen
-                                    }
-                                    setIsFollowingModalOpen={
-                                        setIsFollowingModalOpen
-                                    }
-                                />
-                            </UserData>
-                            <GamingCalendar
-                                isCurrentUser={isCurrentUser}
-                                data={calendarData}
+                                setIsFollowersModalOpen={
+                                    setIsFollowersModalOpen
+                                }
+                                setIsFollowingModalOpen={
+                                    setIsFollowingModalOpen
+                                }
                             />
-                        </div>
+                        </UserData>
+                        <GamingCalendar
+                            isCurrentUser={isCurrentUser}
+                            data={calendarData}
+                        />
                     </div>
-                    <div>
-                        <Outlet context={[data.username]} />
-                    </div>
+                    <>
+                        <Menu username={data.username} />
+                        <Outlet />
+                    </>
                 </div>
             </div>
         </>

@@ -92,8 +92,7 @@ function reducer(state, action) {
     }
 }
 
-function Games({ action }) {
-    const [username] = useOutletContext();
+function Games() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const {
         selectedGame,
@@ -112,7 +111,6 @@ function Games({ action }) {
                 dispatch={dispatch}
             />
 
-            <Menu action={action} username={username} />
             <div className="mt-10 grid grid-cols-1 gap-5 px-3 pb-10 md:grid-cols-2 md:px-0 lg:grid-cols-3">
                 {games.map((game) => (
                     <GameCard

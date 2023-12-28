@@ -42,11 +42,11 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <Games action="games" />,
+                        element: <Games />,
                     },
                     {
                         path: "saved",
-                        element: <Saved action="saved" />,
+                        element: <Saved />,
                     },
                 ],
             },
