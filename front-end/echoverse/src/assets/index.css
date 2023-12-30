@@ -23,3 +23,36 @@ select:-webkit-autofill:focus {
     transition: background-color 5000s ease-in-out 0s;
     color: white;
 }
+
+.react-datepicker {
+    background-color: #262a2f;
+    border: 1px solid #374151;
+    border-radius: 5px;
+}
+
+.react-datepicker__header {
+    background-color: #262a2f;
+}
+
+.react-datepicker__triangle::before,
+.react-datepicker__triangle::after {
+    border-bottom-color: #262a2f !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker__day-name,
+.react-datepicker__day {
+    color: white !important;
+}
+
+.react-datepicker__day {
+    border-radius: 20px;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--selected,
+.react-datepicker__day:hover,
+.react-datepicker__day--keyboard-selected {
+    background-color: #645bf0;
+    border-radius: 20px;
+}

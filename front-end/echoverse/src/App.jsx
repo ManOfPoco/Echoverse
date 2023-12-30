@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import AppLayout from "./layouts/AppLayout";
 
@@ -9,6 +9,8 @@ import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
 import Saved from "./pages/Saved";
 import Games from "./pages/Games";
+import Settings from "./pages/Settings";
+import EditProfile from "./pages/EditProfile";
 
 
 
@@ -47,6 +49,21 @@ const router = createBrowserRouter([
                     {
                         path: "saved",
                         element: <Saved />,
+                    },
+                ],
+            },
+            {
+                path: "/account",
+                element: <Settings />,
+                children: [
+                    {
+                        path: '',
+                        element: <Navigate replace to="edit" />
+                    },
+                    {
+                        index: true,
+                        path: 'edit',
+                        element: <EditProfile />,
                     },
                 ],
             },

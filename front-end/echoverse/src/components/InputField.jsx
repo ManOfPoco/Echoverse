@@ -1,16 +1,31 @@
-function InputField({ img, type = "text", placeholder, classes, autocomplete, register }) {
+function InputField({
+    img = null,
+    imgSize = 'h-5.5 w-5.5',
+    type = "text",
+    size = 'w-[244px]',
+    padding = 'px-4',
+    roundness = "rounded-xls",
+    classes,
+    placeholder,
+    autocomplete,
+    register,
+}) {
     return (
-        <div className="flex items-center rounded-xls max-w-[244px] bg-gray-charcoal px-4 py-2">
-            <img
-                draggable="false"
-                className="h-5.5 w-5.5"
-                src={img}
-                alt="search"
-            />
+        <div
+            className={`flex items-center ${roundness} ${size} bg-gray-charcoal ${img ? padding : ''} py-2`}
+        >
+            {img && (
+                <img
+                    draggable="false"
+                    className={imgSize}
+                    src={img}
+                    alt="search"
+                />
+            )}
             <input
                 type={type}
                 placeholder={placeholder}
-                className={`border-0 bg-gray-charcoal max-w-[190px] px-2 font-roboto outline-none ${classes}`}
+                className={`w-full border-0 bg-gray-charcoal ${img ? 'px-2' : 'px-2.5'} font-roboto outline-none ${classes}`}
                 autoComplete={autocomplete}
                 {...register}
             />

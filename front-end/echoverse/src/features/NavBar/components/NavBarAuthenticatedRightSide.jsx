@@ -12,7 +12,7 @@ import arrowRight from "../../../assets/svg/arrowRight.svg";
 import bell from "../../../assets/svg/bell.svg";
 
 function NavBarAuthenticatedRightSide() {
-    const isAuthenticated = false;
+    const isAuthenticated = true;
 
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
@@ -53,7 +53,7 @@ function NavBarAuthenticatedRightSide() {
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
-                                link="/settings"
+                                link="/account/edit"
                                 key="Account settings"
                             >
                                 Account settings
@@ -92,7 +92,7 @@ function NavBarAuthenticatedRightSide() {
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
-                                link="/settings"
+                                link="/account/edit"
                                 key="Account settings"
                             >
                                 Account settings
