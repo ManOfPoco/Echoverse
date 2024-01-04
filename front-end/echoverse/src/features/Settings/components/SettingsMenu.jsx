@@ -29,7 +29,7 @@ function SettingsMenu({ isMenuActive }) {
                     Settings
                 </h4>
                 <div className="mt-5 flex flex-col gap-0.5">
-                    <SettingOption to="/account" title="Edit profile" />
+                    <SettingOption to="/account/edit" title="Edit profile" />
                     <SettingOption to="/account/security" title="Security" />
                     <SettingOption to="/account/privacy" title="Privacy" />
                 </div>

@@ -28,7 +28,7 @@ function Button({
     children,
 }) {
     const btnType = btnTypes[btnClass] || "";
-    const btnSize = size || btnSizes[btnClass];
+    const btnSize = size || btnSizes[btnClass] || "";
 
     return (
         <button

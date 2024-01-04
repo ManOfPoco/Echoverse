@@ -26,7 +26,7 @@ function Modal({
                     leaveTo="opacity-0"
                 >
                     <div
-                        className="fixed inset-0 bg-black-dark/30"
+                        className="fixed inset-0 bg-black-dark/40"
                         aria-hidden="true"
                     />
                 </Transition.Child>
@@ -42,7 +42,7 @@ function Modal({
                 >
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
                         <Dialog.Panel className="mx-auto max-w-lg rounded-xl bg-indigo-950">
-                            <div className="flex flex-col items-center px-20 py-14 text-center">
+                            <div className="flex flex-col items-center px-16 py-14 text-center">
                                 <ModalImage img={img} alt={alt} />
                                 <div className="py-8 font-archivo-black">
                                     <Dialog.Title className="pb-4 text-3xl">

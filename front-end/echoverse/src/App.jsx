@@ -11,6 +11,7 @@ import Saved from "./pages/Saved";
 import Games from "./pages/Games";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
+import Security from "./pages/Security";
 
 
 
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
                         index: true,
                         path: 'edit',
                         element: <EditProfile />,
+                    },
+                    {
+                        path: 'security',
+                        element: <Security />,
                     },
                 ],
             },

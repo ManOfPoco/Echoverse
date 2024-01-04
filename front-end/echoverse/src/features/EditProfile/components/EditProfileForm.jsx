@@ -8,7 +8,7 @@ import SelectField from "../../../components/SelectField";
 import DateInputField from "./DateInputField";
 
 import cs2 from "../../../assets/img/cs2.png";
-import LabelInputField from "./LabelInputField";
+import LabelInputField from "../../Settings/components/LabelInputField";
 import BiographyInput from "./BiographyInput";
 import AvatarChangeInput from "./AvatarChangeInput";
 
@@ -303,7 +303,7 @@ function EditProfileForm() {
 
     return (
         <form>
-            <div className="mt-5 flex flex-col gap-5">
+            <div className="flex flex-col gap-5">
                 <AvatarChangeInput username={data.username} />
 
                 <LabelInputField
