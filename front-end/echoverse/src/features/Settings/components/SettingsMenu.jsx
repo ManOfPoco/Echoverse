@@ -6,6 +6,7 @@ import SettingOption from "./SettingOption";
 import SettingsSection from "./SettingsSection";
 
 import privacy from "../../../assets/svg/privacy.svg";
+import security from "../../../assets/svg/security.svg";
 import profile from "../../../assets/svg/profile.svg";
 import profileSquare from "../../../assets/svg/profileSquare.svg";
 import blocked from "../../../assets/svg/blocked.svg";
@@ -44,6 +45,13 @@ function SettingsMenu({ isMenuActive }) {
                             to="/account/server_profile"
                             icon={profileSquare}
                             title="Edit server profile"
+                        />
+                    </SettingsSection>
+                    <SettingsSection title="Security">
+                        <SettingOption
+                            to="/account/security"
+                            icon={security}
+                            title="Security"
                         />
                     </SettingsSection>
                     <SettingsSection title="What you see">
