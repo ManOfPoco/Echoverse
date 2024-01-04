@@ -72,7 +72,6 @@ const router = createBrowserRouter([
                         element: <EditProfile />,
                     },
                     {
-                        index: true,
                         path: "server_profile",
                         element: <EditServerProfile />,
                     },
