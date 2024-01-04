@@ -1,4 +1,8 @@
-import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+    Navigate,
+    RouterProvider,
+    createBrowserRouter,
+} from "react-router-dom";
 
 import AppLayout from "./layouts/AppLayout";
 
@@ -11,9 +15,10 @@ import Saved from "./pages/Saved";
 import Games from "./pages/Games";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
+import EditServerProfile from "./pages/EditServerProfile";
 import Security from "./pages/Security";
-
-
+import Privacy from "./pages/Privacy";
+import BlockedAccounts from "./pages/BlockedAccounts";
 
 const router = createBrowserRouter([
     {
@@ -58,17 +63,30 @@ const router = createBrowserRouter([
                 element: <Settings />,
                 children: [
                     {
-                        path: '',
-                        element: <Navigate replace to="edit" />
+                        path: "",
+                        element: <Navigate replace to="edit" />,
                     },
                     {
                         index: true,
-                        path: 'edit',
+                        path: "edit",
                         element: <EditProfile />,
                     },
                     {
-                        path: 'security',
+                        index: true,
+                        path: "server_profile",
+                        element: <EditServerProfile />,
+                    },
+                    {
+                        path: "privacy",
+                        element: <Privacy />,
+                    },
+                    {
+                        path: "security",
                         element: <Security />,
+                    },
+                    {
+                        path: "blocked_accounts",
+                        element: <BlockedAccounts />,
                     },
                 ],
             },

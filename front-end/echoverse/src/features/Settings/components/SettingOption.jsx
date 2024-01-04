@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-function SettingOption({ to, title }) {
+function SettingOption({ to, icon, title }) {
     return (
         <NavLink
             className={({ isActive }) =>
@@ -8,10 +8,9 @@ function SettingOption({ to, title }) {
             }
             to={to}
         >
-            <div className="flex h-14 items-center rounded-lg hover:bg-gray-charcoal/20">
-                <h5 className="w-40 cursor-pointer px-4 text-xl lg:w-48">
-                    {title}
-                </h5>
+            <div className="flex h-12 items-center rounded-lg px-4 hover:bg-gray-charcoal/20 gap-4">
+                <img src={icon} className="h-7 w-7" />
+                <h5 className="w-48 cursor-pointer text-lg lg:w-56">{title}</h5>
             </div>
         </NavLink>
     );

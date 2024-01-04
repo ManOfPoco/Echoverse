@@ -1,9 +1,14 @@
 import { Fragment } from "react";
-import { NavLink } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import SettingOption from "./SettingOption";
+import SettingsSection from "./SettingsSection";
+
+import privacy from "../../../assets/svg/privacy.svg";
+import profile from "../../../assets/svg/profile.svg";
+import profileSquare from "../../../assets/svg/profileSquare.svg";
+import blocked from "../../../assets/svg/blocked.svg";
 
 function SettingsMenu({ isMenuActive }) {
     const { height, width } = useWindowDimensions();
@@ -28,10 +33,33 @@ function SettingsMenu({ isMenuActive }) {
                 <h4 className="px-4 text-xl font-semibold lg:font-bold">
                     Settings
                 </h4>
-                <div className="mt-5 flex flex-col gap-0.5">
-                    <SettingOption to="/account/edit" title="Edit profile" />
-                    <SettingOption to="/account/security" title="Security" />
-                    <SettingOption to="/account/privacy" title="Privacy" />
+                <div className="divide-y divide-white">
+                    <SettingsSection title="User Settings">
+                        <SettingOption
+                            to="/account/edit"
+                            icon={profile}
+                            title="Edit profile"
+                        />
+                        <SettingOption
+                            to="/account/server_profile"
+                            icon={profileSquare}
+                            title="Edit server profile"
+                        />
+                    </SettingsSection>
+                    <SettingsSection title="What you see">
+                        <SettingOption
+                            to="/account/privacy"
+                            icon={privacy}
+                            title="Privacy"
+                        />
+                    </SettingsSection>
+                    <SettingsSection title="Who can you your content">
+                        <SettingOption
+                            to="/account/blocked_accounts"
+                            icon={blocked}
+                            title="Blocked accounts"
+                        />
+                    </SettingsSection>
                 </div>
             </div>
         </Transition>
