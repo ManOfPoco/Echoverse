@@ -14,7 +14,7 @@ function InteractButtons({ isCurrentUser }) {
                     <Button
                         btnClass="secondary"
                         roundness="rounded-lg"
-                        action={() => navigate("edit")}
+                        action={() => navigate("/account/edit")}
                     >
                         Edit Profile
                     </Button>

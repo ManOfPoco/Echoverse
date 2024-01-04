@@ -14,9 +14,9 @@ function Settings() {
     });
 
     return (
-        <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
-            <div className="mx-auto h-full min-h-[calc(100dvh-72px)] w-full max-w-[1080px] lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
-                <div className="flex h-full min-h-[calc(100dvh-72px)] md:divide-x md:divide-white lg:min-h-[calc(100dvh-80px)] lg:px-0 xl:min-h-[calc(100dvh-126px)]">
+        <div className="h-full max-w-full bg-black-night ">
+            <div className="mx-auto h-full w-full max-w-[1080px]">
+                <div className="flex h-full items-stretch md:divide-x md:divide-white">
                     <SettingsMenu isMenuActive={isMenuActive} />
                     <Outlet context={[isMenuActive, setIsMenuActive]} />
                 </div>

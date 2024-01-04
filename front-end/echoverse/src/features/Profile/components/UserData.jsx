@@ -5,9 +5,6 @@ import languageTranslator from "../../../assets/svg/languageTranslator.svg";
 import gamingCenter from "../../../assets/svg/gamingCenter.svg";
 
 function UserData({
-    gamesQuantity,
-    followers,
-    following,
     firstName,
     description,
     region,

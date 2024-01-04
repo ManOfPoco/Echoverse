@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import SettingOption from "./SettingOption";
 
 function SettingsMenu({ isMenuActive }) {
     const { height, width } = useWindowDimensions();
@@ -19,50 +20,18 @@ function SettingsMenu({ isMenuActive }) {
             leaveTo="-translate-x-full"
         >
             <div
-                className={`absolute z-30 h-full w-fit px-5 py-10 sm:pe-10 md:static ${
+                className={`fixed z-30 min-h-[calc(100dvh-72px)]
+                w-fit px-5 py-5 pt-10 sm:pe-10 md:static lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)] ${
                     width < 768 ? "bg-gray-dark shadow-xl" : "bg-black-night"
                 }`}
             >
                 <h4 className="px-4 text-xl font-semibold lg:font-bold">
                     Settings
                 </h4>
-                <div className="mt-5 flex flex-col">
-                    <NavLink
-                        className={({ isActive }) =>
-                            isActive ? "w-48 rounded-lg bg-gray-charcoal" : ""
-                        }
-                        to={`/account`}
-                    >
-                        <div className="flex h-14 items-center">
-                            <h5 className="w-48 cursor-pointer px-4 text-xl">
-                                Edit profile
-                            </h5>
-                        </div>
-                    </NavLink>
-                    <NavLink
-                        className={({ isActive }) =>
-                            isActive ? "w-48 rounded-lg bg-gray-charcoal" : ""
-                        }
-                        to={`/account/security`}
-                    >
-                        <div className="flex h-14 items-center">
-                            <h5 className="cursor-pointer px-4 text-xl">
-                                Security
-                            </h5>
-                        </div>
-                    </NavLink>
-                    <NavLink
-                        className={({ isActive }) =>
-                            isActive ? "rounded-lg bg-gray-charcoal" : ""
-                        }
-                        to={`/account/privacy`}
-                    >
-                        <div className="flex h-14 items-center">
-                            <h5 className="cursor-pointer px-4 text-xl">
-                                Privacy
-                            </h5>
-                        </div>
-                    </NavLink>
+                <div className="mt-5 flex flex-col gap-0.5">
+                    <SettingOption to="/account" title="Edit profile" />
+                    <SettingOption to="/account/security" title="Security" />
+                    <SettingOption to="/account/privacy" title="Privacy" />
                 </div>
             </div>
         </Transition>

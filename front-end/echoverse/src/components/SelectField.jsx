@@ -11,6 +11,7 @@ function SelectField({
     size = "w-60",
     isMultiple = false,
     defaultValue = "Select",
+    showDirection = "down",
 }) {
     return (
         <Listbox
@@ -40,7 +41,15 @@ function SelectField({
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-95 opacity-0"
                 >
-                    <Listbox.Options className="absolute z-20 mt-1 max-h-52 w-full overflow-auto rounded-md bg-gray-charcoal text-base shadow-lg sm:text-sm">
+                    <Listbox.Options
+                        className={`absolute z-20 max-h-52 w-full overflow-auto rounded-md bg-gray-charcoal text-base shadow-lg sm:text-sm ${
+                            showDirection === "down"
+                                ? "top-full mt-1"
+                                : showDirection === "up"
+                                  ? "bottom-full mb-1"
+                                  : ""
+                        }`}
+                    >
                         {choices.map((choice, choiceIds) => (
                             <Listbox.Option
                                 key={choiceIds}
@@ -75,7 +84,7 @@ function SelectField({
                                                 />
                                             </span>
                                         ) : null
-                                    ) : selectedField === choice ? (
+                                    ) : selectedField.name === choice.name ? (
                                         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                             <img
                                                 src={checkDone}
