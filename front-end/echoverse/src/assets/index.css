@@ -69,3 +69,7 @@ select:-webkit-autofill:focus {
 .swiper-button-prev {
     color: #645bf0;
 }
+
+.swiper-wrapper, .swiper {
+    z-index: 10;
+}

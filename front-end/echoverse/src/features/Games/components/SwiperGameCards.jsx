@@ -23,7 +23,7 @@ function SwiperGameCards({ title, games, autoplay }) {
                 pagination={{ clickable: true }}
             >
                 {games.map((game) => (
-                    <SwiperSlide key={game.title}>
+                    <SwiperSlide key={game.title} className="z-10">
                         <GameCard
                             game={game}
                             showPlatforms={false}

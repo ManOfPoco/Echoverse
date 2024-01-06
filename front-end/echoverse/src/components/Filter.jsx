@@ -60,13 +60,14 @@ function Filter({
 
     useEffect(
         function () {
-            dispatch({
-                type: "setSearchFiltersQuery",
-                searchQuery: searchQuery,
-                searchFilters,
-            });
+            if (filterView === "line")
+                dispatch({
+                    type: "setSearchFiltersQuery",
+                    searchQuery: searchQuery,
+                    searchFilters,
+                });
         },
-        [dispatch, searchQuery, searchFilters]
+        [filterView, dispatch, searchQuery, searchFilters]
     );
 
     const showSide = {
@@ -83,7 +84,7 @@ function Filter({
     }
 
     return (
-        <div>
+        <div className="z-40">
             <div
                 className="mt-4 flex max-w-fit cursor-pointer items-center rounded-xls bg-gray-dark px-2.5 py-1.5 lg:mx-0"
                 onClick={setIsOpen}

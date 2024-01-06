@@ -635,6 +635,22 @@ video {
   z-index: 50;
 }
 
+.z-\[\]{
+  z-index: ;
+}
+
+.z-\[9999\]{
+  z-index: 9999;
+}
+
+.z-\[999999999\]{
+  z-index: 999999999;
+}
+
+.-z-20{
+  z-index: -20;
+}
+
 .mx-2{
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -1954,6 +1970,10 @@ select:-webkit-autofill:focus {
 .swiper-button-next,
 .swiper-button-prev {
   color: #645bf0;
+}
+
+.swiper-wrapper, .swiper {
+  z-index: 10;
 }
 
 .focus-within\:w-56:focus-within{
