@@ -1,10 +1,10 @@
 import Filter from "../../../components/Filter";
 import FilterOption from "../../../components/FilterSwitchOption";
+import FilterSelectOptions from "../../../components/FilterSelectOptions";
 
 import sortFilter from "../../../assets/svg/sortFilter.svg";
 import sortArrowsFilter from "../../../assets/svg/sortArrowsFilter.svg";
 import tag from "../../../assets/svg/tag.svg";
-import FilterSelectOption from "../../../components/FilterSelectOption";
 
 function PostsFilters({ state, dispatch }) {
     const { openFilter, sort, view, tags, searchTags, selectedTags } = state;
@@ -82,14 +82,11 @@ function PostsFilters({ state, dispatch }) {
                 filtersWidth="w-80"
                 key="Tags"
             >
-                {searchTags.map((tag) => (
-                    <FilterSelectOption
-                        option={tag}
-                        isSelected={selectedTags.includes(tag)}
-                        onClick={() => handleSetTags(tag)}
-                        key={tag}
-                    />
-                ))}
+                <FilterSelectOptions
+                    searchOptions={searchTags}
+                    selectedOptions={selectedTags}
+                    handleSetOptions={handleSetTags}
+                />
             </Filter>
         </div>
     );

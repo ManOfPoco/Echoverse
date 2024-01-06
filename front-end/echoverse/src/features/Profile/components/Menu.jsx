@@ -5,7 +5,7 @@ import SearchForm from "../../../components/SearchForm";
 function Menu({ username }) {
 
     return (
-        <>
+        <div className="mb-5">
             <div className="flex justify-center">
                 <div className="z-10 flex gap-14">
                     <NavLink
@@ -38,7 +38,7 @@ function Menu({ username }) {
             <div className="flex flex-col items-center pt-5 md:hidden">
                 <SearchForm />
             </div>
-        </>
+        </div>
     );
 }
 

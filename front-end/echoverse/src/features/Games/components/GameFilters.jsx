@@ -5,6 +5,7 @@ import FilterSelectOption from "../../../components/FilterSelectOption";
 import sortFilter from "../../../assets/svg/sortFilter.svg";
 import controllerWhite from "../../../assets/svg/controllerWhite.svg";
 import SearchForm from "../../../components/SearchForm";
+import FilterSelectOptions from "../../../components/FilterSelectOptions";
 
 function GameFilters({ state, dispatch, handleRequest }) {
     const {
@@ -31,8 +32,8 @@ function GameFilters({ state, dispatch, handleRequest }) {
     }
 
     return (
-        <div className="mx-5 flex flex-wrap justify-between lg:mx-0">
-            <div className="flex flex-wrap justify-center gap-x-4">
+        <div className="mx-5 mt-5 flex flex-wrap justify-between gap-y-2 lg:mx-0">
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
                 <Filter
                     filterImg={sortFilter}
                     title="Filter by tags"
@@ -45,14 +46,11 @@ function GameFilters({ state, dispatch, handleRequest }) {
                     filtersWidth="w-80"
                     key="Tags"
                 >
-                    {searchTags.map((tag) => (
-                        <FilterSelectOption
-                            option={tag}
-                            isSelected={selectedTags.includes(tag)}
-                            onClick={() => handleSetTags(tag)}
-                            key={tag}
-                        />
-                    ))}
+                    <FilterSelectOptions
+                        searchOptions={searchTags}
+                        selectedOptions={selectedTags}
+                        handleSetOptions={handleSetTags}
+                    />
                 </Filter>
                 <Filter
                     filterImg={controllerWhite}
@@ -66,28 +64,24 @@ function GameFilters({ state, dispatch, handleRequest }) {
                     filtersWidth="w-80"
                     key="Platform"
                 >
-                    {searchPlatforms.map((platform) => (
-                        <FilterSelectOption
-                            option={platform}
-                            isSelected={selectedPlatforms.includes(platform)}
-                            onClick={() => handleSetPlatforms(platform)}
-                            key={platform}
-                        />
-                    ))}
+                    <FilterSelectOptions
+                        searchOptions={searchPlatforms}
+                        selectedOptions={selectedPlatforms}
+                        handleSetOptions={handleSetPlatforms}
+                    />
                 </Filter>
             </div>
-            <div className="mt-4 mx-auto md:mx-0">
-                <SearchForm
-                    query={searchGamesQuery}
-                    onChange={(e) =>
-                        dispatch({
-                            type: "setSearchQuery",
-                            searchGamesQuery: e.target.value,
-                        })
-                    }
-                    handleRequest={handleRequest}
-                />
-            </div>
+
+            <SearchForm
+                query={searchGamesQuery}
+                onChange={(e) =>
+                    dispatch({
+                        type: "setSearchQuery",
+                        searchGamesQuery: e.target.value,
+                    })
+                }
+                handleRequest={handleRequest}
+            />
         </div>
     );
 }

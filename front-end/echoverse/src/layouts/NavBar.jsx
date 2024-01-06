@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Transition } from "@headlessui/react";
 
 import Dropdown from "../components/Dropdown";
 import DropdownItem from "../components/DropdownItem";
@@ -20,13 +19,13 @@ function NavBar({ isNavOnTop }) {
 
     function handleRequest(e) {
         if (e.key === "Enter") {
-            console.log('request');
+            console.log("request");
         }
     }
 
     return (
         <nav
-            className={`sticky top-0 z-50 font-archivo-black text-sm transition-colors duration-300 lg:tracking-wide ${
+            className={`sticky top-0 z-50 font-archivo-black text-sm transition-all duration-300 lg:tracking-wide ${
                 isMenuOpen ? "bg-black-light" : ""
             } ${isNavOnTop ? "" : "bg-black-light"}`}
         >
@@ -85,17 +84,8 @@ function NavBar({ isNavOnTop }) {
                     <NavBarAuthenticatedRightSide />
                 </div>
             </div>
-            <Transition
-                show={isMenuOpen}
-                enter="transition ease-out duration-300"
-                enterFrom="opacity-0 -translate-y-1"
-                enterTo="opacity-100 translate-y-0"
-                leave="transition ease-in duration-300"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 -translate-y-1"
-            >
-                <NavBarMobileMenu />
-            </Transition>
+
+            <NavBarMobileMenu isMenuOpen={isMenuOpen} />
         </nav>
     );
 }

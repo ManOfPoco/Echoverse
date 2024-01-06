@@ -1,4 +1,3 @@
-import { useState } from "react";
 import search from "../assets/svg/search.svg";
 
 const types = {

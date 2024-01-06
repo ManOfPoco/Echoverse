@@ -7,7 +7,7 @@ import satisfactory from "../assets/img/satisfactory.png";
 import lethalCompany from "../assets/img/lethalCompany.png";
 import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
-import GameCard from "../features/UserGames/components/GameCard";
+import GameCards from "../features/UserGames/components/GameCards";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import WelcomeMessage from "../features/Games/components/WelcomeMessage";
@@ -203,6 +203,11 @@ function Games() {
                     games={games}
                     autoplay={false}
                 />
+
+                <div className="mx-5 mt-5 lg:mx-0">
+                    <h5 className="mb-5 text-xl">For you</h5>
+                    <GameCards games={games} showPlatforms={false} />
+                </div>
             </div>
         </div>
     );
