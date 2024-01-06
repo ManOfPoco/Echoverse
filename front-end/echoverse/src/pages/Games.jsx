@@ -1,14 +1,17 @@
 import { useReducer } from "react";
 
 import GameFilters from "../features/Games/components/GameFilters";
-import GameCards from "../features/UserGames/components/GameCards";
 
-import arcadeGamingRoom from "../assets/img/arcadeGamingRoom.png";
 import cs2 from "../assets/img/cs2.png";
 import satisfactory from "../assets/img/satisfactory.png";
 import lethalCompany from "../assets/img/lethalCompany.png";
 import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
+import GameCard from "../features/UserGames/components/GameCard";
+
+import useWindowDimensions from "../hooks/useWindowDimensions";
+import WelcomeMessage from "../features/Games/components/WelcomeMessage";
+import SwiperGameCards from "../features/Games/components/SwiperGameCards";
 
 const tags = [
     "Valheim",
@@ -182,17 +185,7 @@ function Games() {
     return (
         <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
             <div className="w-full max-w-[1080px] lg:mx-auto">
-                <div className="absolute flex h-60 w-full max-w-[1080px] items-center bg-black-dark/50 backdrop-blur-sm md:h-[448px] md:bg-black-dark/50 md:backdrop-blur">
-                    <h3 className="mx-auto text-center font-monoton text-3xl leading-10 tracking-wide text-turquoise md:max-w-[70%] md:text-5xl md:leading-[64px]">
-                        Evolve your gaming experience with the right people
-                    </h3>
-                </div>
-                <img
-                    draggable={false}
-                    src={arcadeGamingRoom}
-                    alt="arcadeGamingRoom"
-                    className="h-60 w-full md:h-[448px]"
-                />
+                <WelcomeMessage />
 
                 <GameFilters
                     state={state}
@@ -200,14 +193,16 @@ function Games() {
                     handleRequest={handleRequest}
                 />
 
-                <div className="mt-5 mx-5 lg:mx-0">
-                    <h5 className="text-xl">Popular Games</h5>
-                    <GameCards games={games.slice(0, 3)} showPlatforms={false} />
-                </div>
-                <div className="mt-5 mx-5 lg:mx-0">
-                    <h5 className="text-xl">Featured Games</h5>
-                    <GameCards games={games.slice(3, 6)} showPlatforms={false} />
-                </div>
+                <SwiperGameCards
+                    title="Popular Games"
+                    games={games}
+                    autoplay={{ delay: 7000 }}
+                />
+                <SwiperGameCards
+                    title="Featured Games"
+                    games={games}
+                    autoplay={false}
+                />
             </div>
         </div>
     );
