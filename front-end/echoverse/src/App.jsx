@@ -12,13 +12,14 @@ import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
 import Saved from "./pages/Saved";
-import Games from "./pages/Games";
+import UserGames from "./pages/UserGames";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import EditServerProfile from "./pages/EditServerProfile";
 import Security from "./pages/Security";
 import Privacy from "./pages/Privacy";
 import BlockedAccounts from "./pages/BlockedAccounts";
+import Games from "./pages/Games";
 
 const router = createBrowserRouter([
     {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <Games />,
+                        element: <UserGames />,
                     },
                     {
                         path: "saved",
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
                         element: <BlockedAccounts />,
                     },
                 ],
+            },
+            {
+                path: "/games",
+                element: <Games />,
             },
         ],
     },

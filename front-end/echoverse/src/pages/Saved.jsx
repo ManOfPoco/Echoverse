@@ -1,14 +1,13 @@
 import { useReducer } from "react";
-import { useOutletContext } from "react-router-dom";
 
-import Menu from "../features/Profile/components/Menu";
 import SavedPost from "../features/Saved/components/SavedPost";
-import Filters from "../features/Saved/components/Filters";
+import PostsFilters from "../features/Saved/components/PostsFilters";
 
 const savedPosts = [
     {
         title: "Game Title 1",
-        description: "Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1iption for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1",
+        description:
+            "Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1iption for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1",
         username: "User123",
         lastMessage: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         lastMessageUsername: "AnotherUser456",
@@ -127,11 +126,24 @@ const savedPosts = [
     },
 ];
 
+const tags = [
+    "Valheim",
+    "Roblox",
+    "Satisfactory",
+    "Counter Strike 2",
+    "No way home",
+    "Dead Island 2",
+    "Far Cry 5",
+];
+
 const initialState = {
     openFilter: null,
     view: "list", // list, gallery
     sort: "lastActive", // lastActive, date
-    tags: null,
+    tags,
+    searchQuery: "",
+    searchTags: tags,
+    selectedTags: [],
 };
 
 function reducer(state, action) {
@@ -147,8 +159,30 @@ function reducer(state, action) {
         case "setSort":
             return { ...state, sort: action.sort };
 
-        case "setTags":
-            return { ...state, tags: { ...state.tags, ...action.tags } };
+        case "setTags": {
+            if (state.selectedTags.includes(action.tag)) {
+                return {
+                    ...state,
+                    selectedTags: [
+                        ...state.selectedTags.filter(
+                            (tag) => tag !== action.tag
+                        ),
+                    ],
+                };
+            }
+
+            return {
+                ...state,
+                selectedTags: [...state.selectedTags, action.tag],
+            };
+        }
+
+        case "setSearchFiltersQuery":
+            return {
+                ...state,
+                searchQuery: action.searchQuery,
+                searchTags: action.searchFilters,
+            };
 
         default:
             break;
@@ -161,7 +195,7 @@ function Saved() {
 
     return (
         <>
-            <Filters state={state} dispatch={dispatch} />
+            <PostsFilters state={state} dispatch={dispatch} />
             <div
                 className={`mx-5 mt-4 gap-2 pb-10 lg:mx-0 ${
                     view === "list"

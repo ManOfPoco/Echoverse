@@ -1,6 +1,6 @@
-import Switch from "../../../components/Switch";
+import Switch from "./Switch";
 
-function FilterOption({ option, state, onChange }) {
+function FilterSwitchOption({ option, state, onChange }) {
     return (
         <>
             <div className="flex items-center justify-between">
@@ -11,4 +11,4 @@ function FilterOption({ option, state, onChange }) {
     );
 }
 
-export default FilterOption;
+export default FilterSwitchOption;

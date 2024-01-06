@@ -13,6 +13,7 @@ import bell from "../../../assets/svg/bell.svg";
 
 function NavBarAuthenticatedRightSide() {
     const isAuthenticated = true;
+    const username = "ManOfPoco";
 
     const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
@@ -46,7 +47,7 @@ function NavBarAuthenticatedRightSide() {
                         <Dropdown imageTitle={profile} dropdownWidth="w-48">
                             <DropdownItem
                                 isNavLink={true}
-                                link="/me"
+                                link={`/${username}`}
                                 key="Profile"
                             >
                                 Profile

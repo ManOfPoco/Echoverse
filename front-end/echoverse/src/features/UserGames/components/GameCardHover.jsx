@@ -9,9 +9,10 @@ import deleteSVG from "../../../assets/svg/deleteSVG.svg";
 function GameCardHover({
     steamLink,
     presentInProfile,
+    showPlatforms,
     handleEditGamePlatforms,
 }) {
-    const isCurrentUser = true;
+
 
     return (
         <div className="group absolute h-40 w-72 rounded-xl hover:block hover:bg-black-dark/70 hover:backdrop-blur-sm sm:h-44 sm:w-80">
@@ -45,7 +46,7 @@ function GameCardHover({
                     alt="group"
                     title="Look for a group"
                 />
-                {isCurrentUser && (
+                {showPlatforms && (
                     <GameCardHoverOption
                         presentInProfile={presentInProfile}
                         img={editSVG}

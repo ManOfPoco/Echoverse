@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import Button from "../../../components/Button";
 import Modal from "../../../components/Modal";
 
-import controller from "../../../assets/svg/controller.svg";
+import controller from "../../../assets/svg/controllerYellow.svg";
 import deleteCross from "../../../assets/svg/deleteCross.svg";
 
 function EditGamePlatformsModal({

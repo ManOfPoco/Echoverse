@@ -3,7 +3,7 @@ import GameCardPlatforms from "./GameCardPlatforms";
 
 import coverNotFound from "../../../assets/img/coverNotFound.png";
 
-function GameCard({ game, dispatch }) {
+function GameCard({ game, showPlatforms = true, dispatch }) {
     const {
         title,
         img,
@@ -12,6 +12,7 @@ function GameCard({ game, dispatch }) {
         presentInProfile,
         steamLink,
     } = game;
+
     function handleImgNotFound(e) {
         e.currentTarget.src = coverNotFound;
     }
@@ -27,10 +28,13 @@ function GameCard({ game, dispatch }) {
 
     return (
         <div className="flex flex-col items-center">
-            <GameCardPlatforms selectedPlatforms={selectedPlatforms} />
+            {showPlatforms && (
+                <GameCardPlatforms selectedPlatforms={selectedPlatforms} />
+            )}
             <GameCardHover
                 steamLink={steamLink}
                 presentInProfile={presentInProfile}
+                showPlatforms={showPlatforms}
                 handleEditGamePlatforms={handleEditGamePlatforms}
             />
 

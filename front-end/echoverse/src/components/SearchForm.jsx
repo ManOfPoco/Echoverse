@@ -6,14 +6,7 @@ const types = {
     full: "w-full flex gap-1 rounded-md bg-gray-charcoal px-2 py-1 focus-within:ring-1 focus-within:ring-inset focus-within:ring-blue-light",
 };
 
-function SearchForm({ placeholder = "Search", type = "base" }) {
-    const [query, setQuery] = useState("");
-
-    function handleRequest(e) {
-        if (e.key === "Enter") {
-            console.log(1);
-        }
-    }
+function SearchForm({ placeholder = "Search", type = "base", query, onChange, handleRequest }) {
 
     const searchType = types[type] || types["base"];
 
@@ -30,8 +23,8 @@ function SearchForm({ placeholder = "Search", type = "base" }) {
                 placeholder={placeholder}
                 className="w-full rounded-md border-0 bg-gray-charcoal px-1 font-roboto outline-none"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                onKeyDown={(e) => handleRequest(e)}
+                onChange={onChange}
+                onKeyDown={handleRequest}
             />
         </div>
     );
