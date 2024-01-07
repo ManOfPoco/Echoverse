@@ -17,7 +17,7 @@ function PersonCardBody({ person }) {
     } = person;
 
     return (
-        <div className="flex w-[420px] flex-col items-center">
+        <div className="flex max-w-[calc(420px-16px)] flex-col items-center px-2">
             <Avatar img={personImg} type="xls" />
             <div className="mt-2.5 flex flex-col items-center gap-2.5 text-xs font-semibold text-gray-light">
                 <h5>Gaming time in common: {commonTime}%</h5>

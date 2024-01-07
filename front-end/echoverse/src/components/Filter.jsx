@@ -84,7 +84,7 @@ function Filter({
     }
 
     return (
-        <div className="z-40">
+        <div className={`z-20 ${isOpen ? 'z-40' : ''}`}>
             <div
                 className="flex max-w-fit cursor-pointer items-center rounded-xls bg-gray-dark px-2.5 py-1.5 lg:mx-0"
                 onClick={setIsOpen}

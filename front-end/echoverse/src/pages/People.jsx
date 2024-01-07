@@ -45,14 +45,18 @@ function People() {
     const people = [
         data,
         { ...data, id: 1, username: "ManOfPoco1" },
-        { ...data, id: 2 },
-        { ...data, id: 3 },
-        { ...data, id: 4 },
+        { ...data, id: 2, username: "ManOfPoco2"  },
+        { ...data, id: 3, username: "ManOfPoco3"  },
+        { ...data, id: 4, username: "ManOfPoco4"  },
+        { ...data, id: 5, username: "ManOfPoco5"  },
+        { ...data, id: 6, username: "ManOfPoco6"  },
+        { ...data, id: 7, username: "ManOfPoco7"  },
+        { ...data, id: 8, username: "ManOfPoco8"  },
     ];
 
     return (
         <div className="my-5 flex h-full min-h-[calc(100dvh-112px)] w-full items-center justify-center lg:min-h-[calc(100dvh-120px)] xl:min-h-[calc(100dvh-166px)]">
-            <div className="w-[600px]">
+            <div className="min-w-[320px] max-w-[600px]">
                 <PeopleSwiperCards people={people} />
             </div>
         </div>

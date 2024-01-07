@@ -33,7 +33,7 @@ function GameFilters({ state, dispatch, handleRequest }) {
 
     return (
         <div className="mx-5 mt-5 flex flex-wrap justify-between gap-y-2 lg:mx-0">
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <div className="flex w-full flex-col flex-wrap items-center justify-center gap-x-4 gap-y-2 md:w-fit sm:flex-row">
                 <Filter
                     filterImg={sortFilter}
                     title="Filter by tags"
@@ -72,16 +72,18 @@ function GameFilters({ state, dispatch, handleRequest }) {
                 </Filter>
             </div>
 
-            <SearchForm
-                query={searchGamesQuery}
-                onChange={(e) =>
-                    dispatch({
-                        type: "setSearchQuery",
-                        searchGamesQuery: e.target.value,
-                    })
-                }
-                handleRequest={handleRequest}
-            />
+            <div className="flex h-9 w-full justify-center md:w-fit">
+                <SearchForm
+                    query={searchGamesQuery}
+                    onChange={(e) =>
+                        dispatch({
+                            type: "setSearchQuery",
+                            searchGamesQuery: e.target.value,
+                        })
+                    }
+                    handleRequest={handleRequest}
+                />
+            </div>
         </div>
     );
 }
