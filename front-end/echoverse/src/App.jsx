@@ -20,6 +20,7 @@ import Security from "./pages/Security";
 import Privacy from "./pages/Privacy";
 import BlockedAccounts from "./pages/BlockedAccounts";
 import Games from "./pages/Games";
+import People from "./pages/People";
 
 const router = createBrowserRouter([
     {
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
                 path: "/games",
                 element: <Games />,
             },
+            {
+                path: '/explore/people',
+                element: <People />
+            }
         ],
     },
 ]);

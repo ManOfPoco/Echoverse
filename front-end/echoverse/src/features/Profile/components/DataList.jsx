@@ -1,3 +1,5 @@
+import List from "./List";
+
 function DataList({ title, data, img, alt }) {
     return (
         <div className="flex">
@@ -5,10 +7,7 @@ function DataList({ title, data, img, alt }) {
             <img src={img} alt={alt} />
             &nbsp; - &nbsp;
             <p>
-                {data.map(
-                    (platform, i) =>
-                        `${platform}${data.length !== i + 1 ? `, ` : " "}`
-                )}
+                <List data={data} />
             </p>
         </div>
     );

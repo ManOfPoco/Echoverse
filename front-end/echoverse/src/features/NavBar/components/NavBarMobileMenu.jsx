@@ -26,12 +26,12 @@ function NavBarMobileMenu({ isMenuOpen }) {
                     <SearchForm />
                 </div>
                 <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
-                    <DropdownItem isNavLink="true" link="/explore" key="People">
+                    <DropdownItem isNavLink="true" link="/explore/people" key="People">
                         People
                     </DropdownItem>
                     <DropdownItem
                         isNavLink="true"
-                        link="/threads"
+                        link="/explore/threads"
                         key="Threads"
                     >
                         Threads

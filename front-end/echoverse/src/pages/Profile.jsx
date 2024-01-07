@@ -10,7 +10,7 @@ import GamingCalendar from "../features/Profile/components/GamingCalendar";
 import FollowModal from "../features/Profile/components/FollowModal";
 import UserStatistics from "../features/Profile/components/UserStatistics";
 
-import profile from "../assets/img/profile.jpg";
+import person from "../assets/img/person.jpg";
 import cs2 from "../assets/img/cs2.png";
 import Menu from "../features/Profile/components/Menu";
 
@@ -63,19 +63,19 @@ const data = {
 };
 const followers = [
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: false,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
@@ -83,55 +83,55 @@ const followers = [
 ];
 const following = [
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
         isfollowing: true,
@@ -327,10 +327,10 @@ function Profile() {
                 <div className="w-full max-w-[1080px] lg:mx-auto">
                     <div className="flex h-full w-full border-white px-5 pt-5 md:border-b md:pb-5 lg:px-0">
                         <div className="flex w-fit px-2 md:hidden">
-                            <Avatar img={profile} type="lg" />
+                            <Avatar img={person} type="lg" />
                         </div>
                         <div className="hidden w-fit pe-5 md:flex">
-                            <Avatar img={profile} type="lgx" />
+                            <Avatar img={person} type="lgx" />
                         </div>
                         <div className="flex w-full max-w-[calc(100%-140px)] flex-col gap-4 text-sm md:max-w-[calc(100%-200px)] lg:md:max-w-[calc(100%-180px)]">
                             <div className="flex w-full flex-wrap items-center justify-between gap-5">

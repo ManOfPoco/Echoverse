@@ -9,7 +9,6 @@ import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
 import GameCards from "../features/UserGames/components/GameCards";
 
-import useWindowDimensions from "../hooks/useWindowDimensions";
 import WelcomeMessage from "../features/Games/components/WelcomeMessage";
 import SwiperGameCards from "../features/Games/components/SwiperGameCards";
 

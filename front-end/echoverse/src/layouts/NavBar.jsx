@@ -56,14 +56,14 @@ function NavBar({ isNavOnTop }) {
                         <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
                             <DropdownItem
                                 isNavLink="true"
-                                link="/explore"
+                                link="/explore/people"
                                 key="People"
                             >
                                 People
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink="true"
-                                link="/threads"
+                                link="/explore/threads"
                                 key="Threads"
                             >
                                 Threads

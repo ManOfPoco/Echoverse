@@ -3,52 +3,52 @@ import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
 import UsersListModal from "../../../components/UsersListModal";
 
-import profile from "../../../assets/img/profile.jpg";
+import person from "../../../assets/img/person.jpg";
 import BlockedUser from "./BlockedUser";
 
 const blockedUsers = [
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },
     {
-        avatar: profile,
+        avatar: person,
         username: "ManOfPoco",
         name: "Pete Peterson",
     },

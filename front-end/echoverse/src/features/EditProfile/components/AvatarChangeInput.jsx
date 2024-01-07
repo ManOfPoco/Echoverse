@@ -1,12 +1,12 @@
 import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
 
-import profile from "../../../assets/img/profile.jpg";
+import person from "../../../assets/img/person.jpg";
 
 function AvatarChangeInput({ username }) {
     return (
         <div className="flex md:ps-14">
-            <Avatar img={profile} type="sm" />
+            <Avatar img={person} type="sm" />
             <div className="flex flex-col justify-between ps-5">
                 <span className="h-4">{username}</span>
                 <Button customClasses="text-blue-light text-xs hover:text-blue-500 h-3.5">

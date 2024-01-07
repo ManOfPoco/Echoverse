@@ -5,7 +5,7 @@ import DropdownItem from "../../../components/DropdownItem";
 
 import NavLink from "./NavLink";
 
-import profile from "../../../assets/img/profile.jpg";
+import person from "../../../assets/img/person.jpg";
 import bellOpened from "../../../assets/svg/bellOpened.svg";
 import message from "../../../assets/svg/message.svg";
 import arrowRight from "../../../assets/svg/arrowRight.svg";
@@ -44,13 +44,13 @@ function NavBarAuthenticatedRightSide() {
                         </NavLink>
                     </div>
                     <div className="hidden md:flex">
-                        <Dropdown imageTitle={profile} dropdownWidth="w-48">
+                        <Dropdown imageTitle={person} dropdownWidth="w-48">
                             <DropdownItem
                                 isNavLink={true}
                                 link={`/${username}`}
-                                key="Profile"
+                                key="person"
                             >
-                                Profile
+                                person
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
@@ -69,13 +69,13 @@ function NavBarAuthenticatedRightSide() {
                         </Dropdown>
                     </div>
                     <div className="z-50 flex md:hidden">
-                        <Dropdown imageTitle={profile} dropdownWidth="w-48">
+                        <Dropdown imageTitle={person} dropdownWidth="w-48">
                             <DropdownItem
                                 isNavLink={true}
                                 link="/me"
-                                key="Profile"
+                                key="person"
                             >
-                                Profile
+                                person
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
