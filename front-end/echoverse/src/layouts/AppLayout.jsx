@@ -1,6 +1,7 @@
-import { Outlet } from "react-router-dom";
-import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
+
+import NavBar from "./NavBar";
 
 function AppLayout() {
     const [isNavOnTop, setIsNavOnTop] = useState(true);

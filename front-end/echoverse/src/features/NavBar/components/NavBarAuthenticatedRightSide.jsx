@@ -48,9 +48,9 @@ function NavBarAuthenticatedRightSide() {
                             <DropdownItem
                                 isNavLink={true}
                                 link={`/${username}`}
-                                key="person"
+                                key="Profile"
                             >
-                                person
+                                Profile
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
@@ -73,9 +73,9 @@ function NavBarAuthenticatedRightSide() {
                             <DropdownItem
                                 isNavLink={true}
                                 link="/me"
-                                key="person"
+                                key="Profile"
                             >
-                                person
+                                Profile
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
