@@ -21,6 +21,8 @@ import Privacy from "./pages/Privacy";
 import BlockedAccounts from "./pages/BlockedAccounts";
 import Games from "./pages/Games";
 import People from "./pages/People";
+import PeopleForYou from "./pages/PeopleForYou";
+import PeopleHistory from "./pages/PeopleHistory";
 
 const router = createBrowserRouter([
     {
@@ -96,9 +98,24 @@ const router = createBrowserRouter([
                 element: <Games />,
             },
             {
-                path: '/explore/people',
-                element: <People />
-            }
+                path: "/explore/people",
+                element: <People />,
+                children: [
+                    {
+                        path: "",
+                        element: <Navigate replace to="for-you" />,
+                    },
+                    {
+                        index: true,
+                        path: "for-you",
+                        element: <PeopleForYou />,
+                    },
+                    {
+                        path: "history",
+                        element: <PeopleHistory />,
+                    },
+                ],
+            },
         ],
     },
 ]);

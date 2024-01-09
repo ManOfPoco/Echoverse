@@ -73,3 +73,24 @@ select:-webkit-autofill:focus {
 .swiper-wrapper, .swiper {
     z-index: 10;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    background: none;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #999999;
+    border-radius: 8px;
+}
+ 
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #374151;
+}
