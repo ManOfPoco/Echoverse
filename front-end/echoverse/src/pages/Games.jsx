@@ -1,16 +1,15 @@
 import { useReducer } from "react";
 
 import GameFilters from "../features/Games/components/GameFilters";
+import GameCards from "../features/UserGames/components/GameCards";
+import WelcomeMessage from "../features/Games/components/WelcomeMessage";
+import SwiperGameCards from "../features/Games/components/SwiperGameCards";
 
 import cs2 from "../assets/img/cs2.png";
 import satisfactory from "../assets/img/satisfactory.png";
 import lethalCompany from "../assets/img/lethalCompany.png";
 import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
-import GameCards from "../features/UserGames/components/GameCards";
-
-import WelcomeMessage from "../features/Games/components/WelcomeMessage";
-import SwiperGameCards from "../features/Games/components/SwiperGameCards";
 
 const tags = [
     "Valheim",

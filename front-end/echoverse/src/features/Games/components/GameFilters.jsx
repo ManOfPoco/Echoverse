@@ -1,11 +1,9 @@
 import Filter from "../../../components/Filter";
-import FilterSwitchOption from "../../../components/FilterSwitchOption";
-import FilterSelectOption from "../../../components/FilterSelectOption";
+import SearchForm from "../../../components/SearchForm";
+import FilterSelectOptions from "../../../components/FilterSelectOptions";
 
 import sortFilter from "../../../assets/svg/sortFilter.svg";
 import controllerWhite from "../../../assets/svg/controllerWhite.svg";
-import SearchForm from "../../../components/SearchForm";
-import FilterSelectOptions from "../../../components/FilterSelectOptions";
 
 function GameFilters({ state, dispatch, handleRequest }) {
     const {
@@ -42,7 +40,7 @@ function GameFilters({ state, dispatch, handleRequest }) {
                     filterView="line"
                     filters={tags}
                     dispatch={dispatch}
-                    filterShowSide="right"
+                    placement="bottom-start"
                     filtersWidth="w-80"
                     key="Tags"
                 >
@@ -60,7 +58,7 @@ function GameFilters({ state, dispatch, handleRequest }) {
                     filterView="line"
                     filters={platforms}
                     dispatch={dispatch}
-                    filterShowSide="right"
+                    placement="bottom-start"
                     filtersWidth="w-80"
                     key="Platform"
                 >

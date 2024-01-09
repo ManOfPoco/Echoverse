@@ -26,8 +26,8 @@ function PostsFilters({ state, dispatch }) {
     }
 
     return (
-        <div className="mx-5 flex flex-wrap justify-between lg:mx-0">
-            <div className="flex gap-4">
+        <div className="mx-5 flex flex-wrap justify-between lg:mx-0 gap-y-2">
+            <div className="flex flex-wrap gap-x-4 gap-y-2">
                 <Filter
                     filterImg={sortArrowsFilter}
                     title="Sort"
@@ -79,6 +79,7 @@ function PostsFilters({ state, dispatch }) {
                 filterView="line"
                 filters={tags}
                 dispatch={dispatch}
+                placement="bottom-end"
                 filtersWidth="w-80"
                 key="Tags"
             >
