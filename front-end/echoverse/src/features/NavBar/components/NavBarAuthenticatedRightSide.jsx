@@ -72,21 +72,21 @@ function NavBarAuthenticatedRightSide() {
                         <Dropdown imageTitle={person} dropdownWidth="w-48">
                             <DropdownItem
                                 isNavLink={true}
-                                link="/me"
+                                link={`/${username}`}
                                 key="Profile"
                             >
                                 Profile
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
-                                link="/me"
+                                link="/direct"
                                 key="Direct"
                             >
                                 Direct
                             </DropdownItem>
                             <DropdownItem
                                 isNavLink={true}
-                                link="/me"
+                                link="/notification"
                                 key="Notification"
                             >
                                 Notification

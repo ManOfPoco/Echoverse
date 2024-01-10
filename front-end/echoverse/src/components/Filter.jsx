@@ -46,10 +46,10 @@ function Filter({
     title,
     isOpen,
     setIsOpen,
-    filterView = "list", // list, line
-    filters,
-    dispatch,
-    placement = "bottom-start", //left, right
+    filterView = "list", // list, line, date
+    filters = null,
+    dispatch = null,
+    placement = "bottom-start",
     filtersWidth = "w-56",
     children,
 }) {
@@ -77,6 +77,22 @@ function Filter({
         },
         [filterView, dispatch, searchQuery, searchFilters]
     );
+
+    useEffect(() => {
+        function closeDropdown(e) {
+            if (
+                referenceElement &&
+                isOpen &&
+                !referenceElement.contains(e.target)
+            )
+                setIsOpen(false);
+        }
+        document.addEventListener("mousedown", closeDropdown);
+
+        return () => {
+            document.removeEventListener("mousedown", closeDropdown);
+        };
+    }, [referenceElement, isOpen, setIsOpen]);
 
     function handleSetSearchQueryTags(e) {
         filtersDispatch({
@@ -132,6 +148,16 @@ function Filter({
                                 onChange={(e) => handleSetSearchQueryTags(e)}
                             />
                         </span>
+                        {children}
+                    </div>
+                )}
+                {filterView === "date" && (
+                    <div
+                        className={`mt-1 flex flex-col gap-5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
+                        ref={setPopperElement}
+                        style={styles.popper}
+                        {...attributes.popper}
+                    >
                         {children}
                     </div>
                 )}

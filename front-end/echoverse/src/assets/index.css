@@ -46,7 +46,7 @@ select:-webkit-autofill:focus {
 }
 
 .react-datepicker__day {
-    border-radius: 20px;
+    border-radius: 9999px;
 }
 
 .react-datepicker__day--selected:hover,
@@ -54,7 +54,14 @@ select:-webkit-autofill:focus {
 .react-datepicker__day:hover,
 .react-datepicker__day--keyboard-selected {
     background-color: #645bf0;
-    border-radius: 20px;
+    border-radius: 9999px;
+}
+
+.react-datepicker__day--in-range,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--in-selecting-range {
+    background-color: #645bf0 !important;
+    opacity: 70%;
 }
 
 .swiper-pagination-bullet {
@@ -70,7 +77,8 @@ select:-webkit-autofill:focus {
     color: #645bf0;
 }
 
-.swiper-wrapper, .swiper {
+.swiper-wrapper,
+.swiper {
     z-index: 10;
 }
 
@@ -78,18 +86,18 @@ select:-webkit-autofill:focus {
 ::-webkit-scrollbar {
     width: 8px;
 }
- 
+
 /* Track */
 ::-webkit-scrollbar-track {
     background: none;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #999999;
     border-radius: 8px;
 }
- 
+
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #374151;

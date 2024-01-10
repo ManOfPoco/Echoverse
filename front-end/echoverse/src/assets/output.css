@@ -975,6 +975,10 @@ video {
   width: 14rem;
 }
 
+.w-6{
+  width: 1.5rem;
+}
+
 .w-60{
   width: 15rem;
 }
@@ -1005,6 +1009,10 @@ video {
 
 .w-\[179px\]{
   width: 179px;
+}
+
+.w-\[180px\]{
+  width: 180px;
 }
 
 .w-\[229px\]{
@@ -2031,7 +2039,7 @@ select:-webkit-autofill:focus {
 }
 
 .react-datepicker__day {
-  border-radius: 20px;
+  border-radius: 9999px;
 }
 
 .react-datepicker__day--selected:hover,
@@ -2039,7 +2047,14 @@ select:-webkit-autofill:focus {
 .react-datepicker__day:hover,
 .react-datepicker__day--keyboard-selected {
   background-color: #645bf0;
-  border-radius: 20px;
+  border-radius: 9999px;
+}
+
+.react-datepicker__day--in-range,
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__day--in-selecting-range {
+  background-color: #645bf0 !important;
+  opacity: 70%;
 }
 
 .swiper-pagination-bullet {
@@ -2055,7 +2070,8 @@ select:-webkit-autofill:focus {
   color: #645bf0;
 }
 
-.swiper-wrapper, .swiper {
+.swiper-wrapper,
+.swiper {
   z-index: 10;
 }
 

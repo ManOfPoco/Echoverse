@@ -3,6 +3,7 @@ import { useState } from "react";
 import HistoryUsers from "../features/PeopleHistory/components/HistoryUsers";
 
 import person from "../assets/img/person.jpg";
+import HistoryFilters from "../features/PeopleHistory/components/HistoryFilters";
 
 const person1 = {
     id: 0,
@@ -34,9 +35,14 @@ const initialPeople = [
 
 function PeopleHistory() {
     const [historyUsers, setHistoryUsers] = useState(initialPeople);
+
     return (
-        <div className="grid grid-cols-1 gap-5 pb-10 sm:grid-cols-2 lg:grid-cols-3">
-            <HistoryUsers historyUsers={historyUsers} />
+        <div className="flex flex-col gap-4 my-2">
+            <HistoryFilters />
+
+            <div className="grid grid-cols-1 gap-5 pb-10 sm:grid-cols-2 lg:grid-cols-3">
+                <HistoryUsers historyUsers={historyUsers} />
+            </div>
         </div>
     );
 }
