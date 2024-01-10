@@ -79,7 +79,7 @@ function Filter({
     );
 
     useEffect(() => {
-        function closeDropdown(e) {
+        function closeFilter(e) {
             if (
                 referenceElement &&
                 isOpen &&
@@ -87,10 +87,10 @@ function Filter({
             )
                 setIsOpen(false);
         }
-        document.addEventListener("mousedown", closeDropdown);
+        document.addEventListener("mousedown", closeFilter);
 
         return () => {
-            document.removeEventListener("mousedown", closeDropdown);
+            document.removeEventListener("mousedown", closeFilter);
         };
     }, [referenceElement, isOpen, setIsOpen]);
 

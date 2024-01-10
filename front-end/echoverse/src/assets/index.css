@@ -85,20 +85,22 @@ select:-webkit-autofill:focus {
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
+    background-color: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: none;
+    background: #374151;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #999999;
+    background: #262A2F;
+    opacity: 80%;
     border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #374151;
+    background: #262A2F;
 }
