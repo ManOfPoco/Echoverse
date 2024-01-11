@@ -5,12 +5,19 @@ const types = {
     full: "w-full flex gap-1 rounded-md bg-gray-charcoal px-2 py-1 focus-within:ring-1 focus-within:ring-inset focus-within:ring-blue-light",
 };
 
-function SearchForm({ placeholder = "Search", type = "base", query, onChange, handleRequest }) {
-
+function SearchForm({
+    placeholder = "Search",
+    type = "base",
+    roundness = 'rounded-md',
+    children,
+    query,
+    onChange,
+    handleRequest,
+}) {
     const searchType = types[type] || types["base"];
 
     return (
-        <div className={`${searchType}`}>
+        <div className={`${searchType} ${roundness}`}>
             <img
                 draggable="false"
                 className="h-5.5 w-5.5"
@@ -25,6 +32,7 @@ function SearchForm({ placeholder = "Search", type = "base", query, onChange, ha
                 onChange={onChange}
                 onKeyDown={handleRequest}
             />
+            {children}
         </div>
     );
 }

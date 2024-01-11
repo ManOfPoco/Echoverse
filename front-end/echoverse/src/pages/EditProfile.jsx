@@ -1,12 +1,6 @@
-import { useOutletContext } from "react-router-dom";
-
-import useWindowDimensions from "../hooks/useWindowDimensions";
-
 import EditProfileForm from "../features/EditProfile/components/EditProfileForm";
 
 function EditProfile() {
-    const [isMenuActive, setIsMenuActive] = useOutletContext();
-    const { height, width } = useWindowDimensions();
 
     return (
         <>

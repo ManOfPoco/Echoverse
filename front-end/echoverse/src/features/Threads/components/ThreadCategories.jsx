@@ -1,10 +1,10 @@
-import SavedPostCategory from "./SavedPostCategory";
+import ThreadCategory from "./ThreadCategory";
 
-export function SavedPostCategories({ categories }) {
+export function ThreadCategories({ categories }) {
     return (
         <div className="flex gap-3 truncate border-b border-gray-light px-2.5 py-2.5 text-xs text-gray-light">
             {categories.map((category, i) => (
-                <SavedPostCategory
+                <ThreadCategory
                     category={category}
                     isNextCategory={i + 1 !== categories.length}
                     key={category}
@@ -14,4 +14,4 @@ export function SavedPostCategories({ categories }) {
     );
 }
 
-export default SavedPostCategories;
+export default ThreadCategories;

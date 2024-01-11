@@ -5,7 +5,7 @@ const btnTypes = {
         "font-roboto text-sm bg-gray-charcoal hover:bg-gray-600 hover:ring-2 hover:ring-gray-700",
     warning:
         "font-roboto text-sm bg-pumpkin hover:bg-orange-500 hover:ring-2 hover:ring-orange-600",
-    danger: "font-roboto text-sm bg-fire-engine-red hover:bg-red-600 hover:ring-2 hover:ring-red-700",
+    danger: "font-roboto text-sm bg-red-fire-engine hover:bg-red-600 hover:ring-2 hover:ring-red-700",
     blue: "font-roboto text-sm bg-blue-light hover:bg-blue-500 hover:ring-2 hover:ring-blue-600",
 };
 

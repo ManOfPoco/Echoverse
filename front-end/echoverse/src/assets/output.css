@@ -807,6 +807,10 @@ video {
   height: 5rem;
 }
 
+.h-24{
+  height: 6rem;
+}
+
 .h-3{
   height: 0.75rem;
 }
@@ -881,6 +885,10 @@ video {
 
 .h-full{
   height: 100%;
+}
+
+.max-h-36{
+  max-height: 9rem;
 }
 
 .max-h-52{
@@ -1043,6 +1051,10 @@ video {
   width: calc(100% - 56px);
 }
 
+.w-auto{
+  width: auto;
+}
+
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
@@ -1061,8 +1073,25 @@ video {
   width: 100vw;
 }
 
+.w-\[320px\]{
+  width: 320px;
+}
+
 .min-w-\[320px\]{
   min-width: 320px;
+}
+
+.min-w-fit{
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.min-w-\[280px\]{
+  min-width: 280px;
+}
+
+.min-w-\[272px\]{
+  min-width: 272px;
 }
 
 .max-w-\[1080px\]{
@@ -1083,6 +1112,10 @@ video {
 
 .max-w-\[244px\]{
   max-width: 244px;
+}
+
+.max-w-\[320px\]{
+  max-width: 320px;
 }
 
 .max-w-\[450px\]{
@@ -1499,6 +1532,11 @@ video {
   background-color: rgb(227 121 45 / var(--tw-bg-opacity));
 }
 
+.bg-red-fire-engine{
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 49 36 / var(--tw-bg-opacity));
+}
+
 .bg-violet-300{
   --tw-bg-opacity: 1;
   background-color: rgb(196 181 253 / var(--tw-bg-opacity));
@@ -1913,8 +1951,20 @@ video {
   outline-style: solid;
 }
 
+.outline-1{
+  outline-width: 1px;
+}
+
 .outline-2{
   outline-width: 2px;
+}
+
+.outline-black-night{
+  outline-color: #121212;
+}
+
+.outline-gray-charcoal{
+  outline-color: #374151;
 }
 
 .outline-majorelle-blue{
@@ -2143,10 +2193,6 @@ select:-webkit-autofill:focus {
   background-color: rgb(55 65 81 / 0.2);
 }
 
-.hover\:bg-gray-charcoal\/50:hover{
-  background-color: rgb(55 65 81 / 0.5);
-}
-
 .hover\:bg-gray-dark:hover{
   --tw-bg-opacity: 1;
   background-color: rgb(38 42 47 / var(--tw-bg-opacity));
@@ -2175,18 +2221,6 @@ select:-webkit-autofill:focus {
 .hover\:text-cyan-200:hover{
   --tw-text-opacity: 1;
   color: rgb(165 243 252 / var(--tw-text-opacity));
-}
-
-.hover\:outline:hover{
-  outline-style: solid;
-}
-
-.hover\:outline-2:hover{
-  outline-width: 2px;
-}
-
-.hover\:outline-majorelle-blue\/90:hover{
-  outline-color: rgb(100 91 240 / 0.9);
 }
 
 .hover\:ring-2:hover{
@@ -2241,6 +2275,16 @@ select:-webkit-autofill:focus {
 }
 
 @media (min-width: 576px){
+  .sm\:my-0{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+
+  .sm\:my-0\.5{
+    margin-top: 0.125rem;
+    margin-bottom: 0.125rem;
+  }
+
   .sm\:h-44{
     height: 11rem;
   }
@@ -2277,6 +2321,16 @@ select:-webkit-autofill:focus {
     gap: 0.5rem;
   }
 
+  .sm\:px-3{
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .sm\:px-4{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .sm\:px-5{
     padding-left: 1.25rem;
     padding-right: 1.25rem;
@@ -2285,6 +2339,11 @@ select:-webkit-autofill:focus {
   .sm\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .sm\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .sm\:pe-0{
@@ -2297,6 +2356,10 @@ select:-webkit-autofill:focus {
 
   .sm\:ps-10{
     padding-inline-start: 2.5rem;
+  }
+
+  .sm\:pt-3{
+    padding-top: 0.75rem;
   }
 
   .sm\:text-sm{
@@ -2431,6 +2494,10 @@ select:-webkit-autofill:focus {
 
   .md\:ps-14{
     padding-inline-start: 3.5rem;
+  }
+
+  .md\:pt-5{
+    padding-top: 1.25rem;
   }
 
   .md\:text-end{
@@ -2576,6 +2643,21 @@ select:-webkit-autofill:focus {
     padding-right: 0px;
   }
 
+  .lg\:px-8{
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .lg\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .lg\:py-2\.5{
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+
   .lg\:pb-6{
     padding-bottom: 1.5rem;
   }
@@ -2590,6 +2672,10 @@ select:-webkit-autofill:focus {
 
   .lg\:pt-12{
     padding-top: 3rem;
+  }
+
+  .lg\:pt-8{
+    padding-top: 2rem;
   }
 
   .lg\:text-3xl{
@@ -2607,6 +2693,22 @@ select:-webkit-autofill:focus {
 
   .lg\:focus-within\:w-72:focus-within{
     width: 18rem;
+  }
+
+  .lg\:hover\:bg-gray-charcoal\/50:hover{
+    background-color: rgb(55 65 81 / 0.5);
+  }
+
+  .lg\:hover\:outline:hover{
+    outline-style: solid;
+  }
+
+  .lg\:hover\:outline-2:hover{
+    outline-width: 2px;
+  }
+
+  .lg\:hover\:outline-majorelle-blue\/80:hover{
+    outline-color: rgb(100 91 240 / 0.8);
   }
 }
 

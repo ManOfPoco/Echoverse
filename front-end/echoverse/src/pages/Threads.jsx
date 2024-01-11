@@ -1,7 +1,14 @@
-import ThreadsList from "../features/Threads/components/ThreadsList";
-import ThreadFilters from "../features/Threads/components/ThreadFilters";
+import { useState } from "react";
+
+import Button from "../components/Button";
+import SearchForm from "../components/SearchForm";
 
 import useThreads from "../features/Threads/hooks/useThreads";
+import ThreadsFilters from "../features/Threads/components/ThreadFilters";
+import ThreadsList from "../features/Threads/components/ThreadsList";
+import NewThread from "../features/Threads/components/NewThread";
+
+import messageFilled from "../assets/svg/messageFilled.svg";
 
 const savedThreads = [
     {
@@ -136,16 +143,41 @@ const tags = [
     "Far Cry 5",
 ];
 
-function Saved() {
-    const [state, dispatch] = useThreads();
+function Threads() {
+    const [isNewPost, setIsNewPost] = useState(false);
+    const [state, dispatch] = useThreads(tags);
+
     const { view } = state;
 
     return (
-        <div className="mx-5">
-            <ThreadFilters state={state} dispatch={dispatch} />
-            <ThreadsList view={view} savedThreads={savedThreads} />
+        <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
+            <div className="w-full max-w-[1440px] px-2 pt-2 sm:px-3 sm:pt-3 md:px-5 md:pt-5 lg:mx-auto lg:px-8 lg:pt-8">
+                {isNewPost ? (
+                    <NewThread setIsNewPost={setIsNewPost} />
+                ) : (
+                    <SearchForm type="full" roundness="rounded-lg">
+                        <Button
+                            btnClass="blue"
+                            roundness="rounded-xls"
+                            size="min-w-fit py-1 px-2 sm:px-4 sm:py-2 lg:py-2.5"
+                            customClasses="sm:my-0.5"
+                            action={() => setIsNewPost(true)}
+                        >
+                            <div className="flex items-center justify-center gap-1.5">
+                                <img src={messageFilled} className="h-4 w-4" />
+                                <span>New Post</span>
+                            </div>
+                        </Button>
+                    </SearchForm>
+                )}
+
+                <div className="mt-5">
+                    <ThreadsFilters state={state} dispatch={dispatch} />
+                    <ThreadsList view={view} savedThreads={savedThreads} />
+                </div>
+            </div>
         </div>
     );
 }
 
-export default Saved;
+export default Threads;

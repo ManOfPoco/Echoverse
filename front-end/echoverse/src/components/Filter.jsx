@@ -71,7 +71,7 @@ function Filter({
             if (filterView === "line")
                 dispatch({
                     type: "setSearchFiltersQuery",
-                    searchQuery: searchQuery,
+                    searchTagsQuery: searchQuery,
                     searchFilters,
                 });
         },
@@ -83,7 +83,8 @@ function Filter({
             if (
                 referenceElement &&
                 isOpen &&
-                !referenceElement.contains(e.target)
+                !referenceElement.contains(e.target) &&
+                !popperElement.contains(e.target)
             )
                 setIsOpen(false);
         }
@@ -92,7 +93,7 @@ function Filter({
         return () => {
             document.removeEventListener("mousedown", closeFilter);
         };
-    }, [referenceElement, isOpen, setIsOpen]);
+    }, [referenceElement, popperElement, isOpen, setIsOpen]);
 
     function handleSetSearchQueryTags(e) {
         filtersDispatch({

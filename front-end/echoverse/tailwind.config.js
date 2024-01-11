@@ -43,7 +43,7 @@ module.exports = {
                     prussian: "#1E293B",
                 },
                 red: {
-                    'fire-engine-red': '#CE3124'
+                    'fire-engine': '#CE3124'
                 },
                 turquoise: "#6EE2F5",
             },

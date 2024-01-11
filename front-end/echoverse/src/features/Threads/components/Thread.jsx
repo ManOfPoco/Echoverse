@@ -1,8 +1,8 @@
-import SavedPostCategories from "./SavedPostCategories";
-import SavedPostBody from "./SavedPostBody";
+import ThreadCategories from "./ThreadCategories";
+import ThreadBody from "./ThreadBody";
 
 
-function SavedPost({ savedPost, view }) {
+function Thread({ savedThread, view }) {
     const {
         title,
         description,
@@ -12,15 +12,15 @@ function SavedPost({ savedPost, view }) {
         categories,
         postedAgo,
         messagesQuantity,
-    } = savedPost;
+    } = savedThread;
 
     return (
         <div
             className={`flex w-full cursor-pointer flex-col rounded-xl bg-gray-charcoal`}
             onClick={() => console.log(`message by ${username}`)}
         >
-            <SavedPostCategories categories={categories} />
-            <SavedPostBody
+            <ThreadCategories categories={categories} />
+            <ThreadBody
                 username={username}
                 postedAgo={postedAgo}
                 title={title}
@@ -34,4 +34,4 @@ function SavedPost({ savedPost, view }) {
     );
 }
 
-export default SavedPost;
+export default Thread;

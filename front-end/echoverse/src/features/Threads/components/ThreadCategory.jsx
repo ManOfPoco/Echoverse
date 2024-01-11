@@ -1,4 +1,4 @@
-function SavedPostCategory({ category, isNextCategory }) {
+function ThreadCategory({ category, isNextCategory }) {
     return (
         <>
             <div className="w-max" key={category}>
@@ -9,4 +9,4 @@ function SavedPostCategory({ category, isNextCategory }) {
     );
 }
 
-export default SavedPostCategory;
+export default ThreadCategory;

@@ -23,6 +23,7 @@ import Games from "./pages/Games";
 import People from "./pages/People";
 import PeopleForYou from "./pages/PeopleForYou";
 import PeopleHistory from "./pages/PeopleHistory";
+import Threads from "./pages/Threads";
 
 const router = createBrowserRouter([
     {
@@ -116,6 +117,10 @@ const router = createBrowserRouter([
                     },
                 ],
             },
+            {
+                path: '/explore/threads',
+                element: <Threads />
+            }
         ],
     },
 ]);

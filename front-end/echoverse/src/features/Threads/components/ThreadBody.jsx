@@ -1,6 +1,6 @@
 import chatMessageBubble from "../../../assets/svg/chatMessageBubble.svg";
 
-export function SavedPostBody({
+export function ThreadBody({
     username,
     postedAgo,
     title,
@@ -40,4 +40,4 @@ export function SavedPostBody({
     );
 }
 
-export default SavedPostBody;
+export default ThreadBody;

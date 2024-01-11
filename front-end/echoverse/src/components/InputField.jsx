@@ -5,16 +5,19 @@ function InputField({
     size = "w-[244px]",
     padding = "px-4",
     roundness = "rounded-xls",
+    bgColor = "bg-gray-charcoal",
     classes,
     placeholder,
     autocomplete,
-    register,
+    onChange = undefined,
+    onKeyDown,
     defaultValue,
+    register,
     isDisabled,
 }) {
     return (
         <div
-            className={`flex items-center ${roundness} ${size} bg-gray-charcoal ${
+            className={`flex items-center ${roundness} ${size} ${bgColor} ${
                 img ? padding : ""
             } py-2`}
         >
@@ -29,12 +32,14 @@ function InputField({
             <input
                 type={type}
                 placeholder={placeholder}
-                className={`w-full border-0 bg-gray-charcoal ${
-                    img ? "px-2" : "px-2.5"
+                className={`w-full border-0 ${bgColor} ${
+                    img ? "mx-2" : "mx-2.5"
                 } font-roboto outline-none ${classes}`}
                 autoComplete={autocomplete}
                 disabled={isDisabled}
                 value={defaultValue}
+                onChange={onChange}
+                onKeyDown={onKeyDown}
                 {...register}
             />
         </div>

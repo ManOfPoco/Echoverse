@@ -6,7 +6,7 @@ import sortFilter from "../../../assets/svg/sortFilter.svg";
 import sortArrowsFilter from "../../../assets/svg/sortArrowsFilter.svg";
 import tag from "../../../assets/svg/tag.svg";
 
-function PostsFilters({ state, dispatch }) {
+function ThreadFilters({ state, dispatch }) {
     const { openFilter, sort, view, tags, searchTags, selectedTags } = state;
 
     function handleOpenFilter(filter) {
@@ -26,7 +26,7 @@ function PostsFilters({ state, dispatch }) {
     }
 
     return (
-        <div className="mx-5 flex flex-wrap justify-between lg:mx-0 gap-y-2">
+        <div className="flex flex-wrap justify-between gap-x-4 gap-y-2 lg:mx-0">
             <div className="flex flex-wrap gap-x-4 gap-y-2">
                 <Filter
                     filterImg={sortArrowsFilter}
@@ -93,4 +93,4 @@ function PostsFilters({ state, dispatch }) {
     );
 }
 
-export default PostsFilters;
+export default ThreadFilters;

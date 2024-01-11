@@ -25,7 +25,6 @@ function LabelInputField({
                               })
                             : null
                     }
-                    defaultValue={defaultValue}
                     isDisabled={isDisabled}
                 />
             )}
