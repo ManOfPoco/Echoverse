@@ -24,7 +24,7 @@ function InputField({
             {img && (
                 <img
                     draggable="false"
-                    className={imgSize}
+                    className={`${imgSize} aspect-square rounded-full object-cover`}
                     src={img}
                     alt="search"
                 />

@@ -1,10 +1,10 @@
-import ThreadCategory from "./ThreadCategory";
+import GameThreadCategory from "./GameThreadCategory";
 
-export function ThreadCategories({ categories }) {
+export function GameThreadCategories({ categories }) {
     return (
         <div className="flex gap-3 truncate border-b border-gray-light px-2.5 py-2.5 text-xs text-gray-light">
             {categories.map((category, i) => (
-                <ThreadCategory
+                <GameThreadCategory
                     category={category}
                     isNextCategory={i + 1 !== categories.length}
                     key={category}
@@ -14,4 +14,4 @@ export function ThreadCategories({ categories }) {
     );
 }
 
-export default ThreadCategories;
+export default GameThreadCategories;

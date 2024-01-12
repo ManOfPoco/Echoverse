@@ -4,7 +4,7 @@ import { Navigation, Pagination, A11y, Autoplay } from "swiper/modules";
 import "swiper/css/bundle";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import GameCard from "../../UserGames/components/GameCard";
+import GameCard from "./GameCard";
 
 function SwiperGameCards({ title, games, autoplay }) {
     const { width } = useWindowDimensions();
@@ -13,7 +13,7 @@ function SwiperGameCards({ title, games, autoplay }) {
 
     return (
         <div className="mx-5 mt-5 lg:mx-0">
-            <h5 className="text-xl mb-5">{title}</h5>
+            <h5 className="mb-5 text-xl">{title}</h5>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, A11y]}
                 spaceBetween={5}

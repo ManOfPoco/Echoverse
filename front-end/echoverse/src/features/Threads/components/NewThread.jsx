@@ -1,130 +1,139 @@
-import { useReducer } from "react";
-import { useForm } from "react-hook-form";
+import { useEffect, useRef, useState } from "react";
+import { usePopper } from "react-popper";
 
+import EmojiPicker from "emoji-picker-react";
+
+import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
-import InputField from "../../../components/InputField";
-import TextareaInput from "../../../components/TextareaInput";
 
-import SelectedNewThreadTags from "./SelectedNewThreadTags";
-
+import person from "../../../assets/img/person.jpg";
 import messageFilled from "../../../assets/svg/messageFilled.svg";
-import unavailable from "../../../assets/svg/unavailable.svg";
+import smileEmoji from "../../../assets/svg/smileEmoji.svg";
 
-const selectedTags = [
-    "Valheim",
-    "Roblox",
-    "Satisfactory",
-    "Counter Strike 2",
-    "No way home",
-    "Dead Island 2",
-    "Far Cry 5",
-];
+const initialNewThreadMessage = "Share your thoughts...";
 
-const initialState = {
-    selectedTags: selectedTags,
-    searchTagQuery: "",
-    searchTags: selectedTags,
-};
-
-function reducer(state, action) {
-    switch (action.type) {
-        case "setSearchQuery":
-            return { ...state, searchTagQuery: action.searchTagQuery };
-
-        case "addTag":
-            if (!state.selectedTags.includes(action.tag)) {
-                console.log('asd')
-                if (action.clear)
-                    return {
-                        ...state,
-                        searchTagQuery: "",
-                        selectedTags: [...state.selectedTags, action.tag],
-                    };
-                return {
-                    ...state,
-                    selectedTags: [...state.selectedTags, action.tag],
-                };
-            }
-            return { ...state };
-
-        case "removeTag":
-            if (state.selectedTags.includes(action.tag)) {
-                return {
-                    ...state,
-                    selectedTags: [
-                        ...state.selectedTags.filter(
-                            (tag) => tag !== action.tag
-                        ),
-                    ],
-                };
-            }
-            return { ...state };
-
-        default:
-            break;
+function clearInput(newThreadRef) {
+    if (newThreadRef.current.innerHTML === "Share your thoughts...") {
+        newThreadRef.current.innerHTML = "";
+        newThreadRef.current.className = newThreadRef.current.className.replace(
+            " text-gray-light",
+            ""
+        );
     }
 }
 
-function NewThread({ setIsNewPost }) {
-    const [state, dispatch] = useReducer(reducer, initialState);
-    const { selectedTags } = state;
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm();
+function NewThread() {
+    const newThreadRef = useRef(null);
+    const [isEmojiPickerOpen, setIsEmojiPickerOpen] = useState(false);
+    const [referenceElement, setReferenceElement] = useState(null);
+    const [popperElement, setPopperElement] = useState(null);
+    const { styles, attributes } = usePopper(referenceElement, popperElement, {
+        placement: "bottom",
+    });
+
+    function handleOnFocus() {
+        clearInput(newThreadRef);
+    }
+
+    function handleOnBlur() {
+        if (newThreadRef.current.innerHTML === "") {
+            newThreadRef.current.innerHTML = initialNewThreadMessage;
+            newThreadRef.current.className += " text-gray-light";
+        }
+    }
+
+    function handleAddEmoji(emojiObj) {
+        clearInput(newThreadRef);
+        newThreadRef.current.innerHTML += emojiObj.emoji;
+    }
+
+    useEffect(() => {
+        if (
+            newThreadRef.current.innerHTML === initialNewThreadMessage &&
+            !newThreadRef.current.className.includes("text-gray-light")
+        ) {
+            newThreadRef.current.className += " text-gray-light";
+        }
+    }, [newThreadRef]);
+
+    useEffect(() => {
+        function closeFilter(e) {
+            if (
+                referenceElement &&
+                isEmojiPickerOpen &&
+                !referenceElement.contains(e.target) &&
+                !popperElement.contains(e.target)
+            )
+                setIsEmojiPickerOpen(false);
+        }
+        document.addEventListener("mousedown", closeFilter);
+
+        return () => {
+            document.removeEventListener("mousedown", closeFilter);
+        };
+    }, [referenceElement, popperElement, isEmojiPickerOpen]);
 
     return (
-        <div className="flex flex-col gap-2 rounded-lg bg-gray-dark px-2 py-2">
-            <InputField
-                size="w-full"
-                roundness="rounded-md"
-                classes="text-lg font-semibold"
-                placeholder="Title"
-                register={register("Title", {
-                    required: true,
-                })}
-            />
-            <TextareaInput
-                placeholder="Enter a message..."
-                roundness="rounded-md"
-                register={register("Message", {
-                    required: true,
-                })}
-            />
-            <div className="flex flex-wrap items-center gap-2 rounded-lg px-2 outline outline-1 outline-black-night ">
-                <SelectedNewThreadTags
-                    selectedTags={selectedTags}
-                    state={state}
-                    dispatch={dispatch}
-                />
-            </div>
-            <div className="flex justify-end gap-4">
-                <Button
-                    btnClass="danger"
-                    roundness="rounded-xls"
-                    size="min-w-fit py-1 px-2 sm:px-4 sm:py-2"
-                    customClasses="sm:my-0.5"
+        <div className="flex gap-3 border-b border-gray-light/30 pb-6">
+            <Avatar img={person} type="sm" />
+
+            <div className="flex w-[calc(100%-52px)] flex-col gap-2 sm:max-w-[524px]">
+                <div
+                    className="max-h-fit min-h-14 w-full overflow-y-auto overflow-x-hidden border-0 border-b border-gray-light/30 py-2 font-roboto text-sm outline-none"
+                    contentEditable="true"
+                    suppressContentEditableWarning={true}
+                    aria-placeholder="Share your thoughts..."
+                    onFocus={() => handleOnFocus()}
+                    onBlur={() => handleOnBlur()}
+                    ref={newThreadRef}
                 >
-                    <div
-                        className="flex items-center justify-center gap-1.5"
-                        onClick={() => setIsNewPost(false)}
+                    {initialNewThreadMessage}
+                </div>
+                <div className="flex items-center justify-between">
+                    {isEmojiPickerOpen && (
+                        <div
+                            ref={setPopperElement}
+                            style={styles.popper}
+                            {...attributes.popper}
+                            className="mt-1"
+                        >
+                            <EmojiPicker
+                                onEmojiClick={(emojiObj) =>
+                                    handleAddEmoji(emojiObj)
+                                }
+                                theme="dark"
+                                emojiStyle="twitter"
+                                lazyLoadEmojis={true}
+                                width="320px"
+                            />
+                        </div>
+                    )}
+
+                    <img
+                        src={smileEmoji}
+                        className="h-5 w-5 "
+                        onClick={() => setIsEmojiPickerOpen(!isEmojiPickerOpen)}
+                        ref={setReferenceElement}
+                    />
+                    <Button
+                        btnClass="blue"
+                        roundness="rounded-xls"
+                        size="py-1 px-2 sm:px-4 sm:py-2 lg:py-2.5"
+                        customClasses="self-end"
+                        isDisabled={newThreadRef?.current?.innerHTML !== ""}
                     >
-                        <img src={unavailable} className="h-4 w-4" />
-                        <span>Cancel</span>
-                    </div>
-                </Button>
-                <Button
-                    btnClass="blue"
-                    roundness="rounded-xls"
-                    size="min-w-fit py-1 px-2 sm:px-4 sm:py-2 lg:py-2.5"
-                    customClasses="sm:my-0.5"
-                >
-                    <div className="flex items-center justify-center gap-1.5">
-                        <img src={messageFilled} className="h-4 w-4" />
-                        <span>Post</span>
-                    </div>
-                </Button>
+                        <div className="flex items-center justify-center gap-1.5">
+                            <img src={messageFilled} className="h-4 w-4" />
+                            <span
+                                onClick={() =>
+                                    console.log(newThreadRef.current.innerHTML)
+                                }
+                            >
+                                Post
+                            </span>
+                        </div>
+                    </Button>
+                </div>
             </div>
         </div>
     );

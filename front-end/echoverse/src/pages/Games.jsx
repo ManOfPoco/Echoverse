@@ -1,8 +1,8 @@
 import { useReducer } from "react";
 
 import GameFilters from "../features/Games/components/GameFilters";
-import GameCards from "../features/UserGames/components/GameCards";
-import WelcomeMessage from "../features/Games/components/WelcomeMessage";
+import GameCards from "../features/Games/components/GameCards";
+import WelcomeGamesMessage from "../features/Games/components/WelcomeGamesMessage";
 import SwiperGameCards from "../features/Games/components/SwiperGameCards";
 
 import cs2 from "../assets/img/cs2.png";
@@ -183,7 +183,7 @@ function Games() {
     return (
         <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
             <div className="w-full max-w-[1080px] lg:mx-auto">
-                <WelcomeMessage />
+                <WelcomeGamesMessage />
 
                 <GameFilters
                     state={state}

@@ -1,4 +1,4 @@
-function ThreadCategory({ category, isNextCategory }) {
+function GameThreadCategory({ category, isNextCategory }) {
     return (
         <>
             <div className="w-max" key={category}>
@@ -9,4 +9,4 @@ function ThreadCategory({ category, isNextCategory }) {
     );
 }
 
-export default ThreadCategory;
+export default GameThreadCategory;

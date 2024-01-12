@@ -6,7 +6,7 @@ import sortFilter from "../../../assets/svg/sortFilter.svg";
 import sortArrowsFilter from "../../../assets/svg/sortArrowsFilter.svg";
 import tag from "../../../assets/svg/tag.svg";
 
-function ThreadFilters({ state, dispatch }) {
+function GameThreadFilters({ state, dispatch }) {
     const { openFilter, sort, view, tags, searchTags, selectedTags } = state;
 
     function handleOpenFilter(filter) {
@@ -93,4 +93,4 @@ function ThreadFilters({ state, dispatch }) {
     );
 }
 
-export default ThreadFilters;
+export default GameThreadFilters;

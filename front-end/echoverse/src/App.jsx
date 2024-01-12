@@ -24,6 +24,8 @@ import People from "./pages/People";
 import PeopleForYou from "./pages/PeopleForYou";
 import PeopleHistory from "./pages/PeopleHistory";
 import Threads from "./pages/Threads";
+import GameThreads from "./pages/GameThreads";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
     {
@@ -118,17 +120,25 @@ const router = createBrowserRouter([
                 ],
             },
             {
-                path: '/explore/threads',
-                element: <Threads />
-            }
+                path: "/explore/threads",
+                element: <Threads />,
+            },
+            {
+                path: "/explore/threads/:game",
+                element: <GameThreads />,
+            },
         ],
     },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
     return (
         <>
-            <RouterProvider router={router} />
+            <QueryClientProvider client={queryClient}>
+                <RouterProvider router={router} />
+            </QueryClientProvider>
         </>
     );
 }

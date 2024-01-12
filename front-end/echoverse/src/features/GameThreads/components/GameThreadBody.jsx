@@ -1,6 +1,6 @@
 import chatMessageBubble from "../../../assets/svg/chatMessageBubble.svg";
 
-export function ThreadBody({
+export function GameThreadBody({
     username,
     postedAgo,
     title,
@@ -21,7 +21,9 @@ export function ThreadBody({
             </h4>
             <p
                 className={`px-2.5 pt-1.5 text-sm text-gray-light ${
-                    view === "gallery" ? "h-16 md:h-20 lg:h-[106px] xl:h-32 line-clamp-3 md:line-clamp-4 lg:line-clamp-5 xl:line-clamp-6" : "truncate"
+                    view === "gallery"
+                        ? "line-clamp-3 h-16 md:line-clamp-4 md:h-20 lg:line-clamp-5 lg:h-[106px] xl:line-clamp-6 xl:h-32"
+                        : "truncate"
                 }`}
             >
                 {description}
@@ -40,4 +42,4 @@ export function ThreadBody({
     );
 }
 
-export default ThreadBody;
+export default GameThreadBody;

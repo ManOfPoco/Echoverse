@@ -1,15 +1,13 @@
 import { useReducer } from "react";
 
 import EditGamePlatformsModal from "../features/UserGames/components/EditGamePlatformsModal";
-import GameCards from "../features/UserGames/components/GameCards";
+import GameCards from "../features/Games/components/GameCards";
 
 import cs2 from "../assets/img/cs2.png";
 import satisfactory from "../assets/img/satisfactory.png";
 import lethalCompany from "../assets/img/lethalCompany.png";
 import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
-
-
 
 const games = [
     {

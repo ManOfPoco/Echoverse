@@ -53,7 +53,7 @@ function reducer(state, action) {
     }
 }
 
-export default function useThreads(tags = []) {
+export default function useGameThreads(tags = []) {
     const [state, dispatch] = useReducer(reducer, {
         ...initialState,
         tags,

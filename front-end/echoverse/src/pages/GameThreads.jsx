@@ -1,7 +1,17 @@
-import GameThreadsList from "../features/GameThreads/components/GameThreadsList";
-import GameThreadFilters from "../features/GameThreads/components/GameThreadFilters";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+
+import Button from "../components/Button";
+import SearchForm from "../components/SearchForm";
 
 import useGameThreads from "../features/GameThreads/hooks/useGameThreads";
+import GameThreadFilters from "../features/GameThreads/components/GameThreadFilters";
+import GameThreadsList from "../features/GameThreads/components/GameThreadsList";
+import NewGameThread from "../features/GameThreads/components/NewGameThread";
+
+import messageFilled from "../assets/svg/messageFilled.svg";
+
+import BreadCrumbNavBar from "../features/GameThreads/components/BreadCrumbNavBar";
 
 const gameThreads = [
     {
@@ -126,16 +136,55 @@ const gameThreads = [
     },
 ];
 
-function Saved() {
-    const [state, dispatch] = useGameThreads();
+const tags = [
+    "Valheim",
+    "Roblox",
+    "Satisfactory",
+    "Counter Strike 2",
+    "No way home",
+    "Dead Island 2",
+    "Far Cry 5",
+];
+
+function GameThreads() {
+    const [isNewPost, setIsNewPost] = useState(false);
+    const [state, dispatch] = useGameThreads(tags);
+    const { game } = useParams();
+
     const { view } = state;
 
     return (
-        <div className="mx-5">
-            <GameThreadFilters state={state} dispatch={dispatch} />
-            <GameThreadsList view={view} gameThreads={gameThreads} />
+        <div className="max-w-full bg-black-night">
+            <div className="w-full max-w-[1440px] lg:mx-auto">
+                <BreadCrumbNavBar game={game} />
+            </div>
+            <div className="h-full max-h-[calc(100dvh-117px)] w-full max-w-[1440px] overflow-y-scroll px-2 pt-2 sm:px-3 sm:pt-3 md:max-h-[calc(100dvh-125px)] md:px-5 md:pt-5 lg:mx-auto lg:max-h-[calc(100dvh-133px)] xl:max-h-[calc(100dvh-179px)]">
+                {isNewPost ? (
+                    <NewGameThread setIsNewPost={setIsNewPost} />
+                ) : (
+                    <SearchForm type="full" roundness="rounded-lg">
+                        <Button
+                            btnClass="blue"
+                            roundness="rounded-xls"
+                            size="min-w-fit py-1 px-2 sm:px-4 sm:py-2 lg:py-2.5"
+                            customClasses="sm:my-0.5"
+                            action={() => setIsNewPost(true)}
+                        >
+                            <div className="flex items-center justify-center gap-1.5">
+                                <img src={messageFilled} className="h-4 w-4" />
+                                <span>New Thread</span>
+                            </div>
+                        </Button>
+                    </SearchForm>
+                )}
+
+                <div className="mt-6">
+                    <GameThreadFilters state={state} dispatch={dispatch} />
+                    <GameThreadsList view={view} gameThreads={gameThreads} />
+                </div>
+            </div>
         </div>
     );
 }
 
-export default Saved;
+export default GameThreads;

@@ -1,5 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 import GameCardHover from "./GameCardHover";
-import GameCardPlatforms from "./GameCardPlatforms";
+import GameCardPlatforms from "../../UserGames/components/GameCardPlatforms";
 
 import coverNotFound from "../../../assets/img/coverNotFound.png";
 
@@ -12,6 +14,8 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
         presentInProfile,
         steamLink,
     } = game;
+    const slug = title;
+    const navigate = useNavigate();
 
     function handleImgNotFound(e) {
         e.currentTarget.src = coverNotFound;
@@ -34,6 +38,7 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
             <GameCardHover
                 steamLink={steamLink}
                 presentInProfile={presentInProfile}
+                onClick={() => navigate(`/explore/threads/${slug}`)}
                 showPlatforms={showPlatforms}
                 handleEditGamePlatforms={handleEditGamePlatforms}
             />

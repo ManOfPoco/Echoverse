@@ -1,6 +1,6 @@
 import arcadeGamingRoom from "../../../assets/img/arcadeGamingRoom.png";
 
-function WelcomeMessage() {
+function WelcomeGamesMessage() {
     return (
         <>
             <div className="absolute flex h-60 w-full max-w-[1080px] items-center bg-black-dark/50 backdrop-blur-sm md:h-[448px] md:bg-black-dark/50 md:backdrop-blur">
@@ -18,4 +18,4 @@ function WelcomeMessage() {
     );
 }
 
-export default WelcomeMessage;
+export default WelcomeGamesMessage;

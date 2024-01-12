@@ -9,7 +9,7 @@ function BiographyInput({
         <div className="flex flex-col flex-wrap items-start gap-1.5">
             <TextareaInput
                 placeholder="Tell us about yourself"
-                size="h-[96px] max-h-36 w-[280px] md:h-[76px] md:w-[410px]"
+                size="h-24 max-h-36 w-[280px] md:h-[76px] md:w-[410px]"
                 roundness="rounded-md"
                 value={biographyInput}
                 onChange={(e) => handleBiographyField(e)}
