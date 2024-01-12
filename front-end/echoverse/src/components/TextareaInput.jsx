@@ -1,21 +1,42 @@
+import { useEffect, useRef } from "react";
+
 function TextareaInput({
     placeholder,
     size = "w-full h-24",
+    padding = "px-2 py-2",
     roundness = "",
-    resize,
+    resize = "vertical",
+    resizeLimit = "none",
     bgColor = "bg-gray-charcoal",
     register,
     value = undefined,
     onChange = undefined,
+    onPaste = undefined,
 }) {
+    const textAreaRef = useRef(null);
+
+    useEffect(() => {
+        let textAreaRefCurrent = textAreaRef?.current
+        if (textAreaRefCurrent && resize === "none") {
+
+            textAreaRefCurrent.style.height = "0px";
+            const scrollHeight = textAreaRefCurrent.scrollHeight;
+
+            textAreaRefCurrent.style.height =
+                Math.min(scrollHeight, resizeLimit) + "px";
+        }
+    }, [textAreaRef, value, resize, resizeLimit]);
+
     return (
         <textarea
             placeholder={placeholder}
-            className={`${size} ${roundness} border-0 ${bgColor} px-2 py-2 font-roboto text-sm outline-none`}
+            className={`${size} ${roundness} border-0 ${bgColor} ${padding} font-roboto text-sm outline-none`}
             {...register}
             value={value}
             style={{ resize: resize }}
             onChange={onChange}
+            onPaste={onPaste}
+            ref={textAreaRef}
         />
     );
 }

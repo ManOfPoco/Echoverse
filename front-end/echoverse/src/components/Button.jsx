@@ -34,7 +34,9 @@ function Button({
         <button
             type={type}
             disabled={isDisabled}
-            className={`${btnType} ${btnSize} ${roundness} ${customClasses}`}
+            className={`${btnType} ${btnSize} ${roundness} ${customClasses} ${
+                isDisabled ? "cursor-not-allowed" : "cursor-pointer"
+            }`}
             onClick={action}
         >
             {children}

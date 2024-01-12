@@ -95,12 +95,23 @@ select:-webkit-autofill:focus {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #262A2F;
+    background: #262a2f;
     opacity: 80%;
     border-radius: 8px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #262A2F;
+    background: #262a2f;
+}
+
+/* Custom placeholder color */
+textarea::placeholder, input::placeholder {
+    color: #999999;
+    opacity: 1; /* Firefox */
+}
+
+textarea::-ms-input-placeholder input::-ms-input-placeholder {
+    /* Edge 12 -18 */
+    color: #999999;
 }
