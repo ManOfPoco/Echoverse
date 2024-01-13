@@ -33,6 +33,7 @@ module.exports = {
                     light: "#999999",
                     charcoal: "#374151",
                     dark: "#262A2F",
+                    clear: '#71767B'
                 },
                 silver: "#557C93",
                 "majorelle-blue": "#645BF0",
@@ -63,12 +64,16 @@ module.exports = {
                 xl: "1440px",
             },
             height: {
+                4.5: '18px',
                 10.5: "42px",
                 18: "72px",
             },
             gridTemplateColumns: {
                 authentication: "repeat(20, minmax(0, 280px))",
             },
+            fontSize: {
+                'xsm': '13px'
+            }
         },
     },
     plugins: [],

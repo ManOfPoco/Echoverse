@@ -40,7 +40,6 @@ function InputField({
                 value={defaultValue}
                 onChange={onChange}
                 onKeyDown={onKeyDown}
-                accept={accept}
                 {...register}
             />
         </div>

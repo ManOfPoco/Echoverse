@@ -4,7 +4,7 @@ import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
 import TextareaInput from "../../../components/TextareaInput";
 
-import NewThreadImagesList from "./NewThreadImagesList";
+import ThreadImages from "./ThreadImages";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
@@ -56,11 +56,15 @@ function NewThread() {
                         onPaste={(e) => handleNewThreadOnPaste(e)}
                         onDrop={(e) => handleImageOnDrop(e)}
                     />
-                    <NewThreadImagesList state={state} dispatch={dispatch} />
+                    <ThreadImages
+                        deleteBtn={true}
+                        threadImages={newThreadImages}
+                        dispatch={dispatch}
+                    />
                 </div>
                 <div className="flex items-center justify-between pt-2">
                     <div className="flex gap-5">
-                        <div>
+                        <div className="z-30">
                             {isEmojiPickerOpen && (
                                 <div
                                     ref={setPopperElement}
