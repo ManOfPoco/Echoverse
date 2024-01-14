@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Dropdown from "../components/Dropdown";
 import DropdownItem from "../components/DropdownItem";
@@ -13,9 +13,24 @@ import dropdownArrowDown from "../assets/svg/dropdownArrowDown.svg";
 import menu from "../assets/svg/menu.svg";
 import menuOpened from "../assets/svg/menuOpened.svg";
 
-function NavBar({ isNavOnTop }) {
+function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isNavOnTop, setIsNavOnTop] = useState(true);
     const [query, setQuery] = useState("");
+
+    useEffect(() => {
+        function handleScroll() {
+            if (window.scrollY > 64) {
+                setIsNavOnTop(false);
+            } else setIsNavOnTop(true);
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.addEventListener("scroll", handleScroll);
+        };
+    }, [isNavOnTop]);
 
     function handleRequest(e) {
         if (e.key === "Enter") {

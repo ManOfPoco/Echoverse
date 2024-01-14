@@ -566,6 +566,10 @@ video {
   pointer-events: none;
 }
 
+.pointer-events-auto{
+  pointer-events: auto;
+}
+
 .fixed{
   position: fixed;
 }
@@ -1642,10 +1646,6 @@ video {
 .bg-red-fire-engine{
   --tw-bg-opacity: 1;
   background-color: rgb(206 49 36 / var(--tw-bg-opacity));
-}
-
-.bg-transparent{
-  background-color: transparent;
 }
 
 .bg-violet-300{

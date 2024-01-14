@@ -1,36 +1,21 @@
-import { NavLink } from "react-router-dom";
-import chat from "../../../assets/svg/chat.svg";
+import { Fragment } from "react";
+import BreadCrumbDivider from "./BreadCrumbDivider";
 
-function BreadCrumbNavBar({ game }) {
+function BreadCrumbNavBar({ img, children }) {
     return (
         <div className="flex items-center gap-2 border-b border-black-dark px-2 py-2 shadow-lg md:px-3 md:py-3">
-            <img src={chat} className="h-7 w-7" />
+            <img src={img} className="h-7 w-7" />
             <div className="flex items-center truncate text-lg">
-                <NavLink to="/explore/threads" className="text-gray-light">
-                    Threads
-                </NavLink>
-                <svg
-                    width="4"
-                    height="8"
-                    aria-hidden="true"
-                    className="mx-3 overflow-visible text-slate-400"
-                >
-                    <path
-                        d="M0 0L4 4L0 8"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                    ></path>
-                </svg>
-                <NavLink
-                    to={`/explore/threads/${game}`}
-                    className={({ isActive }) =>
-                        isActive ? "" : "text-gray-light"
-                    }
-                >
-                    {game}
-                </NavLink>
+                {children.map((element, index) =>
+                    index === 0 ? (
+                        element
+                    ) : (
+                        <Fragment key={element.props.title}>
+                            <BreadCrumbDivider />
+                            {element}
+                        </Fragment>
+                    )
+                )}
             </div>
         </div>
     );

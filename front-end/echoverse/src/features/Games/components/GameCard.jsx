@@ -38,7 +38,7 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
             <GameCardHover
                 steamLink={steamLink}
                 presentInProfile={presentInProfile}
-                onClick={() => navigate(`/explore/threads/${slug}`)}
+                onClick={() => navigate(`/games/game-threads/${slug}`)}
                 showPlatforms={showPlatforms}
                 handleEditGamePlatforms={handleEditGamePlatforms}
             />

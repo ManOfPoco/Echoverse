@@ -8,13 +8,15 @@ import useGameThreads from "../features/GameThreads/hooks/useGameThreads";
 import GameThreadFilters from "../features/GameThreads/components/GameThreadFilters";
 import GameThreadsList from "../features/GameThreads/components/GameThreadsList";
 import NewGameThread from "../features/GameThreads/components/NewGameThread";
+import BreadCrumbNavBar from "../features/GameThreads/components/BreadCrumbNavBar";
+import BreadCrumbNavBarElement from "../features/GameThreads/components/BreadCrumbNavBarElement";
 
 import messageFilled from "../assets/svg/messageFilled.svg";
-
-import BreadCrumbNavBar from "../features/GameThreads/components/BreadCrumbNavBar";
+import chatBubbles from "../assets/svg/chatBubbles.svg";
 
 const gameThreads = [
     {
+        id: 1,
         title: "Game Title 1",
         description:
             "Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1iption for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1",
@@ -26,6 +28,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 2,
         title: "Game Title 2",
         description: "Description for Game Title 2",
         username: "Gamer456",
@@ -47,6 +50,7 @@ const gameThreads = [
         messagesQuantity: 2,
     },
     {
+        id: 3,
         title: "Game Title 3",
         description: "Description for Game Title 3",
         username: "PlayGameNow",
@@ -58,6 +62,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 4,
         title: "Game Title 4",
         description: "Description for Game Title 4",
         username: "GameMaster",
@@ -69,6 +74,7 @@ const gameThreads = [
         messagesQuantity: 33,
     },
     {
+        id: 5,
         title: "Game Title 5",
         description: "Description for Game Title 5",
         username: "GamingFanatic",
@@ -80,6 +86,7 @@ const gameThreads = [
         messagesQuantity: 52,
     },
     {
+        id: 6,
         title: "Game Title 6",
         description: "Description for Game Title 6",
         username: "ArcadePlayer",
@@ -91,6 +98,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 8,
         title: "Game Title 7",
         description: "Description for Game Title 7",
         username: "GameEnthusiast",
@@ -102,6 +110,7 @@ const gameThreads = [
         messagesQuantity: 61,
     },
     {
+        id: 9,
         title: "Game Title 8",
         description: "Description for Game Title 8",
         username: "OnlineGamer",
@@ -113,6 +122,7 @@ const gameThreads = [
         messagesQuantity: 21,
     },
     {
+        id: 10,
         title: "Game Title 9",
         description: "Description for Game Title 9",
         username: "IndieDev",
@@ -124,6 +134,7 @@ const gameThreads = [
         messagesQuantity: 444,
     },
     {
+        id: 11,
         title: "Game Title 10",
         description: "Description for Game Title 10",
         username: "GameExplorer",
@@ -156,7 +167,13 @@ function GameThreads() {
     return (
         <div className="max-w-full bg-black-night">
             <div className="w-full max-w-[1440px] lg:mx-auto">
-                <BreadCrumbNavBar game={game} />
+                <BreadCrumbNavBar img={chatBubbles}>
+                    <BreadCrumbNavBarElement to="/games" title="Games" />
+                    <BreadCrumbNavBarElement
+                        to={`/games/game-threads/${game}`}
+                        title={game}
+                    />
+                </BreadCrumbNavBar>
             </div>
             <div className="h-full max-h-[calc(100dvh-117px)] w-full max-w-[1440px] overflow-y-scroll px-2 pt-2 sm:px-3 sm:pt-3 md:max-h-[calc(100dvh-125px)] md:px-5 md:pt-5 lg:mx-auto lg:max-h-[calc(100dvh-133px)] xl:max-h-[calc(100dvh-179px)]">
                 {isNewPost ? (
@@ -180,7 +197,11 @@ function GameThreads() {
 
                 <div className="mt-6">
                     <GameThreadFilters state={state} dispatch={dispatch} />
-                    <GameThreadsList view={view} gameThreads={gameThreads} />
+                    <GameThreadsList
+                        view={view}
+                        gameThreads={gameThreads}
+                        game={game}
+                    />
                 </div>
             </div>
         </div>

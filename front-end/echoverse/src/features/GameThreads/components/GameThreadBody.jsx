@@ -1,19 +1,22 @@
 import chatMessageBubble from "../../../assets/svg/chatMessageBubble.svg";
 
-export function GameThreadBody({
-    username,
-    postedAgo,
-    title,
-    description,
-    messagesQuantity,
-    lastMessageUsername,
-    lastMessage,
-    view,
-}) {
+export function GameThreadBody({ gameThread, view }) {
+    const {
+        title,
+        description,
+        username,
+        lastMessage,
+        lastMessageUsername,
+        postedAgo,
+        messagesQuantity,
+    } = gameThread;
+
     return (
         <>
-            <div className="flex gap-1.5 px-2.5 pt-2 text-sm text-gray-light">
-                <h5 className="font-semibold">{username}</h5>
+            <div className="pointer-events-none relative flex gap-1.5 px-2.5 pt-2 text-sm text-gray-light">
+                <h5 className="pointer-events-auto font-semibold hover:underline">
+                    {username}
+                </h5>
                 <h5 className="text-xs">{postedAgo}</h5>
             </div>
             <h4 className="truncate px-2.5 pt-2 text-base font-semibold">
