@@ -2,6 +2,7 @@ import crossWhite from "../../../assets/svg/crossWhite.svg";
 
 function ThreadImage({
     newThreadImg,
+    isFullStretch = false,
     deleteBtn = false,
     index,
     threadImages,
@@ -15,8 +16,16 @@ function ThreadImage({
         <div
             className={`relative rounded-lg border border-gray-light/50 ${
                 threadImages.length === 1
-                    ? "max-h-96 min-w-[min(min-w-fit,_max-w-full)]"
-                    : "max-h-72 min-w-fit"
+                    ? `${
+                          isFullStretch
+                              ? "max-h-96 sm:max-h-[430px]"
+                              : "max-h-80 sm:max-h-96"
+                      } min-w-[min(min-w-fit,_max-w-full)]`
+                    : `${
+                          isFullStretch
+                              ? "max-h-64 sm:max-h-80"
+                              : "max-h-60 sm:max-h-64"
+                      } min-w-fit`
             }`}
         >
             {deleteBtn && (
@@ -38,8 +47,16 @@ function ThreadImage({
                 src={newThreadImg}
                 className={`rounded-lg pb-0.5 ${
                     threadImages.length === 1
-                        ? "sm:max-h-96 max-h-80 min-w-[min(min-w-fit,_max-w-full)]"
-                        : "sm:max-h-72 max-h-60 min-h-full min-w-full"
+                        ? `${
+                              isFullStretch
+                                  ? "max-h-96 sm:max-h-[430px]"
+                                  : "max-h-80 sm:max-h-96"
+                          } min-w-[min(min-w-fit,_max-w-full)]`
+                        : `${
+                              isFullStretch
+                                  ? "max-h-64 sm:max-h-80"
+                                  : "max-h-60 sm:max-h-64"
+                          } min-h-full min-w-full`
                 }`}
             />
         </div>

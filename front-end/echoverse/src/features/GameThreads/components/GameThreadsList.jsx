@@ -1,7 +1,6 @@
 import GameThread from "./GameThread";
 
 function GameThreadsList({ view, gameThreads }) {
-    console.log(gameThreads)
     return (
         <div
             className={`mt-4 gap-2 pb-10 lg:mx-0 ${

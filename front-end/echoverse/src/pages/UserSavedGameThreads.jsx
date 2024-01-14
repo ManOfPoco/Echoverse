@@ -1,6 +1,5 @@
-import GameThreadsList from "../features/GameThreads/components/GameThreadsList";
 import GameThreadFilters from "../features/GameThreads/components/GameThreadFilters";
-
+import GameThreadsList from "../features/GameThreads/components/GameThreadsList";
 import useGameThreads from "../features/GameThreads/hooks/useGameThreads";
 
 const gameThreads = [
@@ -126,7 +125,7 @@ const gameThreads = [
     },
 ];
 
-function Saved() {
+function UserSavedGameThreads() {
     const [state, dispatch] = useGameThreads();
     const { view } = state;
 
@@ -138,4 +137,4 @@ function Saved() {
     );
 }
 
-export default Saved;
+export default UserSavedGameThreads;

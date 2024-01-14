@@ -90,7 +90,7 @@ function Login({ action }) {
                             </div>
                             <div className="flex justify-end">
                                 <h5
-                                    className="mb-6 mt-3 text-sm text-blue-light"
+                                    className="mb-6 mt-3 text-sm text-blue-light cursor-pointer"
                                     onClick={() =>
                                         setIsResetPasswordModalOpen(true)
                                     }

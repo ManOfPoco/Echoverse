@@ -50,7 +50,7 @@ function reducer(state, action) {
     }
 }
 
-function useNewThreadInput() {
+function useThreadInput() {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { newThreadImages, isEmojiPickerOpen } = state;
     const fileUploadRef = useRef(null);
@@ -61,7 +61,7 @@ function useNewThreadInput() {
         placement: "bottom",
     });
 
-    function handleNewThreadOnChange(e) {
+    function handleThreadInputOnChange(e) {
         dispatch({ type: "setNewThreadValue", newThreadValue: e.target.value });
     }
 
@@ -79,7 +79,7 @@ function useNewThreadInput() {
         }
     }
 
-    function handleNewThreadOnPaste(e) {
+    function handleThreadInputOnPaste(e) {
         const items = e.clipboardData.items;
 
         for (let i = 0; i < items.length; i++) {
@@ -180,8 +180,8 @@ function useNewThreadInput() {
     }, [referenceElement, popperElement, isEmojiPickerOpen, dispatch]);
 
     return {
-        handleNewThreadOnChange,
-        handleNewThreadOnPaste,
+        handleThreadInputOnChange,
+        handleThreadInputOnPaste,
         handleTriggerFileUpload,
         handleFileUploadOnChange,
         handleImageOnDrop,
@@ -196,4 +196,4 @@ function useNewThreadInput() {
     };
 }
 
-export default useNewThreadInput;
+export default useThreadInput;

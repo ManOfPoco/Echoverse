@@ -12,12 +12,12 @@ import person from "../../../assets/img/person.jpg";
 import messageFilled from "../../../assets/svg/messageFilled.svg";
 import smileEmoji from "../../../assets/svg/smileEmoji.svg";
 import img from "../../../assets/svg/img.svg";
-import useNewThreadInput from "../hooks/useNewThreadInput";
+import useThreadInput from "../hooks/useThreadInput";
 
-function NewThread() {
+function ThreadInputField({ inputPlaceholder, btnText, action }) {
     const {
-        handleNewThreadOnChange,
-        handleNewThreadOnPaste,
+        handleThreadInputOnChange,
+        handleThreadInputOnPaste,
         handleTriggerFileUpload,
         handleFileUploadOnChange,
         handleImageOnDrop,
@@ -29,7 +29,7 @@ function NewThread() {
         attributes,
         state,
         dispatch,
-    } = useNewThreadInput();
+    } = useThreadInput();
 
     const { newThreadValue, newThreadImages, isEmojiPickerOpen } = state;
 
@@ -39,21 +39,21 @@ function NewThread() {
         newThreadValue === "" && newThreadImages.length === 0;
 
     return (
-        <div className="flex gap-3 border-b border-gray-light/30 pb-6">
+        <div className="flex gap-3 border-b border-gray-light/30 pb-5">
             <Avatar img={person} type="sm" />
 
             <div className="flex w-[calc(100%-52px)] flex-col gap-2 divide-y divide-gray-light/30 sm:max-w-[524px]">
                 <div>
                     <TextareaInput
-                        placeholder="Share your thoughts..."
+                        placeholder={inputPlaceholder}
                         size="min-h-7 w-full sm:max-w-[524px]"
                         resizeLimit={height > 300 ? height - 200 : height}
                         padding="py-2"
                         resize="none"
                         bgColor="bg-black-night"
                         value={newThreadValue}
-                        onChange={(e) => handleNewThreadOnChange(e)}
-                        onPaste={(e) => handleNewThreadOnPaste(e)}
+                        onChange={(e) => handleThreadInputOnChange(e)}
+                        onPaste={(e) => handleThreadInputOnPaste(e)}
                         onDrop={(e) => handleImageOnDrop(e)}
                     />
                     <ThreadImages
@@ -122,7 +122,7 @@ function NewThread() {
                         <div className="flex items-center justify-center gap-1.5">
                             <img src={messageFilled} className="h-4 w-4" />
                             <span onClick={() => console.log("request")}>
-                                Post
+                                {btnText}
                             </span>
                         </div>
                     </Button>
@@ -132,4 +132,4 @@ function NewThread() {
     );
 }
 
-export default NewThread;
+export default ThreadInputField;

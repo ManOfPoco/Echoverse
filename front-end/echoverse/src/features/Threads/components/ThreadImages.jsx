@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ThreadImage from "./ThreadImage";
 
-function ThreadImages({ deleteBtn, threadImages, dispatch }) {
+function ThreadImages({ deleteBtn, isFullStretch, threadImages, dispatch }) {
     const imgContainerRef = useRef(null);
 
     useEffect(() => {
@@ -24,12 +24,13 @@ function ThreadImages({ deleteBtn, threadImages, dispatch }) {
         <>
             {threadImages.length > 0 && (
                 <div
-                    className="flex w-full gap-2 overflow-x-auto pb-2 sm:max-w-[524px]"
+                    className="flex w-full gap-2 overflow-x-auto pb-2 "
                     ref={imgContainerRef}
                 >
                     {threadImages.map((newThreadImg, index) => (
                         <ThreadImage
                             newThreadImg={newThreadImg}
+                            isFullStretch={isFullStretch}
                             deleteBtn={deleteBtn}
                             index={index}
                             threadImages={threadImages}

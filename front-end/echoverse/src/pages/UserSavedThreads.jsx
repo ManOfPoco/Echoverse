@@ -1,5 +1,3 @@
-import { Toaster } from "react-hot-toast";
-import ThreadInputField from "../features/Threads/components/ThreadInput";
 import ThreadsList from "../features/Threads/components/ThreadsList";
 
 import person from "../assets/img/person.jpg";
@@ -58,21 +56,12 @@ const threads = [
     },
 ];
 
-function Threads() {
+function UserSavedThreads() {
     return (
-        <>
-            <Toaster />
-            <div className="h-full min-h-[calc(100dvh-72px)] max-w-full  bg-black-night px-2 sm:px-0 lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
-                <div className="mx-auto w-full max-w-screen-sm pb-2 pt-4">
-                    <ThreadInputField
-                        inputPlaceholder="Share your thoughts..."
-                        btnText="Post"
-                    />
-                    <ThreadsList threads={threads} />
-                </div>
-            </div>
-        </>
+        <div className="mx-auto w-full max-w-screen-sm pb-2">
+            <ThreadsList threads={threads} />;
+        </div>
     );
 }
 
-export default Threads;
+export default UserSavedThreads;

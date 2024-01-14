@@ -12,7 +12,8 @@ import UserStatistics from "../features/Profile/components/UserStatistics";
 
 import person from "../assets/img/person.jpg";
 import cs2 from "../assets/img/cs2.png";
-import Menu from "../features/Profile/components/Menu";
+import Menu from "../components/Menu";
+import MenuNavLink from "../components/MenuNavLink";
 
 const data = {
     username: "ManOfPoco",
@@ -306,6 +307,7 @@ function Profile() {
 
     const [isFollowersModalOpen, setIsFollowersModalOpen] = useState(false);
     const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
+    const { username } = data;
 
     return (
         <>
@@ -399,7 +401,25 @@ function Profile() {
                         />
                     </div>
                     <>
-                        <Menu username={data.username} />
+                        <Menu>
+                            <MenuNavLink
+                                link={`/${username}`}
+                                end={true}
+                                title="Games"
+                            />
+                            <MenuNavLink
+                                link={`/${username}/threads`}
+                                end={false}
+                                title="Threads"
+                            />
+                            {isCurrentUser && (
+                                <MenuNavLink
+                                    link={`/${username}/saved`}
+                                    end={false}
+                                    title="Saved"
+                                />
+                            )}
+                        </Menu>
                         <Outlet />
                     </>
                 </div>

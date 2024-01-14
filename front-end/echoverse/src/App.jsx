@@ -4,15 +4,19 @@ import {
     createBrowserRouter,
 } from "react-router-dom";
 
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
 import AppLayout from "./layouts/AppLayout";
+import UserThreadsLayout from "./layouts/UserThreadsLayout";
+import UserSavedThreadsLayout from "./layouts/UserSavedThreadsLayout";
 
 import Home from "./pages/Home";
 import Authentication from "./pages/Authentication";
 import SetNewPassword from "./pages/SetNewPassword";
 import PasswordResetSuccess from "./pages/PasswordResetSuccess";
 import Profile from "./pages/Profile";
-import Saved from "./pages/Saved";
 import UserGames from "./pages/UserGames";
+import UserThreads from "./pages/UserThreads";
 import Settings from "./pages/Settings";
 import EditProfile from "./pages/EditProfile";
 import EditServerProfile from "./pages/EditServerProfile";
@@ -25,7 +29,10 @@ import PeopleForYou from "./pages/PeopleForYou";
 import PeopleHistory from "./pages/PeopleHistory";
 import Threads from "./pages/Threads";
 import GameThreads from "./pages/GameThreads";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Thread from "./pages/Thread";
+import UserGameThreads from "./pages/UserGameThreads";
+import UserSavedThreads from "./pages/UserSavedThreads";
+import UserSavedGameThreads from "./pages/UserSavedGameThreads";
 
 const router = createBrowserRouter([
     {
@@ -60,8 +67,32 @@ const router = createBrowserRouter([
                         element: <UserGames />,
                     },
                     {
+                        path: "threads",
+                        element: <UserThreadsLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <UserThreads />,
+                            },
+                            {
+                                path: "game-threads",
+                                element: <UserGameThreads />,
+                            },
+                        ],
+                    },
+                    {
                         path: "saved",
-                        element: <Saved />,
+                        element: <UserSavedThreadsLayout />,
+                        children: [
+                            {
+                                index: true,
+                                element: <UserSavedThreads />,
+                            },
+                            {
+                                path: "game-threads",
+                                element: <UserSavedGameThreads />,
+                            },
+                        ],
                     },
                 ],
             },
@@ -122,6 +153,10 @@ const router = createBrowserRouter([
             {
                 path: "/explore/threads",
                 element: <Threads />,
+            },
+            {
+                path: "/:username/threads/:id",
+                element: <Thread />,
             },
             {
                 path: "/explore/threads/:game",
