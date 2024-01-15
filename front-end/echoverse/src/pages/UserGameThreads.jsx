@@ -4,6 +4,7 @@ import useGameThreads from "../features/GameThreads/hooks/useGameThreads";
 
 const gameThreads = [
     {
+        id: 1,
         title: "Game Title 1",
         description:
             "Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1iption for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1Description for Game Title 1",
@@ -15,6 +16,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 2,
         title: "Game Title 2",
         description: "Description for Game Title 2",
         username: "Gamer456",
@@ -36,6 +38,7 @@ const gameThreads = [
         messagesQuantity: 2,
     },
     {
+        id: 3,
         title: "Game Title 3",
         description: "Description for Game Title 3",
         username: "PlayGameNow",
@@ -47,6 +50,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 4,
         title: "Game Title 4",
         description: "Description for Game Title 4",
         username: "GameMaster",
@@ -58,6 +62,7 @@ const gameThreads = [
         messagesQuantity: 33,
     },
     {
+        id: 5,
         title: "Game Title 5",
         description: "Description for Game Title 5",
         username: "GamingFanatic",
@@ -69,6 +74,7 @@ const gameThreads = [
         messagesQuantity: 52,
     },
     {
+        id: 6,
         title: "Game Title 6",
         description: "Description for Game Title 6",
         username: "ArcadePlayer",
@@ -80,6 +86,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
+        id: 7,
         title: "Game Title 7",
         description: "Description for Game Title 7",
         username: "GameEnthusiast",
@@ -91,6 +98,7 @@ const gameThreads = [
         messagesQuantity: 61,
     },
     {
+        id: 8,
         title: "Game Title 8",
         description: "Description for Game Title 8",
         username: "OnlineGamer",
@@ -102,6 +110,7 @@ const gameThreads = [
         messagesQuantity: 21,
     },
     {
+        id: 9,
         title: "Game Title 9",
         description: "Description for Game Title 9",
         username: "IndieDev",
@@ -113,6 +122,7 @@ const gameThreads = [
         messagesQuantity: 444,
     },
     {
+        id: 10,
         title: "Game Title 10",
         description: "Description for Game Title 10",
         username: "GameExplorer",
@@ -124,6 +134,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
 ];
+const game = "Counter Strike 2";
 
 function UserGameThreads() {
     const [state, dispatch] = useGameThreads();
@@ -132,7 +143,11 @@ function UserGameThreads() {
     return (
         <div className="mx-5">
             <GameThreadFilters state={state} dispatch={dispatch} />
-            <GameThreadsList view={view} gameThreads={gameThreads} />
+            <GameThreadsList
+                gameThreads={gameThreads}
+                game={game}
+                view={view}
+            />
         </div>
     );
 }

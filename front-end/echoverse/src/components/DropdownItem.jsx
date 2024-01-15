@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import NavLink from "../features/NavBar/components/NavLink";
 
-function DropdownItem({ isNavLink = false, link, children }) {
+function DropdownItem({ isNavLink = true, link, children }) {
     return (
         <>
             {isNavLink ? (
-                <NavLink isNavLink={isNavLink} link={link}>
+                <NavLink link={link}>
                     {children}
                 </NavLink>
             ) : (

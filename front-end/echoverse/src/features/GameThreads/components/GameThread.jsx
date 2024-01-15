@@ -12,7 +12,7 @@ function GameThread({ gameThread, game, view }) {
             onClick={() => console.log(`message by ${username}`)}
         >
             <Link
-                to={`/games/game-threads/:${game}/:${id}`}
+                to={`/games/game-threads/${game}/${id}`}
                 className="absolute inset-0"
             />
             <GameThreadCategories gameThread={gameThread} />

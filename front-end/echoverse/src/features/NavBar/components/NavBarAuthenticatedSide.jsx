@@ -11,7 +11,7 @@ import message from "../../../assets/svg/message.svg";
 import arrowRight from "../../../assets/svg/arrowRight.svg";
 import bell from "../../../assets/svg/bell.svg";
 
-function NavBarAuthenticatedRightSide() {
+function NavBarAuthenticatedSide() {
     const isAuthenticated = true;
     const username = "ManOfPoco";
 
@@ -45,64 +45,41 @@ function NavBarAuthenticatedRightSide() {
                     </div>
                     <div className="hidden md:flex">
                         <Dropdown imageTitle={person} dropdownWidth="w-48">
-                            <DropdownItem
-                                isNavLink={true}
-                                link={`/${username}`}
-                                key="Profile"
-                            >
+                            <DropdownItem link={`/${username}`} key="Profile">
                                 Profile
                             </DropdownItem>
                             <DropdownItem
-                                isNavLink={true}
                                 link="/account/edit"
                                 key="Account settings"
                             >
                                 Account settings
                             </DropdownItem>
-                            <DropdownItem
-                                isNavLink={true}
-                                link="/sign-out"
-                                key="Sign out"
-                            >
+                            <DropdownItem link="/sign-out" key="Sign out">
                                 Sign out
                             </DropdownItem>
                         </Dropdown>
                     </div>
                     <div className="z-50 flex md:hidden">
                         <Dropdown imageTitle={person} dropdownWidth="w-48">
-                            <DropdownItem
-                                isNavLink={true}
-                                link={`/${username}`}
-                                key="Profile"
-                            >
+                            <DropdownItem link={`/${username}`} key="Profile">
                                 Profile
                             </DropdownItem>
-                            <DropdownItem
-                                isNavLink={true}
-                                link="/direct"
-                                key="Direct"
-                            >
+                            <DropdownItem link="/direct" key="Direct">
                                 Direct
                             </DropdownItem>
                             <DropdownItem
-                                isNavLink={true}
                                 link="/notification"
                                 key="Notification"
                             >
                                 Notification
                             </DropdownItem>
                             <DropdownItem
-                                isNavLink={true}
                                 link="/account/edit"
                                 key="Account settings"
                             >
                                 Account settings
                             </DropdownItem>
-                            <DropdownItem
-                                isNavLink={true}
-                                link="/sign-out"
-                                key="Sign out"
-                            >
+                            <DropdownItem link="/sign-out" key="Sign out">
                                 Sign out
                             </DropdownItem>
                         </Dropdown>
@@ -125,4 +102,4 @@ function NavBarAuthenticatedRightSide() {
     );
 }
 
-export default NavBarAuthenticatedRightSide;
+export default NavBarAuthenticatedSide;

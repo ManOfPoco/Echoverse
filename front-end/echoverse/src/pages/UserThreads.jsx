@@ -59,7 +59,7 @@ const threads = [
 function UserThreads() {
     return (
         <div className="mx-auto w-full max-w-screen-sm pb-2">
-            <ThreadsList threads={threads} />;
+            <ThreadsList threads={threads} />
         </div>
     );
 }

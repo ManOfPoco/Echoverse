@@ -98,7 +98,7 @@ const gameThreads = [
         messagesQuantity: 10,
     },
     {
-        id: 8,
+        id: 7,
         title: "Game Title 7",
         description: "Description for Game Title 7",
         username: "GameEnthusiast",
@@ -110,7 +110,7 @@ const gameThreads = [
         messagesQuantity: 61,
     },
     {
-        id: 9,
+        id: 8,
         title: "Game Title 8",
         description: "Description for Game Title 8",
         username: "OnlineGamer",
@@ -122,7 +122,7 @@ const gameThreads = [
         messagesQuantity: 21,
     },
     {
-        id: 10,
+        id: 9,
         title: "Game Title 9",
         description: "Description for Game Title 9",
         username: "IndieDev",
@@ -134,7 +134,7 @@ const gameThreads = [
         messagesQuantity: 444,
     },
     {
-        id: 11,
+        id: 10,
         title: "Game Title 10",
         description: "Description for Game Title 10",
         username: "GameExplorer",
@@ -163,6 +163,7 @@ function GameThreads() {
     const { game } = useParams();
 
     const { view } = state;
+    const params = useParams();
 
     return (
         <div className="max-w-full bg-black-night">
@@ -198,9 +199,9 @@ function GameThreads() {
                 <div className="mt-6">
                     <GameThreadFilters state={state} dispatch={dispatch} />
                     <GameThreadsList
-                        view={view}
                         gameThreads={gameThreads}
                         game={game}
+                        view={view}
                     />
                 </div>
             </div>

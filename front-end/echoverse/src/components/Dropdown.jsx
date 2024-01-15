@@ -1,11 +1,19 @@
 import { Transition } from "@headlessui/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePopper } from "react-popper";
+
+const placementMarginMapping = {
+    left: "me-1",
+    top: "mb-1",
+    right: "ms-1",
+    bottom: "mt-1",
+};
 
 function Dropdown({
     title = null,
     svgTitle = null,
     imageTitle = null,
+    imageSize = "w-12 h-12",
     placement = "bottom-start",
     dropdownWidth = "w-36",
     children,
@@ -17,6 +25,8 @@ function Dropdown({
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
         placement: placement,
     });
+
+    const placementMargin = placementMarginMapping[placement.split("-")[0]];
 
     useEffect(() => {
         function closeDropdown(e) {
@@ -57,9 +67,9 @@ function Dropdown({
             ) : (
                 <img
                     draggable="false"
-                    className="aspect-square h-12 w-12 rounded-full object-cover"
+                    className={`aspect-square ${imageSize} rounded-full object-cover`}
                     src={imageTitle}
-                    alt="arrowDown"
+                    alt={imageTitle}
                 />
             )}
 
@@ -73,7 +83,7 @@ function Dropdown({
                 leaveTo="transform opacity-0"
             >
                 <div
-                    className={`z-50 mt-3 w-36 origin-top-right rounded-lg bg-gray-dark px-4 py-2.5 shadow-xl ${dropdownWidth}`}
+                    className={`z-50 ${placementMargin} w-36 origin-top-right rounded-lg bg-gray-dark px-4 py-2.5 shadow-xl ${dropdownWidth}`}
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}

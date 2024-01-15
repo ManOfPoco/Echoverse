@@ -5,7 +5,7 @@ import DropdownItem from "../components/DropdownItem";
 import Logo from "../components/Logo";
 import SearchForm from "../components/SearchForm";
 
-import NavBarAuthenticatedRightSide from "../features/NavBar/components/NavBarAuthenticatedRightSide";
+import NavBarAuthenticatedSide from "../features/NavBar/components/NavBarAuthenticatedSide";
 import NavLink from "../features/NavBar/components/NavLink";
 import NavBarMobileMenu from "../features/NavBar/components/NavBarMobileMenu";
 
@@ -69,18 +69,10 @@ function NavBar() {
 
                     <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
                         <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
-                            <DropdownItem
-                                isNavLink="true"
-                                link="/explore/people"
-                                key="People"
-                            >
+                            <DropdownItem link="/explore/people" key="People">
                                 People
                             </DropdownItem>
-                            <DropdownItem
-                                isNavLink="true"
-                                link="/explore/threads"
-                                key="Threads"
-                            >
+                            <DropdownItem link="/explore/threads" key="Threads">
                                 Threads
                             </DropdownItem>
                         </Dropdown>
@@ -96,7 +88,7 @@ function NavBar() {
                             handleRequest={(e) => handleRequest(e)}
                         />
                     </div>
-                    <NavBarAuthenticatedRightSide />
+                    <NavBarAuthenticatedSide />
                 </div>
             </div>
 
