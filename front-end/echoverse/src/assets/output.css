@@ -658,6 +658,11 @@ video {
   margin-right: 0.75rem;
 }
 
+.mx-4{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
 .mx-5{
   margin-left: 1.25rem;
   margin-right: 1.25rem;
@@ -691,11 +696,6 @@ video {
 .my-7{
   margin-top: 1.75rem;
   margin-bottom: 1.75rem;
-}
-
-.mx-4{
-  margin-left: 1rem;
-  margin-right: 1rem;
 }
 
 .mb-1{
@@ -915,14 +915,6 @@ video {
 
 .h-full{
   height: 100%;
-}
-
-.h-\[calc\(100dvh-78px\)\]{
-  height: calc(100dvh - 78px);
-}
-
-.h-\[calc\(100dvh-77px\)\]{
-  height: calc(100dvh - 77px);
 }
 
 .max-h-36{
@@ -1994,14 +1986,6 @@ video {
   text-align: start;
 }
 
-.align-top{
-  vertical-align: top;
-}
-
-.align-middle{
-  vertical-align: middle;
-}
-
 .font-archivo-black{
   font-family: Archivo Black, sans-serif;
 }
@@ -2999,8 +2983,8 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 }
 
 @media (min-width: 1440px){
-  .xl\:top-\[126px\]{
-    top: 126px;
+  .xl\:top-\[96px\]{
+    top: 96px;
   }
 
   .xl\:z-10{

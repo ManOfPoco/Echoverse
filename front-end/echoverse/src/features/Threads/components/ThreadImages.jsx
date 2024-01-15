@@ -24,7 +24,7 @@ function ThreadImages({ deleteBtn, isFullStretch, threadImages, dispatch }) {
         <>
             {threadImages.length > 0 && (
                 <div
-                    className="flex w-full gap-2 overflow-x-auto pb-2 z-30"
+                    className="relative z-30 flex w-full gap-2 overflow-x-auto pb-2"
                     ref={imgContainerRef}
                 >
                     {threadImages.map((newThreadImg, index) => (
