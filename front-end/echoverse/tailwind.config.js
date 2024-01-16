@@ -12,6 +12,7 @@ module.exports = {
             "archivo-black": ["Archivo Black", "sans-serif"],
             roboto: ["Roboto", "sans-serif"],
             monoton: ["Monoton", "sans-serif"],
+            nunito: ["Nunito", "sans-serif"],
         },
         borderRadius: {
             none: "0",
@@ -24,6 +25,7 @@ module.exports = {
         },
         extend: {
             colors: {
+                platinum: "#E1E1E8",
                 black: {
                     light: "#0E1C26",
                     night: "#121212",
@@ -34,7 +36,8 @@ module.exports = {
                     charcoal: "#374151",
                     dark: "#262A2F",
                     clear: "#71767B",
-                },
+                    chat: "#2F3238",
+                }, // #313844
                 silver: "#557C93",
                 "majorelle-blue": "#645BF0",
                 pumpkin: "#E3792D",
@@ -72,7 +75,8 @@ module.exports = {
                 authentication: "repeat(20, minmax(0, 280px))",
             },
             fontSize: {
-                xsm: "13px",
+                xss: ["10px", "22px"],
+                xsm: ["13px", "18px"],
             },
         },
     },

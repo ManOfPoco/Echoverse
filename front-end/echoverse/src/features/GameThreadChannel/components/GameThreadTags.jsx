@@ -1,4 +1,4 @@
-import GameThreadTag from "../GameThreadTag";
+import GameThreadTag from "./GameThreadTag";
 
 function GameThreadTags({ tags }) {
     return (

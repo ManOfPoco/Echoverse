@@ -4,7 +4,9 @@ function BreadCrumbNavBarElement({ to, title, end = true }) {
     return (
         <NavLink
             to={to}
-            className={({ isActive }) => (isActive ? "" : "text-gray-light")}
+            className={({ isActive }) =>
+                `${isActive ? "" : "text-gray-light"} truncate`
+            }
             end={end}
         >
             {title}
