@@ -4,24 +4,21 @@ import Avatar from "../../../components/Avatar";
 import Button from "../../../components/Button";
 import TextareaInput from "../../../components/TextareaInput";
 
-import ThreadImages from "./ThreadImages";
+import ThreadFiles from "./ThreadFiles";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import useThreadInput from "../hooks/useThreadInput";
 
 import person from "../../../assets/img/person.jpg";
 import messageFilled from "../../../assets/svg/messageFilled.svg";
 import smileEmoji from "../../../assets/svg/smileEmoji.svg";
 import img from "../../../assets/svg/img.svg";
-import useThreadInput from "../hooks/useThreadInput";
 
-function ThreadInputField({ inputPlaceholder, btnText, action }) {
+function ThreadInputField({ inputPlaceholder, btnText }) {
     const {
-        handleThreadInputOnChange,
         handleThreadInputOnPaste,
-        handleTriggerFileUpload,
-        handleFileUploadOnChange,
-        handleImageOnDrop,
-        handleAddEmoji,
+        handleFileUpload,
+        handleFileOnDrop,
         fileUploadRef,
         setReferenceElement,
         setPopperElement,
@@ -31,12 +28,26 @@ function ThreadInputField({ inputPlaceholder, btnText, action }) {
         dispatch,
     } = useThreadInput();
 
-    const { newThreadValue, newThreadImages, isEmojiPickerOpen } = state;
+    const { threadValue, threadFiles, isEmojiPickerOpen } = state;
 
     const { height } = useWindowDimensions();
 
     const isPostButtonDisabled =
-        newThreadValue === "" && newThreadImages.length === 0;
+        threadValue === "" && threadFiles.length === 0;
+
+    function handleTriggerFileUpload() {
+        if (fileUploadRef.current) {
+            fileUploadRef.current.click();
+        }
+    }
+
+    function handleAddEmoji(emojiObj) {
+        dispatch({ type: "setNewThreadEmoji", emoji: emojiObj.emoji });
+    }
+
+    function handleThreadInputOnChange(e) {
+        dispatch({ type: "setNewThreadValue", threadValue: e.target.value });
+    }
 
     return (
         <div className="flex gap-3 border-b border-gray-light/30 pb-5">
@@ -51,14 +62,15 @@ function ThreadInputField({ inputPlaceholder, btnText, action }) {
                         padding="py-2"
                         resize="none"
                         bgColor="bg-black-night"
-                        value={newThreadValue}
+                        value={threadValue}
                         onChange={(e) => handleThreadInputOnChange(e)}
                         onPaste={(e) => handleThreadInputOnPaste(e)}
-                        onDrop={(e) => handleImageOnDrop(e)}
+                        onDrop={(e) => handleFileOnDrop(e)}
                     />
-                    <ThreadImages
+                    <ThreadFiles
                         deleteBtn={true}
-                        threadImages={newThreadImages}
+                        threadFiles={threadFiles}
+                        stretchType='reduced'
                         dispatch={dispatch}
                     />
                 </div>
@@ -95,12 +107,12 @@ function ThreadInputField({ inputPlaceholder, btnText, action }) {
                         </div>
                         <div>
                             <input
-                                accept="image/jpeg, image/png, video/mp4, video/quicktime"
+                                accept="image/gif, image/jpeg, image/png, video/mp4, video/quicktime"
                                 className="hidden"
-                                multiple=""
+                                multiple="multiple"
                                 type="file"
                                 ref={fileUploadRef}
-                                onChange={(e) => handleFileUploadOnChange(e)}
+                                onChange={(e) => handleFileUpload(e)}
                             />
                             <img
                                 src={img}

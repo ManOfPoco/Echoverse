@@ -4,39 +4,36 @@ import toast from "react-hot-toast";
 
 import warning from "../../../assets/svg/warning.svg";
 
-const maxImagesPerThread = 10;
+const maxFilesPerThread = 10;
 const initialState = {
-    newThreadValue: "",
-    newThreadImages: [],
+    threadValue: "",
+    threadFiles: [],
     isEmojiPickerOpen: false,
 };
 
 function reducer(state, action) {
     switch (action.type) {
         case "setNewThreadValue":
-            return { ...state, newThreadValue: action.newThreadValue };
+            return { ...state, threadValue: action.threadValue };
 
-        case "setNewThreadImages":
+        case "setNewThreadFiles":
             return {
                 ...state,
-                newThreadImages: [
-                    ...state.newThreadImages,
-                    action.newThreadImage,
-                ],
+                threadFiles: [...state.threadFiles, action.payload],
             };
 
-        case "removeNewThreadImage":
+        case "removeNewThreadFile":
             return {
                 ...state,
-                newThreadImages: state.newThreadImages.filter(
-                    (newThreadImage, index) => index !== action.removeIndex
+                threadFiles: state.threadFiles.filter(
+                    (threadFile, index) => index !== action.removeIndex
                 ),
             };
 
         case "setNewThreadEmoji":
             return {
                 ...state,
-                newThreadValue: state.newThreadValue + action.emoji,
+                threadValue: state.threadValue + action.emoji,
             };
 
         case "toggleEmojiPicker":
@@ -52,7 +49,7 @@ function reducer(state, action) {
 
 function useThreadInput() {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { newThreadImages, isEmojiPickerOpen } = state;
+    const { threadFiles, isEmojiPickerOpen } = state;
     const fileUploadRef = useRef(null);
 
     const [referenceElement, setReferenceElement] = useState(null);
@@ -61,16 +58,12 @@ function useThreadInput() {
         placement: "bottom",
     });
 
-    function handleThreadInputOnChange(e) {
-        dispatch({ type: "setNewThreadValue", newThreadValue: e.target.value });
-    }
-
-    function checkImageQuantity(i) {
-        if (newThreadImages.length + i + 1 <= maxImagesPerThread) {
+    function checkFilesQuantity(i) {
+        if (threadFiles.length + i + 1 <= maxFilesPerThread) {
             return true;
         } else {
             toast(
-                "You can't add more than 10 images.\nRemaining images were removed.",
+                "You can't add more than 10 files.\nRemaining files were removed.",
                 {
                     duration: 4000,
                     icon: <img src={warning} className="h-12 w-12" />,
@@ -84,19 +77,25 @@ function useThreadInput() {
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
-
-            if (item.type.indexOf("image") !== -1) {
-                if (checkImageQuantity(i)) {
+            if (checkFilesQuantity(i)) {
+                if (
+                    (item.type.indexOf("image") !== -1 ||
+                        item.type.indexOf("video")) !== -1
+                ) {
                     const blob = item.getAsFile();
                     const reader = new FileReader();
                     reader.readAsDataURL(blob);
 
                     reader.onload = function () {
-                        const pastedImg = reader.result;
+                        const fileType = item.type.split("/").at(-1);
+                        const pastedFile = reader.result;
 
                         dispatch({
-                            type: "setNewThreadImages",
-                            newThreadImage: pastedImg,
+                            type: "setNewThreadFiles",
+                            payload: {
+                                threadFile: pastedFile,
+                                fileType: fileType,
+                            },
                         });
                     };
                 }
@@ -104,61 +103,62 @@ function useThreadInput() {
         }
     }
 
-    function handleTriggerFileUpload() {
-        if (fileUploadRef.current) {
-            fileUploadRef.current.click();
-        }
-    }
-
-    function handleFileUploadOnChange(e) {
+    function handleFileUpload(e) {
         const files = e.target.files;
 
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
-            if (checkImageQuantity(i)) {
+
+            if (checkFilesQuantity(i)) {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
 
                 reader.onload = function () {
+                    const fileType = file.type.split("/").at(-1);
                     const readImg = reader.result;
 
                     dispatch({
-                        type: "setNewThreadImages",
-                        newThreadImage: readImg,
+                        type: "setNewThreadFiles",
+                        payload: {
+                            threadFile: readImg,
+                            fileType: fileType,
+                        },
                     });
                 };
             }
         }
     }
 
-    function handleImageOnDrop(e) {
+    function handleFileOnDrop(e) {
         e.preventDefault();
-        console.log(e);
         const droppedFiles = e.dataTransfer.files;
 
         for (let i = 0; i < droppedFiles.length; i++) {
             const droppedFile = droppedFiles[i];
 
-            if (checkImageQuantity(i)) {
-                if (droppedFile.type.indexOf("image") !== -1) {
+            if (checkFilesQuantity(i)) {
+                if (
+                    (droppedFile.type.indexOf("image") !== -1 ||
+                        droppedFile.type.indexOf("video")) !== -1
+                ) {
                     const reader = new FileReader();
                     reader.readAsDataURL(droppedFile);
 
                     reader.onload = function () {
-                        const droppedImage = reader.result;
+                        const fileType = droppedFile.type.split("/").at(-1);
+                        const droppedFile = reader.result;
 
                         dispatch({
-                            type: "setNewThreadImages",
-                            newThreadImage: droppedImage,
+                            type: "setNewThreadFiles",
+                            payload: {
+                                threadFile: droppedFile,
+                                fileType: fileType,
+                            },
                         });
                     };
                 }
             }
         }
-    }
-
-    function handleAddEmoji(emojiObj) {
-        dispatch({ type: "setNewThreadEmoji", emoji: emojiObj.emoji });
     }
 
     // close emoji picker when clicking outside of it
@@ -180,12 +180,9 @@ function useThreadInput() {
     }, [referenceElement, popperElement, isEmojiPickerOpen, dispatch]);
 
     return {
-        handleThreadInputOnChange,
         handleThreadInputOnPaste,
-        handleTriggerFileUpload,
-        handleFileUploadOnChange,
-        handleImageOnDrop,
-        handleAddEmoji,
+        handleFileUpload,
+        handleFileOnDrop,
         fileUploadRef,
         setReferenceElement,
         setPopperElement,

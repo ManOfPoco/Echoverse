@@ -1,20 +1,10 @@
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ModalImage from "./ModalImage";
-import { Fragment } from "react";
 
-function Modal({
-    isOpen,
-    onClose,
-    img,
-    alt,
-    title,
-    description,
-    children
-}) {
+function Modal({ isOpen, onClose, img, alt, title, description, children }) {
     return (
-        <Transition
-            show={isOpen}
-        >
+        <Transition show={isOpen}>
             <Dialog onClose={onClose} className="relative z-50">
                 <Transition.Child
                     as={Fragment}

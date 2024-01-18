@@ -43,14 +43,7 @@ function GameThreadsChannel() {
     const [message, setMessage] = useState("");
     const { game, threadId } = useParams();
     const { height } = useWindowDimensions();
-    const {
-        title,
-        description,
-        gameTags,
-        creationTime,
-        createdBy,
-        initialMessage,
-    } = thread;
+    const { title, gameTags, initialMessage } = thread;
 
     return (
         <div className="w-full bg-gray-chat">
@@ -65,7 +58,7 @@ function GameThreadsChannel() {
                     title={title}
                 />
             </BreadCrumbNavBar>
-            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto md:h-[calc(100dvh-121px)]">
+            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto md:h-[calc(100dvh-121px)] pb-5">
                 <div className="flex flex-col gap-5">
                     <div>
                         <div>

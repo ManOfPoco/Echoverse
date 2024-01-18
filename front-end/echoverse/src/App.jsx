@@ -29,7 +29,7 @@ import PeopleForYou from "./pages/PeopleForYou";
 import PeopleHistory from "./pages/PeopleHistory";
 import Threads from "./pages/Threads";
 import GameThreads from "./pages/GameThreads";
-import Thread from "./pages/Thread";
+import SpecificThread from "./pages/SpecificThread";
 import UserGameThreads from "./pages/UserGameThreads";
 import UserSavedThreads from "./pages/UserSavedThreads";
 import UserSavedGameThreads from "./pages/UserSavedGameThreads";
@@ -157,7 +157,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/:username/threads/:id",
-                element: <Thread />,
+                element: <SpecificThread />,
             },
             {
                 path: "/games/game-threads",

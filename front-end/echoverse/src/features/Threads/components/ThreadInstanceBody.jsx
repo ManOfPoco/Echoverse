@@ -1,18 +1,18 @@
-import ThreadImages from "./ThreadImages";
+import ThreadFiles from "./ThreadFiles";
 
 function ThreadInstanceBody({ thread }) {
-    const { images, message } = thread;
+    const { files, message } = thread;
     return (
         <>
             <div
                 className={`whitespace-pre-wrap break-words font-roboto text-sm ${
-                    images.length > 0 && "pb-2"
+                    files.length > 0 && "pb-2"
                 }`}
             >
                 {message}
             </div>
 
-            <ThreadImages threadImages={images} />
+            <ThreadFiles stretchType='reduced' threadFiles={files} />
         </>
     );
 }
