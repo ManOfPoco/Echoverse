@@ -1,26 +1,11 @@
-import { Fragment, useEffect, useRef } from "react";
+import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-function FullScreenContentModal({
-    isOpen,
-    handleModalClose,
-    swapDomeElementsWithDomElementsFromStash,
-}) {
-    const fileRef = useRef(null);
-
-    useEffect(() => {
-        console.log(fileRef.current);
-        if (fileRef.current) {
-            fileRef.current = swapDomeElementsWithDomElementsFromStash(
-                fileRef.current
-            );
-        }
-    }, [swapDomeElementsWithDomElementsFromStash]);
-
+function FullScreenContentModal({ isOpen, handleModalClose, children }) {
     return (
         <Transition show={isOpen}>
             <Dialog
-                onClick={() => handleModalClose(fileRef.current)}
+                onClick={handleModalClose}
                 onClose={() => {}}
                 className="relative z-50"
             >
@@ -50,12 +35,7 @@ function FullScreenContentModal({
                 >
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
                         <Dialog.Panel>
-                            <div
-                                className="relative mx-auto"
-                                onClick={() => console.log(1)}
-                            >
-                                <div ref={fileRef}></div>
-                            </div>
+                            <div className="relative mx-auto">{children}</div>
                         </Dialog.Panel>
                     </div>
                 </Transition.Child>
