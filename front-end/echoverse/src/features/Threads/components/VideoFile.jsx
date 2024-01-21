@@ -16,7 +16,10 @@ function VideoFile({
     swapDomElementsWithDomElementsFromStash,
 }) {
     const [isMuted, setIsMuted] = useState(true);
-    const fileRef = useRef(null);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+
+    const videoRef = useRef(null);
     const soundRef = useRef(null);
 
     const videoDefaultClasses = `rounded-lg pb-0.5 ${
@@ -38,8 +41,8 @@ function VideoFile({
     }
 
     function handleSetVolume() {
-        if (fileRef.current) {
-            fileRef.current.volume = 0.5;
+        if (videoRef.current) {
+            videoRef.current.volume = 0.5;
         }
     }
 
@@ -48,52 +51,111 @@ function VideoFile({
             setIsFullScreenModalOpen(true);
             setStretch("fullScreen");
         } else if (isFullScreenModalOpen) {
-            if (fileRef.current.paused) fileRef.current.play();
-            else fileRef.current.pause();
+            if (videoRef.current.paused) videoRef.current.play();
+            else videoRef.current.pause();
         }
     }
 
+    function handleProgressClick(e) {
+        const progressBar = e.currentTarget;
+        const clickPosition =
+            e.clientX - progressBar.getBoundingClientRect().left;
+
+        const percent = clickPosition / progressBar.offsetWidth;
+        const newTime = percent * duration;
+
+        videoRef.current.currentTime = newTime;
+    }
+
     useEffect(() => {
-        fileRef.current.muted = isMuted;
-    }, [isMuted, fileRef]);
+        function handleTimeUpdate() {
+            setCurrentTime(videoRef.current.currentTime);
+        }
+
+        function handleDurationChange() {
+            setDuration(videoRef.current.duration);
+        }
+
+        if (isFullScreenModalOpen) {
+            const video = videoRef?.current;
+            if (video) {
+                video.addEventListener("timeupdate", handleTimeUpdate);
+                video.addEventListener("durationchange", handleDurationChange);
+
+                return () => {
+                    video.removeEventListener("timeupdate", handleTimeUpdate);
+                    video.removeEventListener(
+                        "durationchange",
+                        handleDurationChange
+                    );
+                };
+            }
+        }
+    });
 
     useLayoutEffect(() => {
         return () => {
-            moveDomElementToStash(fileRef.current);
+            moveDomElementToStash(videoRef.current);
         };
     }, [moveDomElementToStash]);
 
     useEffect(() => {
         if (isDOMElementInStash()) {
-            if (fileRef.current) {
-                fileRef.current = swapDomElementsWithDomElementsFromStash(
-                    fileRef.current
+            if (videoRef.current) {
+                videoRef.current = swapDomElementsWithDomElementsFromStash(
+                    videoRef.current
                 );
-                if (!fileRef.current.muted) {
+                if (!videoRef.current.muted) {
                     setIsMuted(false);
                 }
-                if (isFullScreenModalOpen)
-                    fileRef.current.className =
+                if (isFullScreenModalOpen) {
+                    videoRef.current.className =
                         "rounded-lg max-h-[80dvh] max-w-[80dvw]";
-                else fileRef.current.className = videoDefaultClasses;
+                    setDuration(videoRef.current.duration);
+                    setCurrentTime(videoRef.current.currentTime);
+                } else videoRef.current.className = videoDefaultClasses;
             }
         }
-    }, [isDOMElementInStash, swapDomElementsWithDomElementsFromStash]);
+    }, [
+        isDOMElementInStash,
+        swapDomElementsWithDomElementsFromStash,
+        videoDefaultClasses,
+        isFullScreenModalOpen,
+    ]);
+
+    useEffect(() => {
+        videoRef.current.muted = isMuted;
+    }, [isMuted, videoRef]);
 
     return (
         <div>
-            <div className="absolute flex h-full w-full items-end p-2">
-                <span
-                    className="z-50 min-w-fit cursor-pointer rounded-full bg-black-dark p-1.5 transition-colors hover:bg-black-night"
-                    onClick={() => handleSoundToggleSound()}
-                >
-                    <img
-                        src={isMuted ? videoSoundOff : videoSoundOn}
-                        className="h-4 w-4"
-                        alt="remove"
-                        ref={soundRef}
-                    />
-                </span>
+            <div className="absolute flex h-full w-full items-end justify-end p-2">
+                <div className="absolute z-50 flex w-[calc(100%-16px)] flex-col-reverse items-end gap-2">
+                    {isFullScreenModalOpen && (
+                        <div
+                            className="h-1 w-full cursor-pointer rounded-lg bg-gray-charcoal"
+                            onClick={(e) => handleProgressClick(e)}
+                        >
+                            <div
+                                className="h-full w-full rounded-lg bg-gray-300"
+                                style={{
+                                    width: `${(currentTime / duration) * 100}%`,
+                                }}
+                            />
+                        </div>
+                    )}
+                    <span
+                        className="z-50 min-w-fit cursor-pointer rounded-full bg-black-dark p-1.5 transition-colors hover:bg-black-night"
+                        onClick={() => handleSoundToggleSound()}
+                    >
+                        <img
+                            src={isMuted ? videoSoundOff : videoSoundOn}
+                            className="h-4 w-4"
+                            alt="remove"
+                            ref={soundRef}
+                        />
+                    </span>
+                </div>
             </div>
             <div onClick={() => handleVideoClick()}>
                 <video
@@ -102,7 +164,7 @@ function VideoFile({
                     loop
                     muted={isMuted}
                     onLoadStart={(e) => handleSetVolume(e)}
-                    ref={fileRef}
+                    ref={videoRef}
                 >
                     <source src={threadFile} type="video/mp4" />
                 </video>
