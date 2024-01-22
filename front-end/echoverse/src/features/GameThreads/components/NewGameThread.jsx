@@ -21,7 +21,7 @@ const selectedTags = [
 ];
 
 const initialState = {
-    selectedTags: selectedTags,
+    selectedTags: [],
     searchTagQuery: "",
     searchTags: selectedTags,
 };
@@ -101,7 +101,7 @@ function NewGameThread({ setIsNewPost }) {
                 <Button
                     btnClass="danger"
                     roundness="rounded-xls"
-                    size="min-w-fit py-1 px-2 sm:px-4 sm:py-2"
+                    size="min-w-fit px-3 sm:px-4 py-2 lg:py-2.5"
                     customClasses="sm:my-0.5"
                 >
                     <div
@@ -115,7 +115,7 @@ function NewGameThread({ setIsNewPost }) {
                 <Button
                     btnClass="blue"
                     roundness="rounded-xls"
-                    size="min-w-fit py-1 px-2 sm:px-4 sm:py-2 lg:py-2.5"
+                    size="min-w-fit px-3 sm:px-4 py-2 lg:py-2.5"
                     customClasses="sm:my-0.5"
                 >
                     <div className="flex items-center justify-center gap-1.5">

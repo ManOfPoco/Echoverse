@@ -16,7 +16,7 @@ import hideSVG from "../../../assets/svg/hideSVG.svg";
 /* 
 add: allows adding gaming days
 edit: allows adding gaming notes to gaming days
-delete: allows delete gaming days with notes
+delete: allows deleting gaming days with notes
 */
 const initialState = {
     isCalendarOpen: true,

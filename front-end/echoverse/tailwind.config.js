@@ -19,6 +19,7 @@ module.exports = {
             sm: "2px",
             md: "5px",
             lg: "8px",
+            lgx: "12px",
             xl: "16px",
             xls: "20px",
             full: "9999px",
@@ -77,6 +78,9 @@ module.exports = {
             fontSize: {
                 xss: ["10px", "22px"],
                 xsm: ["13px", "18px"],
+            },
+            borderWidth: {
+                6: "6px",
             },
         },
     },

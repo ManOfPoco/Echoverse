@@ -7,7 +7,7 @@ function GameThreadsList({ gameThreads, game, view }) {
     }`;
 
     return (
-        <div className={`${viewClasses} mt-4 gap-2 pb-10 lg:mx-0`}>
+        <div className={`${viewClasses} mt-4 gap-2 pb-10`}>
             {gameThreads.map((gameThread) => (
                 <GameThread
                     gameThread={gameThread}

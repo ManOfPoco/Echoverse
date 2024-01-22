@@ -1,10 +1,8 @@
 function GameThreadCategory({ category, isNextCategory }) {
     return (
         <>
-            <div className="w-max" key={category}>
-                {category}
-            </div>
-            {isNextCategory && <span>•</span>}
+            <div>{category}</div>
+            {isNextCategory && <span className="text-gray-clear/50">•</span>}
         </>
     );
 }
