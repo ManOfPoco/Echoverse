@@ -572,6 +572,10 @@ video {
   pointer-events: auto;
 }
 
+.visible{
+  visibility: visible;
+}
+
 .fixed{
   position: fixed;
 }
@@ -925,6 +929,10 @@ video {
 
 .h-full{
   height: 100%;
+}
+
+.h-1\.5{
+  height: 0.375rem;
 }
 
 .max-h-36{
@@ -2618,6 +2626,14 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     height: 11rem;
   }
 
+  .sm\:h-1{
+    height: 0.25rem;
+  }
+
+  .sm\:h-1\.5{
+    height: 0.375rem;
+  }
+
   .sm\:max-h-64{
     max-height: 16rem;
   }
@@ -2782,6 +2798,10 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 
   .md\:h-\[calc\(100dvh-121px\)\]{
     height: calc(100dvh - 121px);
+  }
+
+  .md\:h-1{
+    height: 0.25rem;
   }
 
   .md\:max-h-\[calc\(100dvh-125px\)\]{

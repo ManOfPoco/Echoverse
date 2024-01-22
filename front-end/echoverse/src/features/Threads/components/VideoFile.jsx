@@ -18,6 +18,7 @@ function VideoFile({
     const [isMuted, setIsMuted] = useState(true);
     const [currentTime, setCurrentTime] = useState(0);
     const [duration, setDuration] = useState(0);
+    const [isInViewport, setIsInViewport] = useState(false);
 
     const videoRef = useRef(null);
     const soundRef = useRef(null);
@@ -67,32 +68,6 @@ function VideoFile({
         videoRef.current.currentTime = newTime;
     }
 
-    useEffect(() => {
-        function handleTimeUpdate() {
-            setCurrentTime(videoRef.current.currentTime);
-        }
-
-        function handleDurationChange() {
-            setDuration(videoRef.current.duration);
-        }
-
-        if (isFullScreenModalOpen) {
-            const video = videoRef?.current;
-            if (video) {
-                video.addEventListener("timeupdate", handleTimeUpdate);
-                video.addEventListener("durationchange", handleDurationChange);
-
-                return () => {
-                    video.removeEventListener("timeupdate", handleTimeUpdate);
-                    video.removeEventListener(
-                        "durationchange",
-                        handleDurationChange
-                    );
-                };
-            }
-        }
-    });
-
     useLayoutEffect(() => {
         return () => {
             moveDomElementToStash(videoRef.current);
@@ -126,6 +101,62 @@ function VideoFile({
     useEffect(() => {
         videoRef.current.muted = isMuted;
     }, [isMuted, videoRef]);
+
+    useEffect(() => {
+        function handleTimeUpdate() {
+            setCurrentTime(videoRef.current.currentTime);
+        }
+
+        function handleDurationChange() {
+            setDuration(videoRef.current.duration);
+        }
+
+        if (isFullScreenModalOpen) {
+            const video = videoRef?.current;
+            if (video) {
+                video.addEventListener("timeupdate", handleTimeUpdate);
+                video.addEventListener("durationchange", handleDurationChange);
+
+                return () => {
+                    video.removeEventListener("timeupdate", handleTimeUpdate);
+                    video.removeEventListener(
+                        "durationchange",
+                        handleDurationChange
+                    );
+                };
+            }
+        }
+    });
+
+    useEffect(() => {
+        if (!isFullScreenModalOpen) {
+            const options = {
+                root: null, // use the viewport as the root
+                rootMargin: "0px", // no margin
+                threshold: 0.5, // at least 50% of the target is visible
+            };
+
+            const observer = new IntersectionObserver(([entry]) => {
+                setIsInViewport(entry.isIntersecting);
+
+                if (videoRef.current) {
+                    if (entry.isIntersecting) {
+                        videoRef.current.play();
+                    } else videoRef.current.pause();
+                }
+            }, options);
+
+            if (videoRef.current) {
+                observer.observe(videoRef.current);
+            }
+
+            return () => {
+                if (videoRef.current) {
+                    observer.unobserve(videoRef.current);
+                }
+            };
+        }
+    }, [isFullScreenModalOpen]);
 
     return (
         <div>
