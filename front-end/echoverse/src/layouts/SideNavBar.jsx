@@ -15,7 +15,7 @@ function SideNavBar() {
     const isAuthenticated = true;
 
     return (
-        <nav className="z-50 flex h-dvh w-fit flex-col justify-between gap-7 bg-black-night px-1 pb-5 pt-1 font-archivo-black text-sm">
+        <nav className="z-50 flex h-dvh min-w-fit flex-col justify-between gap-7 bg-black-night px-1 pb-5 pt-1 font-archivo-black text-sm">
             <div className="flex flex-col items-center gap-7">
                 <LogoIconOnly />
                 <div className="flex flex-col gap-6">

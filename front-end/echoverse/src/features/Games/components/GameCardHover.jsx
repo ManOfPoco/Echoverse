@@ -4,7 +4,7 @@ import steam from "../../../assets/svg/steam.svg";
 import openSVG from "../../../assets/svg/openSVG.svg";
 import group from "../../../assets/svg/group.svg";
 import editSVG from "../../../assets/svg/editSVG.svg";
-import deleteSVG from "../../../assets/svg/deleteSVG.svg";
+import trashCan from "../../../assets/svg/trashCan.svg";
 
 function GameCardHover({
     steamLink,
@@ -59,7 +59,7 @@ function GameCardHover({
                 {presentInProfile && (
                     <GameCardHoverOption
                         presentInProfile={presentInProfile}
-                        img={deleteSVG}
+                        img={trashCan}
                         alt="delete"
                         title="Remove game from the library"
                         isDeletion={true}

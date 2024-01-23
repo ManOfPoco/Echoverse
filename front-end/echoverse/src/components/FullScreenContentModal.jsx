@@ -1,10 +1,16 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
-function FullScreenContentModal({ isOpen, handleModalClose, children }) {
+function FullScreenContentModal({
+    isOpen,
+    handleModalClose,
+    bgColor = "bg-black-dark",
+    children,
+}) {
     return (
         <Transition show={isOpen}>
             <Dialog
+                open={isOpen}
                 onClick={handleModalClose}
                 onClose={() => {}}
                 className="relative z-50"
@@ -18,10 +24,7 @@ function FullScreenContentModal({ isOpen, handleModalClose, children }) {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                 >
-                    <div
-                        className="fixed inset-0 bg-black-dark"
-                        aria-hidden="true"
-                    />
+                    <div className={`fixed inset-0 ${bgColor}`} />
                 </Transition.Child>
 
                 <Transition.Child

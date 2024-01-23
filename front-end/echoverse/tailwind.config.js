@@ -82,6 +82,21 @@ module.exports = {
             borderWidth: {
                 6: "6px",
             },
+            content: {
+                spine: 'url("/src/assets/svg/arrowSpine.svg")',
+            },
+            keyframes: {
+                blinker: {
+                    "25%": { "background-color": "#374151" },
+                },
+            },
+            animation: {
+                blinker: "blinker 3s ease-in-out 1",
+            },
+            flex: {
+                "channel-images": "2 1 30%",
+                "channel-videos": "1 1 49%",
+            },
         },
     },
     plugins: [],

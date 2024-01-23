@@ -8,7 +8,7 @@ function isFirstDayMessage(messageTime, previousMessageTime) {
     const messageDay = new Date(messageTime).getDay();
     const previousMessageDay = new Date(previousMessageTime).getDay();
 
-    return messageDay !== previousMessageDay
+    return messageDay !== previousMessageDay;
 }
 
 function formatDate(time, is12HoursFormat = true) {
@@ -49,6 +49,11 @@ function formatDate(time, is12HoursFormat = true) {
     } else {
         return `${messageSendTime.toLocaleString([], {
             hour12: is12HoursFormat,
+            year: "numeric",
+            month: "numeric",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
         })}`;
     }
 }

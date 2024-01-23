@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 
 import FullScreenContentModal from "../../../components/FullScreenContentModal";
-import DeleteFileButton from "./DeleteFileButton";
+import DeleteFileButton from "../../../components/DeleteFileButton";
 import VideoFile from "./VideoFile";
 import ThreadImageFile from "./ThreadImageFile";
 
@@ -157,11 +157,13 @@ function ThreadFile({
                         : ""
                 }`}
             >
-                <DeleteFileButton
-                    deleteBtn={deleteBtn}
-                    dispatch={dispatch}
-                    onClick={() => handleRemoveFile(index)}
-                />
+                {deleteBtn && (
+                    <DeleteFileButton
+                        deleteBtn={deleteBtn}
+                        dispatch={dispatch}
+                        onClick={() => handleRemoveFile(index)}
+                    />
+                )}
 
                 {!isFullScreenModalOpen && displayFile}
             </div>

@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
 
 import TextareaInput from "../components/TextareaInput";
 
-import BreadCrumbNavBar from "../features/GameThreads/components/BreadCrumbNavBar";
-import BreadCrumbNavBarElement from "../features/GameThreads/components/BreadCrumbNavBarElement";
+import BreadCrumbNavBarContainer from "../components/BreadCrumbNavBarContainer";
+import BreadCrumbNavBar from "../components/BreadCrumbNavBar";
+import BreadCrumbNavBarElement from "../components/BreadCrumbNavBarElement";
+
+import ChannelInnerNavBar from "../features/GameThreadChannel/components/ChannelInnerNavBar";
 import GameThreadTags from "../features/GameThreadChannel/components/GameThreadTags";
 import Messages from "../features/GameThreadChannel/components/Messages";
 import Message from "../features/GameThreadChannel/components/Message";
@@ -18,6 +21,7 @@ import gif from "../assets/svg/gif.svg";
 import smileEmoji from "../assets/svg/smileEmoji.svg";
 
 import messages from "../assets/data/messages.json";
+import MobileNavBarIcon from "../features/SideNavBarMobile/components/MobileNavBarIcon";
 
 const thread = {
     id: 1,
@@ -31,6 +35,7 @@ const thread = {
     },
     initialMessage: {
         id: 999,
+        messageType: "message",
         senderId: 1,
         username: "ManOfPoco",
         img: person,
@@ -40,41 +45,48 @@ const thread = {
 };
 
 function GameThreadsChannel() {
+    const [setIsSideNavBarActive] = useOutletContext();
+
     const [message, setMessage] = useState("");
     const { game, threadId } = useParams();
     const { height } = useWindowDimensions();
     const { title, gameTags, initialMessage } = thread;
 
     return (
-        <div className="w-full bg-gray-chat">
-            <BreadCrumbNavBar img={chatBubble}>
-                <BreadCrumbNavBarElement to="/games" title="Games" />
-                <BreadCrumbNavBarElement
-                    to={`/games/game-threads/${game}`}
-                    title={game}
+        <div className="w-full bg-gray-chat lg:w-[calc(100%-56px)]">
+            <BreadCrumbNavBarContainer>
+                <MobileNavBarIcon
+                    setIsSideNavBarActive={setIsSideNavBarActive}
                 />
-                <BreadCrumbNavBarElement
-                    to={`/games/game-threads/${game}/${threadId}`}
-                    title={title}
-                />
-            </BreadCrumbNavBar>
-            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto md:h-[calc(100dvh-121px)] pb-5">
-                <div className="flex flex-col gap-5">
-                    <div>
-                        <div>
-                            <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">
-                                <h4 className="text-3xl font-semibold">
-                                    {title}
-                                </h4>
-                                <GameThreadTags tags={gameTags} />
-                            </div>
+                <div className="flex justify-between">
+                    <BreadCrumbNavBar img={chatBubble}>
+                        <BreadCrumbNavBarElement to="/games" title="Games" />
+                        <BreadCrumbNavBarElement
+                            to={`/games/game-threads/${game}`}
+                            title={game}
+                        />
+                        <BreadCrumbNavBarElement
+                            to={`/games/game-threads/${game}/${threadId}`}
+                            title={title}
+                        />
+                    </BreadCrumbNavBar>
 
-                            <div className="font-nunito">
-                                <Message messageObj={initialMessage} />
-                            </div>
+                    <ChannelInnerNavBar />
+                </div>
+            </BreadCrumbNavBarContainer>
+            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-121px)]">
+                <div>
+                    <div>
+                        <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">
+                            <h4 className="text-3xl font-semibold">{title}</h4>
+                            <GameThreadTags tags={gameTags} />
                         </div>
-                        <Messages messages={messages} />
+
+                        <div className="font-nunito">
+                            <Message messageObj={initialMessage} />
+                        </div>
                     </div>
+                    <Messages messages={messages} />
                 </div>
             </div>
             <div className="mx-4 mb-4 flex items-center justify-between gap-5 rounded-lg bg-gray-dark px-2 py-1">

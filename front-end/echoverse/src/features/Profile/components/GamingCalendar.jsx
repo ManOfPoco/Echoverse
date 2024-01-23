@@ -6,7 +6,7 @@ import Button from "../../../components/Button";
 import SetGamingNotesModal from "./SetGamingNotesModal";
 import CalendarRow from "./CalendarRow";
 
-import deleteSVG from "../../../assets/svg/deleteSVG.svg";
+import trashCan from "../../../assets/svg/trashCan.svg";
 import deleteActive from "../../../assets/svg/deleteActive.svg";
 import editSVG from "../../../assets/svg/editSVG.svg";
 import editActive from "../../../assets/svg/editActive.svg";
@@ -169,7 +169,7 @@ function GamingCalendar({ isCurrentUser, data }) {
                                         <img
                                             title="delete"
                                             draggable={false}
-                                            src={deleteSVG}
+                                            src={trashCan}
                                             className="h-5 w-5"
                                             alt="delete"
                                         />
