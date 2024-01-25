@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 
-function BreadCrumbNavBarElement({ to, title, end = true }) {
+function BreadCrumbNavBarElement({ to, title, truncate = true, end = true }) {
     return (
         <NavLink
             to={to}
             className={({ isActive }) =>
-                `${isActive ? "" : "text-gray-light"} truncate`
+                `${isActive ? "" : "text-gray-light"} ${truncate && "truncate"}`
             }
             end={end}
         >

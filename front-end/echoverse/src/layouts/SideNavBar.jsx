@@ -1,13 +1,14 @@
 import LogoIconOnly from "../features/SideNavBar/components/LogoIconOnly";
 import SideNavBarElement from "../features/SideNavBar/components/SideNavBarElement";
-import SideNavBarProfileDropdown from "../features/SideNavBar/components/SideNavBarProfileDropdown";
+import NavBarProfileAuthenticatedDropdown from "../features/NavBar/components/NavBarProfileAutheticatedDropdown";
 
+import person from "../assets/img/person.jpg";
 import searchWhite from "../assets/svg/searchWhite.svg";
 import people from "../assets/svg/people.svg";
 import threads from "../assets/svg/threads.svg";
 import controllerWhite from "../assets/svg/controllerWhite.svg";
 import about from "../assets/svg/about.svg";
-import bell from "../assets/svg/bell.svg";
+import bellFilled from "../assets/svg/bellFilled.svg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 import login from "../assets/svg/login.svg";
 
@@ -48,7 +49,7 @@ function SideNavBar() {
                         <div className="flex flex-col items-center gap-6">
                             <SideNavBarElement
                                 link="/notification"
-                                img={bell}
+                                img={bellFilled}
                                 alt="notification"
                             />
                             <SideNavBarElement
@@ -56,7 +57,7 @@ function SideNavBar() {
                                 img={chatBubble}
                                 alt="people"
                             />
-                            <SideNavBarProfileDropdown />
+                            <NavBarProfileAuthenticatedDropdown image={person} placement="right-start" />
                         </div>
                     </>
                 ) : (

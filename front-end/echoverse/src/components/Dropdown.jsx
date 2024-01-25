@@ -1,6 +1,7 @@
 import { Transition } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import { usePopper } from "react-popper";
+import useCloseDropdown from "../hooks/useCloseDropdown";
 
 const placementMarginMapping = {
     left: "me-1",
@@ -28,21 +29,12 @@ function Dropdown({
 
     const placementMargin = placementMarginMapping[placement.split("-")[0]];
 
-    useEffect(() => {
-        function closeDropdown(e) {
-            if (
-                referenceElement &&
-                isDropdownOpen &&
-                !referenceElement.contains(e.target)
-            )
-                setIsDropdownOpen(false);
-        }
-        document.addEventListener("mousedown", closeDropdown);
-
-        return () => {
-            document.removeEventListener("mousedown", closeDropdown);
-        };
-    }, [referenceElement, isDropdownOpen]);
+    useCloseDropdown(
+        referenceElement,
+        isDropdownOpen,
+        popperElement,
+        setIsDropdownOpen
+    );
 
     function handleToggle() {
         setIsDropdownOpen(!isDropdownOpen);
@@ -83,12 +75,12 @@ function Dropdown({
                 leaveTo="transform opacity-0"
             >
                 <div
-                    className={`z-50 ${placementMargin} w-36 origin-top-right rounded-lg bg-gray-dark px-4 py-2.5 shadow-xl ${dropdownWidth}`}
+                    className={`z-50 flex flex-col gap-1 bg-gray-dark py-1 rounded-xl shadow-xl ${dropdownWidth} ${placementMargin}`}
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}
                 >
-                    <div className="flex flex-col gap-5">{children}</div>
+                    {children}
                 </div>
             </Transition>
         </div>

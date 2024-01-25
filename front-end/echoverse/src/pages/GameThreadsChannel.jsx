@@ -3,7 +3,6 @@ import { useOutletContext, useParams } from "react-router-dom";
 
 import TextareaInput from "../components/TextareaInput";
 
-import BreadCrumbNavBarContainer from "../components/BreadCrumbNavBarContainer";
 import BreadCrumbNavBar from "../components/BreadCrumbNavBar";
 import BreadCrumbNavBarElement from "../components/BreadCrumbNavBarElement";
 
@@ -22,10 +21,11 @@ import smileEmoji from "../assets/svg/smileEmoji.svg";
 
 import messages from "../assets/data/messages.json";
 import MobileNavBarIcon from "../features/SideNavBarMobile/components/MobileNavBarIcon";
+import BackButton from "../features/GameThreadChannel/components/BackButton";
 
 const thread = {
     id: 1,
-    title: "Game Discussion Thread",
+    title: "Game Discussion ThreadGame Discussion ThreadGame Discussion ThreadGame Discussion ThreadGame Discussion ThreadGame Discussion ThreadGame Discussion Thread",
     description: "Discuss your favorite games and share gaming experiences.",
     gameTags: ["Action", "Adventure", "RPG", "Dedicated Server"],
     creationTime: "2024-01-15T09:45:00Z",
@@ -49,32 +49,45 @@ function GameThreadsChannel() {
 
     const [message, setMessage] = useState("");
     const { game, threadId } = useParams();
-    const { height } = useWindowDimensions();
+    const { width, height } = useWindowDimensions();
     const { title, gameTags, initialMessage } = thread;
 
     return (
         <div className="w-full bg-gray-chat lg:w-[calc(100%-56px)]">
-            <BreadCrumbNavBarContainer>
-                <MobileNavBarIcon
-                    setIsSideNavBarActive={setIsSideNavBarActive}
-                />
-                <div className="flex justify-between">
-                    <BreadCrumbNavBar img={chatBubble}>
-                        <BreadCrumbNavBarElement to="/games" title="Games" />
-                        <BreadCrumbNavBarElement
-                            to={`/games/game-threads/${game}`}
-                            title={game}
-                        />
-                        <BreadCrumbNavBarElement
-                            to={`/games/game-threads/${game}/${threadId}`}
-                            title={title}
-                        />
-                    </BreadCrumbNavBar>
+            <div className="flex items-center border-b border-black-dark shadow-lg">
+                {width < 1024 && (
+                    <MobileNavBarIcon
+                        setIsSideNavBarActive={setIsSideNavBarActive}
+                    />
+                )}
+                {width < 1024 && <BackButton />}
+                <div className="flex items-center justify-between truncate lg:px-3">
+                    {width < 1024 ? (
+                        <BreadCrumbNavBar img={chatBubble}>
+                            <BreadCrumbNavBarElement
+                                to={`/games/game-threads/${game}/${threadId}`}
+                                title={title}
+                            />
+                        </BreadCrumbNavBar>
+                    ) : (
+                        <BreadCrumbNavBar img={chatBubble}>
+                            <BreadCrumbNavBarElement
+                                to={`/games/game-threads/${game}`}
+                                title={game}
+                                truncate={false}
+                            />
 
-                    <ChannelInnerNavBar />
+                            <BreadCrumbNavBarElement
+                                to={`/games/game-threads/${game}/${threadId}`}
+                                title={title}
+                            />
+                        </BreadCrumbNavBar>
+                    )}
+
+                    {width >= 768 && <ChannelInnerNavBar />}
                 </div>
-            </BreadCrumbNavBarContainer>
-            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-121px)]">
+            </div>
+            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-113px)]">
                 <div>
                     <div>
                         <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">

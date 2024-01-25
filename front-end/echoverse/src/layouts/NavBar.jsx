@@ -12,6 +12,9 @@ import NavBarMobileMenu from "../features/NavBar/components/NavBarMobileMenu";
 import dropdownArrowDown from "../assets/svg/dropdownArrowDown.svg";
 import menu from "../assets/svg/menu.svg";
 import menuOpened from "../assets/svg/menuOpened.svg";
+import people from "../assets/svg/people.svg";
+import threads from "../assets/svg/threads.svg";
+
 
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,12 +71,26 @@ function NavBar() {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
-                        <Dropdown title="Explore" svgTitle={dropdownArrowDown}>
+                        <Dropdown title="Explore" svgTitle={dropdownArrowDown} dropdownWidth="w-44">
                             <DropdownItem link="/explore/people" key="People">
-                                People
+                                <div className="flex w-fit items-center gap-3 px-4 py-2">
+                                    <img
+                                        src={people}
+                                        className="h-7 w-7"
+                                        alt="people"
+                                    />
+                                    <span>People</span>
+                                </div>
                             </DropdownItem>
                             <DropdownItem link="/explore/threads" key="Threads">
-                                Threads
+                                <div className="flex w-fit items-center gap-3 px-4 py-2">
+                                    <img
+                                        src={threads}
+                                        className="h-7 w-7"
+                                        alt="threads"
+                                    />
+                                    <span>Threads</span>
+                                </div>
                             </DropdownItem>
                         </Dropdown>
                         <NavLink link="/games">Games</NavLink>

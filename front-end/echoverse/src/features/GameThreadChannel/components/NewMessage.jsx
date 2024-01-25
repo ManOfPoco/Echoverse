@@ -41,7 +41,7 @@ function NewMessage({ messageObj, is12HoursFormat }) {
                         <h5 className="inline-block cursor-pointer align-top hover:underline">
                             {username}
                         </h5>
-                        <h5 className="text-xs text-gray-clear">
+                        <h5 className="text-xss md:text-xs text-gray-clear">
                             {formatDate(time, is12HoursFormat)}
                         </h5>
                         <span className="text-xss text-gray-clear">

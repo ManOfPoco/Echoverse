@@ -17,6 +17,7 @@ import MenuNavLink from "../components/MenuNavLink";
 
 const data = {
     username: "ManOfPoco",
+    displayName: 'ManOfPoco',
     gamesQuantity: 522,
     followers: 155,
     following: 13,
@@ -336,7 +337,10 @@ function Profile() {
                         </div>
                         <div className="flex w-full max-w-[calc(100%-140px)] flex-col gap-4 text-sm md:max-w-[calc(100%-200px)] lg:md:max-w-[calc(100%-180px)]">
                             <div className="flex w-full flex-wrap items-center justify-between gap-5">
-                                <h2 className="text-xl">{data.username}</h2>
+                                <div className="flex flex-col gap-1">
+                                    <h2 className="text-xl">{data.username}</h2>
+                                    <span className="text-gray-light">@{data.displayName}</span>
+                                </div>
                                 <InteractButtons
                                     isCurrentUser={isCurrentUser}
                                 />

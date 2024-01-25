@@ -8,7 +8,7 @@ const types = {
     xls: "w-64 h-64",
 };
 
-function Avatar({ img, type }) {
+function Avatar({ img, type = 'md' }) {
     const typeClasses = types[type] || "";
 
     return (

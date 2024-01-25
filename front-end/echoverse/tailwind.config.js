@@ -87,11 +87,11 @@ module.exports = {
             },
             keyframes: {
                 blinker: {
-                    "25%": { "background-color": "#374151" },
+                    "33%": { "background-color": "#374151" },
                 },
             },
             animation: {
-                blinker: "blinker 3s ease-in-out 1",
+                blinker: "blinker 3.5s ease-in-out 1",
             },
             flex: {
                 "channel-images": "2 1 30%",

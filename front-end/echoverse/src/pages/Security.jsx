@@ -47,7 +47,15 @@ function Security() {
                     label="Email"
                     defaultValue={data.email}
                     isDisabled={true}
-                />
+                >
+                    <InputField
+                        size="w-[270px]"
+                        roundness="rounded-md"
+                        classes="text-sm"
+                        defaultValue={data.email}
+                        isDisabled={true}
+                    />
+                </LabelInputField>
                 <LabelInputField label="Password">
                     <div className="flex flex-col items-start">
                         <InputField

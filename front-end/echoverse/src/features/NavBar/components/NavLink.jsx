@@ -4,9 +4,11 @@ function NavLink({ link, children }) {
     return (
         <ReactRouterNavLink
             className={({ isActive }) =>
-                isActive
-                    ? "duration-400 text-cyan-300 transition-colors"
-                    : "transition-colors duration-500 hover:text-cyan-200"
+                `${
+                    isActive
+                        ? "text-cyan-300 transition-colors duration-300"
+                        : "transition-colors duration-300"
+                } rounded-lg hover:bg-gray-clear/30`
             }
             to={link}
         >

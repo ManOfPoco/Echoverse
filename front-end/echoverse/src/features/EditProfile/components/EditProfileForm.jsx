@@ -14,6 +14,7 @@ import AvatarChangeInput from "./AvatarChangeInput";
 
 const data = {
     username: "ManOfPoco",
+    displayName: 'ManOfPoco',
     gamesQuantity: 522,
     followers: 155,
     following: 13,
@@ -306,6 +307,11 @@ function EditProfileForm() {
             <div className="flex flex-col gap-5">
                 <AvatarChangeInput username={data.username} />
 
+                <LabelInputField
+                    label="Display name"
+                    register={register}
+                    defaultValue={data.displayName}
+                />
                 <LabelInputField
                     label="First name"
                     register={register}

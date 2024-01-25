@@ -1,18 +1,19 @@
 import { Fragment, useEffect, useRef } from "react";
+import { Transition } from "@headlessui/react";
 
-import LogoIconOnly from "../features/SideNavBar/components/LogoIconOnly";
 import MobileSideNavBarElement from "../features/SideNavBarMobile/components/MobileSideNavBarElement";
+import MobileSideNavBarProfileElement from "../features/SideNavBarMobile/components/MobileSideNavBarProfileElement";
+
+import Logo from "../components/Logo";
 
 import searchWhite from "../assets/svg/searchWhite.svg";
 import people from "../assets/svg/people.svg";
 import threads from "../assets/svg/threads.svg";
 import controllerWhite from "../assets/svg/controllerWhite.svg";
 import about from "../assets/svg/about.svg";
-import bell from "../assets/svg/bell.svg";
+import bellFilled from "../assets/svg/bellFilled.svg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 import login from "../assets/svg/login.svg";
-import SideNavBarProfileDropdown from "../features/SideNavBar/components/SideNavBarProfileDropdown";
-import { Transition } from "@headlessui/react";
 
 function SideNavBarMobile({ isSideNavBarActive, setIsSideNavBarActive }) {
     const isAuthenticated = true;
@@ -46,14 +47,14 @@ function SideNavBarMobile({ isSideNavBarActive, setIsSideNavBarActive }) {
                 leaveTo="-translate-x-full"
             >
                 <nav
-                    className="absolute z-50 flex h-dvh min-w-fit flex-col justify-between gap-7 bg-black-night px-1 pb-5 pt-1 text-lg font-semibold"
+                    className="absolute z-50 flex h-dvh min-w-fit flex-col justify-between gap-7 bg-black-night pb-5 pt-1 text-lg font-semibold"
                     ref={navBarRef}
                 >
-                    <div className="flex flex-col gap-7">
-                        <div className="w-fit px-2">
-                            <LogoIconOnly />
+                    <div className="flex flex-col gap-2">
+                        <div className="w-fit px-6">
+                            <Logo />
                         </div>
-                        <div className="flex flex-col gap-6 px-4">
+                        <div className="flex flex-col gap-2 px-4">
                             <MobileSideNavBarElement
                                 link="/search"
                                 img={searchWhite}
@@ -86,13 +87,13 @@ function SideNavBarMobile({ isSideNavBarActive, setIsSideNavBarActive }) {
                             />
                         </div>
                     </div>
-                    <div className="flex flex-col items-center gap-6">
+                    <div className="flex flex-col items-center gap-10 px-6">
                         {isAuthenticated ? (
                             <div>
-                                <div className="flex flex-col gap-6 px-4">
+                                <div className="flex flex-col gap-2">
                                     <MobileSideNavBarElement
                                         link="/notification"
-                                        img={bell}
+                                        img={bellFilled}
                                         alt="notification"
                                         title="Notifications"
                                     />
@@ -102,9 +103,9 @@ function SideNavBarMobile({ isSideNavBarActive, setIsSideNavBarActive }) {
                                         alt="people"
                                         title="Direct"
                                     />
-                                    <div className="w-fit">
-                                        <SideNavBarProfileDropdown />
-                                    </div>
+                                </div>
+                                <div className="pt-2">
+                                    <MobileSideNavBarProfileElement />
                                 </div>
                             </div>
                         ) : (
