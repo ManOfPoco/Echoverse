@@ -1,8 +1,12 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import ModalImage from "./ModalImage";
 
-function Modal({ isOpen, onClose, img, alt, title, description, children }) {
+function ConfirmationModal({
+    isOpen,
+    onClose,
+    bgColor = "bg-gray-dark",
+    children,
+}) {
     return (
         <Transition show={isOpen}>
             <Dialog onClose={onClose} className="relative z-50">
@@ -31,18 +35,10 @@ function Modal({ isOpen, onClose, img, alt, title, description, children }) {
                     leaveTo="transform scale-95 opacity-0"
                 >
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
-                        <Dialog.Panel className="mx-auto max-w-lg rounded-xl bg-indigo-950">
-                            <div className="flex flex-col items-center px-16 py-14 text-center">
-                                <ModalImage img={img} alt={alt} />
-                                <div className="py-8 font-archivo-black">
-                                    <Dialog.Title className="pb-4 text-3xl">
-                                        {title}
-                                    </Dialog.Title>
-                                    <Dialog.Description className="text-base text-gray-light">
-                                        {description}
-                                    </Dialog.Description>
-                                </div>
-
+                        <Dialog.Panel
+                            className={`mx-auto max-w-lg rounded-xl ${bgColor}`}
+                        >
+                            <div className="flex flex-col px-4 py-3">
                                 {children}
                             </div>
                         </Dialog.Panel>
@@ -53,4 +49,4 @@ function Modal({ isOpen, onClose, img, alt, title, description, children }) {
     );
 }
 
-export default Modal;
+export default ConfirmationModal;

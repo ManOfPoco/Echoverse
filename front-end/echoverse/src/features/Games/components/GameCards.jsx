@@ -8,7 +8,7 @@ function GameCards({ games, showPlatforms, dispatch }) {
                     game={game}
                     showPlatforms={showPlatforms}
                     dispatch={dispatch}
-                    key={game.title}
+                    key={game.id}
                 />
             ))}
         </div>

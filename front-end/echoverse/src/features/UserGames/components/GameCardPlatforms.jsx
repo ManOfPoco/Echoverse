@@ -7,7 +7,7 @@ function GameCardPlatforms({ selectedPlatforms }) {
                 {selectedPlatforms.map((selectedPlatform) => (
                     <GameCardPlatform
                         selectedPlatform={selectedPlatform}
-                        key={selectedPlatform}
+                        key={selectedPlatform.id}
                     />
                 ))}
             </div>

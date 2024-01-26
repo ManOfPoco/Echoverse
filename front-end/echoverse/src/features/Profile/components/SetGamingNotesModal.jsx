@@ -15,7 +15,12 @@ function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
     } = useForm();
 
     function handleSetGamingNotes() {
-        toast.success(`Notes for ${day} ${time} saved`);
+        toast.success(`Notes for ${day} ${time} saved`, {
+            style: {
+                color: "white",
+                backgroundColor: "#262A2F",
+            },
+        });
         dispatch({ type: "setGamingNotes" });
     }
 

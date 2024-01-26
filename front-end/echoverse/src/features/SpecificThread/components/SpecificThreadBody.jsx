@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 import Avatar from "../../../components/Avatar";
 import ThreadFiles from "../../Threads/components/ThreadFiles";
 
-import more from "../../../assets/svg/more.svg";
+import ThreadMore from "../../Threads/components/ThreadMore";
 
-function SpecificThreadBody({ thread }) {
+function SpecificThreadBody({
+    thread,
+    isBlocked,
+    setIsBlocked,
+    setIsMuted,
+    setIsHidden,
+}) {
     const { avatar, username, message, files, postedAgo } = thread;
     return (
         <div>
@@ -23,11 +29,17 @@ function SpecificThreadBody({ thread }) {
                         </h4>
                     </Link>
 
-                    <div className="flex items-center gap-2">
+                    <div className="pointer-events-none relative flex items-center gap-2">
                         <span className="text-sm text-gray-clear">
                             {postedAgo}
                         </span>
-                        <img src={more} className="h-6 w-6" />
+                        <ThreadMore
+                            username={username}
+                            isBlocked={isBlocked}
+                            setIsBlocked={setIsBlocked}
+                            setIsMuted={setIsMuted}
+                            setIsHidden={setIsHidden}
+                        />
                     </div>
                 </div>
 

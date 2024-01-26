@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import { Toaster } from "react-hot-toast";
+
 
 import Avatar from "../components/Avatar";
 
@@ -312,7 +312,6 @@ function Profile() {
 
     return (
         <>
-            <Toaster />
             <FollowModal
                 isOpen={isFollowersModalOpen}
                 onClose={() => setIsFollowersModalOpen(false)}

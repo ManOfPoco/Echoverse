@@ -12,15 +12,20 @@ function SelectField({
     isMultiple = false,
     defaultValue = "Select",
     showDirection = "down",
+    shadow = "shadow-md",
 }) {
     return (
         <Listbox
             value={selectedField}
+            defaultValue={defaultValue}
             onChange={setSelectedField}
             multiple={isMultiple}
+            by="id"
         >
             <div className={`relative ${size}`}>
-                <Listbox.Button className="relative h-10 w-full cursor-default rounded-lg bg-gray-charcoal pl-3 pr-10 text-left shadow-md sm:text-sm">
+                <Listbox.Button
+                    className={`relative h-10 w-full cursor-default rounded-lg bg-gray-charcoal pl-3 pr-10 text-left sm:text-sm ${shadow}`}
+                >
                     <span className="block truncate">
                         {isMultiple ? defaultValue : selectedField.name}
                     </span>
@@ -50,9 +55,8 @@ function SelectField({
                                   : ""
                         }`}
                     >
-                        {choices.map((choice, choiceIds) => (
+                        {choices.map((choice) => (
                             <Listbox.Option
-                                key={choiceIds}
                                 className={({ active }) =>
                                     `relative cursor-default select-none py-2 pr-4 ps-10 ${
                                         active
@@ -61,10 +65,11 @@ function SelectField({
                                     }`
                                 }
                                 value={choice}
+                                key={choice.id}
                             >
                                 <>
                                     <span
-                                        className={`block truncate ${
+                                        className={`block truncate text-start ${
                                             selectedField
                                                 ? "font-medium"
                                                 : "font-normal"

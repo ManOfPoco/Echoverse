@@ -51,6 +51,7 @@ function VideoFile({
         if (!isFullScreenModalOpen) {
             setIsFullScreenModalOpen(true);
             setStretch("fullScreen");
+            moveDomElementToStash(videoRef.current);
         } else if (isFullScreenModalOpen) {
             if (videoRef.current.paused) videoRef.current.play();
             else videoRef.current.pause();
@@ -69,10 +70,12 @@ function VideoFile({
     }
 
     useLayoutEffect(() => {
-        return () => {
-            moveDomElementToStash(videoRef.current);
-        };
-    }, [moveDomElementToStash]);
+        if (isFullScreenModalOpen) {
+            return () => {
+                moveDomElementToStash(videoRef.current);
+            };
+        }
+    }, [moveDomElementToStash, isFullScreenModalOpen]);
 
     useEffect(() => {
         if (isDOMElementInStash()) {

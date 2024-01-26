@@ -54,8 +54,12 @@ function NavBarMobileMenu({ isMenuOpen }) {
                         </div>
                     </DropdownItem>
                 </Dropdown>
-                <NavLink link="/games">Games</NavLink>
-                <NavLink link="/about">About</NavLink>
+                <NavLink link="/games" enableGrayHover={false}>
+                    Games
+                </NavLink>
+                <NavLink link="/about" enableGrayHover={false}>
+                    About
+                </NavLink>
             </div>
         </Transition>
     );

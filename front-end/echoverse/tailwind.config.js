@@ -84,6 +84,7 @@ module.exports = {
             },
             content: {
                 spine: 'url("/src/assets/svg/arrowSpine.svg")',
+                chevronDown: 'url("/src/assets/svg/chevronDown.svg")',
             },
             keyframes: {
                 blinker: {

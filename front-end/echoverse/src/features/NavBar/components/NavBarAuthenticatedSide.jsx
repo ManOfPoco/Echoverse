@@ -30,7 +30,7 @@ function NavBarAuthenticatedSide() {
                                 setIsNotificationOpen(!isNotificationOpen)
                             }
                         />
-                        <NavLink link="/direct">
+                        <NavLink link="/direct" enableGrayHover={false}>
                             <div className="flex items-center gap-2">
                                 <span>Direct</span>
                                 <ChatBubbleSvg width="22" height="22" />

@@ -108,7 +108,6 @@ select:-webkit-autofill:focus {
 }
 
 
-
 /* Custom placeholder color */
 textarea::placeholder, input::placeholder {
     color: #999999;

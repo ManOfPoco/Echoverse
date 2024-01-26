@@ -17,7 +17,7 @@ function FollowModal({ isOpen, onClose, title, children }) {
                     leaveTo="opacity-0"
                 >
                     <div
-                        className="fixed inset-0 bg-black-dark/40"
+                        className="fixed inset-0 bg-black-dark/60"
                         aria-hidden="true"
                     />
                 </Transition.Child>

@@ -44,7 +44,7 @@ function MobileSideNavBarProfileDropdown({
                 style={styles.popper}
                 {...attributes.popper}
             >
-                <div className="flex flex-col gap-2 rounded-xl bg-gray-dark py-1">
+                <div className="flex flex-col gap-2 rounded-xl bg-gray-dark py-1 overflow-hidden">
                     <MobileNavBarDropdownItem
                         img={profile}
                         alt="profile"

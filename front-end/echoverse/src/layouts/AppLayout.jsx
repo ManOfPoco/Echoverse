@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import SideNavBar from "./SideNavBar";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import SideNavBarMobile from "./SideNavBarMobile";
+import { Toaster } from "react-hot-toast";
 
 const re = new RegExp("^/games/game-threads/[^/]+/[^/]+$");
 
@@ -17,6 +18,7 @@ function AppLayout() {
 
     return (
         <>
+            <Toaster />
             {isChatRelatedRoute ? (
                 <div className="flex">
                     {width < 1024 ? (

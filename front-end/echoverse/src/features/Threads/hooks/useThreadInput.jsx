@@ -67,6 +67,10 @@ function useThreadInput() {
                 {
                     duration: 4000,
                     icon: <img src={warning} className="h-12 w-12" />,
+                    style: {
+                        color: "white",
+                        backgroundColor: "#262A2F",
+                    },
                 }
             );
         }

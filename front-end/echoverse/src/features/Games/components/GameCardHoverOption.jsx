@@ -14,7 +14,7 @@ function GameCardHoverOption({
                     <div
                         className={`max-w-[64px] rounded-xl bg-gray-charcoal p-3 ${
                             isDeletion
-                                ? "group-hover/option:bg-red"
+                                ? "group-hover/option:bg-red-fire-engine"
                                 : "group-hover/option:bg-pumpkin"
                         }`}
                     >

@@ -15,7 +15,6 @@ import menuOpened from "../assets/svg/menuOpened.svg";
 import people from "../assets/svg/people.svg";
 import threads from "../assets/svg/threads.svg";
 
-
 function NavBar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isNavOnTop, setIsNavOnTop] = useState(true);
@@ -71,7 +70,11 @@ function NavBar() {
                     </div>
 
                     <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
-                        <Dropdown title="Explore" svgTitle={dropdownArrowDown} dropdownWidth="w-44">
+                        <Dropdown
+                            title="Explore"
+                            svgTitle={dropdownArrowDown}
+                            dropdownWidth="w-44"
+                        >
                             <DropdownItem link="/explore/people" key="People">
                                 <div className="flex w-fit items-center gap-3 px-4 py-2">
                                     <img
@@ -93,8 +96,12 @@ function NavBar() {
                                 </div>
                             </DropdownItem>
                         </Dropdown>
-                        <NavLink link="/games">Games</NavLink>
-                        <NavLink link="/about">About</NavLink>
+                        <NavLink link="/games" enableGrayHover={false}>
+                            Games
+                        </NavLink>
+                        <NavLink link="/about" enableGrayHover={false}>
+                            About
+                        </NavLink>
                     </div>
                 </div>
                 <div className="flex items-center gap-2 md:gap-4 xl:gap-8">

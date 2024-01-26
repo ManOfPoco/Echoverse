@@ -47,7 +47,7 @@ function Dropdown({
             onClick={handleToggle}
         >
             {title ? (
-                <div className="flex gap-1 transition-colors duration-500 hover:text-cyan-200">
+                <div className="flex gap-1 transition-colors duration-500 hover:text-cyan-300">
                     <span>{title}</span>
                     <img
                         draggable="false"
@@ -75,7 +75,7 @@ function Dropdown({
                 leaveTo="transform opacity-0"
             >
                 <div
-                    className={`z-50 flex flex-col gap-1 bg-gray-dark py-1 rounded-xl shadow-xl ${dropdownWidth} ${placementMargin}`}
+                    className={`z-50 flex flex-col gap-1 bg-gray-dark py-1 rounded-xl shadow-xl overflow-hidden ${dropdownWidth} ${placementMargin}`}
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}

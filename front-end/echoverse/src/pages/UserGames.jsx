@@ -8,81 +8,174 @@ import satisfactory from "../assets/img/satisfactory.png";
 import lethalCompany from "../assets/img/lethalCompany.png";
 import detroitBecomeHuman from "../assets/img/detroitBecomeHuman.png";
 import gasStationSimulator from "../assets/img/gasStationSimulator.png";
+import ConfirmGameDeletionModal from "../features/Games/components/ConfirmGameDeletionModal";
 
 const games = [
     {
+        id: 1,
         title: "Counter Strike 2",
         img: cs2,
-        selectedPlatforms: ["PC", "Xbox", "Switch"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 1, name: "PC" },
+            { id: 3, name: "Xbox" },
+            { id: 4, name: "Switch" },
+        ],
+        platforms: [
+            { id: 1, name: "PC" },
+            { id: 3, name: "Xbox" },
+            { id: 4, name: "Switch" },
+            { id: 7, name: "Android" },
+            { id: 8, name: "MacOS" },
+        ],
         steamLink: "https://store.steampowered.com/app/730/CounterStrike_2/",
         presentInProfile: false,
     },
     {
+        id: 2,
         title: "Detroit: Become Human",
         img: detroitBecomeHuman,
-        selectedPlatforms: ["PC", "PS", "Xbox"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 4, name: "Switch" },
+            { id: 5, name: "Steam Deck" },
+            { id: 8, name: "MacOS" },
+        ],
+        platforms: [
+            { id: 0, name: "Select Platform" },
+            { id: 1, name: "PC" },
+            { id: 4, name: "Switch" },
+            { id: 5, name: "Steam Deck" },
+            { id: 8, name: "MacOS" },
+        ],
         steamLink:
             "https://store.steampowered.com/app/1222140/Detroit_Become_Human/",
         presentInProfile: true,
     },
     {
+        id: 3,
         title: "Satisfactory",
         img: satisfactory,
-        selectedPlatforms: ["PC"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 4, name: "Switch" },
+            { id: 8, name: "MacOS" },
+        ],
+        platforms: [
+            { id: 0, name: "Select Platform" },
+            { id: 1, name: "PC" },
+            { id: 3, name: "Xbox" },
+            { id: 4, name: "Switch" },
+            { id: 8, name: "MacOS" },
+        ],
         steamLink: "https://store.steampowered.com/app/526870/Satisfactory/",
         presentInProfile: false,
     },
     {
+        id: 4,
         title: "Lethal Company",
         img: lethalCompany,
-        selectedPlatforms: ["PC", "PS", "Xbox"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 1, name: "PC" },
+            { id: 2, name: "PS" },
+        ],
+        platforms: [
+            { id: 0, name: "Select Platform" },
+            { id: 1, name: "PC" },
+            { id: 2, name: "PS" },
+            { id: 8, name: "MacOS" },
+        ],
         steamLink: "https://lethalcompany.com/",
         presentInProfile: true,
     },
     {
+        id: 5,
         title: "Valorant",
         img: "valorant",
-        selectedPlatforms: ["PC"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 1, name: "PC" },
+            { id: 2, name: "PS" },
+        ],
+        platforms: [
+            { id: 0, name: "Select Platform" },
+            { id: 1, name: "PC" },
+            { id: 2, name: "PS" },
+            { id: 3, name: "Xbox" },
+            { id: 4, name: "Switch" },
+            { id: 5, name: "Steam Deck" },
+        ],
         steamLink: "https://playvalorant.com/",
         presentInProfile: false,
     },
     {
+        id: 6,
         title: "Gas Station Simulator",
         img: gasStationSimulator,
-        selectedPlatforms: ["PC"],
-        platforms: ["PC", "Xbox", "Switch", "Mobile", "PS"],
+        selectedPlatforms: [
+            { id: 4, name: "Switch" },
+            { id: 6, name: "iOS" },
+            { id: 7, name: "Android" },
+        ],
+        platforms: [
+            { id: 0, name: "Select Platform" },
+            { id: 1, name: "PC" },
+            { id: 2, name: "PS" },
+            { id: 4, name: "Switch" },
+            { id: 6, name: "iOS" },
+            { id: 7, name: "Android" },
+        ],
         steamLink:
             "https://store.steampowered.com/app/1149620/Gas_Station_Simulator/",
         presentInProfile: false,
     },
 ];
 const initialState = {
-    selectedGame: null,
-    selectedGamePlatforms: [],
-    platforms: [],
-    isEditGamePlatformsModalOpen: false,
+    selectedGame: {
+        id: null,
+        title: null,
+        img: null,
+        platforms: [],
+        selectedPlatforms: [],
+    },
+    openModal: null,
 };
 
 function reducer(state, action) {
     switch (action.type) {
         case "openEditGamePlatformsModal":
+            if (!action.game.id || !action.game.title) {
+                return;
+            }
+
             return {
                 ...state,
-                selectedGame: action.game,
-                selectedGamePlatforms: action.selectedPlatforms,
-                platforms: action.platforms,
-                isEditGamePlatformsModalOpen: true,
+                selectedGame: {
+                    id: action.game.id,
+                    title: action.game.title,
+                    platforms: action.game.platforms,
+                    selectedPlatforms: action.game.selectedPlatforms,
+                },
+                openModal: "edit-game-platforms",
             };
 
         case "closeEditGamePlatformsModal":
             return {
                 ...state,
-                isEditGamePlatformsModalOpen: false,
+                openModal: null,
+            };
+
+        case "openConfirmDeleteGameFromLibraryModal":
+            return {
+                ...state,
+                selectedGame: {
+                    id: action.game.id,
+                    title: action.game.title,
+                    img: action.game.img,
+                },
+                openModal: "confirm-delete-game-form-library",
+            };
+
+        case "closeConfirmDeleteGameFromLibraryModal":
+            return {
+                ...state,
+                openModal: null,
             };
 
         default:
@@ -92,22 +185,11 @@ function reducer(state, action) {
 
 function UserGames() {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const {
-        selectedGame,
-        platforms,
-        selectedGamePlatforms,
-        isEditGamePlatformsModalOpen,
-    } = state;
 
     return (
         <>
-            <EditGamePlatformsModal
-                game={selectedGame}
-                platforms={platforms}
-                selectedGamePlatforms={selectedGamePlatforms}
-                isEditGamePlatformsModalOpen={isEditGamePlatformsModalOpen}
-                dispatch={dispatch}
-            />
+            <EditGamePlatformsModal state={state} dispatch={dispatch} />
+            <ConfirmGameDeletionModal state={state} dispatch={dispatch} />
 
             <GameCards games={games} showPlatforms={true} dispatch={dispatch} />
         </>

@@ -6,28 +6,12 @@ import GameCardPlatforms from "../../UserGames/components/GameCardPlatforms";
 import coverNotFound from "../../../assets/img/coverNotFound.png";
 
 function GameCard({ game, showPlatforms = true, dispatch }) {
-    const {
-        title,
-        img,
-        selectedPlatforms,
-        platforms,
-        presentInProfile,
-        steamLink,
-    } = game;
+    const { title, img, selectedPlatforms } = game;
     const slug = title;
     const navigate = useNavigate();
 
     function handleImgNotFound(e) {
         e.currentTarget.src = coverNotFound;
-    }
-
-    function handleEditGamePlatforms() {
-        dispatch({
-            type: "openEditGamePlatformsModal",
-            game: title,
-            platforms,
-            selectedPlatforms,
-        });
     }
 
     return (
@@ -36,11 +20,10 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
                 <GameCardPlatforms selectedPlatforms={selectedPlatforms} />
             )}
             <GameCardHover
-                steamLink={steamLink}
-                presentInProfile={presentInProfile}
+                game={game}
                 onClick={() => navigate(`/games/game-threads/${slug}`)}
                 showPlatforms={showPlatforms}
-                handleEditGamePlatforms={handleEditGamePlatforms}
+                dispatch={dispatch}
             />
 
             <img

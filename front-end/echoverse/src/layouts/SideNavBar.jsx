@@ -57,7 +57,13 @@ function SideNavBar() {
                                 img={chatBubble}
                                 alt="people"
                             />
-                            <NavBarProfileAuthenticatedDropdown image={person} placement="right-start" />
+                            <NavBarProfileAuthenticatedDropdown
+                                image={person}
+                                imageSize="h-10 w-10"
+                                placement="right-start"
+                                enableGrayHover={true}
+                                enableCyanHover={false}
+                            />
                         </div>
                     </>
                 ) : (
