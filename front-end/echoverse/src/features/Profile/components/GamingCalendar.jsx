@@ -21,8 +21,7 @@ delete: allows deleting gaming days with notes
 const initialState = {
     isCalendarOpen: true,
     activeMode: "add",
-    selectedDay: null,
-    selectedTime: null,
+    selectedDay: { day: null, time: null, notes: "" },
     isGamingNotesModalOpen: false,
 };
 
@@ -39,8 +38,10 @@ function reducer(state, action) {
             if (state.activeMode === "add") {
                 return {
                     ...state,
-                    selectedDay: action.day,
-                    selectedTime: action.time,
+                    selectedDay: {
+                        day: action.day,
+                        time: action.time,
+                    },
                 };
             }
             return { ...state };
@@ -62,8 +63,11 @@ function reducer(state, action) {
             if (state.activeMode === "edit") {
                 return {
                     ...state,
-                    selectedDay: action.day,
-                    selectedTime: action.time,
+                    selectedDay: {
+                        day: action.day,
+                        time: action.time,
+                        notes: action.notes,
+                    },
                     isGamingNotesModalOpen: true,
                 };
             }
@@ -82,9 +86,11 @@ function reducer(state, action) {
             if (state.activeMode === "edit") {
                 return {
                     ...state,
-                    selectedDay: null,
-                    selectedTime: null,
-                    activeMode: "add",
+                    selectedDay: {
+                        day: null,
+                        time: null,
+                        notes: "",
+                    },
                     isGamingNotesModalOpen: false,
                 };
             }
@@ -97,13 +103,8 @@ function reducer(state, action) {
 
 function GamingCalendar({ isCurrentUser, data }) {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const {
-        isCalendarOpen,
-        activeMode,
-        selectedDay,
-        selectedTime,
-        isGamingNotesModalOpen,
-    } = state;
+    const { isCalendarOpen, activeMode, isGamingNotesModalOpen } =
+        state;
 
     function handleChangeMode(mode) {
         dispatch({
@@ -121,9 +122,7 @@ function GamingCalendar({ isCurrentUser, data }) {
             <SetGamingNotesModal
                 isGamingNotesModalOpen={isGamingNotesModalOpen}
                 dispatch={dispatch}
-                day={selectedDay}
-                time={selectedTime}
-                selectedTime={selectedTime}
+                state={state}
             />
             <div className="w-[300px] divide-y divide-black-dark sm:w-[328px] lg:h-[293px]">
                 <div
@@ -177,6 +176,7 @@ function GamingCalendar({ isCurrentUser, data }) {
                                 </Button>
                             </>
                         )}
+
                         {isCalendarOpen ? (
                             <Button action={handleToggleCalendar}>
                                 <img
@@ -209,13 +209,14 @@ function GamingCalendar({ isCurrentUser, data }) {
                     leaveFrom="opacity-100 rotate-5"
                     leaveTo="opacity-0 scale-0 rotate-0"
                 >
-                    <div className="grid-rows-8 grid gap-1 rounded-b-xl bg-blue-prussian px-1 pb-6 pt-2 sm:gap-2 sm:px-5">
+                    <div className="grid grid-rows-8 gap-1 rounded-b-xl bg-blue-prussian px-1 pb-6 pt-2 sm:gap-2 sm:px-5">
                         <div className="grid grid-cols-4 justify-items-center">
                             <div className="grid"></div>
                             <div className="grid">Morning</div>
                             <div className="grid">Afternoon</div>
                             <div className="grid">Evening</div>
                         </div>
+
                         {Object.entries(data).map(([day, periods]) => (
                             <CalendarRow
                                 day={day}

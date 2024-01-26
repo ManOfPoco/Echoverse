@@ -45,12 +45,13 @@ function ConfirmGameDeletionModal({ state, dispatch }) {
                     <span className="italic">{title}</span> from your library?
                 </p>
                 <img
+                    draggable={false}
                     src={img}
                     alt={title}
                     className="h-40 w-72 self-center rounded-xl sm:h-44 sm:w-80"
                     onError={(e) => handleImgNotFound(e)}
                 />
-                <div className="flex justify-end gap-1 mt-2 py-1">
+                <div className="mt-2 flex justify-end gap-1 py-1">
                     <Button
                         btnClass="secondary"
                         size="h-9 w-28"

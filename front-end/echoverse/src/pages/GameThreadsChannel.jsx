@@ -104,7 +104,7 @@ function GameThreadsChannel() {
             </div>
             <div className="mx-4 mb-4 flex items-center justify-between gap-5 rounded-lg bg-gray-dark px-2 py-1">
                 <div className="flex items-center gap-2">
-                    <img src={add} className="h-7 w-7" />
+                    <img draggable={false} src={add} className="h-7 w-7" />
                     <TextareaInput
                         placeholder="Message"
                         size="min-h-7 w-full sm:max-w-[524px]"
@@ -119,8 +119,12 @@ function GameThreadsChannel() {
                     />
                 </div>
                 <div className="flex items-center gap-4">
-                    <img src={gif} className="h-7 w-7" />
-                    <img src={smileEmoji} className="h-6 w-6" />
+                    <img draggable={false} src={gif} className="h-7 w-7" />
+                    <img
+                        draggable={false}
+                        src={smileEmoji}
+                        className="h-6 w-6"
+                    />
                 </div>
             </div>
         </div>

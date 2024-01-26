@@ -16,7 +16,12 @@ function ChannelBreadCrumbNavItem({ img, alt, title, onClick }) {
                 ref={setReferenceElement}
                 onClick={onClick}
             >
-                <img src={img} className="h-6 w-6" alt={alt} />
+                <img
+                    draggable={false}
+                    src={img}
+                    className="h-6 w-6"
+                    alt={alt}
+                />
             </div>
             {isHovered && (
                 <div

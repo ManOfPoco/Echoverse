@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 
 import NavBar from "./NavBar";
 import SideNavBar from "./SideNavBar";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import SideNavBarMobile from "./SideNavBarMobile";
-import { Toaster } from "react-hot-toast";
 
 const re = new RegExp("^/games/game-threads/[^/]+/[^/]+$");
 

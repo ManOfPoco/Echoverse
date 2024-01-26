@@ -22,7 +22,7 @@ function NavBarAuthenticatedSide() {
                 <>
                     <div className="hidden md:flex md:gap-4 xl:gap-8">
                         <img
-                            draggable="false"
+                            draggable={false}
                             className="h-5.5 w-5.5 cursor-pointer"
                             src={isNotificationOpen ? bellOpened : bell}
                             alt="arrowDown"
@@ -57,7 +57,7 @@ function NavBarAuthenticatedSide() {
                     <div className="flex cursor-pointer gap-1">
                         <span>Log in</span>
                         <img
-                            draggable="false"
+                            draggable={false}
                             className="h-5 w-4"
                             src={arrowRight}
                             alt="arrowDown"

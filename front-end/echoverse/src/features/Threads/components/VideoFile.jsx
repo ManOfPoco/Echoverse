@@ -183,6 +183,7 @@ function VideoFile({
                         onClick={() => handleSoundToggleSound()}
                     >
                         <img
+                            draggable={false}
                             src={isMuted ? videoSoundOff : videoSoundOn}
                             className="h-4 w-4"
                             alt="remove"

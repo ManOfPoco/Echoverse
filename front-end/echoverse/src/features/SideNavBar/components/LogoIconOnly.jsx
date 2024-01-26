@@ -6,7 +6,7 @@ function LogoIconOnly() {
     return (
         <Link to="/">
             <img
-                draggable="false"
+                draggable={false}
                 className="h-12 w-12"
                 src={logoIconOnly}
                 alt="logo"

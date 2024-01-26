@@ -49,6 +49,7 @@ function ThreadImageFile({
     return (
         <span>
             <img
+                draggable={false}
                 src={threadFile}
                 className={`rounded-lg pb-0.5 ${imageDefaultClasses}`}
                 onClick={handleFullScreen}

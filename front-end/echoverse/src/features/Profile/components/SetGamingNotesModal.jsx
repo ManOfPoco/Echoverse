@@ -6,13 +6,17 @@ import Modal from "../../../components/Modal";
 import InputField from "../../../components/InputField";
 
 import clock from "../../../assets/svg/clock.svg";
+import { useEffect, useState } from "react";
 
-function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
-    const {
-        register: passwordResetRegister,
-        handleSubmit: handlePasswordReset,
-        formState: { passwordResetErrors },
-    } = useForm();
+function SetGamingNotesModal({ isGamingNotesModalOpen, state, dispatch }) {
+    const { selectedDay } = state;
+    const { day, time, notes: defaultNotes } = selectedDay;
+
+    const [notes, setNotes] = useState();
+
+    useEffect(() => {
+        setNotes(defaultNotes);
+    }, [defaultNotes]);
 
     function handleSetGamingNotes() {
         toast.success(`Notes for ${day} ${time} saved`, {
@@ -21,6 +25,7 @@ function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
                 backgroundColor: "#262A2F",
             },
         });
+        setNotes("");
         dispatch({ type: "setGamingNotes" });
     }
 
@@ -41,9 +46,8 @@ function SetGamingNotesModal({ isGamingNotesModalOpen, day, time, dispatch }) {
                     img={clock}
                     type="text"
                     placeholder="Enter notes here"
-                    register={passwordResetRegister("Email", {
-                        required: true,
-                    })}
+                    defaultValue={notes}
+                    onChange={(e) => setNotes(e.target.value)}
                 />
                 <Button
                     type="button"

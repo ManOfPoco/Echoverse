@@ -10,7 +10,11 @@ function MobileNavBarIcon({ setIsSideNavBarActive }) {
                 )
             }
         >
-            <img src={menuLines} className="min-h-7 min-w-7" />
+            <img
+                draggable={false}
+                src={menuLines}
+                className="min-h-7 min-w-7"
+            />
         </div>
     );
 }

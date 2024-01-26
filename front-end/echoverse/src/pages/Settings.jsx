@@ -28,6 +28,7 @@ function Settings() {
                     <SettingsMenu isMenuActive={isMenuActive} />
                     <div className="flex h-full min-h-[calc(100dvh-72px)] w-full flex-col pe-5 ps-5 sm:ps-10 lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
                         <img
+                            draggable={false}
                             src={arrowRight}
                             className="h-8 w-8 md:hidden"
                             onClick={() => setIsMenuActive(true)}

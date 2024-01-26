@@ -1030,10 +1030,6 @@ video {
   width: 0.75rem;
 }
 
-.w-36{
-  width: 9rem;
-}
-
 .w-4{
   width: 1rem;
 }
@@ -1167,8 +1163,8 @@ video {
   min-width: 2.5rem;
 }
 
-.min-w-52{
-  min-width: 13rem;
+.min-w-64{
+  min-width: 16rem;
 }
 
 .min-w-7{
@@ -1234,10 +1230,6 @@ video {
 
 .max-w-\[80px\]{
   max-width: 80px;
-}
-
-.max-w-\[calc\(100\%-140px\)\]{
-  max-width: calc(100% - 140px);
 }
 
 .max-w-\[calc\(100\%-52px\)\]{
@@ -2348,6 +2340,18 @@ video {
   outline-color: #645BF0;
 }
 
+.outline-gray-light\/30{
+  outline-color: rgb(153 153 153 / 0.3);
+}
+
+.outline-gray-light\/40{
+  outline-color: rgb(153 153 153 / 0.4);
+}
+
+.outline-gray-light\/20{
+  outline-color: rgb(153 153 153 / 0.2);
+}
+
 .blur-none{
   --tw-blur: blur(0);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -2653,6 +2657,11 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 .after\:z-10::after{
   content: var(--tw-content);
   z-index: 10;
+}
+
+.after\:z-50::after{
+  content: var(--tw-content);
+  z-index: 50;
 }
 
 .after\:w-full::after{
@@ -2964,10 +2973,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     width: 12rem;
   }
 
-  .sm\:w-64{
-    width: 16rem;
-  }
-
   .sm\:w-80{
     width: 20rem;
   }
@@ -2987,10 +2992,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
   .sm\:w-fit{
     width: -moz-fit-content;
     width: fit-content;
-  }
-
-  .sm\:min-w-64{
-    min-width: 16rem;
   }
 
   .sm\:max-w-\[524px\]{
@@ -3168,10 +3169,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     max-width: 70%;
   }
 
-  .md\:max-w-\[calc\(100\%-200px\)\]{
-    max-width: calc(100% - 200px);
-  }
-
   .md\:basis-24{
     flex-basis: 6rem;
   }
@@ -3291,12 +3288,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 }
 
 @media (min-width: 1024px){
-  @media (min-width: 768px){
-    .lg\:md\:max-w-\[calc\(100\%-180px\)\]{
-      max-width: calc(100% - 180px);
-    }
-  }
-
   .lg\:top-\[80px\]{
     top: 80px;
   }

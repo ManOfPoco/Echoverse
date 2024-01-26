@@ -110,7 +110,12 @@ function Filter({
                 onClick={setIsOpen}
                 ref={setReferenceElement}
             >
-                <img src={filterImg} alt="sortFilter" className="h-4 w-4" />
+                <img
+                    draggable={false}
+                    src={filterImg}
+                    alt="sortFilter"
+                    className="h-4 w-4"
+                />
                 <div className="flex ps-2.5">
                     <h5>{title}</h5>
                     <img src={dropdownArrowDown} alt="arrowDown" />

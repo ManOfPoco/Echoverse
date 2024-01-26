@@ -20,13 +20,14 @@ function MessageImageAttachment({ filesQuantity, image, senderId }) {
                     bgColor="bg-black-dark/80"
                 >
                     <img
+                        draggable={false}
                         src={image}
                         className={`max-h-[80dvh] max-w-[80dvw] rounded-lg`}
                     />
                 </FullScreenContentModal>
             )}
             <div
-                className="flex-channel-images relative cursor-pointer"
+                className="relative flex-channel-images cursor-pointer"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
             >

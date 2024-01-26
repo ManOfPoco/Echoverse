@@ -27,6 +27,7 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
             />
 
             <img
+                draggable={false}
                 src={img}
                 alt={title}
                 className="h-40 w-72 rounded-xl sm:h-44 sm:w-80"

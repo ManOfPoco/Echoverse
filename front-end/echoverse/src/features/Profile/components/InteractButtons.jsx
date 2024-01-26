@@ -1,50 +1,82 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 import Button from "../../../components/Button";
 
-import settingsCog from "../../../assets/svg/settingsCog.svg";
+import MoreSvg from "../../Threads/components/MoreSvg";
+import MoreButtonDropdown from "./MoreButtonDropdown";
 
-function InteractButtons({ isCurrentUser }) {
+function InteractButtons({ isCurrentUser, data }) {
     const navigate = useNavigate();
 
+    const { username } = data;
+    const [isFollowing, setIsFollowing] = useState(false);
+
+    function followUser() {
+        setIsFollowing(true);
+        toast.success(`You're now following ${username}`, {
+            style: {
+                color: "white",
+                backgroundColor: "#262A2F",
+            },
+        });
+    }
+
+    function unfollowUser() {
+        setIsFollowing(false);
+        toast.success(`You're no longer following ${username}`, {
+            style: {
+                color: "white",
+                backgroundColor: "#262A2F",
+            },
+        });
+    }
+
     return (
-        <div className="flex gap-4">
-            {isCurrentUser ? (
-                <>
-                    <Button
-                        btnClass="secondary"
-                        roundness="rounded-lg"
-                        action={() => navigate("/account/edit")}
-                    >
-                        Edit Profile
-                    </Button>
-                    <Button>
-                        <img
-                            src={settingsCog}
-                            alt="settings"
-                            className="h-8 w-8"
-                        />
-                    </Button>
-                </>
-            ) : (
-                <>
-                    <Button
-                        btnClass="secondary"
-                        roundness="rounded-lg"
-                        action={() => console.log("follow")}
-                    >
-                        Follow
-                    </Button>
-                    <Button
-                        btnClass="secondary"
-                        roundness="rounded-lg"
-                        action={() => navigate("message")}
-                    >
-                        Message
-                    </Button>
-                </>
-            )}
-        </div>
+        <>
+            <div className="flex items-center gap-4">
+                {isCurrentUser ? (
+                    <div className="flex items-center gap-3">
+                        <Button
+                            btnClass="secondary"
+                            roundness="rounded-lg"
+                            action={() => navigate("/account/edit")}
+                        >
+                            Edit Profile
+                        </Button>
+                    </div>
+                ) : (
+                    <>
+                        {isFollowing ? (
+                            <Button
+                                btnClass="blue"
+                                roundness="rounded-lg"
+                                action={unfollowUser}
+                            >
+                                Follow
+                            </Button>
+                        ) : (
+                            <Button
+                                btnClass="secondary"
+                                roundness="rounded-lg"
+                                action={followUser}
+                            >
+                                Unfollow
+                            </Button>
+                        )}
+                        <Button
+                            btnClass="secondary"
+                            roundness="rounded-lg"
+                            action={() => navigate("message")}
+                        >
+                            Message
+                        </Button>
+                    </>
+                )}
+                <MoreButtonDropdown data={data} />
+            </div>
+        </>
     );
 }
 

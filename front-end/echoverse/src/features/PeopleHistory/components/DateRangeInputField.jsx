@@ -15,7 +15,11 @@ function DateRangeInputField({ value, onClick, onChange, ref, date, setDate }) {
             />
             {date && (
                 <Button action={() => setDate(null)}>
-                    <img src={deleteCross} className="h-6 w-6" />
+                    <img
+                        draggable={false}
+                        src={deleteCross}
+                        className="h-6 w-6"
+                    />
                 </Button>
             )}
         </div>

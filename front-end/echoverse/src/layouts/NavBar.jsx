@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Dropdown from "../components/Dropdown";
+import DropdownTitle from "../components/DropdownTitle";
 import DropdownItem from "../components/DropdownItem";
 import Logo from "../components/Logo";
 import SearchForm from "../components/SearchForm";
@@ -49,7 +50,7 @@ function NavBar() {
             <div className="mx-2 flex justify-between py-2 lg:mx-5 xl:mx-10 xl:mt-7.5">
                 <div className="flex items-center gap-4 lg:hidden">
                     <img
-                        draggable="false"
+                        draggable={false}
                         className={`h-5.5 w-5.5 transition-all duration-300 ${
                             isMenuOpen ? "rotate-180" : ""
                         }`}
@@ -71,13 +72,21 @@ function NavBar() {
 
                     <div className="flex flex-col items-center gap-4 lg:ms-4 lg:flex-row lg:gap-4 xl:ms-8 xl:gap-8">
                         <Dropdown
-                            title="Explore"
-                            svgTitle={dropdownArrowDown}
-                            dropdownWidth="w-44"
+                            title={
+                                <DropdownTitle
+                                    title="Explore"
+                                    svgTitle={dropdownArrowDown}
+                                />
+                            }
+                            className={`w-44 gap-1 py-1 rounded-xl`}
                         >
-                            <DropdownItem link="/explore/people" key="People">
+                            <DropdownItem
+                                link="/explore/people"
+                                key="People"
+                            >
                                 <div className="flex w-fit items-center gap-3 px-4 py-2">
                                     <img
+                                        draggable={false}
                                         src={people}
                                         className="h-7 w-7"
                                         alt="people"
@@ -85,9 +94,13 @@ function NavBar() {
                                     <span>People</span>
                                 </div>
                             </DropdownItem>
-                            <DropdownItem link="/explore/threads" key="Threads">
+                            <DropdownItem
+                                link="/explore/threads"
+                                key="Threads"
+                            >
                                 <div className="flex w-fit items-center gap-3 px-4 py-2">
                                     <img
+                                        draggable={false}
                                         src={threads}
                                         className="h-7 w-7"
                                         alt="threads"

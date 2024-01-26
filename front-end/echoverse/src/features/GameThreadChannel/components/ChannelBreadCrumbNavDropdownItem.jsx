@@ -48,7 +48,12 @@ function ChannelBreadCrumbNavDropdownItem({
                 ref={setReferenceElement}
                 onClick={handleOpenDropdown}
             >
-                <img src={img} className="h-6 w-6" alt={alt} />
+                <img
+                    draggable={false}
+                    src={img}
+                    className="h-6 w-6"
+                    alt={alt}
+                />
             </div>
             {isHovered && (
                 <div

@@ -43,7 +43,7 @@ function EditGamePlatformsModal({ state, dispatch }) {
             >
                 <div className="flex max-w-[244px] items-center rounded-xls bg-gray-charcoal py-0.5 pe-1.5 ps-4">
                     <img
-                        draggable="false"
+                        draggable={false}
                         className="h-5.5 w-5.5"
                         src={controller}
                         alt="platforms"

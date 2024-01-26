@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-
 import Avatar from "../components/Avatar";
 
 import InteractButtons from "../features/Profile/components/InteractButtons";
@@ -17,7 +16,7 @@ import MenuNavLink from "../components/MenuNavLink";
 
 const data = {
     username: "ManOfPoco",
-    displayName: 'ManOfPoco',
+    displayName: "ManOfPoco",
     gamesQuantity: 522,
     followers: 155,
     following: 13,
@@ -304,7 +303,7 @@ const calendarData = {
 };
 
 function Profile() {
-    const isCurrentUser = true;
+    const isCurrentUser = false;
 
     const [isFollowersModalOpen, setIsFollowersModalOpen] = useState(false);
     const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
@@ -328,35 +327,30 @@ function Profile() {
             <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
                 <div className="w-full max-w-[1080px] lg:mx-auto">
                     <div className="flex h-full w-full border-white px-5 pt-5 md:border-b md:pb-5 lg:px-0">
-                        <div className="flex w-fit px-2 md:hidden">
+                        <div className="flex min-w-fit px-2 md:hidden">
                             <Avatar img={person} type="lg" />
                         </div>
-                        <div className="hidden w-fit pe-5 md:flex">
+                        <div className="hidden min-w-fit pe-5 md:flex">
                             <Avatar img={person} type="lgx" />
                         </div>
-                        <div className="flex w-full max-w-[calc(100%-140px)] flex-col gap-4 text-sm md:max-w-[calc(100%-200px)] lg:md:max-w-[calc(100%-180px)]">
+                        <div className="flex w-full flex-col gap-4 text-sm">
                             <div className="flex w-full flex-wrap items-center justify-between gap-5">
                                 <div className="flex flex-col gap-1">
                                     <h2 className="text-xl">{data.username}</h2>
-                                    <span className="text-gray-light">@{data.displayName}</span>
+                                    <span className="text-gray-light">
+                                        @{data.displayName}
+                                    </span>
                                 </div>
                                 <InteractButtons
                                     isCurrentUser={isCurrentUser}
+                                    data={data}
                                 />
                             </div>
                             <div className="flex flex-wrap justify-between">
                                 <div className="hidden max-w-md flex-col gap-4 md:flex">
-                                    <UserData
-                                        firstName={data.firstName}
-                                        description={data.description}
-                                        region={data.region}
-                                        languages={data.languages}
-                                        platforms={data.platforms}
-                                    >
+                                    <UserData data={data}>
                                         <UserStatistics
-                                            gamesQuantity={data.gamesQuantity}
-                                            followers={data.followers}
-                                            following={data.following}
+                                            data={data}
                                             setIsFollowersModalOpen={
                                                 setIsFollowersModalOpen
                                             }
@@ -376,20 +370,9 @@ function Profile() {
                         </div>
                     </div>
                     <div className="flex flex-col gap-4 border-b border-white p-5 md:hidden">
-                        <UserData
-                            gamesQuantity={data.gamesQuantity}
-                            followers={data.followers}
-                            following={data.following}
-                            firstName={data.firstName}
-                            description={data.description}
-                            region={data.region}
-                            languages={data.languages}
-                            platforms={data.platforms}
-                        >
+                        <UserData data={data}>
                             <UserStatistics
-                                gamesQuantity={data.gamesQuantity}
-                                followers={data.followers}
-                                following={data.following}
+                                data={data}
                                 setIsFollowersModalOpen={
                                     setIsFollowersModalOpen
                                 }

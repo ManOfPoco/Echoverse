@@ -18,7 +18,11 @@ export const FilterStartInput = forwardRef(
             />
             {startDate && (
                 <Button action={() => setStartDate(null)}>
-                    <img src={deleteCross} className="h-6 w-6" />
+                    <img
+                        draggable={false}
+                        src={deleteCross}
+                        className="h-6 w-6"
+                    />
                 </Button>
             )}
         </div>
@@ -41,7 +45,11 @@ export const FilterEndInput = forwardRef(
             />
             {endDate && (
                 <Button action={() => setEndDate(null)}>
-                    <img src={deleteCross} className="h-6 w-6" />
+                    <img
+                        draggable={false}
+                        src={deleteCross}
+                        className="h-6 w-6"
+                    />
                 </Button>
             )}
         </div>

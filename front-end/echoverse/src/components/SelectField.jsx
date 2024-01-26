@@ -31,6 +31,7 @@ function SelectField({
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <img
+                            draggable={false}
                             src={chevronDown}
                             className="h-4 w-4"
                             alt="chevronDown"
@@ -83,6 +84,7 @@ function SelectField({
                                         ) ? (
                                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                                 <img
+                                                    draggable={false}
                                                     src={checkDone}
                                                     className="h-4 w-4"
                                                     alt="chevronDown"
@@ -92,6 +94,7 @@ function SelectField({
                                     ) : selectedField.name === choice.name ? (
                                         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                             <img
+                                                draggable={false}
                                                 src={checkDone}
                                                 className="h-4 w-4"
                                                 alt="chevronDown"

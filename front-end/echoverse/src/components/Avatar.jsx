@@ -13,6 +13,7 @@ function Avatar({ img, type = 'md' }) {
 
     return (
         <img
+            draggable={false}
             src={img}
             alt="avatar"
             className={`aspect-square rounded-full object-cover ${typeClasses}`}

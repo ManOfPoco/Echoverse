@@ -1,12 +1,11 @@
 import Button from "../../../components/Button";
 
 function UserStatistics({
-    gamesQuantity,
-    followers,
-    following,
+    data,
     setIsFollowersModalOpen,
     setIsFollowingModalOpen,
 }) {
+    const { gamesQuantity, followers, following } = data;
     return (
         <div className="flex justify-between">
             <span>{gamesQuantity} games</span>

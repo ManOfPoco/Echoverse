@@ -1,42 +1,76 @@
-import { useState } from "react";
-
-import Avatar from "../../../components/Avatar";
-
+import Dropdown from "../../../components/Dropdown";
+import DropdownItem from "../../../components/DropdownItem";
 import MobileSideNavBarProfileMoreSvg from "./MobileSideNavBarProfileMoreSvg";
-import MobileSideNavBarProfileDropdown from "./MobileSideNavBarProfileDropdown";
 
-import person from "../../../assets/img/person.jpg";
+import profile from "../../../assets/svg/profile.svg";
+import settings from "../../../assets/svg/settings.svg";
+import logOut from "../../../assets/svg/logOut.svg";
 
 function MobileSideNavBarProfileElement() {
     const username = "ManOfPoco";
     const displayName = "ManOfPoco";
 
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [referenceElement, setReferenceElement] = useState(null);
-
     return (
         <>
-            <MobileSideNavBarProfileDropdown
-                referenceElement={referenceElement}
-                isDropdownOpen={isDropdownOpen}
-                setIsDropdownOpen={setIsDropdownOpen}
-            />
-            <div
-                className="flex w-full min-w-52 cursor-pointer items-center justify-between rounded-full bg-gray-clear/20 px-4 py-3 hover:bg-gray-clear/30 sm:min-w-64"
-                ref={setReferenceElement}
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            <Dropdown
+                title={
+                    <MobileSideNavBarProfileMoreSvg
+                        username={username}
+                        displayName={displayName}
+                    />
+                }
+                wrapperClassName="after:absolute after:left-[calc(50%-8px)] after:top-full after:z-50 after:border-l-8 after:border-r-8 after:border-t-8 after:border-l-transparent after:border-r-transparent after:border-t-gray-dark after:content-[''] mb-2"
+                className="w-64 gap-2 rounded-xl py-2"
             >
-                <div className="flex gap-2">
-                    <Avatar img={person} type="sm" />
-                    <div className="flex flex-col justify-between">
-                        <h5 className="h-4 text-base">{username}</h5>
-                        <span className="h-3.5 text-xs text-gray-clear">
-                            @{displayName}
-                        </span>
+                <DropdownItem
+                    link={`/${username}`}
+                    enableGrayHover={true}
+                    enableCyanHover={false}
+                    key="Profile"
+                >
+                    <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
+                        <img
+                            draggable={false}
+                            src={profile}
+                            className="h-7 w-7"
+                            alt="profile"
+                        />
+                        <span>Profile</span>
                     </div>
-                </div>
-                <MobileSideNavBarProfileMoreSvg />
-            </div>
+                </DropdownItem>
+                <DropdownItem
+                    link="/account/edit"
+                    enableGrayHover={true}
+                    enableCyanHover={false}
+                    key="Account settings"
+                >
+                    <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
+                        <img
+                            draggable={false}
+                            src={settings}
+                            className="h-7 w-7"
+                            alt="account-settings"
+                        />
+                        <span>Account settings</span>
+                    </div>
+                </DropdownItem>
+                <DropdownItem
+                    link="/sign-out"
+                    enableGrayHover={true}
+                    enableCyanHover={false}
+                    key="Sign out"
+                >
+                    <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
+                        <img
+                            draggable={false}
+                            src={logOut}
+                            className="h-7 w-7"
+                            alt="sign-out"
+                        />
+                        <span>Sign out</span>
+                    </div>
+                </DropdownItem>
+            </Dropdown>
         </>
     );
 }

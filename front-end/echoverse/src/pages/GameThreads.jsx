@@ -17,7 +17,6 @@ import chatBubbles from "../assets/svg/chatBubbles.svg";
 import tags from "../assets/data/tags.json";
 import gameThreads from "../assets/data/gameThreads.json";
 
-
 function GameThreads() {
     const [isNewPost, setIsNewPost] = useState(false);
     const [state, dispatch] = useGameThreads(tags);
@@ -28,7 +27,7 @@ function GameThreads() {
     return (
         <div className="max-w-full bg-black-night">
             <div className="w-full max-w-[1440px] lg:mx-auto">
-                <div className="flex items-center truncate gap-3 border-b border-black-dark shadow-lg px-2 sm:px-3 md:px-5">
+                <div className="flex items-center gap-3 truncate border-b border-black-dark px-2 shadow-lg sm:px-3 md:px-5">
                     <BreadCrumbNavBar img={chatBubbles}>
                         <BreadCrumbNavBarElement to="/games" title="Games" />
                         <BreadCrumbNavBarElement
@@ -51,7 +50,11 @@ function GameThreads() {
                             action={() => setIsNewPost(true)}
                         >
                             <div className="flex items-center justify-center gap-1.5">
-                                <img src={messageFilled} className="h-4 w-4" />
+                                <img
+                                    draggable={false}
+                                    src={messageFilled}
+                                    className="h-4 w-4"
+                                />
                                 <span>New Thread</span>
                             </div>
                         </Button>

@@ -31,7 +31,7 @@ function CalendarItem({ period, mode, dispatch }) {
     }
 
     function handleSetCalendarNote() {
-        dispatch({ type: "openSetGamingNotesModal", day, time });
+        dispatch({ type: "openSetGamingNotesModal", day, time, notes });
     }
 
     function handleDeleteCalendarStatus() {
@@ -62,6 +62,7 @@ function CalendarItem({ period, mode, dispatch }) {
                         }`}
                     >
                         <img
+                            draggable={false}
                             src={status === true ? hideSVG : openSVG}
                             alt={status === true ? "remove" : "add"}
                             className="h-3 w-3"
@@ -74,7 +75,12 @@ function CalendarItem({ period, mode, dispatch }) {
                                 : "hidden"
                         }`}
                     >
-                        <img src={openSVG} alt={"edit"} className="h-3 w-3" />
+                        <img
+                            draggable={false}
+                            src={openSVG}
+                            alt={"edit"}
+                            className="h-3 w-3"
+                        />
                     </div>
                     <div
                         className={`${
@@ -83,14 +89,19 @@ function CalendarItem({ period, mode, dispatch }) {
                                 : "hidden"
                         }`}
                     >
-                        <img src={hideSVG} alt={"remove"} className="h-3 w-3" />
+                        <img
+                            draggable={false}
+                            src={hideSVG}
+                            alt={"remove"}
+                            className="h-3 w-3"
+                        />
                     </div>
                 </div>
             </div>
             {isHovered && notes && (
                 <div
-                    className="after:border-l-6 after:border-r-6 after:border-t-6 mb-1 rounded-lg bg-black-dark px-2 py-2
-                    after:absolute after:left-[calc(50%-6px)] after:top-full after:border-l-transparent after:border-r-transparent after:border-t-black-dark after:content-['']"
+                    className="mb-1 rounded-lg bg-black-dark px-2 py-2 after:absolute after:left-[calc(50%-6px)] after:top-full
+                    after:border-l-6 after:border-r-6 after:border-t-6 after:border-l-transparent after:border-r-transparent after:border-t-black-dark after:content-['']"
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}

@@ -30,7 +30,7 @@ function Main() {
                 </Button>
             </div>
             <img
-                draggable="false"
+                draggable={false}
                 className="l-0 r-0 max-w-[1400px] max-h-[1000px] absolute left-0 right-0 -z-10 mx-5 ms-auto hidden h-[86%] bg-contain lg:block lg:w-[70%] xl:w-[60%]"
                 src={homePageChat}
                 alt="chatting friends"

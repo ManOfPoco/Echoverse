@@ -52,7 +52,7 @@ function GameCardHover({ game, onClick, showPlatforms, dispatch }) {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <img src={steam} />
+                            <img draggable={false} src={steam} />
                         </a>
                     </div>
                 )}

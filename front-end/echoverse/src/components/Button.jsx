@@ -14,7 +14,7 @@ const btnSizes = {
     secondary: "h-9 w-[112px]",
     warning: "h-10.5 w-[244px]",
     danger: "",
-    blue: "",
+    blue: "h-9 w-[112px]",
 };
 
 function Button({

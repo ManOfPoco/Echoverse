@@ -1,5 +1,5 @@
 import { Transition } from "@headlessui/react";
-import { useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import { usePopper } from "react-popper";
 import useCloseDropdown from "../hooks/useCloseDropdown";
 
@@ -11,12 +11,11 @@ const placementMarginMapping = {
 };
 
 function Dropdown({
-    title = null,
-    svgTitle = null,
-    imageTitle = null,
-    imageSize = "w-12 h-12",
+    title,
+    titleZIndex = "z-50",
     placement = "bottom-start",
-    dropdownWidth = "w-36",
+    wrapperClassName,
+    className,
     children,
 }) {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -42,28 +41,11 @@ function Dropdown({
 
     return (
         <div
-            className="z-50 cursor-pointer text-left"
+            className={`cursor-pointer text-left ${titleZIndex}`}
             ref={setReferenceElement}
             onClick={handleToggle}
         >
-            {title ? (
-                <div className="flex gap-1 transition-colors duration-500 hover:text-cyan-300">
-                    <span>{title}</span>
-                    <img
-                        draggable="false"
-                        className="h-5 w-4"
-                        src={svgTitle}
-                        alt="arrowDown"
-                    />
-                </div>
-            ) : (
-                <img
-                    draggable="false"
-                    className={`aspect-square ${imageSize} rounded-full object-cover`}
-                    src={imageTitle}
-                    alt={imageTitle}
-                />
-            )}
+            {title}
 
             <Transition
                 show={isDropdownOpen}
@@ -75,12 +57,16 @@ function Dropdown({
                 leaveTo="transform opacity-0"
             >
                 <div
-                    className={`z-50 flex flex-col gap-1 bg-gray-dark py-1 rounded-xl shadow-xl overflow-hidden ${dropdownWidth} ${placementMargin}`}
                     ref={setPopperElement}
                     style={styles.popper}
                     {...attributes.popper}
+                    className={wrapperClassName}
                 >
-                    {children}
+                    <div
+                        className={`${className} ${placementMargin} z-50 flex flex-col overflow-hidden bg-gray-dark`}
+                    >
+                        {children}
+                    </div>
                 </div>
             </Transition>
         </div>

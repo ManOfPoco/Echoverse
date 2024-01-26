@@ -32,8 +32,7 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
 
     const { height } = useWindowDimensions();
 
-    const isPostButtonDisabled =
-        threadValue === "" && threadFiles.length === 0;
+    const isPostButtonDisabled = threadValue === "" && threadFiles.length === 0;
 
     function handleTriggerFileUpload() {
         if (fileUploadRef.current) {
@@ -70,7 +69,7 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
                     <ThreadFiles
                         deleteBtn={true}
                         threadFiles={threadFiles}
-                        stretchType='reduced'
+                        stretchType="reduced"
                         dispatch={dispatch}
                     />
                 </div>
@@ -97,6 +96,7 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
                             )}
 
                             <img
+                                draggable={false}
                                 src={smileEmoji}
                                 className="h-5 w-5 cursor-pointer"
                                 onClick={() =>
@@ -115,9 +115,10 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
                                 onChange={(e) => handleFileUpload(e)}
                             />
                             <img
+                                draggable={false}
                                 src={img}
                                 className="h-5 w-5 cursor-pointer"
-                                onClick={() => handleTriggerFileUpload()}
+                                onClick={handleTriggerFileUpload}
                                 ref={setReferenceElement}
                             />
                         </div>
@@ -132,7 +133,11 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
                         isDisabled={isPostButtonDisabled}
                     >
                         <div className="flex items-center justify-center gap-1.5">
-                            <img src={messageFilled} className="h-4 w-4" />
+                            <img
+                                draggable={false}
+                                src={messageFilled}
+                                className="h-4 w-4"
+                            />
                             <span onClick={() => console.log("request")}>
                                 {btnText}
                             </span>

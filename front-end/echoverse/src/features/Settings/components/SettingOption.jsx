@@ -8,9 +8,11 @@ function SettingOption({ to, icon, title }) {
             }
             to={to}
         >
-            <div className="flex h-12 items-center rounded-lg px-4 hover:bg-gray-charcoal/20 gap-4">
-                <img src={icon} className="h-7 w-7" />
-                <h5 className="w-40 sm:w-48 cursor-pointer text-lg lg:w-56">{title}</h5>
+            <div className="flex h-12 items-center gap-4 rounded-lg px-4 hover:bg-gray-charcoal/20">
+                <img draggable={false} src={icon} className="h-7 w-7" />
+                <h5 className="w-40 cursor-pointer text-lg sm:w-48 lg:w-56">
+                    {title}
+                </h5>
             </div>
         </NavLink>
     );

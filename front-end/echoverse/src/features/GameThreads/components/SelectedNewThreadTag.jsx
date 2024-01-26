@@ -9,6 +9,7 @@ function SelectedNewThreadTag({ tag, dispatch }) {
         <div className="z-40 flex cursor-pointer items-center gap-1.5 rounded-xls bg-gray-charcoal px-2.5 py-1">
             <span>{tag}</span>
             <img
+                draggable={false}
                 src={deleteCross}
                 className="h-4 w-4"
                 onClick={handleRemoveTag}

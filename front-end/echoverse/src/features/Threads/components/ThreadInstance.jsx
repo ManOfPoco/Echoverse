@@ -53,6 +53,7 @@ function ThreadInstance({ thread }) {
                                         <span className="text-sm text-gray-clear">
                                             {postedAgo}
                                         </span>
+
                                         <ThreadMore
                                             username={username}
                                             isBlocked={isBlocked}

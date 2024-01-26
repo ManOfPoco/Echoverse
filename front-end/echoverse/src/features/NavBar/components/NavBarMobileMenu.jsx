@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import NavLink from "./NavLink";
 
 import Dropdown from "../../../components/Dropdown";
+import DropdownTitle from "../../../components/DropdownTitle";
 import DropdownItem from "../../../components/DropdownItem";
 import SearchForm from "../../../components/SearchForm";
 
@@ -28,14 +29,19 @@ function NavBarMobileMenu({ isMenuOpen }) {
                     <SearchForm />
                 </div>
                 <Dropdown
-                    title="Explore"
-                    svgTitle={dropdownArrowDown}
+                    title={
+                        <DropdownTitle
+                            title="Explore"
+                            svgTitle={dropdownArrowDown}
+                        />
+                    }
+                    className={`w-44 gap-1 py-1 rounded-xl`}
                     placement="bottom-start"
-                    dropdownWidth="w-44"
                 >
                     <DropdownItem link="/explore/people" key="People">
                         <div className="flex w-fit items-center gap-3 px-4 py-2">
                             <img
+                                draggable={false}
                                 src={people}
                                 className="h-7 w-7"
                                 alt="people"
@@ -46,6 +52,7 @@ function NavBarMobileMenu({ isMenuOpen }) {
                     <DropdownItem link="/explore/threads" key="Threads">
                         <div className="flex w-fit items-center gap-3 px-4 py-2">
                             <img
+                                draggable={false}
                                 src={threads}
                                 className="h-7 w-7"
                                 alt="threads"

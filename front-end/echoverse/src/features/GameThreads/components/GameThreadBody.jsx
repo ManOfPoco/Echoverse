@@ -19,9 +19,7 @@ export function GameThreadBody({ gameThread, view }) {
                 </h5>
                 <h5 className="text-xs text-gray-clear">{postedAgo}</h5>
             </div>
-            <h4 className="truncate px-2.5 text-lg font-semibold">
-                {title}
-            </h4>
+            <h4 className="truncate px-2.5 text-lg font-semibold">{title}</h4>
             <p
                 className={`px-2.5 text-sm text-gray-light ${
                     view === "gallery"
@@ -33,6 +31,7 @@ export function GameThreadBody({ gameThread, view }) {
             </p>
             <div className="mx-2.5 my-2.5 flex items-center rounded-lg bg-gray-dark px-2 py-1.5 text-sm">
                 <img
+                    draggable={false}
                     src={chatMessageBubble}
                     alt="message"
                     className="h-4 w-4"

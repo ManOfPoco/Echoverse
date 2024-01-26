@@ -10,7 +10,7 @@ function ThreadInteractButton({ className = "", img, value, onClick }) {
                 className={`pointer-events-auto flex gap-1.5 ${className}`}
                 onClick={onClick}
             >
-                <img src={img} className="h-4.5" />
+                <img draggable={false} src={img} className="h-4.5" />
                 {value && <span>{convertToViewSystem(value)}</span>}
             </div>
         </Button>

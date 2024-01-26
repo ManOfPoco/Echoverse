@@ -108,7 +108,11 @@ function NewGameThread({ setIsNewPost }) {
                         className="flex items-center justify-center gap-1.5"
                         onClick={() => setIsNewPost(false)}
                     >
-                        <img src={unavailable} className="h-4 w-4" />
+                        <img
+                            draggable={false}
+                            src={unavailable}
+                            className="h-4 w-4"
+                        />
                         <span>Cancel</span>
                     </div>
                 </Button>
@@ -119,7 +123,11 @@ function NewGameThread({ setIsNewPost }) {
                     customClasses="sm:my-0.5"
                 >
                     <div className="flex items-center justify-center gap-1.5">
-                        <img src={messageFilled} className="h-4 w-4" />
+                        <img
+                            draggable={false}
+                            src={messageFilled}
+                            className="h-4 w-4"
+                        />
                         <span>Post</span>
                     </div>
                 </Button>

@@ -66,7 +66,13 @@ function useThreadInput() {
                 "You can't add more than 10 files.\nRemaining files were removed.",
                 {
                     duration: 4000,
-                    icon: <img src={warning} className="h-12 w-12" />,
+                    icon: (
+                        <img
+                            draggable={false}
+                            src={warning}
+                            className="h-12 w-12"
+                        />
+                    ),
                     style: {
                         color: "white",
                         backgroundColor: "#262A2F",

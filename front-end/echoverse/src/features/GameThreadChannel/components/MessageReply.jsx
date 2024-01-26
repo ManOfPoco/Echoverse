@@ -61,10 +61,14 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                 }`}
             >
                 <div
-                    className="relative mt-4 flex gap-2 pe-3 ps-[24px] sm:ps-[32px] pt-1 text-sm text-gray-light sm:pe-4 md:pe-8"
+                    className="relative mt-4 flex gap-2 pe-3 ps-[24px] pt-1 text-sm text-gray-light sm:pe-4 sm:ps-[32px] md:pe-8"
                     id={`reply-message-${replyId}`}
                 >
-                    <img src={arrowSpine} className="h-3.5 self-end" />
+                    <img
+                        draggable={false}
+                        src={arrowSpine}
+                        className="h-3.5 self-end"
+                    />
                     <div className="flex gap-1.5">
                         <Avatar img={imgMapping[avatar] || person} type="xs" />
                         <h5 className="flex-1 cursor-pointer font-semibold hover:underline">
@@ -83,7 +87,11 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                                 : "Click to see attachment"}
                         </p>
                         {replyMessageFiles && (
-                            <img src={img} className="h-5 w-5" />
+                            <img
+                                draggable={false}
+                                src={img}
+                                className="h-5 w-5"
+                            />
                         )}
                     </div>
                 </div>
@@ -100,7 +108,7 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                             <h5 className="inline-block cursor-pointer align-top hover:underline">
                                 {username}
                             </h5>
-                            <h5 className="text-xss md:text-xs text-gray-clear">
+                            <h5 className="text-xss text-gray-clear md:text-xs">
                                 {formatDate(time, is12HoursFormat)}
                             </h5>
                             <span className="text-xss text-gray-clear">

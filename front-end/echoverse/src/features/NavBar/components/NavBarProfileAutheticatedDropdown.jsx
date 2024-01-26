@@ -1,5 +1,6 @@
 import Dropdown from "../../../components/Dropdown";
 import DropdownItem from "../../../components/DropdownItem";
+import DropdownTitle from "../../../components/DropdownTitle";
 
 import profile from "../../../assets/svg/profile.svg";
 import settings from "../../../assets/svg/settings.svg";
@@ -9,7 +10,7 @@ function NavBarProfileAuthenticatedDropdown({
     image,
     imageSize = "w-12 h-12",
     placement = "right-start",
-    dropdownWidth = "w-52",
+    dropdownWidth = "w-56",
     enableGrayHover = true,
     enableCyanHover = true,
 }) {
@@ -17,9 +18,13 @@ function NavBarProfileAuthenticatedDropdown({
 
     return (
         <Dropdown
-            imageTitle={image}
-            imageSize={imageSize}
-            dropdownWidth={dropdownWidth}
+            title={
+                <DropdownTitle
+                    imageTitle={image}
+                    imageSize={imageSize}
+                />
+            }
+            className={`${dropdownWidth} gap-1 py-1 rounded-xl`}
             placement={placement}
         >
             <DropdownItem
@@ -29,7 +34,12 @@ function NavBarProfileAuthenticatedDropdown({
                 key="Profile"
             >
                 <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
-                    <img src={profile} className="h-7 w-7" alt="profile" />
+                    <img
+                        draggable={false}
+                        src={profile}
+                        className="h-7 w-7"
+                        alt="profile"
+                    />
                     <span>Profile</span>
                 </div>
             </DropdownItem>
@@ -41,6 +51,7 @@ function NavBarProfileAuthenticatedDropdown({
             >
                 <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
                     <img
+                        draggable={false}
                         src={settings}
                         className="h-7 w-7"
                         alt="account-settings"
@@ -55,7 +66,12 @@ function NavBarProfileAuthenticatedDropdown({
                 key="Sign out"
             >
                 <div className="flex w-fit items-center gap-3 rounded-lg px-4 py-2">
-                    <img src={logOut} className="h-7 w-7" alt="sign-out" />
+                    <img
+                        draggable={false}
+                        src={logOut}
+                        className="h-7 w-7"
+                        alt="sign-out"
+                    />
                     <span>Sign out</span>
                 </div>
             </DropdownItem>

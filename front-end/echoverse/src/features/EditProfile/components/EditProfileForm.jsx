@@ -11,9 +11,10 @@ import DateInputField from "./DateInputField";
 
 import cs2 from "../../../assets/img/cs2.png";
 
-import regionsList from '../../../assets/data/regionsList.json'
-import languagesList from '../../../assets/data/languagesList.json'
-import platformsList from '../../../assets/data/platformsList.json'
+import regionsList from "../../../assets/data/regionsList.json";
+import languagesList from "../../../assets/data/languagesList.json";
+import platformsList from "../../../assets/data/platformsList.json";
+import toast from "react-hot-toast";
 
 const data = {
     username: "ManOfPoco",
@@ -86,6 +87,16 @@ function EditProfileForm() {
         if (e.target.value.length <= 150) setBiographyInput(e.target.value);
     }
 
+    function handleSaveProfileSettings(e) {
+        e.preventDefault()
+        toast.success(`Your settings were successfully saved`, {
+            style: {
+                color: "white",
+                backgroundColor: "#262A2F",
+            },
+        });
+    }
+
     return (
         <form>
             <div className="flex flex-col gap-5">
@@ -153,7 +164,7 @@ function EditProfileForm() {
                 customClasses="mt-8"
                 btnClass="primary"
                 roundness="rounded-xls"
-                action={(e) => e.preventDefault()}
+                action={(e) => handleSaveProfileSettings(e)}
             >
                 Save
             </Button>

@@ -1,25 +1,13 @@
-import Avatar from "../../../components/Avatar";
-
-import person from "../../../assets/img/person.jpg";
-
-function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
+function MoreSvg({ width = 22, height = 22 }) {
     return (
-        <div className="flex w-full min-w-64 cursor-pointer items-center justify-between rounded-full bg-gray-clear/20 px-4 py-3 hover:bg-gray-clear/30">
-            <div className="flex gap-2">
-                <Avatar img={person} type="sm" />
-                <div className="flex flex-col justify-between">
-                    <h5 className="h-4 text-base">{username}</h5>
-                    <span className="h-3.5 text-xs text-gray-clear">
-                        @{displayName}
-                    </span>
-                </div>
-            </div>
+        <div className="cursor-pointer rounded-full px-0.5 py-0.5 hover:bg-gray-dark">
             <svg
-                width="28px"
-                height="28px"
+                width={`${width}px`}
+                height={`${height}px`}
                 viewBox="0 0 24 24"
-                className="fill-white"
+                fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                className="group"
             >
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                 <g
@@ -28,12 +16,12 @@ function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
                     strokeLinejoin="round"
                 ></g>
                 <g id="SVGRepo_iconCarrier">
-                    <rect width="28" height="28" fill="none"></rect>
+                    <rect width="24" height="24" fill="none"></rect>
                     <circle
                         cx="7"
                         cy="12"
                         r="0.5"
-                        className="stroke-white stroke-2"
+                        className="stroke-gray-clear group-hover:stroke-white"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     ></circle>
@@ -41,7 +29,7 @@ function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
                         cx="12"
                         cy="12"
                         r="0.5"
-                        className="stroke-white stroke-2"
+                        className="stroke-gray-clear group-hover:stroke-white"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     ></circle>
@@ -49,7 +37,7 @@ function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
                         cx="17"
                         cy="12"
                         r="0.5"
-                        className="stroke-white stroke-2"
+                        className="stroke-gray-clear group-hover:stroke-white"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                     ></circle>
@@ -59,4 +47,4 @@ function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
     );
 }
 
-export default MobileSideNavBarProfileMoreSvg;
+export default MoreSvg;
