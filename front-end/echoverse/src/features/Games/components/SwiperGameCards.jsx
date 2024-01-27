@@ -27,6 +27,7 @@ function SwiperGameCards({ title, games, autoplay }) {
                         <GameCard
                             game={game}
                             showPlatforms={false}
+                            showEditPlatformsHover={false}
                             key={game.title}
                         />
                     </SwiperSlide>

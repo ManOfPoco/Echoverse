@@ -5,7 +5,7 @@ import GameCardPlatforms from "../../UserGames/components/GameCardPlatforms";
 
 import coverNotFound from "../../../assets/img/coverNotFound.png";
 
-function GameCard({ game, showPlatforms = true, dispatch }) {
+function GameCard({ game, showPlatforms = true, showEditPlatformsHover = true, dispatch }) {
     const { title, img, selectedPlatforms } = game;
     const slug = title;
     const navigate = useNavigate();
@@ -22,7 +22,7 @@ function GameCard({ game, showPlatforms = true, dispatch }) {
             <GameCardHover
                 game={game}
                 onClick={() => navigate(`/games/game-threads/${slug}`)}
-                showPlatforms={showPlatforms}
+                showEditPlatformsHover={showEditPlatformsHover}
                 dispatch={dispatch}
             />
 

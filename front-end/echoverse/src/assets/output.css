@@ -2336,20 +2336,12 @@ video {
   outline-color: #374151;
 }
 
-.outline-majorelle-blue{
-  outline-color: #645BF0;
-}
-
-.outline-gray-light\/30{
-  outline-color: rgb(153 153 153 / 0.3);
-}
-
-.outline-gray-light\/40{
-  outline-color: rgb(153 153 153 / 0.4);
-}
-
 .outline-gray-light\/20{
   outline-color: rgb(153 153 153 / 0.2);
+}
+
+.outline-majorelle-blue{
+  outline-color: #645BF0;
 }
 
 .blur-none{

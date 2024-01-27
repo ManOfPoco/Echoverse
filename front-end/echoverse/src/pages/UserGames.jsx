@@ -185,13 +185,19 @@ function reducer(state, action) {
 
 function UserGames() {
     const [state, dispatch] = useReducer(reducer, initialState);
+    const isCurrentUser = false;
 
     return (
         <>
             <EditGamePlatformsModal state={state} dispatch={dispatch} />
             <ConfirmGameDeletionModal state={state} dispatch={dispatch} />
 
-            <GameCards games={games} showPlatforms={true} dispatch={dispatch} />
+            <GameCards
+                games={games}
+                showPlatforms={true}
+                showEditPlatformsHover={isCurrentUser ? true : false}
+                dispatch={dispatch}
+            />
         </>
     );
 }

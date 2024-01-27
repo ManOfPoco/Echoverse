@@ -8,7 +8,7 @@ import group from "../../../assets/svg/group.svg";
 import editSVG from "../../../assets/svg/editSVG.svg";
 import trashCan from "../../../assets/svg/trashCan.svg";
 
-function GameCardHover({ game, onClick, showPlatforms, dispatch }) {
+function GameCardHover({ game, onClick, showEditPlatformsHover, dispatch }) {
     const {
         id,
         title,
@@ -79,7 +79,7 @@ function GameCardHover({ game, onClick, showPlatforms, dispatch }) {
                         title="Look for a group"
                         onClick={onClick}
                     />
-                    {showPlatforms && (
+                    {showEditPlatformsHover && (
                         <GameCardHoverOption
                             presentInProfile={presentInProfile}
                             img={editSVG}
