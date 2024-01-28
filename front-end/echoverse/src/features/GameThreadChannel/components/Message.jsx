@@ -1,5 +1,3 @@
-import Avatar from "../../../components/Avatar";
-
 import FirstDayMessage from "./FirstDayMessage";
 import RecentMessage from "./RecentMessage";
 import NewMessage from "./NewMessage";

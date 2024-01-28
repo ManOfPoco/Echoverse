@@ -11,7 +11,7 @@ function isFirstDayMessage(messageTime, previousMessageTime) {
     return messageDay !== previousMessageDay;
 }
 
-function formatDate(time, is12HoursFormat = true) {
+function formMessageDate(time, is12HoursFormat = true) {
     const currentTime = new Date();
     const messageSendTime = new Date(time);
 
@@ -58,4 +58,4 @@ function formatDate(time, is12HoursFormat = true) {
     }
 }
 
-export { getTimeDifference, isFirstDayMessage, formatDate };
+export { getTimeDifference, isFirstDayMessage, formMessageDate };

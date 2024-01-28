@@ -15,8 +15,10 @@ function EditGamePlatformsModal({ state, dispatch }) {
         useState(selectedPlatforms);
 
     useEffect(() => {
-        setCurrentSelectedGamePlatforms(selectedPlatforms);
-    }, [selectedPlatforms]);
+        if (openModal === "edit-game-platforms") {
+            setCurrentSelectedGamePlatforms(selectedPlatforms);
+        }
+    }, [openModal, selectedPlatforms]);
 
     function handleSaveEditedPlatforms() {
         toast.success(`Platforms for ${title} saved`, {

@@ -21,31 +21,59 @@ const person1 = {
     games: [
         {
             title: "Counter Strike 2",
-            platforms: ["PC", "Xbox", "Switch"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "Xbox" },
+                {
+                    id: 2,
+                    name: "Switch",
+                },
+            ],
         },
         {
             title: "Detroit: Become Human",
-            platforms: ["PC", "PS", "Xbox"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "Xbox" },
+                {
+                    id: 2,
+                    name: "PS",
+                },
+            ],
         },
         {
             title: "Satisfactory",
-            platforms: ["PC"],
+            platforms: [{ id: 0, name: "PC" }],
         },
         {
             title: "Lethal Company",
-            platforms: ["PC", "PS", "Xbox"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "PS" },
+                {
+                    id: 2,
+                    name: "Xbox",
+                },
+            ],
         },
         {
             title: "Valorant",
-            platforms: ["PC"],
+            platforms: [{ id: 0, name: "PC" }],
         },
         {
             title: "Gas Station Simulator",
-            platforms: ["PC"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "Switch" },
+                {
+                    id: 2,
+                    name: "PS",
+                },
+            ],
         },
         {
             title: "Lego Fortnite",
-            platforms: ["PC"],
+            platforms: [{ id: 0, name: "PC" }],
         },
     ],
 };
@@ -72,27 +100,44 @@ const person2 = {
     games: [
         {
             title: "Counter Strike 2",
-            platforms: ["PC", "Xbox", "Switch"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "Xbox" },
+                {
+                    id: 2,
+                    name: "Switch",
+                },
+            ],
         },
         {
             title: "Detroit: Become Human",
-            platforms: ["PC", "PS", "Xbox"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "Xbox" },
+                {
+                    id: 2,
+                    name: "PS",
+                },
+            ],
         },
         {
             title: "Satisfactory",
-            platforms: ["PC"],
+            platforms: [{ id: 0, name: "PC" }],
         },
         {
             title: "Lethal Company",
-            platforms: ["PC", "PS", "Xbox"],
+            platforms: [
+                { id: 0, name: "PC" },
+                { id: 1, name: "PS" },
+                {
+                    id: 2,
+                    name: "Xbox",
+                },
+            ],
         },
         {
             title: "Valorant",
-            platforms: ["PC"],
-        },
-        {
-            title: "Gas Station Simulator",
-            platforms: ["PC"],
+            platforms: [{ id: 0, name: "PC" }],
         },
     ],
 };

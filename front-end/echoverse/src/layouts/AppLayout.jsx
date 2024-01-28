@@ -3,9 +3,8 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import NavBar from "./NavBar";
-import SideNavBar from "./SideNavBar";
 import useWindowDimensions from "../hooks/useWindowDimensions";
-import SideNavBarMobile from "./SideNavBarMobile";
+import SideNavBar from "./SideNavBar";
 
 const re = new RegExp("^/games/game-threads/[^/]+/[^/]+$");
 
@@ -13,7 +12,6 @@ function AppLayout() {
     const { pathname } = useLocation();
     const isChatRelatedRoute = re.test(pathname);
 
-    const { width } = useWindowDimensions();
     const [isSideNavBarActive, setIsSideNavBarActive] = useState(false);
 
     return (
@@ -21,14 +19,10 @@ function AppLayout() {
             <Toaster />
             {isChatRelatedRoute ? (
                 <div className="flex">
-                    {width < 1024 ? (
-                        <SideNavBarMobile
-                            isSideNavBarActive={isSideNavBarActive}
-                            setIsSideNavBarActive={setIsSideNavBarActive}
-                        />
-                    ) : (
-                        <SideNavBar />
-                    )}
+                    <SideNavBar
+                        isSideNavBarActive={isSideNavBarActive}
+                        setIsSideNavBarActive={setIsSideNavBarActive}
+                    />
 
                     <Outlet context={[setIsSideNavBarActive]} />
                 </div>

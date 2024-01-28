@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 import Button from "../../../components/Button";
 
-import MoreSvg from "../../Threads/components/MoreSvg";
 import MoreButtonDropdown from "./MoreButtonDropdown";
 
 function InteractButtons({ isCurrentUser, data }) {

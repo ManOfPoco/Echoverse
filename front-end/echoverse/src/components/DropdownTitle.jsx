@@ -7,7 +7,7 @@ function DropdownTitle({
     return (
         <>
             {title ? (
-                <div className="flex gap-1 transition-colors duration-500 hover:text-cyan-300">
+                <div className="cursor-pointer flex gap-1 transition-colors duration-500 hover:text-cyan-300">
                     <span>{title}</span>
                     <img
                         draggable="false"
@@ -19,7 +19,7 @@ function DropdownTitle({
             ) : (
                 <img
                     draggable="false"
-                    className={`aspect-square ${imageSize} rounded-full object-cover`}
+                    className={`cursor-pointer aspect-square ${imageSize} rounded-full object-cover`}
                     src={imageTitle}
                     alt={imageTitle}
                 />

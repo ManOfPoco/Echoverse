@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useSwiper } from "swiper/react";
+
 import Button from "../../../components/Button";
 
 import personBlackWhite from "../../../assets/svg/personBlackWhite.svg";
 import message from "../../../assets/svg/message.svg";
-import chevronLeft from "../../../assets/svg/chevronLeft.svg";
-import chevronRight from "../../../assets/svg/chevronRight.svg";
+
+import ChevronLeft from "../../../svg/ChevronLeft";
+import ChevronRight from "../../../svg/ChevronRight";
 
 function ContactButtons({ username }) {
     const navigate = useNavigate();
@@ -14,11 +16,7 @@ function ContactButtons({ username }) {
     return (
         <div className="mt-7 flex w-full items-center justify-between">
             <Button action={() => swiper.slidePrev()}>
-                <img
-                    draggable={false}
-                    src={chevronLeft}
-                    className="h-12 w-12"
-                />
+                <ChevronLeft width={48} height={48} stroke="#645BF0" />
             </Button>
             <div className="flex flex-col items-center gap-3.5">
                 <Button
@@ -55,11 +53,7 @@ function ContactButtons({ username }) {
                 </Button>
             </div>
             <Button action={() => swiper.slideNext()}>
-                <img
-                    draggable={false}
-                    src={chevronRight}
-                    className="h-12 w-12"
-                />
+                <ChevronRight width={48} height={48} stroke="#645BF0" />
             </Button>
         </div>
     );

@@ -28,6 +28,7 @@ module.exports = {
             colors: {
                 platinum: "#E1E1E8",
                 black: {
+                    raisin: "#242528",
                     light: "#0E1C26",
                     night: "#121212",
                     dark: "#000000",
@@ -38,7 +39,7 @@ module.exports = {
                     dark: "#262A2F",
                     clear: "#71767B",
                     chat: "#2F3238",
-                }, // #313844
+                },
                 silver: "#557C93",
                 "majorelle-blue": "#645BF0",
                 pumpkin: "#E3792D",

@@ -8,7 +8,7 @@ import person4 from "../../../assets/img/person4.jpg";
 import arrowSpine from "../../../assets/svg/arrowSpine.svg";
 import img from "../../../assets/svg/img.svg";
 
-import { formatDate } from "../utils/dateFormatters";
+import { formMessageDate } from "../utils/dateFormatters";
 import MessageAttachments from "./MessageAttachments";
 
 const imgMapping = {
@@ -109,7 +109,7 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                                 {username}
                             </h5>
                             <h5 className="text-xss text-gray-clear md:text-xs">
-                                {formatDate(time, is12HoursFormat)}
+                                {formMessageDate(time, is12HoursFormat)}
                             </h5>
                             <span className="text-xss text-gray-clear">
                                 {isEdited && "(edited)"}

@@ -14,7 +14,9 @@ function Dropdown({
     title,
     titleZIndex = "z-50",
     placement = "bottom-start",
+    placementMargin = null,
     wrapperClassName,
+    dropdownColor = "bg-gray-dark",
     className,
     children,
 }) {
@@ -26,7 +28,8 @@ function Dropdown({
         placement: placement,
     });
 
-    const placementMargin = placementMarginMapping[placement.split("-")[0]];
+    const placementMarginValue =
+        placementMargin || placementMarginMapping[placement.split("-")[0]];
 
     useCloseDropdown(
         referenceElement,
@@ -40,12 +43,10 @@ function Dropdown({
     }
 
     return (
-        <div
-            className={`cursor-pointer text-left ${titleZIndex}`}
-            ref={setReferenceElement}
-            onClick={handleToggle}
-        >
-            {title}
+        <div className={`text-left ${titleZIndex}`}>
+            <div onClick={handleToggle} ref={setReferenceElement}>
+                {title}
+            </div>
 
             <Transition
                 show={isDropdownOpen}
@@ -63,7 +64,7 @@ function Dropdown({
                     className={wrapperClassName}
                 >
                     <div
-                        className={`${className} ${placementMargin} z-50 flex flex-col overflow-hidden bg-gray-dark`}
+                        className={`${className} ${placementMarginValue} ${dropdownColor} z-50 flex flex-col overflow-hidden`}
                     >
                         {children}
                     </div>

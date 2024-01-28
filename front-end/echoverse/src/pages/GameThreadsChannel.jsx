@@ -10,6 +10,8 @@ import ChannelInnerNavBar from "../features/GameThreadChannel/components/Channel
 import GameThreadTags from "../features/GameThreadChannel/components/GameThreadTags";
 import Messages from "../features/GameThreadChannel/components/Messages";
 import Message from "../features/GameThreadChannel/components/Message";
+import MobileNavBarIcon from "../features/SideNavBar/components/MobileNavBarIcon";
+import BackButton from "../features/GameThreadChannel/components/BackButton";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
@@ -20,8 +22,6 @@ import gif from "../assets/svg/gif.svg";
 import smileEmoji from "../assets/svg/smileEmoji.svg";
 
 import messages from "../assets/data/messages.json";
-import MobileNavBarIcon from "../features/SideNavBarMobile/components/MobileNavBarIcon";
-import BackButton from "../features/GameThreadChannel/components/BackButton";
 
 const thread = {
     id: 1,
@@ -53,13 +53,12 @@ function GameThreadsChannel() {
     const { title, gameTags, initialMessage } = thread;
 
     return (
-        <div className="w-full bg-gray-chat lg:w-[calc(100%-56px)]">
+        <div className="w-full bg-gray-chat">
             <div className="flex items-center border-b border-black-dark shadow-lg">
-                {width < 1024 && (
-                    <MobileNavBarIcon
-                        setIsSideNavBarActive={setIsSideNavBarActive}
-                    />
-                )}
+                <MobileNavBarIcon
+                    setIsSideNavBarActive={setIsSideNavBarActive}
+                />
+
                 {width < 1024 && <BackButton />}
                 <div className="flex items-center justify-between truncate lg:px-3">
                     {width < 1024 ? (

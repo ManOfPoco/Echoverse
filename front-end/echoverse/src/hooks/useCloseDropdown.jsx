@@ -8,13 +8,18 @@ function useCloseDropdown(
 ) {
     useEffect(() => {
         function closeDropdown(e) {
+            const isModalOpen =
+                document.getElementById("headlessui-portal-root") !== null;
+
             if (
                 referenceElement &&
                 isDropdownOpen &&
                 !referenceElement.contains(e.target) &&
-                !popperElement.contains(e.target)
-            )
-                setIsDropdownOpen((isDropdownOpen) => !isDropdownOpen);
+                !popperElement.contains(e.target) &&
+                !isModalOpen
+            ) {
+                setIsDropdownOpen(false);
+            }
         }
         document.addEventListener("mousedown", closeDropdown);
 

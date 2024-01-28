@@ -13,6 +13,8 @@ function SelectField({
     defaultValue = "Select",
     showDirection = "down",
     shadow = "shadow-md",
+    roundness = "rounded-md",
+    activeColor = "bg-gray-dark",
 }) {
     return (
         <Listbox
@@ -24,7 +26,7 @@ function SelectField({
         >
             <div className={`relative ${size}`}>
                 <Listbox.Button
-                    className={`relative h-10 w-full cursor-default rounded-lg bg-gray-charcoal pl-3 pr-10 text-left sm:text-sm ${shadow}`}
+                    className={`relative h-10 w-full cursor-default bg-gray-charcoal pl-3 pr-10 text-left sm:text-sm ${roundness} ${shadow}`}
                 >
                     <span className="block truncate">
                         {isMultiple ? defaultValue : selectedField.name}
@@ -61,7 +63,7 @@ function SelectField({
                                 className={({ active }) =>
                                     `relative cursor-default select-none py-2 pr-4 ps-10 ${
                                         active
-                                            ? "bg-gray-dark text-blue-light"
+                                            ? `${activeColor} text-blue-light`
                                             : "text-white"
                                     }`
                                 }
@@ -69,15 +71,23 @@ function SelectField({
                                 key={choice.id}
                             >
                                 <>
-                                    <span
-                                        className={`block truncate text-start ${
-                                            selectedField
-                                                ? "font-medium"
-                                                : "font-normal"
-                                        }`}
-                                    >
-                                        {choice.name}
-                                    </span>
+                                    <div className="flex items-center gap-2">
+                                        {choice?.image && (
+                                            <img
+                                                src={choice.image}
+                                                className="h-3.5 w-3.5"
+                                            />
+                                        )}
+                                        <span
+                                            className={`block truncate text-start ${
+                                                selectedField
+                                                    ? "font-medium"
+                                                    : "font-normal"
+                                            }`}
+                                        >
+                                            {choice.name}
+                                        </span>
+                                    </div>
                                     {isMultiple ? (
                                         selectedField.some(
                                             (e) => e.name === choice.name

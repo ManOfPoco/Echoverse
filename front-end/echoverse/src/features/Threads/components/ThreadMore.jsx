@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import Dropdown from "../../../components/Dropdown";
 import DropdownItem from "../../../components/DropdownItem";
 
-import MoreSvg from "./MoreSvg";
+import MoreSvg from "../../../svg/MoreSvg";
 
 function ThreadMore({
     username,
@@ -14,7 +14,6 @@ function ThreadMore({
     setIsMuted,
     setIsHidden,
 }) {
-
     function handleThreadMute() {
         setIsMuted(true);
     }

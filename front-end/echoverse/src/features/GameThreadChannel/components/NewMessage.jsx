@@ -8,7 +8,7 @@ import person2 from "../../../assets/img/person2.jpg";
 import person3 from "../../../assets/img/person3.jpg";
 import person4 from "../../../assets/img/person4.jpg";
 
-import { formatDate } from "../utils/dateFormatters";
+import { formMessageDate } from "../utils/dateFormatters";
 
 const imgMapping = {
     person: person,
@@ -42,7 +42,7 @@ function NewMessage({ messageObj, is12HoursFormat }) {
                             {username}
                         </h5>
                         <h5 className="text-xss md:text-xs text-gray-clear">
-                            {formatDate(time, is12HoursFormat)}
+                            {formMessageDate(time, is12HoursFormat)}
                         </h5>
                         <span className="text-xss text-gray-clear">
                             {isEdited && "(edited)"}

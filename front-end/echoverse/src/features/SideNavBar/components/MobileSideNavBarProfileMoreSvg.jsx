@@ -4,7 +4,7 @@ import person from "../../../assets/img/person.jpg";
 
 function MobileSideNavBarProfileMoreSvg({ username, displayName }) {
     return (
-        <div className="flex w-full min-w-64 cursor-pointer items-center justify-between rounded-full bg-gray-clear/20 px-4 py-3 hover:bg-gray-clear/30">
+        <div className="bg-black-raisin flex w-full min-w-72 cursor-pointer items-center justify-between border-t border-gray-light/30 px-4 py-3 hover:bg-gray-light/10">
             <div className="flex gap-2">
                 <Avatar img={person} type="sm" />
                 <div className="flex flex-col justify-between">

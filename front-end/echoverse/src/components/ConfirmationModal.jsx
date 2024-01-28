@@ -36,7 +36,7 @@ function ConfirmationModal({
                 >
                     <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
                         <Dialog.Panel
-                            className={`mx-auto max-w-lg rounded-xl ${bgColor}`}
+                            className={`mx-auto rounded-xl ${bgColor}`}
                         >
                             <div className="flex flex-col px-4 py-3">
                                 {children}

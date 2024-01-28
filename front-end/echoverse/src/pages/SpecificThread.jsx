@@ -5,12 +5,11 @@ import ThreadInstanceInteractButtons from "../features/Threads/components/Thread
 import ThreadInputField from "../features/Threads/components/ThreadInput";
 import ThreadInstance from "../features/Threads/components/ThreadInstance";
 
-import chevronLeft from "../assets/svg/chevronLeft.svg";
-
 import { thread } from "../features/Threads/data/threads";
 import { useState } from "react";
 import HiddenThread from "../features/Threads/components/HiddenThread";
 import MutedThread from "../features/Threads/components/MutedThread";
+import ChevronLeft from "../svg/ChevronLeft";
 
 function SpecificThread() {
     const { username, replies, isBlocked: isUserBlocked } = thread;
@@ -24,11 +23,11 @@ function SpecificThread() {
         <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night px-2 sm:px-0 lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
             <div className="mx-auto w-full max-w-screen-sm">
                 <div className="sticky top-[72px] z-40 flex items-center gap-2 bg-black-night py-3 lg:top-[80px] xl:top-[96px]">
-                    <img
-                        draggable={false}
-                        src={chevronLeft}
-                        className="h-6 w-6 cursor-pointer"
+                    <ChevronLeft
+                        width={24}
+                        height={24}
                         onClick={() => navigate(-1)}
+                        stroke={"#645BF0"}
                     />
                     <span className="text-xl font-semibold">Thread</span>
                 </div>

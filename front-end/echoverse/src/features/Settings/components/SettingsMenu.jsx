@@ -26,8 +26,8 @@ function SettingsMenu({ isMenuActive }) {
             leaveTo="-translate-x-full"
         >
             <div
-                className={`fixed z-30 min-h-[calc(100dvh-72px)]
-                w-fit px-5 py-5 pt-10 sm:pe-10 md:static lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)] ${
+                className={`fixed z-30 overflow-y-auto h-[calc(100dvh-72px)]
+                w-fit px-5 py-5 pt-10 sm:pe-10 md:static lg:h-[calc(100dvh-80px)] xl:h-[calc(100dvh-126px)] ${
                     width < 768 ? "bg-gray-dark shadow-xl" : "bg-black-night"
                 }`}
             >
