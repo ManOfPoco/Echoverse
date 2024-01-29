@@ -1,4 +1,4 @@
-import { isFirstDayMessage } from "../utils/dateFormatters";
+import { isFirstDayMessage } from "../../GameThreadChannel/utils/dateFormatters";
 
 function FirstDayMessage({ time, previousMessageObj }) {
     return (

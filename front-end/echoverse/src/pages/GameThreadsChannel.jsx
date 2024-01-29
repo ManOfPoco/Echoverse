@@ -8,8 +8,8 @@ import BreadCrumbNavBarElement from "../components/BreadCrumbNavBarElement";
 
 import ChannelInnerNavBar from "../features/GameThreadChannel/components/ChannelInnerNavBar";
 import GameThreadTags from "../features/GameThreadChannel/components/GameThreadTags";
-import Messages from "../features/GameThreadChannel/components/Messages";
-import Message from "../features/GameThreadChannel/components/Message";
+import Messages from "../features/Messages/components/Messages";
+import Message from "../features/Messages/components/Message";
 import MobileNavBarIcon from "../features/SideNavBar/components/MobileNavBarIcon";
 import BackButton from "../features/GameThreadChannel/components/BackButton";
 

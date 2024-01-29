@@ -8,9 +8,10 @@ import person2 from "../../../assets/img/person2.jpg";
 import person3 from "../../../assets/img/person3.jpg";
 import person4 from "../../../assets/img/person4.jpg";
 
-import { formMessageDate } from "../utils/dateFormatters";
+import { formMessageDate } from "../../GameThreadChannel/utils/dateFormatters";
 import DropdownUserCard from "../../ChannelUserCard/components/DropdownUserCard";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import MessageReactions from "./MessageReactions";
 
 const imgMapping = {
     person: person,
@@ -53,19 +54,15 @@ function NewMessage({ messageObj, is12HoursFormat }) {
         message,
         messageFiles,
         isEdited,
+        reactions,
     } = messageObj;
-
-    function handleUserCard() {}
 
     return (
         <div className="mt-4 hover:bg-gray-dark/50" id={`message-${id}`}>
             <div className="flex py-1 pe-3 ps-2 sm:pe-4 sm:ps-4 md:pe-8">
                 <DropdownUserCard
                     referenceElement={
-                        <div
-                            className="min-h-10 min-w-10 cursor-pointer"
-                            onClick={handleUserCard}
-                        >
+                        <div className="min-h-10 min-w-10 cursor-pointer">
                             <Avatar
                                 img={imgMapping[avatar] || person}
                                 type="sm"
@@ -103,6 +100,13 @@ function NewMessage({ messageObj, is12HoursFormat }) {
                         <MessageAttachments
                             messageFiles={messageFiles}
                             senderId={senderId}
+                        />
+                    )}
+
+                    {reactions && reactions.length > 0 && (
+                        <MessageReactions
+                            reactions={reactions}
+                            padding={`${messageFiles ? "pt-1" : "pt-0.5"}`}
                         />
                     )}
                 </div>

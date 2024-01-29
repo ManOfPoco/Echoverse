@@ -4,7 +4,8 @@ function useCloseDropdown(
     referenceElement,
     isDropdownOpen,
     popperElement,
-    setIsDropdownOpen
+    setIsDropdownOpen,
+    callback
 ) {
     useEffect(() => {
         function closeDropdown(e) {
@@ -19,6 +20,9 @@ function useCloseDropdown(
                 !isModalOpen
             ) {
                 setIsDropdownOpen(false);
+                if (callback) {
+                    callback();
+                }
             }
         }
         document.addEventListener("mousedown", closeDropdown);
@@ -26,7 +30,13 @@ function useCloseDropdown(
         return () => {
             document.removeEventListener("mousedown", closeDropdown);
         };
-    }, [referenceElement, popperElement, isDropdownOpen, setIsDropdownOpen]);
+    }, [
+        referenceElement,
+        popperElement,
+        isDropdownOpen,
+        setIsDropdownOpen,
+        callback,
+    ]);
 }
 
 export default useCloseDropdown;

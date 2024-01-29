@@ -3,16 +3,12 @@ import RecentMessage from "./RecentMessage";
 import NewMessage from "./NewMessage";
 import MessageReply from "./MessageReply";
 
-import { getTimeDifference } from "../utils/dateFormatters";
+import { getTimeDifference } from "../../GameThreadChannel/utils/dateFormatters";
 
 const is12HoursFormat = true;
 
 function Message({ messageObj, previousMessageObj }) {
-    const {
-
-        messageType,
-        time,
-    } = messageObj;
+    const { messageType, time } = messageObj;
     let messageTimeDifference = null;
     if (
         previousMessageObj &&

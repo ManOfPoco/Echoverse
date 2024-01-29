@@ -8,9 +8,10 @@ import person4 from "../../../assets/img/person4.jpg";
 import arrowSpine from "../../../assets/svg/arrowSpine.svg";
 import img from "../../../assets/svg/img.svg";
 
-import { formMessageDate } from "../utils/dateFormatters";
+import { formMessageDate } from "../../GameThreadChannel/utils/dateFormatters";
 import MessageAttachments from "./MessageAttachments";
 import DropdownUserCard from "../../ChannelUserCard/components/DropdownUserCard";
+import MessageReactions from "./MessageReactions";
 
 const imgMapping = {
     person: person,
@@ -59,6 +60,7 @@ function MessageReply({ messageObj, is12HoursFormat }) {
         message,
         messageFiles,
         isEdited,
+        reactions,
     } = messageObj;
 
     function scrollToMessage() {
@@ -184,6 +186,13 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                                 messageFiles={messageFiles}
                                 isRecentMessage={true}
                                 senderId={senderId}
+                            />
+                        )}
+
+                        {reactions && reactions.length > 0 && (
+                            <MessageReactions
+                                reactions={reactions}
+                                padding={`${messageFiles ? "pt-1" : "pt-0.5"}`}
                             />
                         )}
                     </div>

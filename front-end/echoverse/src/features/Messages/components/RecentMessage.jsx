@@ -1,7 +1,9 @@
 import MessageAttachments from "./MessageAttachments";
+import MessageReactions from "./MessageReactions";
 
 function RecentMessage({ messageObj, is12HoursFormat }) {
-    const { id, senderId, time, message, messageFiles, isEdited } = messageObj;
+    const { id, senderId, time, message, messageFiles, isEdited, reactions } =
+        messageObj;
 
     return (
         <div
@@ -17,7 +19,7 @@ function RecentMessage({ messageObj, is12HoursFormat }) {
                     })}
                 </span>
             </div>
-            <div className="py-0.5 pe-3 sm:pe-4 md:pe-8 ps-[60px] sm:ps-[68px]">
+            <div className="py-0.5 pe-3 ps-[60px] sm:pe-4 sm:ps-[68px] md:pe-8">
                 <p className="whitespace-pre-wrap break-words leading-snug text-platinum">
                     {message}
                     <span className="ps-2 text-xss text-gray-clear">
@@ -30,6 +32,13 @@ function RecentMessage({ messageObj, is12HoursFormat }) {
                         messageFiles={messageFiles}
                         isRecentMessage={true}
                         senderId={senderId}
+                    />
+                )}
+
+                {reactions && reactions.length > 0 && (
+                    <MessageReactions
+                        reactions={reactions}
+                        padding={`${messageFiles ? "pt-1" : "pt-0.5"}`}
                     />
                 )}
             </div>
