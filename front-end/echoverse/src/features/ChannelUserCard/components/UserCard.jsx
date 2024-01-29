@@ -36,7 +36,7 @@ const statusImgMapping = {
     invisible: invisibleStatus,
 };
 
-function UserCard() {
+function UserCard({ showAdditionalOptions = true }) {
     const navigate = useNavigate();
     const [isSetCustomStatusModalOpen, setIsSetCustomStatusModalOpen] =
         useState(false);
@@ -49,6 +49,7 @@ function UserCard() {
         customStatus,
         status,
     } = data;
+    const isCurrentUser = false;
 
     const [onlineStatus, setOnlineStatus] = useState(status);
     const onlineStatusImg = statusImgMapping[onlineStatus] || "offline";
@@ -64,11 +65,15 @@ function UserCard() {
             <div className="shadow-lg">
                 <div className="rounded-lg text-base">
                     <div className="flex h-20 flex-col bg-black-dark">
-                        <img
-                            src={editSVG}
-                            className="absolute m-3 h-5 w-5 cursor-pointer self-end"
-                            onClick={() => navigate("/account/server_profile")}
-                        />
+                        {isCurrentUser && (
+                            <img
+                                src={editSVG}
+                                className="absolute m-3 h-5 w-5 cursor-pointer self-end"
+                                onClick={() =>
+                                    navigate("/account/server_profile")
+                                }
+                            />
+                        )}
 
                         <div className="relative left-5 top-10 flex">
                             <Avatar img={person} type="lg" />
@@ -114,20 +119,22 @@ function UserCard() {
                                     </p>
                                 </div>
                             </div>
-                            <div className="py-2 text-sm text-gray-light">
-                                <UserCardStatusDropdown
-                                    onlineStatusImg={onlineStatusImg}
-                                    onlineStatus={onlineStatus}
-                                    setOnlineStatus={setOnlineStatus}
-                                />
+                            {showAdditionalOptions && (
+                                <div className="py-2 text-sm text-gray-light">
+                                    <UserCardStatusDropdown
+                                        onlineStatusImg={onlineStatusImg}
+                                        onlineStatus={onlineStatus}
+                                        setOnlineStatus={setOnlineStatus}
+                                    />
 
-                                <UserCardEditCustomStatus
-                                    isCustomStatus={customStatus !== ""}
-                                    setIsSetCustomStatusModalOpen={
-                                        setIsSetCustomStatusModalOpen
-                                    }
-                                />
-                            </div>
+                                    <UserCardEditCustomStatus
+                                        isCustomStatus={customStatus !== ""}
+                                        setIsSetCustomStatusModalOpen={
+                                            setIsSetCustomStatusModalOpen
+                                        }
+                                    />
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

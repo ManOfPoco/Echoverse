@@ -35,7 +35,7 @@ function NavBarMobileMenu({ isMenuOpen }) {
                             svgTitle={dropdownArrowDown}
                         />
                     }
-                    className={`w-44 gap-1 py-1 rounded-xl`}
+                    className={`w-44 gap-1 rounded-xl py-1`}
                     placement="bottom-start"
                 >
                     <DropdownItem link="/explore/people" key="People">

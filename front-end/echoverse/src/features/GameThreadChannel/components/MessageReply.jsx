@@ -10,6 +10,7 @@ import img from "../../../assets/svg/img.svg";
 
 import { formMessageDate } from "../utils/dateFormatters";
 import MessageAttachments from "./MessageAttachments";
+import DropdownUserCard from "../../ChannelUserCard/components/DropdownUserCard";
 
 const imgMapping = {
     person: person,
@@ -18,6 +19,29 @@ const imgMapping = {
     person3: person3,
     person4: person4,
 };
+
+const modifiers = [
+    {
+        name: "flip",
+        options: {
+            fallbackPlacements: ["top", "bottom"],
+        },
+        enabled: true,
+    },
+    {
+        name: "preventOverflow",
+        options: {
+            altAxis: true,
+        },
+        enabled: true,
+    },
+    {
+        name: "offset",
+        options: {
+            offset: [0, 8],
+        },
+    },
+];
 
 function MessageReply({ messageObj, is12HoursFormat }) {
     const currentUserId = 1;
@@ -69,11 +93,30 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                         src={arrowSpine}
                         className="h-3.5 self-end"
                     />
-                    <div className="flex gap-1.5">
-                        <Avatar img={imgMapping[avatar] || person} type="xs" />
-                        <h5 className="flex-1 cursor-pointer font-semibold hover:underline">
-                            {replyUserUsername}
-                        </h5>
+                    <div className="flex">
+                        <DropdownUserCard
+                            referenceElement={
+                                <div className="cursor-pointer">
+                                    <Avatar
+                                        img={imgMapping[avatar] || person}
+                                        type="xs"
+                                    />
+                                </div>
+                            }
+                            placement="right-start"
+                            modifiers={modifiers}
+                            showAdditionalOptions={false}
+                        />
+                        <DropdownUserCard
+                            referenceElement={
+                                <h5 className="flex-1 cursor-pointer ps-1.5 font-semibold hover:underline">
+                                    {replyUserUsername}
+                                </h5>
+                            }
+                            placement="right-start"
+                            modifiers={modifiers}
+                            showAdditionalOptions={false}
+                        />
                     </div>
                     <div className="flex flex-1 cursor-pointer gap-1.5 truncate hover:text-platinum">
                         <p
@@ -97,17 +140,34 @@ function MessageReply({ messageObj, is12HoursFormat }) {
                 </div>
 
                 <div
-                    className="flex gap-3 py-1 pe-3 ps-2 sm:pe-4 sm:ps-4 md:pe-8"
+                    className="flex py-1 pe-3 ps-2 sm:pe-4 sm:ps-4 md:pe-8"
                     id={`message-${id}`}
                 >
-                    <div className="min-h-10 min-w-10">
-                        <Avatar img={imgMapping[avatar] || person} type="sm" />
-                    </div>
-                    <div>
+                    <DropdownUserCard
+                        referenceElement={
+                            <div className="min-h-10 min-w-10 cursor-pointer">
+                                <Avatar
+                                    img={imgMapping[avatar] || person}
+                                    type="sm"
+                                />
+                            </div>
+                        }
+                        placement="right-start"
+                        modifiers={modifiers}
+                        showAdditionalOptions={false}
+                    />
+                    <div className="ps-3">
                         <div className="flex items-baseline gap-1.5 font-medium">
-                            <h5 className="inline-block cursor-pointer align-top hover:underline">
-                                {username}
-                            </h5>
+                            <DropdownUserCard
+                                referenceElement={
+                                    <h5 className="inline-block cursor-pointer align-top hover:underline">
+                                        {username}
+                                    </h5>
+                                }
+                                placement="right-start"
+                                modifiers={modifiers}
+                                showAdditionalOptions={false}
+                            />
                             <h5 className="text-xss text-gray-clear md:text-xs">
                                 {formMessageDate(time, is12HoursFormat)}
                             </h5>

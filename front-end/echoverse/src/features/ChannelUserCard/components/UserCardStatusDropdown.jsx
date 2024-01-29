@@ -3,6 +3,15 @@ import Dropdown from "../../../components/Dropdown";
 import OnlineStatus from "./OnlineStatus";
 import UserOnlineStatus from "./UserOnlineStatus";
 
+const modifiers = [
+    {
+        name: "offset",
+        options: {
+            offset: [0, 4],
+        },
+    },
+];
+
 function UserCardStatusDropdown({
     onlineStatusImg,
     onlineStatus,
@@ -36,6 +45,7 @@ function UserCardStatusDropdown({
                     onlineStatus={onlineStatus}
                 />
             }
+            modifiers={modifiers}
             placement="top-start"
             dropdownColor="bg-gray-dark"
             className="flex w-[264px] flex-col gap-1 rounded-md border border-gray-light/10 sm:w-[328px]"

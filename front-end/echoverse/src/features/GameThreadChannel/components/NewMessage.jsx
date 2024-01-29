@@ -9,6 +9,8 @@ import person3 from "../../../assets/img/person3.jpg";
 import person4 from "../../../assets/img/person4.jpg";
 
 import { formMessageDate } from "../utils/dateFormatters";
+import DropdownUserCard from "../../ChannelUserCard/components/DropdownUserCard";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 const imgMapping = {
     person: person,
@@ -17,6 +19,29 @@ const imgMapping = {
     person3: person3,
     person4: person4,
 };
+
+const modifiers = [
+    {
+        name: "flip",
+        options: {
+            fallbackPlacements: ["top", "bottom"],
+        },
+        enabled: true,
+    },
+    {
+        name: "preventOverflow",
+        options: {
+            altAxis: true,
+        },
+        enabled: true,
+    },
+    {
+        name: "offset",
+        options: {
+            offset: [0, 8],
+        },
+    },
+];
 
 function NewMessage({ messageObj, is12HoursFormat }) {
     const {
@@ -30,18 +55,42 @@ function NewMessage({ messageObj, is12HoursFormat }) {
         isEdited,
     } = messageObj;
 
+    const { width } = useWindowDimensions();
+
+    function handleUserCard() {}
+
     return (
         <div className="mt-4 hover:bg-gray-dark/50" id={`message-${id}`}>
-            <div className="flex gap-3 py-1 pe-3 sm:pe-4 ps-2 sm:ps-4 md:pe-8">
-                <div className="min-h-10 min-w-10">
-                    <Avatar img={imgMapping[avatar] || person} type="sm" />
-                </div>
-                <div>
+            <div className="flex py-1 pe-3 ps-2 sm:pe-4 sm:ps-4 md:pe-8">
+                <DropdownUserCard
+                    referenceElement={
+                        <div
+                            className="min-h-10 min-w-10 cursor-pointer"
+                            onClick={handleUserCard}
+                        >
+                            <Avatar
+                                img={imgMapping[avatar] || person}
+                                type="sm"
+                            />
+                        </div>
+                    }
+                    placement="right-start"
+                    modifiers={modifiers}
+                    showAdditionalOptions={false}
+                />
+                <div className="ps-3">
                     <div className="flex items-baseline gap-1.5 font-medium">
-                        <h5 className="inline-block cursor-pointer align-top hover:underline">
-                            {username}
-                        </h5>
-                        <h5 className="text-xss md:text-xs text-gray-clear">
+                        <DropdownUserCard
+                            referenceElement={
+                                <h5 className="inline-block cursor-pointer align-top hover:underline">
+                                    {username}
+                                </h5>
+                            }
+                            placement="right-start"
+                            modifiers={modifiers}
+                            showAdditionalOptions={false}
+                        />
+                        <h5 className="text-xss text-gray-clear md:text-xs">
                             {formMessageDate(time, is12HoursFormat)}
                         </h5>
                         <span className="text-xss text-gray-clear">
@@ -55,7 +104,6 @@ function NewMessage({ messageObj, is12HoursFormat }) {
                     {messageFiles && (
                         <MessageAttachments
                             messageFiles={messageFiles}
-                            isRecentMessage={false}
                             senderId={senderId}
                         />
                     )}

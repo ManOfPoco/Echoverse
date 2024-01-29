@@ -27,7 +27,7 @@ const fileMapping = {
     person2: person2,
 };
 
-function MessageAttachments({ messageFiles, isRecentMessage, senderId }) {
+function MessageAttachments({ messageFiles, senderId }) {
     return (
         <div className="flex w-full max-w-screen-sm flex-wrap gap-1 overflow-x-auto pt-1">
             {messageFiles.map((file) => (

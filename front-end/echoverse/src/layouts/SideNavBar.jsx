@@ -2,7 +2,6 @@ import { Fragment, useEffect, useRef } from "react";
 import { Transition } from "@headlessui/react";
 
 import MobileSideNavBarElement from "../features/SideNavBar/components/MobileSideNavBarElement";
-import MobileSideNavBarProfileElement from "../features/SideNavBar/components/MobileSideNavBarProfileElement";
 
 import Logo from "../components/Logo";
 
@@ -15,10 +14,13 @@ import bellFilled from "../assets/svg/bellFilled.svg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 import settingsFilled from "../assets/svg/settingsFilled.svg";
 import profileFilled from "../assets/svg/profileFilled.svg";
+import DropdownUserCard from "../features/ChannelUserCard/components/DropdownUserCard";
+import MobileSideNavBarProfileMoreSvg from "../features/SideNavBar/components/MobileSideNavBarProfileMoreSvg";
 
 function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
     const navBarRef = useRef(null);
     const username = "ManOfPoco";
+    const displayName = "ManOfPoco";
 
     useEffect(() => {
         function closeDropdown(e) {
@@ -119,7 +121,16 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                         </div>
                     </div>
 
-                    <MobileSideNavBarProfileElement />
+                    <DropdownUserCard
+                        referenceElement={
+                            <MobileSideNavBarProfileMoreSvg
+                                username={username}
+                                displayName={displayName}
+                            />
+                        }
+                        placement="top-start"
+                        showAdditionalOptions={true}
+                    />
                 </nav>
             </Transition>
         </>
