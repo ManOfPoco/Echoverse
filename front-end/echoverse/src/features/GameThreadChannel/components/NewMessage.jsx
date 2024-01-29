@@ -55,8 +55,6 @@ function NewMessage({ messageObj, is12HoursFormat }) {
         isEdited,
     } = messageObj;
 
-    const { width } = useWindowDimensions();
-
     function handleUserCard() {}
 
     return (

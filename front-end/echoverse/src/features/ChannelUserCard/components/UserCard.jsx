@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePopper } from "react-popper";
 
 import Avatar from "../../../components/Avatar";
 
@@ -54,6 +55,19 @@ function UserCard({ showAdditionalOptions = true }) {
     const [onlineStatus, setOnlineStatus] = useState(status);
     const onlineStatusImg = statusImgMapping[onlineStatus] || "offline";
 
+    const [isHovered, setIsHovered] = useState(false);
+    const [referenceElement, setReferenceElement] = useState(null);
+    const [popperElement, setPopperElement] = useState(null);
+    const { styles, attributes } = usePopper(referenceElement, popperElement, {
+        placement: "top",
+        modifiers: {
+            name: "offset",
+            options: {
+                offset: [0, 6],
+            },
+        },
+    });
+
     return (
         <>
             <SetCustomStatusModal
@@ -63,7 +77,7 @@ function UserCard({ showAdditionalOptions = true }) {
             />
 
             <div className="shadow-lg">
-                <div className="rounded-lg text-base">
+                <div className="rounded-lg text-base text-platinum">
                     <div className="flex h-20 flex-col bg-black-dark">
                         {isCurrentUser && (
                             <img
@@ -76,14 +90,41 @@ function UserCard({ showAdditionalOptions = true }) {
                         )}
 
                         <div className="relative left-5 top-10 flex">
-                            <Avatar img={person} type="lg" />
-                            {onlineStatusImg !== "offline" ? (
-                                <div className="relative -left-6 self-end rounded-full bg-gray-dark p-0.5">
-                                    <img
-                                        src={onlineStatusImg}
-                                        className="h-4 w-4"
-                                    />
+                            <div
+                                className="group relative cursor-pointer rounded-full"
+                                onClick={() => navigate(`/${username}`)}
+                            >
+                                <Avatar img={person} type="lg" />
+                                <div className="absolute top-0 hidden h-full w-full items-center justify-center rounded-full bg-black-dark/60 text-xss font-semibold group-hover:flex">
+                                    VIEW PROFILE
                                 </div>
+                            </div>
+                            {onlineStatusImg !== "offline" ? (
+                                <>
+                                    <div className="relative -left-6 self-end rounded-full bg-gray-dark p-0.5">
+                                        <img
+                                            src={onlineStatusImg}
+                                            className="h-4 w-4"
+                                            onMouseEnter={() =>
+                                                setIsHovered(true)
+                                            }
+                                            onMouseLeave={() =>
+                                                setIsHovered(false)
+                                            }
+                                            ref={setReferenceElement}
+                                        />
+                                        {isHovered && (
+                                            <div
+                                                className="before:border-t-black-night z-50 rounded-lg bg-black-night px-2 py-2 text-sm font-normal capitalize before:absolute before:left-[calc(50%-6px)] before:top-full before:border-l-6 before:border-r-6 before:border-t-6 before:border-l-transparent before:border-r-transparent before:content-['']"
+                                                ref={setPopperElement}
+                                                style={styles.popper}
+                                                {...attributes.popper}
+                                            >
+                                                {status}
+                                            </div>
+                                        )}
+                                    </div>
+                                </>
                             ) : null}
                         </div>
                     </div>
@@ -94,7 +135,7 @@ function UserCard({ showAdditionalOptions = true }) {
                                 <h4 className="h-6 text-xl">{displayName}</h4>
                                 <span className="text-sm">{username}</span>
                                 {customStatus && (
-                                    <p className="pt-2 text-sm font-normal text-platinum">
+                                    <p className="pt-2 text-sm font-normal">
                                         {customStatus}
                                     </p>
                                 )}
@@ -105,7 +146,7 @@ function UserCard({ showAdditionalOptions = true }) {
                                         <h4 className="pb-1 text-xs font-semibold text-gray-light">
                                             About me
                                         </h4>
-                                        <p className="whitespace-pre-wrap break-words text-sm font-normal leading-snug text-platinum">
+                                        <p className="whitespace-pre-wrap break-words text-sm font-normal leading-snug">
                                             {description}
                                         </p>
                                     </div>
@@ -114,7 +155,7 @@ function UserCard({ showAdditionalOptions = true }) {
                                     <h4 className="pb-1 text-xs font-semibold text-gray-light">
                                         Echoverse member since
                                     </h4>
-                                    <p className="whitespace-pre-wrap break-words text-sm font-normal leading-snug text-platinum">
+                                    <p className="whitespace-pre-wrap break-words text-sm font-normal leading-snug">
                                         {formatUserCardDate(joinDate)}
                                     </p>
                                 </div>

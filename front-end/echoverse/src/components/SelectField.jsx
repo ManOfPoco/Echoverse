@@ -28,9 +28,18 @@ function SelectField({
                 <Listbox.Button
                     className={`relative h-10 w-full cursor-default bg-gray-charcoal pl-3 pr-10 text-left sm:text-sm ${roundness} ${shadow}`}
                 >
-                    <span className="block truncate">
-                        {isMultiple ? defaultValue : selectedField.name}
-                    </span>
+                    <div className="flex items-center gap-2">
+                        {selectedField?.image && (
+                            <img
+                                src={selectedField.image}
+                                className="h-3.5 w-3.5"
+                            />
+                        )}
+                        <span className="block truncate text-start">
+                            {isMultiple ? defaultValue : selectedField.name}
+                        </span>
+                    </div>
+
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                         <img
                             draggable={false}
