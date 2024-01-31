@@ -1,4 +1,4 @@
-function ChevronRight({ width = 24, height = 24, stroke, onClick }) {
+function ChevronRight({ width = 24, height = 24, stroke = 'white', onClick }) {
     return (
         <div onClick={onClick}>
             <svg

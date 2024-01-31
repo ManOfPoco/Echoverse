@@ -44,7 +44,7 @@ const modifiers = [
     },
 ];
 
-function NewMessage({ messageObj, is12HoursFormat }) {
+function NewMessage({ messageObj, is12HoursFormat, handleOpenContextMenu }) {
     const {
         id,
         senderId,
@@ -58,7 +58,11 @@ function NewMessage({ messageObj, is12HoursFormat }) {
     } = messageObj;
 
     return (
-        <div className="mt-4 hover:bg-gray-dark/50" id={`message-${id}`}>
+        <div
+            className="mt-4 hover:bg-gray-dark/50"
+            id={`message-${id}`}
+            onContextMenu={(e) => handleOpenContextMenu(e, messageObj)}
+        >
             <div className="flex py-1 pe-3 ps-2 sm:pe-4 sm:ps-4 md:pe-8">
                 <DropdownUserCard
                     referenceElement={

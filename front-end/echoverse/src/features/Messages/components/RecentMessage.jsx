@@ -1,14 +1,25 @@
 import MessageAttachments from "./MessageAttachments";
 import MessageReactions from "./MessageReactions";
 
-function RecentMessage({ messageObj, is12HoursFormat }) {
-    const { id, senderId, time, message, messageFiles, isEdited, reactions } =
-        messageObj;
+function RecentMessage({ messageObj, is12HoursFormat, handleOpenContextMenu }) {
+    const {
+        id,
+        senderId,
+        username,
+        time,
+        message,
+        messageFiles,
+        isEdited,
+        reactions,
+    } = messageObj;
 
     return (
         <div
             className="group relative hover:bg-gray-dark/50"
             id={`message-${id}`}
+            onContextMenu={(e) =>
+                handleOpenContextMenu(e, messageObj)
+            }
         >
             <div className="hidden group-hover:block">
                 <span className="absolute left-0 flex h-7 w-[68px] items-center justify-center text-xss font-medium leading-snug text-gray-clear">

@@ -93,29 +93,30 @@ function useMessageInput() {
 
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
+
             if (checkFilesQuantity(i)) {
                 if (
-                    (item.type.indexOf("image") !== -1 ||
-                        item.type.indexOf("video")) !== -1
+                    item.type.indexOf("image") !== -1 ||
+                    item.type.indexOf("video") !== -1
                 ) {
                     const blob = item.getAsFile();
-                    const fileName = item.getAsFile().name;
 
-                    const reader = new FileReader();
-                    reader.readAsDataURL(blob);
+                    if (!blob) {
+                        console.error("Failed to get blob from pasted item.");
+                        return;
+                    }
 
-                    reader.onload = function () {
-                        const fileType = fileName.split(".").at(-1);
-                        const pastedFile = reader.result;
+                    const fileName = blob.name;
+                    const fileType = fileName.split(".").at(-1);
+                    const previewURL = URL.createObjectURL(blob);
 
-                        dispatch({
-                            type: "setMessageFiles",
-                            payload: {
-                                messageFile: pastedFile,
-                                fileType: fileType,
-                            },
-                        });
-                    };
+                    dispatch({
+                        type: "setMessageFiles",
+                        payload: {
+                            fileType: fileType,
+                            messageFile: { file: blob, previewURL },
+                        },
+                    });
                 }
             }
         }
@@ -128,21 +129,16 @@ function useMessageInput() {
             const file = files[i];
 
             if (checkFilesQuantity(i)) {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
+                const fileType = file.type.split("/").at(-1);
+                const previewURL = URL.createObjectURL(file);
 
-                reader.onload = function () {
-                    const fileType = file.type.split("/").at(-1);
-                    const readImg = reader.result;
-
-                    dispatch({
-                        type: "setMessageFiles",
-                        payload: {
-                            messageFile: readImg,
-                            fileType: fileType,
-                        },
-                    });
-                };
+                dispatch({
+                    type: "setMessageFiles",
+                    payload: {
+                        fileType: fileType,
+                        messageFile: { file, previewURL },
+                    },
+                });
             }
         }
     }
@@ -158,21 +154,16 @@ function useMessageInput() {
                     (droppedFile.type.indexOf("image") !== -1 ||
                         droppedFile.type.indexOf("video")) !== -1
                 ) {
-                    const reader = new FileReader();
-                    reader.readAsDataURL(droppedFile);
+                    const fileType = droppedFile.type.split("/").at(-1);
+                    const previewURL = URL.createObjectURL(droppedFile);
 
-                    reader.onload = function () {
-                        const fileType = droppedFile.type.split("/").at(-1);
-                        const messageFile = reader.result;
-
-                        dispatch({
-                            type: "setMessageFiles",
-                            payload: {
-                                fileType: fileType,
-                                messageFile: messageFile,
-                            },
-                        });
-                    };
+                    dispatch({
+                        type: "setMessageFiles",
+                        payload: {
+                            fileType: fileType,
+                            messageFile: { file: droppedFile, previewURL },
+                        },
+                    });
                 }
             }
         }

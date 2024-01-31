@@ -1,8 +1,8 @@
-function MessageVideoPlayButton({ setIsFullScreenModalOpen }) {
+function MessageVideoPlayButton({ onClick }) {
     return (
         <div
             className="group absolute z-20 flex h-full w-full items-center justify-center"
-            onClick={() => setIsFullScreenModalOpen(true)}
+            onClick={onClick}
         >
             <span className="min-w-fit rounded-full bg-black-dark/60 p-2 transition-colors group-hover:bg-black-dark/80 sm:p-3">
                 <svg

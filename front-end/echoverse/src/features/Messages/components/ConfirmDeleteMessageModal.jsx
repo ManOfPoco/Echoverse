@@ -1,25 +1,22 @@
 import toast from "react-hot-toast";
 
 import ConfirmationModal from "../../../components/ConfirmationModal";
-import coverNotFound from "../../../assets/img/coverNotFound.png";
-
 import Button from "../../../components/Button";
 
-function ConfirmGameDeletionModal({ state, dispatch }) {
-    const { selectedGame, openModal } = state;
-    const { id, title, img } = selectedGame;
+import Message from "./Message";
 
-    function handleImgNotFound(e) {
-        e.currentTarget.src = coverNotFound;
-    }
-
+function ConfirmDeleteMessageModal({
+    isDeleteMessageModalOpen,
+    setIsDeleteMessageModalOpen,
+    selectedMessage,
+}) {
     function handleCloseModal() {
-        dispatch({ type: "closeConfirmDeleteGameFromLibraryModal" });
+        setIsDeleteMessageModalOpen(false);
     }
 
     function handleDeleteGame() {
         handleCloseModal();
-        toast.success(`${title} was removed from your games`, {
+        toast.success(`Message was deleted`, {
             style: {
                 color: "white",
                 backgroundColor: "#262A2F",
@@ -29,27 +26,22 @@ function ConfirmGameDeletionModal({ state, dispatch }) {
 
     return (
         <ConfirmationModal
-            isOpen={openModal === "confirm-delete-game-form-library"}
-            onClose={() =>
-                dispatch({ type: "closeConfirmDeleteGameFromLibraryModal" })
-            }
+            isOpen={isDeleteMessageModalOpen}
+            onClose={handleCloseModal}
             bgColor="bg-gray-dark"
         >
-            <div className="flex flex-col gap-2">
-                <h5 className="text-lg font-medium">
-                    Delete game from the library
-                </h5>
+            <div className="flex max-w-screen-md flex-col gap-2">
+                <h5 className="text-lg font-medium">Delete message</h5>
                 <p className="text-base text-gray-light">
-                    Are you sure you want to delete{" "}
-                    <span className="italic">{title}</span> from your library?
+                    Are you sure you want to delete this message?
                 </p>
-                <img
-                    draggable={false}
-                    src={img}
-                    alt={title}
-                    className="h-40 w-72 self-center rounded-xl sm:h-44 sm:w-80"
-                    onError={(e) => handleImgNotFound(e)}
-                />
+                <div className="pointer-events-none pb-4 rounded-md border border-black-dark drop-shadow-[0_0_3px_rgba(0,0,0,0.25)]">
+                    <Message
+                        messageObj={selectedMessage}
+                        includeFirstDayMessage={false}
+                    />
+                </div>
+
                 <div className="mt-2 flex justify-end gap-1 py-1">
                     <Button
                         btnClass="secondary"
@@ -73,4 +65,4 @@ function ConfirmGameDeletionModal({ state, dispatch }) {
     );
 }
 
-export default ConfirmGameDeletionModal;
+export default ConfirmDeleteMessageModal;

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import FullScreenContentModal from "../../../components/FullScreenContentModal";
 import DeleteFileButton from "../../../components/DeleteFileButton";
@@ -10,23 +10,39 @@ import trashCan from "../../../assets/svg/trashCan.svg";
 function MessageInputVideoFile({ video, index, dispatch }) {
     const [isFullScreenModalOpen, setIsFullScreenModalOpen] = useState(false);
 
-    const fullScreenVideoRef = useRef(null);
+    const videoRef = useRef(null);
+    const { file, previewURL } = video;
 
     function handleModalClose() {
         setIsFullScreenModalOpen(false);
     }
 
     function handleSetUpFullScreenVideo() {
-        const videoRef = fullScreenVideoRef.current;
-        if (videoRef) {
-            videoRef.volume = 0.5;
-            videoRef.play();
-        }
+        setIsFullScreenModalOpen(true);
     }
 
     function handleRemoveFile() {
         dispatch({ type: "removeMessageFile", removeIndex: index });
     }
+
+    useEffect(() => {
+        if (isFullScreenModalOpen) {
+            const videoRf = videoRef.current;
+
+            if (videoRf) {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function () {
+                    const readImg = reader.result;
+
+                    videoRf.src = readImg;
+                    videoRf.volume = 0.5;
+                    videoRf.play();
+                };
+            }
+        }
+    }, [file, isFullScreenModalOpen]);
 
     return (
         <div className="relative max-h-80 min-w-fit cursor-pointer sm:max-h-64">
@@ -36,11 +52,12 @@ function MessageInputVideoFile({ video, index, dispatch }) {
                 onClick={handleRemoveFile}
             />
 
-            <MessageVideoPlayButton
-                setIsFullScreenModalOpen={setIsFullScreenModalOpen}
-            />
-            <video className="h-full max-h-80 w-full rounded-lg object-cover">
-                <source src={video} type="video/mp4" />
+            <MessageVideoPlayButton onClick={handleSetUpFullScreenVideo} />
+            <video
+                className="h-full max-h-80 w-full rounded-lg object-cover"
+                preload="metadata"
+            >
+                <source src={previewURL} type="video/mp4" />
             </video>
 
             {isFullScreenModalOpen && (
@@ -52,10 +69,9 @@ function MessageInputVideoFile({ video, index, dispatch }) {
                     <video
                         className="max-h-[80dvh] max-w-[80dvw] rounded-lg"
                         controls
-                        onCanPlay={handleSetUpFullScreenVideo}
-                        ref={fullScreenVideoRef}
+                        ref={videoRef}
                     >
-                        <source src={video} type="video/mp4" />
+                        <source type="video/mp4" />
                     </video>
                 </FullScreenContentModal>
             )}

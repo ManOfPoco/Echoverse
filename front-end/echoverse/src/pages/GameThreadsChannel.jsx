@@ -1,7 +1,5 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
-
-import TextareaInput from "../components/TextareaInput";
 
 import BreadCrumbNavBar from "../components/BreadCrumbNavBar";
 import BreadCrumbNavBarElement from "../components/BreadCrumbNavBarElement";
@@ -19,7 +17,7 @@ import person from "../assets/img/person.jpg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 
 import messages from "../assets/data/messages.json";
-import MessageInputField from "../features/GameThreadChannel/components/MessageInputField";
+import MessageInputField from "../features/MessageInput/components/MessageInputField";
 
 const thread = {
     id: 1,
@@ -42,10 +40,51 @@ const thread = {
     },
 };
 
+const initialState = {
+    inputMessageType: null,
+    selectedMessage: {
+        selectedMessageId: null,
+        selectedMessageUsername: null,
+        selectedMessageContent: null,
+    },
+};
+
+function reducer(state, action) {
+    switch (action.type) {
+        case "setReplyInputMessageType":
+            return {
+                ...state,
+                inputMessageType: "reply",
+                selectedMessage: {
+                    selectedMessageId: action.payload.id,
+                    selectedMessageUsername: action.payload.username,
+                },
+            };
+
+        case "setEditInputMessageType":
+            return {
+                ...state,
+                inputMessageType: "edit",
+                selectedMessage: {
+                    selectedMessageId: action.payload.id,
+                    selectedMessageContent: action.payload.message,
+                },
+            };
+
+        case "resetInputMessageType":
+            return { ...initialState };
+
+        default:
+            break;
+    }
+}
+
 function GameThreadsChannel() {
     const [setIsSideNavBarActive] = useOutletContext();
-
     const { game, threadId } = useParams();
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
     const { width, height } = useWindowDimensions();
     const { title, gameTags, initialMessage } = thread;
 
@@ -96,10 +135,14 @@ function GameThreadsChannel() {
                             <Message messageObj={initialMessage} />
                         </div>
                     </div>
-                    <Messages messages={messages} />
+                    <Messages
+                        messages={messages}
+                        state={state}
+                        dispatch={dispatch}
+                    />
                 </div>
             </div>
-            <MessageInputField />
+            <MessageInputField state={state} dispatch={dispatch} />
         </div>
     );
 }

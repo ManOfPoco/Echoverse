@@ -43,7 +43,7 @@ function MessageVideoAttachment({ filesQuantity, video, senderId }) {
                 />
             )}
             <MessageVideoPlayButton
-                setIsFullScreenModalOpen={setIsFullScreenModalOpen}
+                onClick={() => setIsFullScreenModalOpen(true)}
             />
             <video
                 className={`rounded-lg ${

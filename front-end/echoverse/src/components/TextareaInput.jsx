@@ -10,6 +10,7 @@ function TextareaInput({
     resizeLimit = "none",
     bgColor = "bg-gray-charcoal",
     register,
+    isFocus = false,
     value = undefined,
     onChange = undefined,
     onPaste = undefined,
@@ -28,6 +29,12 @@ function TextareaInput({
                 Math.min(scrollHeight, resizeLimit) + "px";
         }
     }, [textAreaRef, value, resize, resizeLimit]);
+
+    useEffect(() => {
+        if (textAreaRef.current && isFocus) {
+            textAreaRef.current.focus();
+        }
+    }, [isFocus]);
 
     return (
         <textarea

@@ -44,7 +44,7 @@ const modifiers = [
     },
 ];
 
-function MessageReply({ messageObj, is12HoursFormat }) {
+function MessageReply({ messageObj, is12HoursFormat, handleOpenContextMenu }) {
     const currentUserId = 1;
     const {
         id,
@@ -78,7 +78,10 @@ function MessageReply({ messageObj, is12HoursFormat }) {
     }
 
     return (
-        <div className="hover:bg-gray-dark/50">
+        <div
+            className="hover:bg-gray-dark/50"
+            onContextMenu={(e) => handleOpenContextMenu(e, messageObj)}
+        >
             <div
                 className={`relative${
                     replyUserId === currentUserId

@@ -1,14 +1,20 @@
+import { getTimeDifference } from "../../GameThreadChannel/utils/dateFormatters";
+
 import FirstDayMessage from "./FirstDayMessage";
 import RecentMessage from "./RecentMessage";
 import NewMessage from "./NewMessage";
 import MessageReply from "./MessageReply";
 
-import { getTimeDifference } from "../../GameThreadChannel/utils/dateFormatters";
-
 const is12HoursFormat = true;
 
-function Message({ messageObj, previousMessageObj }) {
+function Message({
+    messageObj,
+    previousMessageObj,
+    includeFirstDayMessage = true,
+    handleOpenContextMenu,
+}) {
     const { messageType, time } = messageObj;
+
     let messageTimeDifference = null;
     if (
         previousMessageObj &&
@@ -22,10 +28,12 @@ function Message({ messageObj, previousMessageObj }) {
 
     return (
         <>
-            <FirstDayMessage
-                time={time}
-                previousMessageObj={previousMessageObj}
-            />
+            {includeFirstDayMessage && (
+                <FirstDayMessage
+                    time={time}
+                    previousMessageObj={previousMessageObj}
+                />
+            )}
 
             {messageType === "message" && (
                 <>
@@ -34,11 +42,13 @@ function Message({ messageObj, previousMessageObj }) {
                         <RecentMessage
                             messageObj={messageObj}
                             is12HoursFormat={is12HoursFormat}
+                            handleOpenContextMenu={handleOpenContextMenu}
                         />
                     ) : (
                         <NewMessage
                             messageObj={messageObj}
                             is12HoursFormat={is12HoursFormat}
+                            handleOpenContextMenu={handleOpenContextMenu}
                         />
                     )}
                 </>
@@ -48,6 +58,7 @@ function Message({ messageObj, previousMessageObj }) {
                 <MessageReply
                     messageObj={messageObj}
                     is12HoursFormat={is12HoursFormat}
+                    handleOpenContextMenu={handleOpenContextMenu}
                 />
             )}
         </>

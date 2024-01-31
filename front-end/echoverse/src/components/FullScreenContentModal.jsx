@@ -6,6 +6,7 @@ function FullScreenContentModal({
     bgColor = "bg-black-dark",
     children,
 }) {
+
     return (
         <Transition show={isOpen}>
             <Dialog

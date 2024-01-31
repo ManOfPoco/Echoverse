@@ -103,8 +103,7 @@ function reducer(state, action) {
 
 function GamingCalendar({ isCurrentUser, data }) {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { isCalendarOpen, activeMode, isGamingNotesModalOpen } =
-        state;
+    const { isCalendarOpen, activeMode, isGamingNotesModalOpen } = state;
 
     function handleChangeMode(mode) {
         dispatch({
