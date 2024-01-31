@@ -120,7 +120,6 @@ function ThreadFile({
 
     useEffect(() => {
         return () => {
-            console.log('clear')
             const stashDiv = document.getElementById("stash");
             if (stashDiv) stashDiv.remove();
             firstRender.current = false;

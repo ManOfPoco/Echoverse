@@ -19,6 +19,7 @@ function TextareaInput({
 
     useEffect(() => {
         let textAreaRefCurrent = textAreaRef?.current;
+
         if (textAreaRefCurrent && resize === "none") {
             textAreaRefCurrent.style.height = "0px";
             const scrollHeight = textAreaRefCurrent.scrollHeight;

@@ -4,36 +4,36 @@ import toast from "react-hot-toast";
 
 import warning from "../../../assets/svg/warning.svg";
 
-const maxFilesPerThread = 10;
+const maxFilesPerMessage = 10;
 const initialState = {
-    threadValue: "",
-    threadFiles: [],
+    message: "",
+    messageFiles: [],
     isEmojiPickerOpen: false,
 };
 
 function reducer(state, action) {
     switch (action.type) {
-        case "setNewThreadValue":
-            return { ...state, threadValue: action.threadValue };
+        case "setMessage":
+            return { ...state, message: action.message };
 
-        case "setNewThreadFiles":
+        case "setMessageFiles":
             return {
                 ...state,
-                threadFiles: [...state.threadFiles, action.payload],
+                messageFiles: [...state.messageFiles, action.payload],
             };
 
-        case "removeNewThreadFile":
+        case "removeMessageFile":
             return {
                 ...state,
-                threadFiles: state.threadFiles.filter(
-                    (threadFile, index) => index !== action.removeIndex
+                messageFiles: state.messageFiles.filter(
+                    (messageFile, index) => index !== action.removeIndex
                 ),
             };
 
-        case "setNewThreadEmoji":
+        case "setMessageEmoji":
             return {
                 ...state,
-                threadValue: state.threadValue + action.emoji,
+                message: state.message + action.emoji,
             };
 
         case "toggleEmojiPicker":
@@ -47,19 +47,25 @@ function reducer(state, action) {
     }
 }
 
-function useThreadInput() {
+function useMessageInput() {
     const [state, dispatch] = useReducer(reducer, initialState);
-    const { threadFiles, isEmojiPickerOpen } = state;
+    const { messageFiles, isEmojiPickerOpen } = state;
     const fileUploadRef = useRef(null);
 
     const [referenceElement, setReferenceElement] = useState(null);
     const [popperElement, setPopperElement] = useState(null);
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: "bottom",
+        placement: "top-start",
+        modifiers: {
+            name: "offset",
+            options: {
+                offset: [10, 14],
+            },
+        },
     });
 
     function checkFilesQuantity(i) {
-        if (threadFiles.length + i + 1 <= maxFilesPerThread) {
+        if (messageFiles.length + i + 1 <= maxFilesPerMessage) {
             return true;
         } else {
             toast(
@@ -82,7 +88,7 @@ function useThreadInput() {
         }
     }
 
-    function handleThreadInputOnPaste(e) {
+    function handleMessageInputOnPaste(e) {
         const items = e.clipboardData.items;
 
         for (let i = 0; i < items.length; i++) {
@@ -103,9 +109,9 @@ function useThreadInput() {
                         const pastedFile = reader.result;
 
                         dispatch({
-                            type: "setNewThreadFiles",
+                            type: "setMessageFiles",
                             payload: {
-                                threadFile: pastedFile,
+                                messageFile: pastedFile,
                                 fileType: fileType,
                             },
                         });
@@ -130,9 +136,9 @@ function useThreadInput() {
                     const readImg = reader.result;
 
                     dispatch({
-                        type: "setNewThreadFiles",
+                        type: "setMessageFiles",
                         payload: {
-                            threadFile: readImg,
+                            messageFile: readImg,
                             fileType: fileType,
                         },
                     });
@@ -142,7 +148,6 @@ function useThreadInput() {
     }
 
     function handleFileOnDrop(e) {
-        e.preventDefault();
         const droppedFiles = e.dataTransfer.files;
 
         for (let i = 0; i < droppedFiles.length; i++) {
@@ -158,13 +163,13 @@ function useThreadInput() {
 
                     reader.onload = function () {
                         const fileType = droppedFile.type.split("/").at(-1);
-                        const droppedFile = reader.result;
+                        const messageFile = reader.result;
 
                         dispatch({
-                            type: "setNewThreadFiles",
+                            type: "setMessageFiles",
                             payload: {
-                                threadFile: droppedFile,
                                 fileType: fileType,
+                                messageFile: messageFile,
                             },
                         });
                     };
@@ -192,7 +197,7 @@ function useThreadInput() {
     }, [referenceElement, popperElement, isEmojiPickerOpen, dispatch]);
 
     return {
-        handleThreadInputOnPaste,
+        handleMessageInputOnPaste,
         handleFileUpload,
         handleFileOnDrop,
         fileUploadRef,
@@ -205,4 +210,4 @@ function useThreadInput() {
     };
 }
 
-export default useThreadInput;
+export default useMessageInput;

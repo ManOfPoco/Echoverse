@@ -17,11 +17,9 @@ import useWindowDimensions from "../hooks/useWindowDimensions";
 
 import person from "../assets/img/person.jpg";
 import chatBubble from "../assets/svg/chatBubble.svg";
-import add from "../assets/svg/add.svg";
-import gif from "../assets/svg/gif.svg";
-import smileEmoji from "../assets/svg/smileEmoji.svg";
 
 import messages from "../assets/data/messages.json";
+import MessageInputField from "../features/GameThreadChannel/components/MessageInputField";
 
 const thread = {
     id: 1,
@@ -47,13 +45,12 @@ const thread = {
 function GameThreadsChannel() {
     const [setIsSideNavBarActive] = useOutletContext();
 
-    const [message, setMessage] = useState("");
     const { game, threadId } = useParams();
     const { width, height } = useWindowDimensions();
     const { title, gameTags, initialMessage } = thread;
 
     return (
-        <div className="w-full bg-gray-chat">
+        <div className="flex h-dvh w-full flex-col bg-gray-chat">
             <div className="flex items-center border-b border-black-dark shadow-lg">
                 <MobileNavBarIcon
                     setIsSideNavBarActive={setIsSideNavBarActive}
@@ -86,6 +83,7 @@ function GameThreadsChannel() {
                     {width >= 768 && <ChannelInnerNavBar />}
                 </div>
             </div>
+
             <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-113px)]">
                 <div>
                     <div>
@@ -101,31 +99,7 @@ function GameThreadsChannel() {
                     <Messages messages={messages} />
                 </div>
             </div>
-            <div className="mx-4 mb-4 flex items-center justify-between gap-5 rounded-lg bg-gray-dark px-2 py-1">
-                <div className="flex items-center gap-2">
-                    <img draggable={false} src={add} className="h-7 w-7" />
-                    <TextareaInput
-                        placeholder="Message"
-                        size="min-h-7 w-full sm:max-w-[524px]"
-                        resizeLimit={height > 300 ? height - 200 : height}
-                        padding="py-2"
-                        resize="none"
-                        bgColor="bg-gray-dark"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        // onPaste={(e) => handleThreadInputOnPaste(e)}
-                        // onDrop={(e) => handleImageOnDrop(e)}
-                    />
-                </div>
-                <div className="flex items-center gap-4">
-                    <img draggable={false} src={gif} className="h-7 w-7" />
-                    <img
-                        draggable={false}
-                        src={smileEmoji}
-                        className="h-6 w-6"
-                    />
-                </div>
-            </div>
+            <MessageInputField />
         </div>
     );
 }

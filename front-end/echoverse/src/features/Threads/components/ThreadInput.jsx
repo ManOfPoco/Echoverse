@@ -27,7 +27,6 @@ function ThreadInputField({ inputPlaceholder, btnText }) {
         state,
         dispatch,
     } = useThreadInput();
-
     const { threadValue, threadFiles, isEmojiPickerOpen } = state;
 
     const { height } = useWindowDimensions();

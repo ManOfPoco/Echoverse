@@ -11,7 +11,7 @@ import shorts from "../../../assets/img/shorts.mp4";
 import video1 from "../../../assets/img/video1.mp4";
 import video2 from "../../../assets/img/video2.mp4";
 
-import { getFileExtention } from "../../GameThreadChannel/utils/getFileExtention";
+import { getFileExtention } from "../utils/getFileExtention";
 import {
     ACCEPTABLE_IMAGE_EXTENTIONS,
     ACCEPTABLE_VIDEO_EXTENTIONS,

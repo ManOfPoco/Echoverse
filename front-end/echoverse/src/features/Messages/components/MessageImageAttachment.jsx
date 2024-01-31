@@ -12,7 +12,28 @@ function MessageImageAttachment({ filesQuantity, image, senderId }) {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
-        <>
+        <div
+            className="relative flex-channel-images cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            {isHovered && currentUserId === senderId && (
+                <DeleteFileButton
+                    deleteSvg={trashCan}
+                    roundness="rounded-md"
+                    onClick={() => console.log("click")}
+                />
+            )}
+            <div
+                className="absolute z-20 flex h-full w-full"
+                onClick={() => setIsFullScreenModalOpen(true)}
+            />
+            <img
+                src={image}
+                className={`h-full w-full rounded-lg ${
+                    filesQuantity === 1 ? "max-h-96" : "max-h-80 object-cover"
+                }`}
+            />
             {isFullScreenModalOpen && (
                 <FullScreenContentModal
                     isOpen={isFullScreenModalOpen}
@@ -26,29 +47,7 @@ function MessageImageAttachment({ filesQuantity, image, senderId }) {
                     />
                 </FullScreenContentModal>
             )}
-            <div
-                className="relative flex-channel-images cursor-pointer"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                {isHovered && currentUserId === senderId && (
-                    <DeleteFileButton
-                        deleteSvg={trashCan}
-                        roundness="rounded-md"
-                        onClick={() => console.log("click")}
-                    />
-                )}
-                <img
-                    src={image}
-                    className={`h-full w-full rounded-lg ${
-                        filesQuantity === 1
-                            ? "max-h-96"
-                            : "max-h-80 object-cover"
-                    }`}
-                    onClick={() => setIsFullScreenModalOpen(true)}
-                />
-            </div>
-        </>
+        </div>
     );
 }
 
