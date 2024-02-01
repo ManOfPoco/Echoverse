@@ -20,7 +20,7 @@ function generateGetBoundingClientRect(top, left) {
                 left: left,
                 bottom: 0,
                 right: 0,
-                width: 192,
+                width: 0,
                 height: 0,
             };
         },

@@ -13,8 +13,7 @@ function formatUserCardDate(timestamp) {
         "Nov",
         "Dec",
     ];
-
-    const date = new Date(timestamp);
+    const date = new Date(Number(timestamp));
 
     const month = months[date.getMonth()];
     const day = date.getDate();

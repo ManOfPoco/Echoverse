@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 
 import BreadCrumbNavBar from "../components/BreadCrumbNavBar";
@@ -10,6 +10,8 @@ import Messages from "../features/Messages/components/Messages";
 import Message from "../features/Messages/components/Message";
 import MobileNavBarIcon from "../features/SideNavBar/components/MobileNavBarIcon";
 import BackButton from "../features/GameThreadChannel/components/BackButton";
+import MessageInputField from "../features/MessageInput/components/MessageInputField";
+import ChannelMembersList from "../features/GameThreadChannel/components/ChannelMembersList";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
@@ -17,7 +19,7 @@ import person from "../assets/img/person.jpg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 
 import messages from "../assets/data/messages.json";
-import MessageInputField from "../features/MessageInput/components/MessageInputField";
+import members from "../assets/data/members.json";
 
 const thread = {
     id: 1,
@@ -88,6 +90,10 @@ function GameThreadsChannel() {
     const { width, height } = useWindowDimensions();
     const { title, gameTags, initialMessage } = thread;
 
+    const [showUserList, setShowUserList] = useState(
+        width <= 1024 ? false : true
+    );
+
     return (
         <div className="flex h-dvh w-full flex-col bg-gray-chat">
             <div className="flex items-center border-b border-black-dark shadow-lg">
@@ -119,30 +125,42 @@ function GameThreadsChannel() {
                         </BreadCrumbNavBar>
                     )}
 
-                    {width >= 768 && <ChannelInnerNavBar />}
+                    <ChannelInnerNavBar setShowUserList={setShowUserList} />
                 </div>
             </div>
 
-            <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-113px)]">
-                <div>
-                    <div>
-                        <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">
-                            <h4 className="text-3xl font-semibold">{title}</h4>
-                            <GameThreadTags tags={gameTags} />
-                        </div>
+            <div className="flex w-full">
+                <div
+                    className={`w-full ${
+                        showUserList ? "lg:w-[calc(100dvw-240px)]" : ""
+                    } `}
+                >
+                    <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-113px)]">
+                        <div>
+                            <div>
+                                <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">
+                                    <h4 className="text-3xl font-semibold">
+                                        {title}
+                                    </h4>
+                                    <GameThreadTags tags={gameTags} />
+                                </div>
 
-                        <div className="font-nunito">
-                            <Message messageObj={initialMessage} />
+                                <div className="font-nunito">
+                                    <Message messageObj={initialMessage} />
+                                </div>
+                            </div>
+                            <Messages
+                                messages={messages}
+                                state={state}
+                                dispatch={dispatch}
+                            />
                         </div>
                     </div>
-                    <Messages
-                        messages={messages}
-                        state={state}
-                        dispatch={dispatch}
-                    />
+                    <MessageInputField state={state} dispatch={dispatch} />
                 </div>
+
+                {showUserList && <ChannelMembersList members={members} />}
             </div>
-            <MessageInputField state={state} dispatch={dispatch} />
         </div>
     );
 }

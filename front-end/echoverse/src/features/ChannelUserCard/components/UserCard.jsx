@@ -18,18 +18,6 @@ import invisibleStatus from "../../../assets/svg/invisibleStatus.svg";
 
 import { formatUserCardDate } from "../utils/formatUserCardDate";
 
-const data = {
-    username: "ManOfPoco",
-    displayName: "ManOfPoco",
-    gamesQuantity: 522,
-    firstName: "John Peterson",
-    description:
-        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-    joinDate: "2023-11-20T18:46:48+00:00",
-    customStatus: "I've completely burned out",
-    status: "online",
-};
-
 const statusImgMapping = {
     online: onlineStatus,
     idle: idleStatus,
@@ -37,7 +25,7 @@ const statusImgMapping = {
     invisible: invisibleStatus,
 };
 
-function UserCard({ showAdditionalOptions = true }) {
+function UserCard({ showAdditionalOptions = true, user }) {
     const navigate = useNavigate();
     const [isSetCustomStatusModalOpen, setIsSetCustomStatusModalOpen] =
         useState(false);
@@ -49,7 +37,7 @@ function UserCard({ showAdditionalOptions = true }) {
         joinDate,
         customStatus,
         status,
-    } = data;
+    } = user;
     const isCurrentUser = false;
 
     const [onlineStatus, setOnlineStatus] = useState(status);
@@ -115,7 +103,7 @@ function UserCard({ showAdditionalOptions = true }) {
                                         />
                                         {isHovered && (
                                             <div
-                                                className="before:border-t-black-night z-50 rounded-lg bg-black-night px-2 py-2 text-sm font-normal capitalize before:absolute before:left-[calc(50%-6px)] before:top-full before:border-l-6 before:border-r-6 before:border-t-6 before:border-l-transparent before:border-r-transparent before:content-['']"
+                                                className="z-50 rounded-lg bg-black-night px-2 py-2 text-sm font-normal capitalize before:absolute before:left-[calc(50%-6px)] before:top-full before:border-l-6 before:border-r-6 before:border-t-6 before:border-l-transparent before:border-r-transparent before:border-t-black-night before:content-['']"
                                                 ref={setPopperElement}
                                                 style={styles.popper}
                                                 {...attributes.popper}

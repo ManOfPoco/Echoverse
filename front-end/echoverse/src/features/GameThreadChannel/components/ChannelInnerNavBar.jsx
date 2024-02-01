@@ -10,14 +10,15 @@ import threads from "../../../assets/svg/threads.svg";
 import pin from "../../../assets/svg/pin.svg";
 import bellFilled from "../../../assets/svg/bellFilled.svg";
 import settingsFilled from "../../../assets/svg/settingsFilled.svg";
+import members from "../../../assets/svg/members.svg";
 
-function ChannelInnerNavBar() {
+function ChannelInnerNavBar({ setShowUserList }) {
     const navigate = useNavigate();
     const [dropdownOpenItem, setDropdownOpenItem] = useState("");
 
     return (
         <div className="flex min-w-fit items-center justify-end gap-3 px-2">
-            <ChannelBreadCrumbNavDropdownItem
+            {/* <ChannelBreadCrumbNavDropdownItem
                 img={threads}
                 alt="threads"
                 title="Start a thread"
@@ -43,6 +44,12 @@ function ChannelInnerNavBar() {
                 alt="settings"
                 title="Server settings"
                 onClick={() => navigate(``)}
+            /> */}
+            <ChannelBreadCrumbNavItem
+                img={members}
+                alt="members"
+                title="Show Members List"
+                onClick={() => setShowUserList((showUserList) => !showUserList)}
             />
             <SearchForm />
         </div>
