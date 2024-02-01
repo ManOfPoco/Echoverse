@@ -10,7 +10,7 @@ import add from "../../../assets/svg/add.svg";
 import smileEmoji from "../../../assets/svg/smileEmoji.svg";
 
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import useMessageInput from "../../GameThreadChannel/hooks/useMessageInput";
+import useMessageInput from "../hooks/useMessageInput";
 
 import { createPortal } from "react-dom";
 import MessageInputModification from "./MessageInputModification";
@@ -66,7 +66,7 @@ function MessageInputField({
                 <MessageDropzone handleFileOnDrop={handleFileOnDrop} />,
                 document.getElementById("root")
             )}
-            <div className="mx-4 mb-4 divide-y divide-gray-light/20 rounded-lg bg-gray-dark">
+            <div className="mx-4 mb-4 max-h-[75dvh] divide-y divide-gray-light/20 rounded-lg bg-gray-dark">
                 {inputMessageType && (
                     <MessageInputModification
                         inputMessageType={inputMessageType}
@@ -103,11 +103,7 @@ function MessageInputField({
                         <TextareaInput
                             placeholder="Message"
                             size="min-h-7 w-full"
-                            resizeLimit={
-                                width < 576
-                                    ? (height / 100) * 30
-                                    : (height / 100) * 50
-                            }
+                            resizeLimit={(height / 100) * 35}
                             padding="py-2"
                             resize="none"
                             bgColor="bg-gray-dark"

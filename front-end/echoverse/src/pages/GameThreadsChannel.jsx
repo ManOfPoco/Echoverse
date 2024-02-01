@@ -129,9 +129,9 @@ function GameThreadsChannel() {
                 </div>
             </div>
 
-            <div className="flex w-full">
+            <div className="flex h-[calc(100dvh-45px)] w-full md:h-[calc(100dvh-53px)]">
                 <div
-                    className={`w-full ${
+                    className={`flex flex-col w-full ${
                         showUserList ? "lg:w-[calc(100dvw-240px)]" : ""
                     } `}
                 >

@@ -33,12 +33,12 @@ function MessageInputModification({
                     </div>
                 )}
                 {inputMessageType === "edit" && (
-                    <div className="flex gap-3">
+                    <div className="flex gap-3 truncate">
                         <img src={editSVG} className="mt-0.5 h-4 w-4" />
 
-                        <div className="flex flex-col">
+                        <div className="flex flex-col truncate">
                             <h5 className="text-blue-light">Edit message</h5>
-                            <p className="text-xsm">{selectedMessageContent}</p>
+                            <p className="text-xsm truncate">{selectedMessageContent}</p>
                         </div>
                     </div>
                 )}
