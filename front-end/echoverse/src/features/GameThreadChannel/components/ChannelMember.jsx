@@ -1,3 +1,5 @@
+import { useId, useRef, useState } from "react";
+
 import Avatar from "../../../components/Avatar";
 
 import onlineStatus from "../../../assets/svg/onlineStatus.svg";
@@ -5,7 +7,6 @@ import idleStatus from "../../../assets/svg/idleStatus.svg";
 import doNotDisturbStatus from "../../../assets/svg/doNotDisturbStatus.svg";
 import invisibleStatus from "../../../assets/svg/invisibleStatus.svg";
 import person from "../../../assets/img/person.jpg";
-import { useId, useRef, useState } from "react";
 
 const statusImgMapping = {
     online: onlineStatus,
@@ -56,12 +57,7 @@ function ChannelMember({
                 <Avatar img={person} type="xsm" />
                 {status !== "invisible" && status !== "offline" && (
                     <div className="absolute bottom-0 right-0 rounded-full bg-gray-dark p-0.5">
-                        <img
-                            src={onlineStatusImg}
-                            className="h-2.5 w-2.5"
-                            // onMouseEnter={() => setIsHovered(true)}
-                            // onMouseLeave={() => setIsHovered(false)}
-                        />
+                        <img src={onlineStatusImg} className="h-2.5 w-2.5" />
                     </div>
                 )}
             </div>

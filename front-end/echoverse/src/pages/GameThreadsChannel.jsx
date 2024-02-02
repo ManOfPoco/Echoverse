@@ -11,7 +11,7 @@ import Message from "../features/Messages/components/Message";
 import MobileNavBarIcon from "../features/SideNavBar/components/MobileNavBarIcon";
 import BackButton from "../features/GameThreadChannel/components/BackButton";
 import MessageInputField from "../features/MessageInput/components/MessageInputField";
-import ChannelMembersList from "../features/GameThreadChannel/components/ChannelMembersList";
+import MembersList from "../features/GameThreadChannel/components/MembersList";
 
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
@@ -129,13 +129,13 @@ function GameThreadsChannel() {
                 </div>
             </div>
 
-            <div className="flex h-[calc(100dvh-45px)] w-full md:h-[calc(100dvh-53px)]">
+            <div className="flex h-[calc(100dvh-41px)] w-full md:h-[calc(100dvh-49px)]">
                 <div
-                    className={`flex flex-col w-full ${
+                    className={`flex w-full flex-col ${
                         showUserList ? "lg:w-[calc(100dvw-240px)]" : ""
                     } `}
                 >
-                    <div className="flex h-[calc(100dvh-105px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-113px)]">
+                    <div className="flex h-[calc(100dvh-101px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-109px)]">
                         <div>
                             <div>
                                 <div className="flex flex-col gap-2.5 pe-4 ps-4 pt-10 md:pe-8">
@@ -159,7 +159,11 @@ function GameThreadsChannel() {
                     <MessageInputField state={state} dispatch={dispatch} />
                 </div>
 
-                {showUserList && <ChannelMembersList members={members} />}
+                {showUserList && (
+                    <div className="absolute inset-y-0 right-0 top-[41px] z-40 h-[calc(100dvh-41px)] text-platinum md:top-[49px] md:h-[calc(100dvh-49px)] lg:static">
+                        <MembersList members={members} />
+                    </div>
+                )}
             </div>
         </div>
     );

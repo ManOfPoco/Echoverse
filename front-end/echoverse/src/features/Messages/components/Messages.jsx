@@ -3,7 +3,7 @@ import Message from "./Message";
 import useContextMenu from "../hooks/useContextMenu";
 import ContextMenu from "./ContextMenu";
 
-function Messages({ messages, state, dispatch }) {
+function Messages({ messages, dispatch }) {
     const {
         clickedMessage,
         clickedCoordinates,

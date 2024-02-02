@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
-function BackButton() {
+function BackButton({ onClick = null }) {
     const navigate = useNavigate();
 
     return (
         <div
-            className="h-full cursor-pointer px-2 sm:px-3 py-2 md:py-3"
-            onClick={() => navigate(-1)}
+            className="h-full cursor-pointer px-2 py-2 sm:px-3 md:py-3"
+            onClick={onClick ? onClick : () => navigate(-1)}
         >
             <svg
                 className="h-6 w-6"

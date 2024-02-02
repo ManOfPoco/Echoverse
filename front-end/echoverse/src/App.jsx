@@ -34,6 +34,8 @@ import UserGameThreads from "./pages/UserGameThreads";
 import UserSavedThreads from "./pages/UserSavedThreads";
 import UserSavedGameThreads from "./pages/UserSavedGameThreads";
 import GameThreadsChannel from "./pages/GameThreadsChannel";
+import DirectPage from "./pages/DirectPage";
+import Direct from "./pages/Direct";
 
 const router = createBrowserRouter([
     {
@@ -168,9 +170,19 @@ const router = createBrowserRouter([
                 element: <GameThreads />,
             },
             {
-                path: '/games/game-threads/:game/:threadId',
-                element: <GameThreadsChannel />
-            }
+                path: "/games/game-threads/:game/:threadId",
+                element: <GameThreadsChannel />,
+            },
+            {
+                path: "/direct",
+                element: <DirectPage />,
+                children: [
+                    {
+                        path: ":chatId",
+                        element: <Direct />,
+                    },
+                ],
+            },
         ],
     },
 ]);
