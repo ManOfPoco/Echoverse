@@ -9,8 +9,12 @@ function useCloseDropdown(
 ) {
     useEffect(() => {
         function closeDropdown(e) {
-            const isModalOpen =
+            const isHeadLessUiModalOpen =
                 document.getElementById("headlessui-portal-root") !== null;
+            const isDateModalOpen =
+                document.getElementsByClassName("react-datepicker__portal")
+                    .length !== 0;
+            const isModalOpen = isHeadLessUiModalOpen || isDateModalOpen;
 
             if (
                 referenceElement &&

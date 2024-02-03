@@ -25,6 +25,7 @@ function Button({
     customClasses = "",
     action,
     isDisabled = false,
+    disableFocus,
     children,
 }) {
     const btnType = btnTypes[btnClass] || "";
@@ -38,6 +39,7 @@ function Button({
                 isDisabled ? "cursor-not-allowed" : "cursor-pointer"
             }`}
             onClick={action}
+            tabIndex={disableFocus ? "-1" : "0"}
         >
             {children}
         </button>

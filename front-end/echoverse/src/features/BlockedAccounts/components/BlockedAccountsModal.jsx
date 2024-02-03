@@ -64,7 +64,7 @@ function BlockedAccountsModal({
             onClose={() => setIsBlockedAccountsModalOpen(false)}
             title="Blocked accounts"
         >
-            <div className="mt-7 flex h-[330px] flex-col gap-4 overflow-auto">
+            <div className="mt-7 w-full flex h-[330px] px-3 sm:px-8 flex-col gap-4 overflow-auto">
                 {blockedUsers.map((blockedUser) => (
                     <BlockedUser blockedUser={blockedUser} key={blockedUser} />
                 ))}

@@ -14,7 +14,7 @@ import useMessageInput from "../hooks/useMessageInput";
 
 import { createPortal } from "react-dom";
 import MessageInputModification from "./MessageInputModification";
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function MessageInputField({
     state: messageInputState,
@@ -36,7 +36,11 @@ function MessageInputField({
 
     const { inputMessageType, selectedMessage } = messageInputState;
 
-    const { width, height } = useWindowDimensions();
+    const { height } = useWindowDimensions();
+
+    const modificationsRef = useRef(null);
+    const filesRef = useRef(null);
+    const [textAreaHeight, setTextAreaHeight] = useState((height / 100) * 70);
 
     function handleTriggerFileUpload() {
         if (fileUploadRef.current) {
@@ -60,31 +64,47 @@ function MessageInputField({
             });
     }, [dispatch, inputMessageType, selectedMessage]);
 
+    useEffect(() => {
+        const modificationsHeight =
+            modificationsRef?.current?.clientHeight || 0;
+        const filesHeight = filesRef?.current?.clientHeight || 0;
+
+        if (modificationsHeight === 0 && filesHeight === 0)
+            setTextAreaHeight((height / 100) * 70);
+
+
+        if (modificationsHeight || filesHeight) {
+            setTextAreaHeight(
+                (height / 100) * 65 - modificationsHeight - filesHeight
+            );
+        }
+    }, [height]);
+
     return (
         <>
             {createPortal(
                 <MessageDropzone handleFileOnDrop={handleFileOnDrop} />,
                 document.getElementById("root")
             )}
-            <div className="mx-4 mb-4 max-h-[75dvh] divide-y divide-gray-light/20 rounded-lg bg-gray-dark">
+            <div className="mx-4 mb-4 max-h-[80%] divide-y divide-gray-light/20 rounded-lg bg-gray-dark">
                 {inputMessageType && (
                     <MessageInputModification
                         inputMessageType={inputMessageType}
                         selectedMessage={selectedMessage}
                         dispatch={messageInputDispatch}
+                        ref={modificationsRef}
                     />
                 )}
 
                 {messageFiles && messageFiles.length > 0 && (
-                    <div className="px-2.5 py-2">
-                        <MessageInputFiles
-                            messageFiles={messageFiles}
-                            dispatch={dispatch}
-                        />
-                    </div>
+                    <MessageInputFiles
+                        messageFiles={messageFiles}
+                        dispatch={dispatch}
+                        ref={filesRef}
+                    />
                 )}
 
-                <div className="flex h-fit justify-between gap-3 px-2.5 py-1">
+                <div className="flex h-fit justify-between gap-3 overflow-y-auto px-2.5 py-1">
                     <div className="flex h-full w-full gap-3">
                         <input
                             accept="image/gif, image/jpeg, image/png, video/mp4, video/quicktime"
@@ -103,7 +123,7 @@ function MessageInputField({
                         <TextareaInput
                             placeholder="Message"
                             size="min-h-7 w-full"
-                            resizeLimit={(height / 100) * 35}
+                            resizeLimit={textAreaHeight}
                             padding="py-2"
                             resize="none"
                             bgColor="bg-gray-dark"

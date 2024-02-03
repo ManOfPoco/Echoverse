@@ -3,8 +3,11 @@ import Button from "../../../components/Button";
 
 import deleteCross from "../../../assets/svg/deleteCross.svg";
 
-export const FilterStartInput = forwardRef(
-    ({ value, onClick, onChange, startDate, setStartDate }, ref) => (
+export const FilterStartInput = forwardRef(function FilterStartInput(
+    { value, onClick, onChange, startDate, setStartDate },
+    ref
+) {
+    return (
         <div
             className={`flex w-[180px] items-center rounded-lg bg-gray-charcoal px-2 py-1.5`}
         >
@@ -26,12 +29,14 @@ export const FilterStartInput = forwardRef(
                 </Button>
             )}
         </div>
-    )
-);
-FilterStartInput.displayName = "FilterStartInput";
+    );
+});
 
-export const FilterEndInput = forwardRef(
-    ({ value, onClick, onChange, endDate, setEndDate }, ref) => (
+export const FilterEndInput = forwardRef(function FilterEndInput(
+    { value, onClick, onChange, endDate, setEndDate },
+    ref
+) {
+    return (
         <div
             className={`flex w-[180px] items-center rounded-lg bg-gray-charcoal px-2 py-1.5`}
         >
@@ -53,6 +58,5 @@ export const FilterEndInput = forwardRef(
                 </Button>
             )}
         </div>
-    )
-);
-FilterEndInput.displayName = "FilterEndInput";
+    );
+});

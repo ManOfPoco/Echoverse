@@ -10,7 +10,7 @@ function Main() {
     return (
         <>
             <div className="z-10 mx-2 flex flex-col gap-5 font-archivo-black md:mx-10 xl:mx-25 xl:gap-12.5">
-                <h1 className="md:w-[540px] md:text-2xl lg:w-[660px] lg:text-3xl xl:w-[780px] xl:text-5xl ">
+                <h1 className="md:w-[540px] text-lg md:text-2xl lg:w-[660px] lg:text-3xl xl:w-[780px] xl:text-5xl ">
                     Connect, Create, Make Friends - Echoing Conversations in
                     Your Digital Universe
                 </h1>

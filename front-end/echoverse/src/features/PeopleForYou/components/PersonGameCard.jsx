@@ -1,6 +1,7 @@
 import GameCardPlatform from "../../UserGames/components/GameCardPlatform";
 
 function PersonGameCard({ game }) {
+
     return (
         <div className="flex gap-2.5 rounded-xls bg-gray-dark px-2.5 py-1">
             <h5>{game.title}</h5>
@@ -8,7 +9,7 @@ function PersonGameCard({ game }) {
                 {game.platforms.map((platform) => (
                     <GameCardPlatform
                         selectedPlatform={platform}
-                        key={platform}
+                        key={platform.id}
                     />
                 ))}
             </div>

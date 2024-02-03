@@ -6,14 +6,20 @@ import Dropdown from "../../../components/Dropdown";
 import DropdownItem from "../../../components/DropdownItem";
 
 import MoreSvg from "../../../svg/MoreSvg";
+import ConfirmThreadDeleteModal from "./ConfirmThreadDeleteModal";
 
 function ThreadMore({
-    username,
+    thread,
     isBlocked,
     setIsBlocked,
     setIsMuted,
     setIsHidden,
+    pointerEventsClass = "pointer-events-auto",
 }) {
+    const { isOwner, username } = thread;
+    const [isDeleteThreadModalOpen, setIsDeleteThreadModalOpen] =
+        useState(false);
+
     function handleThreadMute() {
         setIsMuted(true);
     }
@@ -32,27 +38,47 @@ function ThreadMore({
         });
     }
 
+    function handleOpenDeleteThreadModal() {
+        setIsDeleteThreadModalOpen(true);
+    }
+
     return (
-        <div className="pointer-events-auto z-50 cursor-pointer">
-            <Dropdown
-                title={<MoreSvg />}
-                placement="bottom-end"
-                className="w-40 divide-y divide-gray-light/40 rounded-lg"
-            >
-                <DropdownItem itemType="action" onClick={handleThreadMute}>
-                    Mute
-                </DropdownItem>
-                <DropdownItem itemType="action" onClick={handleThreadHide}>
-                    Hide
-                </DropdownItem>
-                <DropdownItem
-                    itemType="action"
-                    onClick={handleThreadBlock}
-                    className="text-red-fire-engine"
+        <div>
+            <ConfirmThreadDeleteModal
+                thread={thread}
+                isDeleteThreadModalOpen={isDeleteThreadModalOpen}
+                setIsDeleteThreadModalOpen={setIsDeleteThreadModalOpen}
+            />
+            <div className={`${pointerEventsClass} z-50 cursor-pointer`}>
+                <Dropdown
+                    title={<MoreSvg />}
+                    placement="bottom-end"
+                    className="w-40 divide-y divide-gray-light/40 rounded-lg"
                 >
-                    Block
-                </DropdownItem>
-            </Dropdown>
+                    <DropdownItem itemType="action" onClick={handleThreadMute}>
+                        Mute
+                    </DropdownItem>
+                    <DropdownItem itemType="action" onClick={handleThreadHide}>
+                        Hide
+                    </DropdownItem>
+                    {isOwner && (
+                        <DropdownItem
+                            itemType="action"
+                            onClick={handleOpenDeleteThreadModal}
+                            className="text-red-fire-engine"
+                        >
+                            Delete
+                        </DropdownItem>
+                    )}
+                    <DropdownItem
+                        itemType="action"
+                        onClick={handleThreadBlock}
+                        className="text-red-fire-engine"
+                    >
+                        Block
+                    </DropdownItem>
+                </Dropdown>
+            </div>
         </div>
     );
 }

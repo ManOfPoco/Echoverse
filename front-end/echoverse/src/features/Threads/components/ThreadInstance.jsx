@@ -10,27 +10,39 @@ import ThreadMore from "./ThreadMore";
 import MutedThread from "./MutedThread";
 import HiddenThread from "./HiddenThread";
 
-function ThreadInstance({ thread }) {
-    const { avatar, username, postedAgo, isBlocked: isUserBlocked } = thread;
+function ThreadInstance({ thread, enablePointerEvents = true }) {
+    const {
+        id,
+        avatar,
+        username,
+        postedAgo,
+        isBlocked: isUserBlocked,
+    } = thread;
 
     const [isMuted, setIsMuted] = useState(false);
     const [isHidden, setIsHidden] = useState(false);
     const [isBlocked, setIsBlocked] = useState(isUserBlocked);
+
+    const pointerEventsClass = enablePointerEvents
+        ? "pointer-events-auto"
+        : "pointer-events-none";
 
     return (
         <>
             {!isMuted && !isHidden && (
                 <div className="relative w-full gap-3 py-4">
                     <Link
-                        to={`/${thread.username}/threads/${thread.id}`}
+                        to={`/${username}/threads/${id}`}
                         className="absolute inset-0"
+                        tabIndex="-1"
                     />
                     <div className="flex gap-3">
                         <div className="pointer-events-none relative min-w-fit">
                             <Link
                                 to={`/${username}`}
-                                key={thread.id}
-                                className="pointer-events-auto"
+                                key={id}
+                                className={`${pointerEventsClass}`}
+                                tabIndex="-1"
                             >
                                 <Avatar img={avatar} type="sm" />
                             </Link>
@@ -41,8 +53,9 @@ function ThreadInstance({ thread }) {
                                 <div className="pointer-events-none relative flex items-center justify-between">
                                     <Link
                                         to={`/${username}`}
-                                        key={thread.id}
-                                        className="pointer-events-auto"
+                                        key={id}
+                                        className={`${pointerEventsClass}`}
+                                        tabIndex="-1"
                                     >
                                         <h4 className="text-base font-semibold hover:underline">
                                             {username}
@@ -55,11 +68,14 @@ function ThreadInstance({ thread }) {
                                         </span>
 
                                         <ThreadMore
-                                            username={username}
+                                            thread={thread}
                                             isBlocked={isBlocked}
                                             setIsBlocked={setIsBlocked}
                                             setIsMuted={setIsMuted}
                                             setIsHidden={setIsHidden}
+                                            pointerEventsClass={
+                                                pointerEventsClass
+                                            }
                                         />
                                     </div>
                                 </div>
@@ -67,7 +83,10 @@ function ThreadInstance({ thread }) {
                                 <ThreadInstanceBody thread={thread} />
                             </div>
 
-                            <ThreadInstanceInteractButtons thread={thread} />
+                            <ThreadInstanceInteractButtons
+                                thread={thread}
+                                pointerEventsClass={pointerEventsClass}
+                            />
                         </div>
                     </div>
                 </div>

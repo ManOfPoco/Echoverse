@@ -34,7 +34,7 @@ function SpecificThreadBody({
                             {postedAgo}
                         </span>
                         <ThreadMore
-                            username={username}
+                            thread={thread}
                             isBlocked={isBlocked}
                             setIsBlocked={setIsBlocked}
                             setIsMuted={setIsMuted}

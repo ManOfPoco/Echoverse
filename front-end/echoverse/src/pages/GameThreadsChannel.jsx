@@ -102,7 +102,7 @@ function GameThreadsChannel() {
                 />
 
                 {width < 1024 && <BackButton />}
-                <div className="flex items-center justify-between truncate lg:px-3">
+                <div className="flex w-full items-center justify-between truncate lg:px-3">
                     {width < 1024 ? (
                         <BreadCrumbNavBar img={chatBubble}>
                             <BreadCrumbNavBarElement

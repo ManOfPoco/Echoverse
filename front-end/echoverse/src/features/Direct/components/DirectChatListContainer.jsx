@@ -6,7 +6,7 @@ import DirectChatList from "./DirectChatList";
 function DirectChatListContainer({ setIsSideNavBarActive }) {
     return (
         <>
-            <div className="flex flex-col w-full sm:w-80">
+            <div className="flex w-full flex-col sm:w-80">
                 <div className="flex items-center pb-2 pt-3">
                     <MobileNavBarIcon
                         setIsSideNavBarActive={setIsSideNavBarActive}

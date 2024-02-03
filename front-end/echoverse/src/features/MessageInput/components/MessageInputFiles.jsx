@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, forwardRef } from "react";
 
 import MessageInputImageFile from "./MessageInputImageFile";
 import MessageInputVideoFile from "./MessageInputVideoFile";
@@ -8,9 +8,12 @@ import {
     ACCEPTABLE_VIDEO_EXTENTIONS,
 } from "../../../../constants";
 
-function MessageInputFiles({ messageFiles, dispatch }) {
+const MessageInputFiles = forwardRef(function MessageInputFiles({
+    messageFiles,
+    dispatch,
+}, ref) {
     return (
-        <div className="flex w-full gap-1 overflow-x-auto py-1">
+        <div className="flex w-full gap-1 overflow-x-auto px-2.5 py-3" ref={ref}>
             {messageFiles.map((file, index) => (
                 <Fragment key={index}>
                     {ACCEPTABLE_IMAGE_EXTENTIONS.includes(file.fileType) && (
@@ -31,6 +34,6 @@ function MessageInputFiles({ messageFiles, dispatch }) {
             ))}
         </div>
     );
-}
+});
 
 export default MessageInputFiles;

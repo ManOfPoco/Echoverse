@@ -94,11 +94,11 @@ function useMessageInput() {
         for (let i = 0; i < items.length; i++) {
             const item = items[i];
 
-            if (checkFilesQuantity(i)) {
-                if (
-                    item.type.indexOf("image") !== -1 ||
-                    item.type.indexOf("video") !== -1
-                ) {
+            if (
+                item.type.indexOf("image") !== -1 ||
+                item.type.indexOf("video") !== -1
+            ) {
+                if (checkFilesQuantity(i)) {
                     const blob = item.getAsFile();
 
                     if (!blob) {
@@ -149,11 +149,11 @@ function useMessageInput() {
         for (let i = 0; i < droppedFiles.length; i++) {
             const droppedFile = droppedFiles[i];
 
-            if (checkFilesQuantity(i)) {
-                if (
-                    (droppedFile.type.indexOf("image") !== -1 ||
-                        droppedFile.type.indexOf("video")) !== -1
-                ) {
+            if (
+                (droppedFile.type.indexOf("image") !== -1 ||
+                    droppedFile.type.indexOf("video")) !== -1
+            ) {
+                if (checkFilesQuantity(i)) {
                     const fileType = droppedFile.type.split("/").at(-1);
                     const previewURL = URL.createObjectURL(droppedFile);
 

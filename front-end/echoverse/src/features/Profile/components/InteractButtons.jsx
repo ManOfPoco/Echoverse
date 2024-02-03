@@ -34,7 +34,7 @@ function InteractButtons({ isCurrentUser, data }) {
 
     return (
         <>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center flex-wrap gap-4">
                 {isCurrentUser ? (
                     <div className="flex items-center gap-3">
                         <Button

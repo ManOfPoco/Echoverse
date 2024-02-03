@@ -112,9 +112,9 @@ function NavBar() {
                         <NavLink link="/games" enableGrayHover={false}>
                             Games
                         </NavLink>
-                        <NavLink link="/about" enableGrayHover={false}>
+                        {/* <NavLink link="/about" enableGrayHover={false}>
                             About
-                        </NavLink>
+                        </NavLink> */}
                     </div>
                 </div>
                 <div className="flex items-center gap-2 md:gap-4 xl:gap-8">

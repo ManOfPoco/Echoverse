@@ -32,7 +32,7 @@ function SetNewPassword() {
                 leaveTo="transform scale-95 opacity-0"
             >
                 <div className="max-w-lg rounded-xl bg-indigo-950">
-                    <div className="flex flex-col items-center px-16 py-14 text-center">
+                    <div className="flex flex-col items-center px-8 sm:px-16 py-14 sm:py-14 text-center">
                         <ModalImage img={securityKey} alt="securityKey" />
                         <div className="py-8 font-archivo-black">
                             <div className="pb-4 text-3xl">

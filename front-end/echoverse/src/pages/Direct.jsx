@@ -22,22 +22,32 @@ import DropdownUserCard from "../features/ChannelUserCard/components/DropdownUse
 const modifiers = [
     {
         name: "flip",
+        phase: "afterWrite",
         options: {
             fallbackPlacements: ["bottom"],
+            altAxis: true,
+            rootBoundary: "document",
+            altBoundary: true,
+            boundary: document.body,
         },
         enabled: true,
     },
     {
         name: "preventOverflow",
+        phase: "afterWrite",
         options: {
             altAxis: true,
+            rootBoundary: "document",
+            altBoundary: true,
+            boundary: document.body,
+            tether: false,
         },
         enabled: true,
     },
     {
         name: "offset",
         options: {
-            offset: [-4, 0],
+            offset: [0, 0],
         },
     },
 ];
@@ -124,7 +134,7 @@ function Direct() {
                 <div className="flex w-full items-center justify-between gap-5 px-2">
                     <DropdownUserCard
                         referenceElement={
-                            <div className="flex w-full cursor-pointer items-center gap-3 truncate py-1">
+                            <div className="flex cursor-pointer items-center gap-3 truncate py-1">
                                 <div className="relative">
                                     <Avatar img={person} type="sm" />
                                     {status !== "invisible" &&
@@ -145,7 +155,7 @@ function Direct() {
                         showAdditionalOptions={false}
                     />
 
-                    <div>
+                    <div className="hidden sm:block">
                         <SearchForm />
                     </div>
                 </div>

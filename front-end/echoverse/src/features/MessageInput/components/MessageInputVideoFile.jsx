@@ -6,9 +6,13 @@ import DeleteFileButton from "../../../components/DeleteFileButton";
 import MessageVideoPlayButton from "../../Messages/components/MessageVideoPlayButton";
 
 import trashCan from "../../../assets/svg/trashCan.svg";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
 
 function MessageInputVideoFile({ video, index, dispatch }) {
     const [isFullScreenModalOpen, setIsFullScreenModalOpen] = useState(false);
+
+    const { height } = useWindowDimensions();
+    const maxHeight = height <= 576 ? Math.min(208, (height / 100) * 30) : 256;
 
     const videoRef = useRef(null);
     const { file, previewURL } = video;
@@ -45,7 +49,10 @@ function MessageInputVideoFile({ video, index, dispatch }) {
     }, [file, isFullScreenModalOpen]);
 
     return (
-        <div className="relative max-h-80 min-w-fit cursor-pointer sm:max-h-64">
+        <div
+            className="relative aspect-video min-w-fit cursor-pointer"
+            style={{ maxHeight: maxHeight }}
+        >
             <DeleteFileButton
                 deleteSvg={trashCan}
                 roundness="rounded-md"
@@ -54,7 +61,7 @@ function MessageInputVideoFile({ video, index, dispatch }) {
 
             <MessageVideoPlayButton onClick={handleSetUpFullScreenVideo} />
             <video
-                className="h-full max-h-80 w-full rounded-lg object-cover"
+                className="h-full w-full rounded-lg object-cover"
                 preload="metadata"
             >
                 <source src={previewURL} type="video/mp4" />

@@ -123,14 +123,14 @@ function GamingCalendar({ isCurrentUser, data }) {
                 dispatch={dispatch}
                 state={state}
             />
-            <div className="w-[300px] divide-y divide-black-dark sm:w-[328px] lg:h-[293px]">
+            <div className="relative w-[300px] divide-y divide-black-dark sm:w-[328px] lg:h-[293px] sm:text-sm">
                 <div
                     className={`flex w-full justify-center bg-blue-prussian py-2 ${
                         isCalendarOpen ? "rounded-t-xl" : "rounded-xl"
                     }`}
                 >
                     <h3 className="pe-5 sm:pe-0">Gaming Calendar</h3>
-                    <div className="absolute flex w-[300px] justify-end gap-3 pe-2 sm:w-[328px]">
+                    <div className="absolute right-0 flex gap-2.5 sm:gap-3 pe-2">
                         {isCurrentUser && (
                             <>
                                 <Button action={() => handleChangeMode("edit")}>

@@ -303,7 +303,7 @@ const calendarData = {
 };
 
 function Profile() {
-    const isCurrentUser = false;
+    const isCurrentUser = true;
 
     const [isFollowersModalOpen, setIsFollowersModalOpen] = useState(false);
     const [isFollowingModalOpen, setIsFollowingModalOpen] = useState(false);
@@ -326,8 +326,8 @@ function Profile() {
 
             <div className="h-full min-h-[calc(100dvh-72px)] max-w-full bg-black-night lg:min-h-[calc(100dvh-80px)] xl:min-h-[calc(100dvh-126px)]">
                 <div className="w-full max-w-[1080px] lg:mx-auto">
-                    <div className="flex h-full w-full border-white px-5 pt-5 md:border-b md:pb-5 lg:px-0">
-                        <div className="flex min-w-fit px-2 md:hidden">
+                    <div className="flex h-full w-full border-white px-4 pt-4 md:border-b md:pb-5 lg:px-0">
+                        <div className="flex min-w-fit pe-2 md:hidden">
                             <Avatar img={person} type="lg" />
                         </div>
                         <div className="hidden min-w-fit pe-5 md:flex">
@@ -360,7 +360,7 @@ function Profile() {
                                         />
                                     </UserData>
                                 </div>
-                                <div className="hidden pt-2 md:flex md:flex-col lg:pt-0">
+                                <div className="hidden pt-2 md:block lg:pt-0">
                                     <GamingCalendar
                                         isCurrentUser={isCurrentUser}
                                         data={calendarData}
@@ -369,7 +369,7 @@ function Profile() {
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-4 border-b border-white p-5 md:hidden">
+                    <div className="flex flex-col gap-4 border-b border-white p-4 md:hidden">
                         <UserData data={data}>
                             <UserStatistics
                                 data={data}

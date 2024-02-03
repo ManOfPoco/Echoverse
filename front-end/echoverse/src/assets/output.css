@@ -850,6 +850,10 @@ video {
   aspect-ratio: 1 / 1;
 }
 
+.aspect-video{
+  aspect-ratio: 16 / 9;
+}
+
 .h-1{
   height: 0.25rem;
 }
@@ -1007,6 +1011,10 @@ video {
   max-height: 13rem;
 }
 
+.max-h-6{
+  max-height: 1.5rem;
+}
+
 .max-h-60{
   max-height: 15rem;
 }
@@ -1027,16 +1035,16 @@ video {
   max-height: 1000px;
 }
 
-.max-h-\[75dvh\]{
-  max-height: 75dvh;
+.max-h-\[80\%\]{
+  max-height: 80%;
 }
 
 .max-h-\[80dvh\]{
   max-height: 80dvh;
 }
 
-.max-h-\[calc\(100dvh-117px\)\]{
-  max-height: calc(100dvh - 117px);
+.max-h-\[calc\(100dvh-112px\)\]{
+  max-height: calc(100dvh - 112px);
 }
 
 .max-h-\[calc\(100dvh-124px\)\]{
@@ -1045,6 +1053,10 @@ video {
 
 .min-h-10{
   min-height: 2.5rem;
+}
+
+.min-h-6{
+  min-height: 1.5rem;
 }
 
 .min-h-7{
@@ -1179,10 +1191,6 @@ video {
   width: 112px;
 }
 
-.w-\[179px\]{
-  width: 179px;
-}
-
 .w-\[180px\]{
   width: 180px;
 }
@@ -1264,6 +1272,10 @@ video {
   min-width: 2.5rem;
 }
 
+.min-w-6{
+  min-width: 1.5rem;
+}
+
 .min-w-7{
   min-width: 1.75rem;
 }
@@ -1293,6 +1305,10 @@ video {
   min-width: 100%;
 }
 
+.max-w-6{
+  max-width: 1.5rem;
+}
+
 .max-w-72{
   max-width: 18rem;
 }
@@ -1309,12 +1325,24 @@ video {
   max-width: 1440px;
 }
 
+.max-w-\[179px\]{
+  max-width: 179px;
+}
+
+.max-w-\[229px\]{
+  max-width: 229px;
+}
+
 .max-w-\[244px\]{
   max-width: 244px;
 }
 
 .max-w-\[320px\]{
   max-width: 320px;
+}
+
+.max-w-\[420px\]{
+  max-width: 420px;
 }
 
 .max-w-\[450px\]{
@@ -1396,6 +1424,10 @@ video {
 
 .basis-20{
   flex-basis: 5rem;
+}
+
+.basis-24{
+  flex-basis: 6rem;
 }
 
 .basis-48{
@@ -1957,12 +1989,28 @@ video {
   background-size: contain;
 }
 
+.fill-none{
+  fill: none;
+}
+
+.fill-pink-600{
+  fill: #db2777;
+}
+
+.fill-platinum{
+  fill: #E1E1E8;
+}
+
 .fill-red-fire-engine{
   fill: #CE3124;
 }
 
 .fill-white{
   fill: #fff;
+}
+
+.stroke-\[\#71767B\]{
+  stroke: #71767B;
 }
 
 .stroke-gray-clear{
@@ -2008,10 +2056,6 @@ video {
 
 .p-4{
   padding: 1rem;
-}
-
-.p-5{
-  padding: 1.25rem;
 }
 
 .p-8{
@@ -2076,6 +2120,11 @@ video {
 .px-5{
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.px-8{
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .py-0{
@@ -2991,8 +3040,8 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-charcoal\/20:hover{
-  background-color: rgb(55 65 81 / 0.2);
+.hover\:bg-gray-charcoal\/30:hover{
+  background-color: rgb(55 65 81 / 0.3);
 }
 
 .hover\:bg-gray-clear\/30:hover{
@@ -3182,6 +3231,10 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     margin-bottom: 0.125rem;
   }
 
+  .sm\:block{
+    display: block;
+  }
+
   .sm\:h-44{
     height: 11rem;
   }
@@ -3222,10 +3275,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     width: 356px;
   }
 
-  .sm\:w-\[420px\]{
-    width: 420px;
-  }
-
   .sm\:w-\[calc\(100dvw-320px\)\]{
     width: calc(100dvw - 320px);
   }
@@ -3237,10 +3286,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 
   .sm\:max-w-\[524px\]{
     max-width: 524px;
-  }
-
-  .sm\:max-w-80{
-    max-width: 20rem;
   }
 
   .sm\:grid-cols-2{
@@ -3263,6 +3308,10 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     gap: 0.5rem;
   }
 
+  .sm\:gap-3{
+    gap: 0.75rem;
+  }
+
   .sm\:p-3{
     padding: 0.75rem;
   }
@@ -3274,6 +3323,11 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
   .sm\:px-0{
     padding-left: 0px;
     padding-right: 0px;
+  }
+
+  .sm\:px-16{
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .sm\:px-3{
@@ -3294,6 +3348,11 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
   .sm\:px-8{
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .sm\:py-14{
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
   }
 
   .sm\:py-2{
@@ -3401,8 +3460,8 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     height: calc(100dvh - 49px);
   }
 
-  .md\:max-h-\[calc\(100dvh-125px\)\]{
-    max-height: calc(100dvh - 125px);
+  .md\:max-h-\[calc\(100dvh-120px\)\]{
+    max-height: calc(100dvh - 120px);
   }
 
   .md\:w-48{
@@ -3432,10 +3491,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .md\:flex-col{
-    flex-direction: column;
   }
 
   .md\:gap-4{
@@ -3617,12 +3672,12 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     height: calc(100dvh - 80px);
   }
 
-  .lg\:max-h-\[calc\(100dvh-132px\)\]{
-    max-height: calc(100dvh - 132px);
+  .lg\:max-h-\[calc\(100dvh-128px\)\]{
+    max-height: calc(100dvh - 128px);
   }
 
-  .lg\:max-h-\[calc\(100dvh-133px\)\]{
-    max-height: calc(100dvh - 133px);
+  .lg\:max-h-\[calc\(100dvh-132px\)\]{
+    max-height: calc(100dvh - 132px);
   }
 
   .lg\:min-h-\[706px\]{
@@ -3635,10 +3690,6 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
 
   .lg\:w-52{
     width: 13rem;
-  }
-
-  .lg\:w-56{
-    width: 14rem;
   }
 
   .lg\:w-64{
@@ -3833,12 +3884,12 @@ textarea::-ms-input-placeholder input::-ms-input-placeholder {
     height: calc(100dvh - 126px);
   }
 
-  .xl\:max-h-\[calc\(100dvh-178px\)\]{
-    max-height: calc(100dvh - 178px);
+  .xl\:max-h-\[calc\(100dvh-174px\)\]{
+    max-height: calc(100dvh - 174px);
   }
 
-  .xl\:max-h-\[calc\(100dvh-179px\)\]{
-    max-height: calc(100dvh - 179px);
+  .xl\:max-h-\[calc\(100dvh-178px\)\]{
+    max-height: calc(100dvh - 178px);
   }
 
   .xl\:min-h-\[730px\]{

@@ -34,6 +34,7 @@ function ConfirmGameDeletionModal({ state, dispatch }) {
                 dispatch({ type: "closeConfirmDeleteGameFromLibraryModal" })
             }
             bgColor="bg-gray-dark"
+            handleDelete={handleDeleteGame}
         >
             <div className="flex flex-col gap-2">
                 <h5 className="text-lg font-medium">
@@ -50,24 +51,6 @@ function ConfirmGameDeletionModal({ state, dispatch }) {
                     className="h-40 w-72 self-center rounded-xl sm:h-44 sm:w-80"
                     onError={(e) => handleImgNotFound(e)}
                 />
-                <div className="mt-2 flex justify-end gap-1 py-1">
-                    <Button
-                        btnClass="secondary"
-                        size="h-9 w-28"
-                        roundness="rounded-lg"
-                        action={handleCloseModal}
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        btnClass="danger"
-                        size="h-9 w-28"
-                        roundness="rounded-lg"
-                        action={handleDeleteGame}
-                    >
-                        Delete
-                    </Button>
-                </div>
             </div>
         </ConfirmationModal>
     );

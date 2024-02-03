@@ -80,11 +80,19 @@ function Filter({
 
     useEffect(() => {
         function closeFilter(e) {
+            const isHeadLessUiModalOpen =
+                document.getElementById("headlessui-portal-root") !== null;
+            const isDateModalOpen =
+                document.getElementsByClassName("react-datepicker__portal")
+                    .length !== 0;
+            const isModalOpen = isHeadLessUiModalOpen || isDateModalOpen;
+
             if (
                 referenceElement &&
                 isOpen &&
                 !referenceElement.contains(e.target) &&
-                !popperElement.contains(e.target)
+                !popperElement.contains(e.target) &&
+                !isModalOpen
             )
                 setIsOpen(false);
         }
@@ -104,70 +112,76 @@ function Filter({
     }
 
     return (
-        <div className={`z-20 ${isOpen ? "z-40" : ""}`}>
-            <div
-                className="flex max-w-fit cursor-pointer items-center rounded-xls bg-gray-dark px-2.5 py-1.5 lg:mx-0"
-                onClick={setIsOpen}
-                ref={setReferenceElement}
-            >
-                <img
-                    draggable={false}
-                    src={filterImg}
-                    alt="sortFilter"
-                    className="h-4 w-4"
-                />
-                <div className="flex ps-2.5">
-                    <h5>{title}</h5>
-                    <img src={dropdownArrowDown} alt="arrowDown" />
+        <div>
+            <div className="z-20">
+                <div
+                    className="flex max-w-fit cursor-pointer items-center rounded-xls bg-gray-dark px-2.5 py-1.5 lg:mx-0"
+                    onClick={setIsOpen}
+                    ref={setReferenceElement}
+                >
+                    <img
+                        draggable={false}
+                        src={filterImg}
+                        alt="sortFilter"
+                        className="h-4 w-4"
+                    />
+                    <div className="flex ps-2.5">
+                        <h5>{title}</h5>
+                        <img src={dropdownArrowDown} alt="arrowDown" />
+                    </div>
                 </div>
             </div>
-            <Transition
-                show={isOpen}
-                enter="transition ease-out duration-300"
-                enterFrom="transform opacity-0"
-                enterTo="transform opacity-100"
-                leave="transition ease-in duration-300"
-                leaveFrom="transform opacity-100"
-                leaveTo="transform opacity-0"
-            >
-                {filterView === "list" && (
-                    <div
-                        className={`mt-1 flex flex-col gap-5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
-                        ref={setPopperElement}
-                        style={styles.popper}
-                        {...attributes.popper}
-                    >
-                        {children}
-                    </div>
-                )}
-                {filterView === "line" && (
-                    <div
-                        className={`mt-1 flex flex-wrap gap-3.5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
-                        ref={setPopperElement}
-                        style={styles.popper}
-                        {...attributes.popper}
-                    >
-                        <span className="w-full pb-2">
-                            <SearchForm
-                                type="full"
-                                query={searchQuery}
-                                onChange={(e) => handleSetSearchQueryTags(e)}
-                            />
-                        </span>
-                        {children}
-                    </div>
-                )}
-                {filterView === "date" && (
-                    <div
-                        className={`mt-1 flex flex-col gap-5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
-                        ref={setPopperElement}
-                        style={styles.popper}
-                        {...attributes.popper}
-                    >
-                        {children}
-                    </div>
-                )}
-            </Transition>
+            <div className="relative z-40">
+                <Transition
+                    show={isOpen}
+                    enter="transition ease-out duration-300"
+                    enterFrom="transform opacity-0"
+                    enterTo="transform opacity-100"
+                    leave="transition ease-in duration-300"
+                    leaveFrom="transform opacity-100"
+                    leaveTo="transform opacity-0"
+                >
+                    {filterView === "list" && (
+                        <div
+                            className={`mt-1 flex flex-col gap-5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
+                            ref={setPopperElement}
+                            style={styles.popper}
+                            {...attributes.popper}
+                        >
+                            {children}
+                        </div>
+                    )}
+                    {filterView === "line" && (
+                        <div
+                            className={`mt-1 flex flex-wrap gap-3.5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
+                            ref={setPopperElement}
+                            style={styles.popper}
+                            {...attributes.popper}
+                        >
+                            <span className="w-full pb-2">
+                                <SearchForm
+                                    type="full"
+                                    query={searchQuery}
+                                    onChange={(e) =>
+                                        handleSetSearchQueryTags(e)
+                                    }
+                                />
+                            </span>
+                            {children}
+                        </div>
+                    )}
+                    {filterView === "date" && (
+                        <div
+                            className={`mt-1 flex flex-col gap-5 rounded-lg bg-gray-dark px-5 py-2.5 shadow-xl ${filtersWidth}`}
+                            ref={setPopperElement}
+                            style={styles.popper}
+                            {...attributes.popper}
+                        >
+                            {children}
+                        </div>
+                    )}
+                </Transition>
+            </div>
         </div>
     );
 }

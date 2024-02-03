@@ -1,12 +1,12 @@
 import reply from "../../../assets/svg/reply.svg";
 import editSVG from "../../../assets/svg/editSVG.svg";
 import cross from "../../../assets/svg/cross.svg";
+import { forwardRef } from "react";
 
-function MessageInputModification({
-    inputMessageType,
-    selectedMessage,
-    dispatch,
-}) {
+const MessageInputModification = forwardRef(function MessageInputModification(
+    { inputMessageType, selectedMessage, dispatch },
+    ref
+) {
     const {
         selectedMessageId,
         selectedMessageUsername,
@@ -18,7 +18,7 @@ function MessageInputModification({
     }
 
     return (
-        <div className="rounded-t-lg bg-gray-dark px-2 py-2 text-sm">
+        <div className="rounded-t-lg bg-gray-dark px-2 py-2 text-sm" ref={ref}>
             <div className="flex justify-between gap-3">
                 {inputMessageType === "reply" && (
                     <div className="flex items-center gap-2">
@@ -38,7 +38,9 @@ function MessageInputModification({
 
                         <div className="flex flex-col truncate">
                             <h5 className="text-blue-light">Edit message</h5>
-                            <p className="text-xsm truncate">{selectedMessageContent}</p>
+                            <p className="truncate text-xsm">
+                                {selectedMessageContent}
+                            </p>
                         </div>
                     </div>
                 )}
@@ -50,6 +52,6 @@ function MessageInputModification({
             </div>
         </div>
     );
-}
+});
 
 export default MessageInputModification;

@@ -70,12 +70,16 @@ function MoreButtonDropdown(data) {
             placement="bottom-end"
             className="w-44 divide-y divide-gray-light/40 rounded-lg text-base outline outline-1 outline-gray-light/20"
         >
-            <DropdownItem itemType="action" onClick={handleUserMute}>
+            <DropdownItem
+                className="cursor-pointer"
+                itemType="action"
+                onClick={handleUserMute}
+            >
                 {isMuted ? "Unmute" : "Mute"}
             </DropdownItem>
             <DropdownItem
                 itemType="action"
-                className="text-red-fire-engine"
+                className="cursor-pointer text-red-fire-engine"
                 onClick={handleUserBlock}
             >
                 {isBlocked ? "UnBlock" : "Block"}

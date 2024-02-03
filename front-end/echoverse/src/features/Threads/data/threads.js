@@ -23,6 +23,8 @@ export const threads = [
         likes: 4214,
         isLiked: false,
         viewedTimes: 213103232,
+        isOwner: false,
+        isSaved: false,
     },
     {
         id: 2,
@@ -37,6 +39,8 @@ export const threads = [
         likes: 414,
         isLiked: true,
         viewedTimes: 23232,
+        isOwner: true,
+        isSaved: true,
     },
     {
         id: 3,
@@ -58,6 +62,8 @@ export const threads = [
         likes: 4,
         isLiked: true,
         viewedTimes: 232,
+        isOwner: false,
+        isSaved: true,
     },
 ];
 
@@ -74,6 +80,8 @@ export const thread = {
     likes: 4214,
     isLiked: false,
     viewedTimes: 213103232,
+    isOwner: false,
+    isSaved: true,
     replies: [
         {
             id: 1,
@@ -88,6 +96,8 @@ export const thread = {
             likes: 4214,
             isLiked: false,
             viewedTimes: 213103232,
+            isOwner: true,
+            isSaved: false,
         },
         {
             id: 2,
@@ -102,6 +112,8 @@ export const thread = {
             likes: 414,
             isLiked: true,
             viewedTimes: 23232,
+            isOwner: false,
+            isSaved: false,
         },
     ],
 };

@@ -37,7 +37,7 @@ function GameThreads() {
                     </BreadCrumbNavBar>
                 </div>
             </div>
-            <div className="h-full max-h-[calc(100dvh-117px)] w-full max-w-[1440px] overflow-y-scroll px-2 pt-2 sm:px-3 sm:pt-3 md:max-h-[calc(100dvh-125px)] md:px-5 md:pt-5 lg:mx-auto lg:max-h-[calc(100dvh-133px)] xl:max-h-[calc(100dvh-179px)]">
+            <div className="h-full max-h-[calc(100dvh-112px)] w-full max-w-[1440px] overflow-y-scroll px-2 pt-2 sm:px-3 sm:pt-3 md:max-h-[calc(100dvh-120px)] md:px-5 md:pt-5 lg:mx-auto lg:max-h-[calc(100dvh-128px)] xl:max-h-[calc(100dvh-174px)]">
                 {isNewPost ? (
                     <NewGameThread setIsNewPost={setIsNewPost} />
                 ) : (

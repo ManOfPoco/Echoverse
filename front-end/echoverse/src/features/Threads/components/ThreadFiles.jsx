@@ -23,21 +23,23 @@ function ThreadFiles({ deleteBtn, stretchType, threadFiles, dispatch }) {
     return (
         <>
             {threadFiles.length > 0 && (
-                <div
-                    className="relative z-20 flex w-full gap-2 overflow-x-auto pb-2"
-                    ref={imgContainerRef}
-                >
-                    {threadFiles.map((threadFile, index) => (
-                        <ThreadFile
-                            threadFile={threadFile}
-                            stretchType={stretchType}
-                            deleteBtn={deleteBtn}
-                            index={index}
-                            threadFiles={threadFiles}
-                            dispatch={dispatch}
-                            key={index}
-                        />
-                    ))}
+                <div className="relative z-20">
+                    <div
+                        className="pointer-events-auto flex w-full gap-2 overflow-x-auto pb-2"
+                        ref={imgContainerRef}
+                    >
+                        {threadFiles.map((threadFile, index) => (
+                            <ThreadFile
+                                threadFile={threadFile}
+                                stretchType={stretchType}
+                                deleteBtn={deleteBtn}
+                                index={index}
+                                threadFiles={threadFiles}
+                                dispatch={dispatch}
+                                key={index}
+                            />
+                        ))}
+                    </div>
                 </div>
             )}
         </>

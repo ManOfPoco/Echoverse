@@ -41,11 +41,11 @@ function SettingsMenu({ isMenuActive }) {
                             icon={profile}
                             title="Edit profile"
                         />
-                        <SettingOption
+                        {/* <SettingOption
                             to="/account/server_profile"
                             icon={profileSquare}
                             title="Edit server profile"
-                        />
+                        /> */}
                     </SettingsSection>
                     <SettingsSection title="Security">
                         <SettingOption

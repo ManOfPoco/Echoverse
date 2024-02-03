@@ -10,6 +10,7 @@ function PersonGameCards({ games }) {
             {games.slice(0, 6).map((game) => (
                 <PersonGameCard game={game} key={game.title} />
             ))}
+
             {showMore ? (
                 <>
                     {games.slice(6).map((game) => (

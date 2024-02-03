@@ -44,10 +44,23 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
     }, [isSideNavBarActive, setIsSideNavBarActive]);
 
     return (
-        <>
-            <Transition
+        <Transition show={isSideNavBarActive}>
+            <Transition.Child
                 as={Fragment}
-                show={isSideNavBarActive}
+                enter="ease-out duration-500"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-500"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+            >
+                <div
+                    className="fixed inset-0 bg-black-dark/60 z-50"
+                    aria-hidden="true"
+                />
+            </Transition.Child>
+            <Transition.Child
+                as={Fragment}
                 enter="transform transition ease-in-out duration-500"
                 enterFrom="-translate-x-full"
                 enterTo="translate-x-0"
@@ -70,12 +83,12 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                                 alt="search"
                                 title="Search"
                             />
-                            <MobileSideNavBarElement
+                            {/* <MobileSideNavBarElement
                                 link="/notification"
                                 img={bellFilled}
                                 alt="notification"
                                 title="Notifications"
-                            />
+                            /> */}
                             <MobileSideNavBarElement
                                 link="/direct"
                                 img={chatBubble}
@@ -112,12 +125,12 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                                 alt="account-settings"
                                 title="Account settings"
                             />
-                            <MobileSideNavBarElement
+                            {/* <MobileSideNavBarElement
                                 link="/about"
                                 img={about}
                                 alt="about"
                                 title="About"
-                            />
+                            /> */}
                         </div>
                     </div>
 
@@ -132,8 +145,8 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                         showAdditionalOptions={true}
                     />
                 </nav>
-            </Transition>
-        </>
+            </Transition.Child>
+        </Transition>
     );
 }
 

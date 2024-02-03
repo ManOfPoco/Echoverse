@@ -18,11 +18,11 @@ function ContactButtons({ username }) {
             <Button action={() => swiper.slidePrev()}>
                 <ChevronLeft width={48} height={48} stroke="#645BF0" />
             </Button>
-            <div className="flex flex-col items-center gap-3.5">
+            <div className="flex flex-col w-full items-center gap-3.5">
                 <Button
                     btnClass="secondary"
                     roundness="rounded-xls"
-                    size="w-[229px]"
+                    size="max-w-[229px] w-full"
                     customClasses="py-3 text-sm"
                     action={() => navigate(`/${username}`)}
                 >
@@ -38,7 +38,7 @@ function ContactButtons({ username }) {
                 <Button
                     btnClass="secondary"
                     roundness="rounded-xls"
-                    size="w-[179px]"
+                    size="max-w-[179px] w-full"
                     customClasses="py-3 text-sm"
                     action={() => navigate(`/${username}/message`)}
                 >

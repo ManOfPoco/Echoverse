@@ -34,6 +34,7 @@ const platforms = [
 
 const games = [
     {
+        id: 1,
         title: "Counter Strike 2",
         img: cs2,
         selectedPlatforms: ["PC", "Xbox", "Switch"],
@@ -42,6 +43,7 @@ const games = [
         presentInProfile: false,
     },
     {
+        id: 2,
         title: "Detroit: Become Human",
         img: detroitBecomeHuman,
         selectedPlatforms: ["PC", "PS", "Xbox"],
@@ -51,6 +53,7 @@ const games = [
         presentInProfile: true,
     },
     {
+        id: 3,
         title: "Satisfactory",
         img: satisfactory,
         selectedPlatforms: ["PC"],
@@ -59,6 +62,7 @@ const games = [
         presentInProfile: false,
     },
     {
+        id: 4,
         title: "Lethal Company",
         img: lethalCompany,
         selectedPlatforms: ["PC", "PS", "Xbox"],
@@ -67,6 +71,7 @@ const games = [
         presentInProfile: true,
     },
     {
+        id: 5,
         title: "Valorant",
         img: "valorant",
         selectedPlatforms: ["PC"],
@@ -75,6 +80,7 @@ const games = [
         presentInProfile: false,
     },
     {
+        id: 6,
         title: "Gas Station Simulator",
         img: gasStationSimulator,
         selectedPlatforms: ["PC"],

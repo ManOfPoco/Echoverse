@@ -9,9 +9,9 @@ function Followers({ follows }) {
     const navigate = useNavigate();
 
     return (
-        <div className="flex flex-col gap-4 mt-7 h-[330px] overflow-auto">
+        <div className="mt-7 flex h-[330px] w-full flex-col gap-4 overflow-auto">
             {follows.map((follower) => (
-                <div className="flex gap-4" key={follower}>
+                <div className="flex gap-4 px-3 sm:px-8" key={follower}>
                     <div
                         className="cursor-pointer"
                         onClick={() => navigate(`/${follower.username}`)}
@@ -21,12 +21,10 @@ function Followers({ follows }) {
                     <div className="flex w-[calc(100%-56px)] items-center justify-between">
                         <Follower follower={follower} />
                         <Button
-                            roundness='rounded-lg'
-                            size='sm:w-[120px] w-24 h-9'
+                            roundness="rounded-lg"
+                            size="sm:w-[120px] w-24 h-9"
                             btnClass={`${
-                                follower.isfollowing
-                                    ? "secondary"
-                                    : "blue"
+                                follower.isfollowing ? "secondary" : "blue"
                             }`}
                         >
                             {follower.isfollowing ? "Unfollow" : "Follow"}

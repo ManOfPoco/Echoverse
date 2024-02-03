@@ -20,7 +20,7 @@ function PersonCardBody({ person }) {
     } = person;
 
     return (
-        <div className="flex max-w-[450px] flex-col items-center overflow-auto px-2">
+        <div className="flex max-w-[450px] w-full flex-col items-center px-2">
             <Avatar img={personImg} type="xls" />
             <SimilarStatistics
                 commonTime={commonTime}

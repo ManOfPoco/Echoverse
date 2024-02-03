@@ -9,7 +9,7 @@ function LabelInputField({
 }) {
     return (
         <div className="flex flex-wrap items-start gap-x-8 gap-y-4">
-            <h5 className="basis-20 md:basis-24 md:text-end">{label}</h5>
+            <h5 className="basis-24 md:text-end">{label}</h5>
             {children ? (
                 children
             ) : (

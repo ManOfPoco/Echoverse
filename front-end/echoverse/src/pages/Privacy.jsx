@@ -30,12 +30,6 @@ function Privacy() {
                     When your account is private, only the followers you approve
                     can see your profile.
                 </PrivacySetting>
-
-                <PrivacySetting
-                    title="Show age to other users"
-                    state={showAge}
-                    onChange={() => setShowAge(!showAge)}
-                />
             </div>
         </>
     );
