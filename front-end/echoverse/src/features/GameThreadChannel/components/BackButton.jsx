@@ -5,7 +5,7 @@ function BackButton({ onClick = null }) {
 
     return (
         <svg
-            className="mx-2 max-h-6 min-h-6 min-w-6 max-w-6 md:mx-3"
+            className="mx-2 max-h-6 min-h-6 min-w-6 max-w-6 md:mx-3 cursor-pointer"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

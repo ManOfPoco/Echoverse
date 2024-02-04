@@ -22,7 +22,7 @@ function DropdownUserCard({
         <Dropdown
             title={referenceElement}
             titleZIndex="z-40"
-            className={`overflow-x-hidden rounded-lg font-roboto sm:w-[356px] ${
+            className={`overflow-x-hidden overflow-y-auto h-auto max-h-dvh rounded-lg font-roboto sm:w-[356px] ${
                 showAdditionalOptions ? "w-80" : "w-[312px]"
             }`}
             placement={placement}

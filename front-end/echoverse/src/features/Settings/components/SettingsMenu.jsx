@@ -8,11 +8,10 @@ import SettingsSection from "./SettingsSection";
 import privacy from "../../../assets/svg/privacy.svg";
 import security from "../../../assets/svg/security.svg";
 import profile from "../../../assets/svg/profile.svg";
-import profileSquare from "../../../assets/svg/profileSquare.svg";
 import blocked from "../../../assets/svg/blocked.svg";
 
 function SettingsMenu({ isMenuActive }) {
-    const { height, width } = useWindowDimensions();
+    const { width } = useWindowDimensions();
 
     return (
         <Transition
@@ -26,10 +25,8 @@ function SettingsMenu({ isMenuActive }) {
             leaveTo="-translate-x-full"
         >
             <div
-                className={`fixed z-30 overflow-y-auto h-[calc(100dvh-72px)]
-                w-fit px-5 py-5 pt-10 sm:pe-10 md:static lg:h-[calc(100dvh-80px)] xl:h-[calc(100dvh-126px)] ${
-                    width < 768 ? "bg-gray-dark shadow-xl" : "bg-black-night"
-                }`}
+                className="fixed z-30 h-[calc(100dvh-72px)] w-fit
+                overflow-y-auto bg-gray-dark px-5 py-5 pt-10 shadow-xl sm:pe-10 md:static md:bg-black-night md:shadow-none lg:h-[calc(100dvh-80px)] xl:h-[calc(100dvh-126px)]"
             >
                 <h4 className="px-4 text-xl font-semibold lg:font-bold">
                     Settings

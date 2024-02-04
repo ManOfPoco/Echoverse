@@ -1,11 +1,10 @@
 import { Fragment, useEffect, useState } from "react";
-import Dropdown from "../../../components/Dropdown";
+import { usePopper } from "react-popper";
+import { Transition } from "@headlessui/react";
+
 import UserCard from "../../ChannelUserCard/components/UserCard";
 
-import { usePopper } from "react-popper";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
-import useCloseDropdown from "../../../hooks/useCloseDropdown";
-import { Transition } from "@headlessui/react";
 
 function generateGetBoundingClientRect(top, left, width) {
     return {
@@ -27,33 +26,14 @@ function VirtualUserCard({
     member,
     setReferenceElement,
     setSelectedUser,
+    placement,
+    modifiers,
 }) {
     const [virtualReference, setVirtualReference] = useState(null);
     const [popperElement, setPopperElement] = useState(null);
     const { styles, attributes } = usePopper(virtualReference, popperElement, {
-        placement: "left-start",
-        modifiers: [
-            {
-                name: "flip",
-                options: {
-                    fallbackPlacements: ["left"],
-                },
-                enabled: true,
-            },
-            {
-                name: "offset",
-                options: {
-                    offset: [0, 12],
-                },
-            },
-            {
-                name: "preventOverflow",
-                options: {
-                    altAxis: true,
-                },
-                enabled: true,
-            },
-        ],
+        placement: placement,
+        modifiers: modifiers,
     });
 
     const { width } = useWindowDimensions();
@@ -82,7 +62,7 @@ function VirtualUserCard({
                 !popperElement.contains(e.target)
             ) {
                 setReferenceElement(null);
-                setSelectedUser(null);
+                if (setSelectedUser) setSelectedUser(null);
             }
         }
         document.addEventListener("mousedown", closeDropdown);
@@ -113,9 +93,12 @@ function VirtualUserCard({
                 ref={setPopperElement}
                 style={styles.popper}
                 {...attributes.popper}
-                className={`z-50 w-[320px] overflow-y-auto overflow-x-hidden rounded-lg font-roboto sm:w-[356px]`}
+                className={`z-50 h-auto max-h-dvh w-[320px] overflow-y-auto overflow-x-hidden rounded-lg font-roboto sm:w-[356px]`}
             >
-                <UserCard showAdditionalOptions={showAdditionalOptions} user={member} />
+                <UserCard
+                    showAdditionalOptions={showAdditionalOptions}
+                    user={member}
+                />
             </div>
         </Transition>
     );

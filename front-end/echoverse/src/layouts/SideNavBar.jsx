@@ -5,17 +5,31 @@ import MobileSideNavBarElement from "../features/SideNavBar/components/MobileSid
 
 import Logo from "../components/Logo";
 
-import searchWhite from "../assets/svg/searchWhite.svg";
 import people from "../assets/svg/people.svg";
 import threads from "../assets/svg/threads.svg";
 import controllerWhite from "../assets/svg/controllerWhite.svg";
-import about from "../assets/svg/about.svg";
-import bellFilled from "../assets/svg/bellFilled.svg";
 import chatBubble from "../assets/svg/chatBubble.svg";
 import settingsFilled from "../assets/svg/settingsFilled.svg";
 import profileFilled from "../assets/svg/profileFilled.svg";
 import DropdownUserCard from "../features/ChannelUserCard/components/DropdownUserCard";
 import MobileSideNavBarProfileMoreSvg from "../features/SideNavBar/components/MobileSideNavBarProfileMoreSvg";
+
+const modifiers = [
+    {
+        name: "flip",
+        options: {
+            fallbackPlacements: ["right-start"],
+        },
+        enabled: true,
+    },
+    {
+        name: "preventOverflow",
+        options: {
+            altAxis: true,
+        },
+        enabled: true,
+    },
+];
 
 function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
     const navBarRef = useRef(null);
@@ -55,7 +69,7 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                 leaveTo="opacity-0"
             >
                 <div
-                    className="fixed inset-0 bg-black-dark/60 z-50"
+                    className="fixed inset-0 z-50 bg-black-dark/60"
                     aria-hidden="true"
                 />
             </Transition.Child>
@@ -77,12 +91,12 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                             <Logo />
                         </div>
                         <div className="flex flex-col gap-1 px-2 md:px-4">
-                            <MobileSideNavBarElement
+                            {/* <MobileSideNavBarElement
                                 link="/search"
                                 img={searchWhite}
                                 alt="search"
                                 title="Search"
-                            />
+                            /> */}
                             {/* <MobileSideNavBarElement
                                 link="/notification"
                                 img={bellFilled}
@@ -142,6 +156,7 @@ function SideNavBar({ isSideNavBarActive, setIsSideNavBarActive }) {
                             />
                         }
                         placement="top-start"
+                        modifiers={modifiers}
                         showAdditionalOptions={true}
                     />
                 </nav>

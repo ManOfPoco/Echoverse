@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useReducer, useRef, useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 
 import Avatar from "../components/Avatar";
@@ -17,38 +17,29 @@ import idleStatus from "../assets/svg/idleStatus.svg";
 import doNotDisturbStatus from "../assets/svg/doNotDisturbStatus.svg";
 import invisibleStatus from "../assets/svg/invisibleStatus.svg";
 import messages from "../assets/data/messages.json";
-import DropdownUserCard from "../features/ChannelUserCard/components/DropdownUserCard";
+import VirtualUserCard from "../features/ChannelUserCard/components/VirtualUserCard";
 
 const modifiers = [
     {
         name: "flip",
-        phase: "afterWrite",
         options: {
-            fallbackPlacements: ["bottom"],
-            altAxis: true,
-            rootBoundary: "document",
-            altBoundary: true,
-            boundary: document.body,
-        },
-        enabled: true,
-    },
-    {
-        name: "preventOverflow",
-        phase: "afterWrite",
-        options: {
-            altAxis: true,
-            rootBoundary: "document",
-            altBoundary: true,
-            boundary: document.body,
-            tether: false,
+            fallbackPlacements: ["bottom", "bottom-end"],
         },
         enabled: true,
     },
     {
         name: "offset",
         options: {
-            offset: [0, 0],
+            offset: [-4, 48],
         },
+    },
+    {
+        name: "preventOverflow",
+        options: {
+            altAxis: true,
+            mainAxis: true,
+        },
+        enabled: true,
     },
 ];
 
@@ -112,13 +103,28 @@ function Direct() {
     const navigate = useNavigate();
 
     const [setIsSideNavBarActive] = useOutletContext();
-
     const [state, dispatch] = useReducer(reducer, initialState);
+    const [referenceElement, setReferenceElement] = useState(null);
+    const userRef = useRef(null);
+
     const { width } = useWindowDimensions();
 
     const { username, displayName, status } = user;
 
     const onlineStatusImg = statusImgMapping[status] || "offline";
+
+    function handleSetReferenceElement() {
+        if (!referenceElement) {
+            const elementCoords = userRef.current.getBoundingClientRect();
+            setReferenceElement({
+                target: userRef.current,
+                left: elementCoords.left,
+                top: elementCoords.top,
+            });
+        } else {
+            setReferenceElement(null);
+        }
+    }
 
     return (
         <div className="flex h-dvh w-dvw flex-col bg-gray-chat lg:w-[calc(100dvw-320px)]">
@@ -132,34 +138,41 @@ function Direct() {
                     <BackButton onClick={() => navigate("/direct")} />
                 )}
                 <div className="flex w-full items-center justify-between gap-5 px-2">
-                    <DropdownUserCard
-                        referenceElement={
-                            <div className="flex cursor-pointer items-center gap-3 truncate py-1">
-                                <div className="relative">
-                                    <Avatar img={person} type="sm" />
-                                    {status !== "invisible" &&
-                                        status !== "offline" && (
-                                            <div className="absolute bottom-0 right-0 rounded-full bg-gray-dark p-0.5">
-                                                <img
-                                                    src={onlineStatusImg}
-                                                    className="h-2.5 w-2.5"
-                                                />
-                                            </div>
-                                        )}
+                    <div
+                        className="flex cursor-pointer items-center gap-3 truncate py-1"
+                        onClick={handleSetReferenceElement}
+                        ref={userRef}
+                    >
+                        <div className="relative">
+                            <Avatar img={person} type="sm" />
+                            {status !== "invisible" && status !== "offline" && (
+                                <div className="absolute bottom-0 right-0 rounded-full bg-gray-dark p-0.5">
+                                    <img
+                                        src={onlineStatusImg}
+                                        className="h-2.5 w-2.5"
+                                    />
                                 </div>
-                                <h5 className="font-medium">{displayName}</h5>
-                            </div>
-                        }
-                        placement="bottom-start"
-                        modifiers={modifiers}
-                        showAdditionalOptions={false}
-                    />
+                            )}
+                        </div>
+                        <h5 className="font-medium">{displayName}</h5>
+                    </div>
 
                     <div className="hidden sm:block">
                         <SearchForm />
                     </div>
                 </div>
             </div>
+
+            {referenceElement && (
+                <VirtualUserCard
+                    referenceElement={referenceElement}
+                    member={user}
+                    setReferenceElement={setReferenceElement}
+                    setSelectedUser={null}
+                    placement="bottom-start"
+                    modifiers={modifiers}
+                />
+            )}
 
             <div className="flex h-[calc(100dvh-101px)] w-full flex-col-reverse overflow-y-auto pb-5 md:h-[calc(100dvh-109px)]">
                 <div>

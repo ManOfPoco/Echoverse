@@ -25,7 +25,7 @@ function GameThreads() {
     const { view } = state;
 
     return (
-        <div className="max-w-full bg-black-night">
+        <div className="max-w-full bg-black-night h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] xl:h-[calc(100dvh-126px)]">
             <div className="w-full max-w-[1440px] lg:mx-auto">
                 <div className="flex items-center gap-3 truncate border-b border-black-dark px-2 shadow-lg sm:px-3 md:px-5">
                     <BreadCrumbNavBar img={chatBubbles}>
@@ -37,7 +37,7 @@ function GameThreads() {
                     </BreadCrumbNavBar>
                 </div>
             </div>
-            <div className="h-full max-h-[calc(100dvh-112px)] w-full max-w-[1440px] overflow-y-scroll px-2 pt-2 sm:px-3 sm:pt-3 md:max-h-[calc(100dvh-120px)] md:px-5 md:pt-5 lg:mx-auto lg:max-h-[calc(100dvh-128px)] xl:max-h-[calc(100dvh-174px)]">
+            <div className="h-[calc(100dvh-113px)] w-full max-w-[1440px] overflow-y-auto px-2 pt-2 sm:px-3 sm:pt-3 md:h-[calc(100dvh-121px)] md:px-5 md:pt-5 lg:mx-auto lg:h-[calc(100dvh-129px)] xl:h-[calc(100dvh-175px)]">
                 {isNewPost ? (
                     <NewGameThread setIsNewPost={setIsNewPost} />
                 ) : (
